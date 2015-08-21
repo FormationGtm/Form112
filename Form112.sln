@@ -5,6 +5,10 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Form112", "Form112\Form112.csproj", "{93AF1BD7-2D07-4949-8AF9-571D1924A707}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{21E575F0-FB61-49B3-AB3A-BFEC8DC0F5FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Form112Console", "Form112Console\Form112Console.csproj", "{BC94E976-D052-4FA5-AD40-58F7D091C26E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{93AF1BD7-2D07-4949-8AF9-571D1924A707}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93AF1BD7-2D07-4949-8AF9-571D1924A707}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93AF1BD7-2D07-4949-8AF9-571D1924A707}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21E575F0-FB61-49B3-AB3A-BFEC8DC0F5FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21E575F0-FB61-49B3-AB3A-BFEC8DC0F5FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21E575F0-FB61-49B3-AB3A-BFEC8DC0F5FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21E575F0-FB61-49B3-AB3A-BFEC8DC0F5FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC94E976-D052-4FA5-AD40-58F7D091C26E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC94E976-D052-4FA5-AD40-58F7D091C26E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC94E976-D052-4FA5-AD40-58F7D091C26E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC94E976-D052-4FA5-AD40-58F7D091C26E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
