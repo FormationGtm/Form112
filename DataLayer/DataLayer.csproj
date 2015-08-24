@@ -42,6 +42,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,11 +52,70 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Model\Croisieres.cs">
+      <DependentUpon>OpenSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Durees.cs">
+      <DependentUpon>OpenSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OpenSea.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OpenSea.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OpenSea.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OpenSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OpenSea.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OpenSea.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Pays.cs">
+      <DependentUpon>OpenSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Photos.cs">
+      <DependentUpon>OpenSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Ports.cs">
+      <DependentUpon>OpenSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Promos.cs">
+      <DependentUpon>OpenSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Regions.cs">
+      <DependentUpon>OpenSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Themes.cs">
+      <DependentUpon>OpenSea.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="Model\OpenSea.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>OpenSea.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\OpenSea.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OpenSea.edmx</DependentUpon>
+      <LastGenOutput>OpenSea.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Model\OpenSea.edmx.diagram">
+      <DependentUpon>OpenSea.edmx</DependentUpon>
+    </None>
+    <None Include="Model\OpenSea.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OpenSea.edmx</DependentUpon>
+      <LastGenOutput>OpenSea.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

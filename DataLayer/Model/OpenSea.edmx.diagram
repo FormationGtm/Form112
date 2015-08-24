@@ -4,15 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f690ff2f289640adba567f65a6074daa" Name="Diagram1" ZoomLevel="74">
+      <Diagram DiagramId="b0f0a07ba2c74573abe618a6db16ff6b" Name="Diagram1">
         <EntityTypeShape EntityType="Form112Model.Croisieres" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="Form112Model.Durees" Width="1.5" PointX="4.875" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Form112Model.Durees" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Form112Model.Pays" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Form112Model.Photos" Width="1.5" PointX="9.75" PointY="1.875" IsExpanded="true" />
         <EntityTypeShape EntityType="Form112Model.Ports" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Form112Model.Promos" Width="1.5" PointX="11.625" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Form112Model.Promos" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Form112Model.Regions" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="Form112Model.Themes" Width="1.5" PointX="7.625" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Form112Model.Themes" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
         <AssociationConnector Association="Form112Model.fk_croisieres_durees" ManuallyRouted="false" />
         <AssociationConnector Association="Form112Model.fk_croisieres_ports" ManuallyRouted="false" />
         <AssociationConnector Association="Form112Model.fk_croisieres_promos" ManuallyRouted="false" />
