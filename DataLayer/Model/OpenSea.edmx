@@ -1,0 +1,503 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Form112Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Croisieres">
+          <Key>
+            <PropertyRef Name="IdCroisiere" />
+          </Key>
+          <Property Name="IdCroisiere" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdTheme" Type="int" Nullable="false" />
+          <Property Name="IdDuree" Type="int" Nullable="false" />
+          <Property Name="IdPromo" Type="int" Nullable="false" />
+          <Property Name="IdPort" Type="int" Nullable="false" />
+          <Property Name="Prix" Type="int" Nullable="false" />
+          <Property Name="DateDepart" Type="date" Nullable="false" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Durees">
+          <Key>
+            <PropertyRef Name="IdDuree" />
+          </Key>
+          <Property Name="IdDuree" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NbJours" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pays">
+          <Key>
+            <PropertyRef Name="IdPays" />
+          </Key>
+          <Property Name="IdPays" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="IdRegion" Type="int" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Photos">
+          <Key>
+            <PropertyRef Name="IdPhoto" />
+          </Key>
+          <Property Name="IdPhoto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCroisiere" Type="int" Nullable="false" />
+          <Property Name="NomPhoto" Type="nvarchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ports">
+          <Key>
+            <PropertyRef Name="IdPort" />
+          </Key>
+          <Property Name="IdPort" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPays" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Promos">
+          <Key>
+            <PropertyRef Name="IdPromo" />
+          </Key>
+          <Property Name="IdPromo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Reduction" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Regions">
+          <Key>
+            <PropertyRef Name="IdRegion" />
+          </Key>
+          <Property Name="IdRegion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Themes">
+          <Key>
+            <PropertyRef Name="IdTheme" />
+          </Key>
+          <Property Name="IdTheme" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_croisieres_durees">
+          <End Role="Durees" Type="Self.Durees" Multiplicity="1" />
+          <End Role="Croisieres" Type="Self.Croisieres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Durees">
+              <PropertyRef Name="IdDuree" />
+            </Principal>
+            <Dependent Role="Croisieres">
+              <PropertyRef Name="IdDuree" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_croisieres_ports">
+          <End Role="Ports" Type="Self.Ports" Multiplicity="1" />
+          <End Role="Croisieres" Type="Self.Croisieres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ports">
+              <PropertyRef Name="IdPort" />
+            </Principal>
+            <Dependent Role="Croisieres">
+              <PropertyRef Name="IdPort" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_croisieres_promos">
+          <End Role="Promos" Type="Self.Promos" Multiplicity="1" />
+          <End Role="Croisieres" Type="Self.Croisieres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Promos">
+              <PropertyRef Name="IdPromo" />
+            </Principal>
+            <Dependent Role="Croisieres">
+              <PropertyRef Name="IdPromo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_croisieres_themes">
+          <End Role="Themes" Type="Self.Themes" Multiplicity="1" />
+          <End Role="Croisieres" Type="Self.Croisieres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Themes">
+              <PropertyRef Name="IdTheme" />
+            </Principal>
+            <Dependent Role="Croisieres">
+              <PropertyRef Name="IdTheme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_pays_pays">
+          <End Role="Regions" Type="Self.Regions" Multiplicity="1" />
+          <End Role="Pays" Type="Self.Pays" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Regions">
+              <PropertyRef Name="IdRegion" />
+            </Principal>
+            <Dependent Role="Pays">
+              <PropertyRef Name="IdRegion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_photos_croisieres">
+          <End Role="Croisieres" Type="Self.Croisieres" Multiplicity="1" />
+          <End Role="Photos" Type="Self.Photos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Croisieres">
+              <PropertyRef Name="IdCroisiere" />
+            </Principal>
+            <Dependent Role="Photos">
+              <PropertyRef Name="IdCroisiere" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ports_pays">
+          <End Role="Pays" Type="Self.Pays" Multiplicity="1" />
+          <End Role="Ports" Type="Self.Ports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pays">
+              <PropertyRef Name="IdPays" />
+            </Principal>
+            <Dependent Role="Ports">
+              <PropertyRef Name="IdPays" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Form112ModelStoreContainer">
+          <EntitySet Name="Croisieres" EntityType="Self.Croisieres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Durees" EntityType="Self.Durees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pays" EntityType="Self.Pays" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Photos" EntityType="Self.Photos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ports" EntityType="Self.Ports" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Promos" EntityType="Self.Promos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Regions" EntityType="Self.Regions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Themes" EntityType="Self.Themes" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_croisieres_durees" Association="Self.fk_croisieres_durees">
+            <End Role="Durees" EntitySet="Durees" />
+            <End Role="Croisieres" EntitySet="Croisieres" />
+          </AssociationSet>
+          <AssociationSet Name="fk_croisieres_ports" Association="Self.fk_croisieres_ports">
+            <End Role="Ports" EntitySet="Ports" />
+            <End Role="Croisieres" EntitySet="Croisieres" />
+          </AssociationSet>
+          <AssociationSet Name="fk_croisieres_promos" Association="Self.fk_croisieres_promos">
+            <End Role="Promos" EntitySet="Promos" />
+            <End Role="Croisieres" EntitySet="Croisieres" />
+          </AssociationSet>
+          <AssociationSet Name="fk_croisieres_themes" Association="Self.fk_croisieres_themes">
+            <End Role="Themes" EntitySet="Themes" />
+            <End Role="Croisieres" EntitySet="Croisieres" />
+          </AssociationSet>
+          <AssociationSet Name="fk_pays_pays" Association="Self.fk_pays_pays">
+            <End Role="Regions" EntitySet="Regions" />
+            <End Role="Pays" EntitySet="Pays" />
+          </AssociationSet>
+          <AssociationSet Name="fk_photos_croisieres" Association="Self.fk_photos_croisieres">
+            <End Role="Croisieres" EntitySet="Croisieres" />
+            <End Role="Photos" EntitySet="Photos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ports_pays" Association="Self.fk_ports_pays">
+            <End Role="Pays" EntitySet="Pays" />
+            <End Role="Ports" EntitySet="Ports" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Form112Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Croisieres">
+          <Key>
+            <PropertyRef Name="IdCroisiere" />
+          </Key>
+          <Property Name="IdCroisiere" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdTheme" Type="Int32" Nullable="false" />
+          <Property Name="IdDuree" Type="Int32" Nullable="false" />
+          <Property Name="IdPromo" Type="Int32" Nullable="false" />
+          <Property Name="IdPort" Type="Int32" Nullable="false" />
+          <Property Name="Prix" Type="Int32" Nullable="false" />
+          <Property Name="DateDepart" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Durees" Relationship="Self.fk_croisieres_durees" FromRole="Croisieres" ToRole="Durees" />
+          <NavigationProperty Name="Ports" Relationship="Self.fk_croisieres_ports" FromRole="Croisieres" ToRole="Ports" />
+          <NavigationProperty Name="Promos" Relationship="Self.fk_croisieres_promos" FromRole="Croisieres" ToRole="Promos" />
+          <NavigationProperty Name="Themes" Relationship="Self.fk_croisieres_themes" FromRole="Croisieres" ToRole="Themes" />
+          <NavigationProperty Name="Photos" Relationship="Self.fk_photos_croisieres" FromRole="Croisieres" ToRole="Photos" />
+        </EntityType>
+        <EntityType Name="Durees">
+          <Key>
+            <PropertyRef Name="IdDuree" />
+          </Key>
+          <Property Name="IdDuree" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NbJours" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Croisieres" Relationship="Self.fk_croisieres_durees" FromRole="Durees" ToRole="Croisieres" />
+        </EntityType>
+        <EntityType Name="Pays">
+          <Key>
+            <PropertyRef Name="IdPays" />
+          </Key>
+          <Property Name="IdPays" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="IdRegion" Type="Int32" Nullable="false" />
+          <Property Name="Nom" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Regions" Relationship="Self.fk_pays_pays" FromRole="Pays" ToRole="Regions" />
+          <NavigationProperty Name="Ports" Relationship="Self.fk_ports_pays" FromRole="Pays" ToRole="Ports" />
+        </EntityType>
+        <EntityType Name="Photos">
+          <Key>
+            <PropertyRef Name="IdPhoto" />
+          </Key>
+          <Property Name="IdPhoto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCroisiere" Type="Int32" Nullable="false" />
+          <Property Name="NomPhoto" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Croisieres" Relationship="Self.fk_photos_croisieres" FromRole="Photos" ToRole="Croisieres" />
+        </EntityType>
+        <EntityType Name="Ports">
+          <Key>
+            <PropertyRef Name="IdPort" />
+          </Key>
+          <Property Name="IdPort" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPays" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Nom" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Croisieres" Relationship="Self.fk_croisieres_ports" FromRole="Ports" ToRole="Croisieres" />
+          <NavigationProperty Name="Pays" Relationship="Self.fk_ports_pays" FromRole="Ports" ToRole="Pays" />
+        </EntityType>
+        <EntityType Name="Promos">
+          <Key>
+            <PropertyRef Name="IdPromo" />
+          </Key>
+          <Property Name="IdPromo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Reduction" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Croisieres" Relationship="Self.fk_croisieres_promos" FromRole="Promos" ToRole="Croisieres" />
+        </EntityType>
+        <EntityType Name="Regions">
+          <Key>
+            <PropertyRef Name="IdRegion" />
+          </Key>
+          <Property Name="IdRegion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Pays" Relationship="Self.fk_pays_pays" FromRole="Regions" ToRole="Pays" />
+        </EntityType>
+        <EntityType Name="Themes">
+          <Key>
+            <PropertyRef Name="IdTheme" />
+          </Key>
+          <Property Name="IdTheme" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Croisieres" Relationship="Self.fk_croisieres_themes" FromRole="Themes" ToRole="Croisieres" />
+        </EntityType>
+        <Association Name="fk_croisieres_durees">
+          <End Role="Durees" Type="Self.Durees" Multiplicity="1" />
+          <End Role="Croisieres" Type="Self.Croisieres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Durees">
+              <PropertyRef Name="IdDuree" />
+            </Principal>
+            <Dependent Role="Croisieres">
+              <PropertyRef Name="IdDuree" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_croisieres_ports">
+          <End Role="Ports" Type="Self.Ports" Multiplicity="1" />
+          <End Role="Croisieres" Type="Self.Croisieres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ports">
+              <PropertyRef Name="IdPort" />
+            </Principal>
+            <Dependent Role="Croisieres">
+              <PropertyRef Name="IdPort" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_croisieres_promos">
+          <End Role="Promos" Type="Self.Promos" Multiplicity="1" />
+          <End Role="Croisieres" Type="Self.Croisieres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Promos">
+              <PropertyRef Name="IdPromo" />
+            </Principal>
+            <Dependent Role="Croisieres">
+              <PropertyRef Name="IdPromo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_croisieres_themes">
+          <End Role="Themes" Type="Self.Themes" Multiplicity="1" />
+          <End Role="Croisieres" Type="Self.Croisieres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Themes">
+              <PropertyRef Name="IdTheme" />
+            </Principal>
+            <Dependent Role="Croisieres">
+              <PropertyRef Name="IdTheme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_photos_croisieres">
+          <End Role="Croisieres" Type="Self.Croisieres" Multiplicity="1" />
+          <End Role="Photos" Type="Self.Photos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Croisieres">
+              <PropertyRef Name="IdCroisiere" />
+            </Principal>
+            <Dependent Role="Photos">
+              <PropertyRef Name="IdCroisiere" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_pays_pays">
+          <End Role="Regions" Type="Self.Regions" Multiplicity="1" />
+          <End Role="Pays" Type="Self.Pays" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Regions">
+              <PropertyRef Name="IdRegion" />
+            </Principal>
+            <Dependent Role="Pays">
+              <PropertyRef Name="IdRegion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ports_pays">
+          <End Role="Pays" Type="Self.Pays" Multiplicity="1" />
+          <End Role="Ports" Type="Self.Ports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pays">
+              <PropertyRef Name="IdPays" />
+            </Principal>
+            <Dependent Role="Ports">
+              <PropertyRef Name="IdPays" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Form112Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Croisieres" EntityType="Self.Croisieres" />
+          <EntitySet Name="Durees" EntityType="Self.Durees" />
+          <EntitySet Name="Pays" EntityType="Self.Pays" />
+          <EntitySet Name="Photos" EntityType="Self.Photos" />
+          <EntitySet Name="Ports" EntityType="Self.Ports" />
+          <EntitySet Name="Promos" EntityType="Self.Promos" />
+          <EntitySet Name="Regions" EntityType="Self.Regions" />
+          <EntitySet Name="Themes" EntityType="Self.Themes" />
+          <AssociationSet Name="fk_croisieres_durees" Association="Self.fk_croisieres_durees">
+            <End Role="Durees" EntitySet="Durees" />
+            <End Role="Croisieres" EntitySet="Croisieres" />
+          </AssociationSet>
+          <AssociationSet Name="fk_croisieres_ports" Association="Self.fk_croisieres_ports">
+            <End Role="Ports" EntitySet="Ports" />
+            <End Role="Croisieres" EntitySet="Croisieres" />
+          </AssociationSet>
+          <AssociationSet Name="fk_croisieres_promos" Association="Self.fk_croisieres_promos">
+            <End Role="Promos" EntitySet="Promos" />
+            <End Role="Croisieres" EntitySet="Croisieres" />
+          </AssociationSet>
+          <AssociationSet Name="fk_croisieres_themes" Association="Self.fk_croisieres_themes">
+            <End Role="Themes" EntitySet="Themes" />
+            <End Role="Croisieres" EntitySet="Croisieres" />
+          </AssociationSet>
+          <AssociationSet Name="fk_photos_croisieres" Association="Self.fk_photos_croisieres">
+            <End Role="Croisieres" EntitySet="Croisieres" />
+            <End Role="Photos" EntitySet="Photos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_pays_pays" Association="Self.fk_pays_pays">
+            <End Role="Regions" EntitySet="Regions" />
+            <End Role="Pays" EntitySet="Pays" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ports_pays" Association="Self.fk_ports_pays">
+            <End Role="Pays" EntitySet="Pays" />
+            <End Role="Ports" EntitySet="Ports" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Form112ModelStoreContainer" CdmEntityContainer="Form112Entities">
+          <EntitySetMapping Name="Croisieres">
+            <EntityTypeMapping TypeName="Form112Model.Croisieres">
+              <MappingFragment StoreEntitySet="Croisieres">
+                <ScalarProperty Name="IdCroisiere" ColumnName="IdCroisiere" />
+                <ScalarProperty Name="IdTheme" ColumnName="IdTheme" />
+                <ScalarProperty Name="IdDuree" ColumnName="IdDuree" />
+                <ScalarProperty Name="IdPromo" ColumnName="IdPromo" />
+                <ScalarProperty Name="IdPort" ColumnName="IdPort" />
+                <ScalarProperty Name="Prix" ColumnName="Prix" />
+                <ScalarProperty Name="DateDepart" ColumnName="DateDepart" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Durees">
+            <EntityTypeMapping TypeName="Form112Model.Durees">
+              <MappingFragment StoreEntitySet="Durees">
+                <ScalarProperty Name="IdDuree" ColumnName="IdDuree" />
+                <ScalarProperty Name="NbJours" ColumnName="NbJours" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pays">
+            <EntityTypeMapping TypeName="Form112Model.Pays">
+              <MappingFragment StoreEntitySet="Pays">
+                <ScalarProperty Name="IdPays" ColumnName="IdPays" />
+                <ScalarProperty Name="IdRegion" ColumnName="IdRegion" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Photos">
+            <EntityTypeMapping TypeName="Form112Model.Photos">
+              <MappingFragment StoreEntitySet="Photos">
+                <ScalarProperty Name="IdPhoto" ColumnName="IdPhoto" />
+                <ScalarProperty Name="IdCroisiere" ColumnName="IdCroisiere" />
+                <ScalarProperty Name="NomPhoto" ColumnName="NomPhoto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ports">
+            <EntityTypeMapping TypeName="Form112Model.Ports">
+              <MappingFragment StoreEntitySet="Ports">
+                <ScalarProperty Name="IdPort" ColumnName="IdPort" />
+                <ScalarProperty Name="IdPays" ColumnName="IdPays" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Promos">
+            <EntityTypeMapping TypeName="Form112Model.Promos">
+              <MappingFragment StoreEntitySet="Promos">
+                <ScalarProperty Name="IdPromo" ColumnName="IdPromo" />
+                <ScalarProperty Name="Reduction" ColumnName="Reduction" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Regions">
+            <EntityTypeMapping TypeName="Form112Model.Regions">
+              <MappingFragment StoreEntitySet="Regions">
+                <ScalarProperty Name="IdRegion" ColumnName="IdRegion" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Themes">
+            <EntityTypeMapping TypeName="Form112Model.Themes">
+              <MappingFragment StoreEntitySet="Themes">
+                <ScalarProperty Name="IdTheme" ColumnName="IdTheme" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
