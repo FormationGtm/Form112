@@ -236,9 +236,15 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Promotions\Promotions.cshtml" />
+    <Content Include="Views\Themes\Themes.cshtml" />
+    <Content Include="Views\Destinations\Destinations.cshtml" />
+    <Content Include="Views\Pays\Pays.cshtml" />
+    <Content Include="Views\Destinations\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="HtmlHelper\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
