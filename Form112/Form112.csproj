@@ -176,19 +176,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\Filters\NlogFilterAttribute.cs" />
-    <Compile Include="Infrastructure\SearchCroisiers\Base\SearchBase.cs" />
-    <Compile Include="Infrastructure\SearchCroisiers\Base\SearchOption.cs" />
-    <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionBudget.cs" />
-    <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionDateDepart.cs" />
-    <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionDestination.cs" />
-    <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionDureeDeSejour.cs" />
-    <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionPortDeDepart.cs" />
-    <Compile Include="Infrastructure\SearchCroisiers\Search.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />

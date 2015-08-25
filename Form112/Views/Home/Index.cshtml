@@ -1,86 +1,32 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<div class="row">
+
+    @Html.Partial("_HomeCaroussel")
+
+</div>
 
 @* Zone définissant la carte cliquable du monde *@
 
-<div class="search-map text-center">
-    Carte du Monde cliquable
-    <form class="row form-group">   
-        <select class="col-sm-10 col-sm-offset-1" id="idSelectRegions">
-            <option> Amérique du Sud</option>
-            <option> Caraïbes</option>
-            <option> Méditérannée</option>
-            <option> Océan Indien</option>
-            <option> Océan Pacifique</option>
-        </select>
-    </form>
+<div class="row">
+    <div class="search-map text-center">
+        Carte du Monde cliquable
+        <form class="row form-group">
+            <select class="col-sm-10 col-sm-offset-1" id="idSelectRegions">
+                <option> Amérique du Sud</option>
+                <option> Caraïbes</option>
+                <option> Méditérannée</option>
+                <option> Océan Indien</option>
+                <option> Océan Pacifique</option>
+            </select>
+        </form>
+    </div>
+
 </div>
-
-
 
 <div class="row">
 
-    <div class="destination-panel" onclick="">
-        <div class="panel-container">
-            <img src="#" alt="Alternate Text" class="panel-img" />
-            <div class="panel-header">
-                Pays
-            </div>
-            <div class="panel-main">
-                <div class="price-legend">
-                    Croisières à partir de
-                </div>
-                <div class="price-body">
-                    Prix* <span class="currency-fr">€</span>
-                </div>
-            </div>
-            <div class="panel-end">
-                Promo
-            </div>
-        </div>
-    </div>
-
-
-    <div class="destination-panel" onclick="">
-        <div class="panel-container">
-            <img src="#" alt="Alternate Text" class="panel-img" />
-            <div class="panel-header">
-                Pays
-            </div>
-            <div class="panel-main">
-                <div class="price-legend">
-                    Croisières à partir de
-                </div>
-                <div class="price-body">
-                    Prix* <span class="currency-fr">€</span>
-                </div>
-            </div>
-            <div class="panel-end">
-                Promo
-            </div>
-        </div>
-    </div>
-
-    <div class="destination-panel" onclick="">
-        <div class="panel-container">
-            <img src="#" alt="Alternate Text" class="panel-img" />
-            <div class="panel-header">
-                Pays
-            </div>
-            <div class="panel-main">
-                <div class="price-legend">
-                    Croisières à partir de
-                </div>
-                <div class="price-body">
-                    Prix* <span class="currency-fr">€</span>
-                </div>
-            </div>
-            <div class="panel-end">
-                Promo
-            </div>
-        </div>
-    </div>
-
+    @Html.Partial("_DestinationPanel");
 
 </div>
