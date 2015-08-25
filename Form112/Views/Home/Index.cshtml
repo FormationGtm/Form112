@@ -2,85 +2,40 @@
     ViewBag.Title = "Home Page";
 }
 
-@* Zone définissant la carte cliquable du monde *@
-
-<div class="search-map text-center">
-    Carte du Monde cliquable
-    <form class="row form-group">   
-        <select class="col-sm-10 col-sm-offset-1" id="idSelectRegions">
-            <option> Amérique du Sud</option>
-            <option> Caraïbes</option>
-            <option> Méditérannée</option>
-            <option> Océan Indien</option>
-            <option> Océan Pacifique</option>
-        </select>
-    </form>
-</div>
-
-
+@section scripts{
+    <script src="~/Scripts/JQVMap/jquery.vmap.min.js"></script>
+    <script src="~/Scripts/JQVMap/jquery.vmap.world.js"></script>
+    <script src="~/Scripts/JQVMap/continents/jquery.vmap.north-america.js"></script>
+    <script src="~/Scripts/JQVMap/continents/jquery.vmap.africa.js"></script>
+    <script src="~/Scripts/JQVMap/continents/jquery.vmap.asia.js"></script>
+    <script src="~/Scripts/JQVMap/continents/jquery.vmap.australia.js"></script>
+    <script src="~/Scripts/JQVMap/continents/jquery.vmap.europe.js"></script>
+    <script src="~/Scripts/JQVMap/continents/jquery.vmap.south-america.js"></script>
+    <script src="~/Scripts/JQVMap/jquery.vmap.sampledata.js"></script>
+    <script src="~/Scripts/Home/Index.js"></script>
+}
 
 <div class="row">
 
-    <div class="destination-panel" onclick="">
-        <div class="panel-container">
-            <img src="#" alt="Alternate Text" class="panel-img" />
-            <div class="panel-header">
-                Pays
-            </div>
-            <div class="panel-main">
-                <div class="price-legend">
-                    Croisières à partir de
-                </div>
-                <div class="price-body">
-                    Prix* <span class="currency-fr">€</span>
-                </div>
-            </div>
-            <div class="panel-end">
-                Promo
-            </div>
-        </div>
+    @Html.Partial("_HomeCaroussel")
+
+</div>
+
+@* Zone définissant la carte cliquable du monde *@
+
+<div class="row">
+    <div class="map-header">
+        Choissisez votre destination :
     </div>
+    <div class="search-map text-center" id="idVmapWorld"></div>
+    @using (Html.BeginForm("ContinentSearch", "Home", FormMethod.Post, new { id = "idFormMap" }))
+    {
+        <input type="hidden" id="idContinentChoice" name="continentChoice" />
+    }
+</div>
 
+<div class="row">
 
-    <div class="destination-panel" onclick="">
-        <div class="panel-container">
-            <img src="#" alt="Alternate Text" class="panel-img" />
-            <div class="panel-header">
-                Pays
-            </div>
-            <div class="panel-main">
-                <div class="price-legend">
-                    Croisières à partir de
-                </div>
-                <div class="price-body">
-                    Prix* <span class="currency-fr">€</span>
-                </div>
-            </div>
-            <div class="panel-end">
-                Promo
-            </div>
-        </div>
-    </div>
-
-    <div class="destination-panel" onclick="">
-        <div class="panel-container">
-            <img src="#" alt="Alternate Text" class="panel-img" />
-            <div class="panel-header">
-                Pays
-            </div>
-            <div class="panel-main">
-                <div class="price-legend">
-                    Croisières à partir de
-                </div>
-                <div class="price-body">
-                    Prix* <span class="currency-fr">€</span>
-                </div>
-            </div>
-            <div class="panel-end">
-                Promo
-            </div>
-        </div>
-    </div>
-
+    @Html.Partial("_DestinationPanel");
 
 </div>

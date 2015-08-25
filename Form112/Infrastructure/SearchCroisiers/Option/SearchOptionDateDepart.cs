@@ -9,17 +9,21 @@ namespace Form112.Infrastructure.SearchCroisiers.Option
 {
     internal class SearchOptionDateDepart : SearchOption
     {
-        private readonly DateTime _idDateDepart;
+        private readonly DateTime _DateDepart;
 
-        public SearchOptionDateDepart(SearchBase sb, DateTime idDateDepart)
+        public SearchOptionDateDepart(SearchBase sb, DateTime DateDepart)
             : base(sb)
         {
-            _idDateDepart = idDateDepart;
+            _DateDepart = DateDepart;
         }
 
         public override IEnumerable<Croisieres> GetResult()
         {
-            return SearchBase.GetResult().Where(x => x.DateDepart == _idDateDepart);
+            if (!string.IsNullOrEmpty(_DateDepart.ToString()))
+            {
+                return SearchBase.GetResult().Where(x => x.DateDepart.Month == _DateDepart.Month && x.DateDepart.Year == _DateDepart.Year);
+            }
+            return SearchBase.GetResult();
         }
     }
 }

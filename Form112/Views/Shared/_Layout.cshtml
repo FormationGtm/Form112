@@ -1,18 +1,17 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Mon application ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Vendor/DatePicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" />
 
 </head>
 <body>
-
     <div class="main-container">
-
         <div class="navbar navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -30,9 +29,7 @@
                         <li>@Html.ActionLink("pays", "", "")</li>
                         <li>@Html.ActionLink("destinations", "", "")</li>
                     </ul>
-                    <div class="col-sm-offset-3 col-sm-4">
                         @Html.Partial("_LoginPartial")
-                    </div>
                 </div>
             </div>
         </div>
@@ -40,29 +37,29 @@
         @* Balise délimitant le positionnement de la vue partielle du moteur de recherche *@
 
         <div class="col-sm-3 partial-search-view">
-            @*@RenderPage();*@
+            @Html.Action("Index","Search")
         </div>
         
         @* Position de la vue principale *@
 
-        <div class="container body-content col-sm-8">
+        <div class="container body-content col-sm-7">
+            
             @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-            </footer>
+        
         </div>
         
         @* Balise délimitant le positionnement de la vue partielle des promotions *@
                 
-        <div class="col-sm-1 partial-promo-view">
+        <div class="col-sm-2 partial-promo-view">
 
         </div>
 
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
+        <script src="~/Vendor/DatePicker/js/bootstrap-datepicker.min.js"></script>
+        <script src="~/Vendor/DatePicker/locales/bootstrap-datepicker.fr.min.js"></script>
+        <script src="~/Scripts/Search/Index.js"></script>
         @RenderSection("scripts", required: false)
-
     </div>
 </body>
 </html>
