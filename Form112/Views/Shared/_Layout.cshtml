@@ -1,12 +1,13 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Mon application ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Vendor/DatePicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -40,7 +41,7 @@
         @* Balise délimitant le positionnement de la vue partielle du moteur de recherche *@
 
         <div class="col-sm-3 partial-search-view">
-            @*@RenderPage();*@
+            @Html.Action("Index","Search")
         </div>
         
         @* Position de la vue principale *@
@@ -61,6 +62,9 @@
 
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
+        <script src="~/Vendor/DatePicker/js/bootstrap-datepicker.min.js"></script>
+        <script src="~/Vendor/DatePicker/locales/bootstrap-datepicker.fr.min.js"></script>
+        <script src="~/Scripts/Search/Index.js"></script>
         @RenderSection("scripts", required: false)
 
     </div>
