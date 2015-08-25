@@ -1,4 +1,78 @@
-﻿body, html {
+﻿/* Définition de la police d'affichage*/
+
+@font-face {
+    font-family: 'JosefinSlab';
+    src: url('../fonts/JosefinSlab/JosefinSlab-Thin.ttf') format('truetype');
+    font-style:normal;
+    font-weight:100;
+}
+
+@font-face {
+    font-family: 'JosefinSlab';
+    src: url('../fonts/JosefinSlab/JosefinSlab-ThinItalic.ttf') format('truetype');
+    font-style:italic;
+    font-weight:100;
+}
+
+@font-face {
+    font-family: 'JosefinSlab';
+    src: url('../fonts/JosefinSlab/JosefinSlab-Light.ttf') format('truetype');
+    font-style:normal;
+    font-weight:300;
+}
+
+@font-face {
+    font-family: 'JosefinSlab';
+    src: url('../fonts/JosefinSlab/JosefinSlab-LightItalic.ttf') format('truetype');
+    font-style:italic;
+    font-weight:300;
+}
+
+@font-face {
+    font-family: 'JosefinSlab';
+    src: url('../fonts/JosefinSlab/JosefinSlab-Regular.ttf') format('truetype');
+    font-style:normal;
+    font-weight:400;
+}
+
+@font-face {
+    font-family: 'JosefinSlab';
+    src: url('../fonts/JosefinSlab/JosefinSlab-Italic.ttf') format('truetype');
+    font-style:italic;
+    font-weight:400;
+}
+
+@font-face {
+    font-family: 'JosefinSlab';
+    src: url('../fonts/JosefinSlab/JosefinSlab-SemiBold.ttf') format('truetype');
+    font-style:normal;
+    font-weight:600;
+}
+
+@font-face {
+    font-family: 'JosefinSlab';
+    src: url('../fonts/JosefinSlab/JosefinSlab-SemiBoldItalic.ttf') format('truetype');
+    font-style:italic;
+    font-weight:600;
+}
+
+@font-face {
+    font-family: 'JosefinSlab';
+    src: url('../fonts/JosefinSlab/JosefinSlab-Bold.ttf') format('truetype');
+    font-style:normal;
+    font-weight:700;
+}
+
+@font-face {
+    font-family: 'JosefinSlab';
+    src: url('../fonts/JosefinSlab/JosefinSlab-BoldItalic.ttf') format('truetype');
+    font-style:normal;
+    font-weight:700;
+}
+
+/* Page total*/
+
+body, html {
  height: 100%;
  padding: 0;
 }
@@ -33,14 +107,14 @@ textarea {
 }
 
 .main-container {
-    font-family: Arial,Helvetica,sans-serif;
+    font-family: JosefinSlab,Helvetica,sans-serif;
     font-size: 1.5em;
     margin: 0px auto;
-    padding: 0px 0px 10px;
+    padding: 0px 10px;
     position: relative;
     background-color:white;
     width: 1000px;
-    height:100%;
+    overflow:auto;
 }
 
 .navbar{
@@ -61,8 +135,8 @@ footer{
     left:-200px;
 }
  
-.carousel{
-    height:350px;
+.carousel-height{
+    height:390px;
 }
  
 .img-caroussel{
@@ -71,10 +145,14 @@ footer{
 	margin:0px auto;
 }
 
+.map-header{
+    margin: 25px 0;
+    font-size:1.5em;
+}
+
 .search-map {
-    margin-top: 50px;
+    margin : 0px 0px 25px 0px;
     padding:0;
-    border :1px solid black;
     width : 100%;
     height : 350px;
 }
@@ -136,3 +214,5 @@ footer{
     margin : 0;
     padding : 0 5px;
 }
+
+
