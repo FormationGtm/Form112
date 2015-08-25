@@ -1,0 +1,15 @@
+﻿@model List<DataLayer.Model.Themes>
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="row">
+    @foreach (var idTheme in @Model)
+    {    <div class="col-sm-3">
+
+        @Html.Action("CroisieresParTheme", "Themes", new { id = idTheme })
+    </div>
+    }
+
+</div>

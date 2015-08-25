@@ -176,22 +176,15 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\DestinationsController.cs" />
+    <Compile Include="Controllers\ThemesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\Filters\NlogFilterAttribute.cs" />
-    <Compile Include="Infrastructure\SearchCroisiers\Base\SearchBase.cs" />
-    <Compile Include="Infrastructure\SearchCroisiers\Base\SearchOption.cs" />
-    <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionBudget.cs" />
-    <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionDateDepart.cs" />
-    <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionDestination.cs" />
-    <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionDureeDeSejour.cs" />
-    <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionPortDeDepart.cs" />
-    <Compile Include="Infrastructure\SearchCroisiers\Search.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ThemeViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -259,10 +252,16 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Destinations\Index.cshtml" />
+    <Content Include="Views\Destinations\Details.cshtml" />
+    <Content Include="Views\Themes\Index.cshtml" />
+    <Content Include="Views\Themes\_CroisieresParTheme.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\DestinationRegion\" />
     <Folder Include="Views\Search\" />
+    <Folder Include="Views\ToutesLesDetinations\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

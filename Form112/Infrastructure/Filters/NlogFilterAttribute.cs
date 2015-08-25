@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using DataLayer.Model;
+using DataLayer;
 
 
 namespace Form112.Infrastructure.Filters
@@ -10,7 +12,7 @@ namespace Form112.Infrastructure.Filters
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            var db = new OpenSeaEntities();
+            var db = new Form112Entities();
             var la = new LogAction
             {
                 DateNlog = DateTime.Now,

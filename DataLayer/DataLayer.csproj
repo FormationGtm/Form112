@@ -51,6 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Businesslayer\Croisieres.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Businesslayer\Themes.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Model\Croisieres.cs">
       <DependentUpon>OpenSea.tt</DependentUpon>
