@@ -7,21 +7,21 @@ using DataLayer.Model;
 
 namespace Form112.Infrastructure.SearchCroisiers.Option
 {
-    internal class SearchOptionDateDepart : SearchOption
+    internal class SearchOptionPrixMini: SearchOption
     {
-        private readonly DateTime _DateDepart;
+        private readonly int? _prixMini;
 
-        public SearchOptionDateDepart(SearchBase sb, DateTime DateDepart)
+        public SearchOptionPrixMini(SearchBase sb, int? prixMini)
             : base(sb)
         {
-            _DateDepart = DateDepart;
+            _prixMini = prixMini;
         }
 
         public override IEnumerable<Croisieres> GetResult()
         {
-            if (!string.IsNullOrEmpty(_DateDepart.ToString()))
+            if (_prixMini != null)
             {
-                return SearchBase.GetResult().Where(x => x.DateDepart.Month == _DateDepart.Month && x.DateDepart.Year == _DateDepart.Year);
+                return SearchBase.GetResult().Where(x => x.Prix >= _prixMini);
             }
             return SearchBase.GetResult();
         }

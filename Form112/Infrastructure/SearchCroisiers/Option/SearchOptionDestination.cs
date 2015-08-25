@@ -9,17 +9,21 @@ namespace Form112.Infrastructure.SearchCroisiers.Option
 {
     internal class SearchOptionDestination : SearchOption
     {
-        private readonly string _idDestenation;
+        private readonly string _idDestination;
 
-        public SearchOptionDestination(SearchBase sb, string idDestenation)
+        public SearchOptionDestination(SearchBase sb, string idDestination)
             : base(sb)
         {
-            _idDestenation = idDestenation;
+            _idDestination = idDestination;
         }
 
         public override IEnumerable<Croisieres> GetResult()
         {
-            return SearchBase.GetResult().Where(x => x.Ports.Pays.Regions.Nom == _idDestenation);
+            if (!string.IsNullOrEmpty(_idDestination))
+            {
+                return SearchBase.GetResult().Where(x => x.Ports.Pays.IdPays == _idDestination);
+            }
+            return SearchBase.GetResult();
         }
     }
 }
