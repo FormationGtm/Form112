@@ -94,6 +94,8 @@ INSERT [dbo].[Themes] ([IdTheme], [Nom]) VALUES (1, N'Gastronomique')
 INSERT [dbo].[Themes] ([IdTheme], [Nom]) VALUES (2, N'Sports Aquatiques')
 INSERT [dbo].[Themes] ([IdTheme], [Nom]) VALUES (3, N'HoneyMoon')
 INSERT [dbo].[Themes] ([IdTheme], [Nom]) VALUES (4, N'Famille')
+INSERT [dbo].[Themes] ([IdTheme], [Nom]) VALUES (5, N'Noel')
+INSERT [dbo].[Themes] ([IdTheme], [Nom]) VALUES (6, N'Nouvel An')
 SET IDENTITY_INSERT [dbo].[Themes] OFF
 
 
@@ -123,10 +125,22 @@ SET IDENTITY_INSERT [dbo].[Promos] OFF
  
 
 SET IDENTITY_INSERT [dbo].[Durees] ON 
-INSERT [dbo].[Durees] ([IdDuree], [NbJours]) VALUES (1, '7 à 8 jours')
-INSERT [dbo].[Durees] ([IdDuree], [NbJours]) VALUES (2, '9 à 11 jours')
-INSERT [dbo].[Durees] ([IdDuree], [NbJours]) VALUES (3, '12 à 16 jours')
-INSERT [dbo].[Durees] ([IdDuree], [NbJours]) VALUES (4, 'plus de 16 jours')
+INSERT [dbo].[Durees] ([IdDuree], [NbJours]) VALUES (1, '5 jours')
+INSERT [dbo].[Durees] ([IdDuree], [NbJours]) VALUES (2, '6 jours')
+INSERT [dbo].[Durees] ([IdDuree], [NbJours]) VALUES (3, '7 jours')
+INSERT [dbo].[Durees] ([IdDuree], [NbJours]) VALUES (4, '8 jours')
+INSERT [dbo].[Durees] ([IdDuree], [NbJours]) VALUES (5, '9 jours')
+INSERT [dbo].[Durees] ([IdDuree], [NbJours]) VALUES (6, '10 jours')
+INSERT [dbo].[Durees] ([IdDuree], [NbJours]) VALUES (7, '11 jours')
+INSERT [dbo].[Durees] ([IdDuree], [NbJours]) VALUES (8, '12 jours')
+INSERT [dbo].[Durees] ([IdDuree], [NbJours]) VALUES (9, '13 jours')
+INSERT [dbo].[Durees] ([IdDuree], [NbJours]) VALUES (10, '14 jours')
+INSERT [dbo].[Durees] ([IdDuree], [NbJours]) VALUES (11, '15 jours')
+INSERT [dbo].[Durees] ([IdDuree], [NbJours]) VALUES (12, '16 jours')
+INSERT [dbo].[Durees] ([IdDuree], [NbJours]) VALUES (13, '17 jours')
+INSERT [dbo].[Durees] ([IdDuree], [NbJours]) VALUES (14, '18 jours')
+INSERT [dbo].[Durees] ([IdDuree], [NbJours]) VALUES (15, '19 jours')
+INSERT [dbo].[Durees] ([IdDuree], [NbJours]) VALUES (16, '20 jours')
 SET IDENTITY_INSERT [dbo].[Durees] OFF 
 
 SET IDENTITY_INSERT [dbo].[Ports] ON 
@@ -146,31 +160,22 @@ SET IDENTITY_INSERT [dbo].[Ports] OFF
 SET IDENTITY_INSERT [dbo].[Croisieres] ON 
 
 INSERT [dbo].[Croisieres] ([IdCroisiere], [IdTheme], [IdDuree], [IdPromo], [IdPort], [Prix], [DateDepart], [Description])
-VALUES (1, 3, 2, null, 6, 2790, '10-01-2015', '10 jours / 9 nuits au depart de Istanbul')
+VALUES (1, 3, 6, null, 6, 2790, '10-01-2015', '10 jours / 9 nuits au depart de Istanbul')
 
 INSERT [dbo].[Croisieres] ([IdCroisiere], [IdTheme], [IdDuree], [IdPromo], [IdPort], [Prix], [DateDepart], [Photo], [Description])
-VALUES (2, 4, 1, null, 10, 850, '11-01-2015', null, '7 jours / 6 nuits au depart de Brisbane vers Ile des Pines')
+VALUES (2, 4, 3, null, 10, 850, '11-01-2015', null, '7 jours / 6 nuits au depart de Brisbane vers Ile des Pines')
 
 INSERT [dbo].[Croisieres] ([IdCroisiere], [IdTheme], [IdDuree], [IdPromo], [IdPort], [Prix], [DateDepart], [Photo], [Description])
-VALUES (3, 4, 1, 1, 8, 1950, '12-01-2015', null, '8 jours / 7 nuits au depart de Margarita')
+VALUES (3, 4, 4, 1, 8, 1950, '12-01-2015', null, '8 jours / 7 nuits au depart de Margarita')
 
 INSERT [dbo].[Croisieres] ([IdCroisiere], [IdTheme], [IdDuree], [IdPromo], [IdPort], [Prix], [DateDepart], [Photo], [Description])
-VALUES (4, 5, 5, null, 1, 600, '12-23-2015', null, ' 5 jours / 4 nuits au depart de Marseille')
+VALUES (4, 5, 1, null, 1, 600, '12-23-2015', null, ' 5 jours / 4 nuits au depart de Marseille')
 
 INSERT [dbo].[Croisieres] ([IdCroisiere], [IdTheme], [IdDuree], [IdPromo], [IdPort], [Prix], [DateDepart], [Photo], [Description])
-VALUES (5, 6, 5, null, 3, 650, '12-30-2015', null, '5 jours / 4 nuits au depart de Lisbonne')
+VALUES (5, 6, 1, null, 3, 650, '12-30-2015', null, '5 jours / 4 nuits au depart de Lisbonne')
 
 INSERT [dbo].[Croisieres] ([IdCroisiere], [IdTheme], [IdDuree], [IdPromo], [IdPort], [Prix], [DateDepart], [Photo], [Description])
-VALUES (6, 3, 4, null, 2, 3700, '03-01-2016', null, '20 jours / 19 nuits au depart de Venice')
+VALUES (6, 3, 16, null, 2, 3700, '03-01-2016', null, '20 jours / 19 nuits au depart de Venice')
 
 SET IDENTITY_INSERT [dbo].[Croisieres] OFF 
 
-
-SET IDENTITY_INSERT [dbo].[Themes] ON 
-INSERT [dbo].[Themes] ([IdTheme], [Nom]) VALUES (5, N'Noel')
-INSERT [dbo].[Themes] ([IdTheme], [Nom]) VALUES (6, N'Nouvel An')
-SET IDENTITY_INSERT [dbo].[Themes] OFF 
-
-SET IDENTITY_INSERT [dbo].[Durees] ON 
-INSERT [dbo].[Durees] ([IdDuree], [NbJours]) VALUES (5, N'4 a 6 jours')
-SET IDENTITY_INSERT [dbo].[Durees] OFF 
