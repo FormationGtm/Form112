@@ -11,9 +11,7 @@
 
 </head>
 <body>
-
     <div class="main-container">
-
         <div class="navbar navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -31,9 +29,7 @@
                         <li>@Html.ActionLink("pays", "", "")</li>
                         <li>@Html.ActionLink("destinations", "", "")</li>
                     </ul>
-                    <div class="col-sm-offset-3 col-sm-4">
                         @Html.Partial("_LoginPartial")
-                    </div>
                 </div>
             </div>
         </div>
@@ -46,17 +42,15 @@
         
         @* Position de la vue principale *@
 
-        <div class="container body-content col-sm-8">
+        <div class="container body-content col-sm-7">
+            
             @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-            </footer>
+        
         </div>
         
         @* Balise délimitant le positionnement de la vue partielle des promotions *@
                 
-        <div class="col-sm-1 partial-promo-view">
+        <div class="col-sm-2 partial-promo-view">
 
         </div>
 
@@ -66,7 +60,6 @@
         <script src="~/Vendor/DatePicker/locales/bootstrap-datepicker.fr.min.js"></script>
         <script src="~/Scripts/Search/Index.js"></script>
         @RenderSection("scripts", required: false)
-
     </div>
 </body>
 </html>

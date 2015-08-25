@@ -176,21 +176,22 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Infrastructure\Filters\NlogFilterAttribute.cs" />
     <Compile Include="Infrastructure\SearchCroisiers\Base\SearchBase.cs" />
     <Compile Include="Infrastructure\SearchCroisiers\Base\SearchOption.cs" />
+	    <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionBudget.cs" />
     <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionPortDepart.cs" />
-    <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionPrixMaxi.cs" />
-    <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionPrixMini.cs" />
     <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionDateDepart.cs" />
     <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionDestination.cs" />
-    <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionDureeMaxi.cs" />
-    <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionDureeMini.cs" />
+	<Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionDureeDeSejour.cs" />
+    <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionPortDeDepart.cs" />
     <Compile Include="Infrastructure\SearchCroisiers\Search.cs" />
+=======
+>>>>>>> origin/master
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -203,6 +204,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\jqvmap.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -215,6 +217,16 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="fonts\JosefinSlab\JosefinSlab-Bold.ttf" />
+    <Content Include="fonts\JosefinSlab\JosefinSlab-BoldItalic.ttf" />
+    <Content Include="fonts\JosefinSlab\JosefinSlab-Italic.ttf" />
+    <Content Include="fonts\JosefinSlab\JosefinSlab-Light.ttf" />
+    <Content Include="fonts\JosefinSlab\JosefinSlab-LightItalic.ttf" />
+    <Content Include="fonts\JosefinSlab\JosefinSlab-Regular.ttf" />
+    <Content Include="fonts\JosefinSlab\JosefinSlab-SemiBold.ttf" />
+    <Content Include="fonts\JosefinSlab\JosefinSlab-SemiBoldItalic.ttf" />
+    <Content Include="fonts\JosefinSlab\JosefinSlab-Thin.ttf" />
+    <Content Include="fonts\JosefinSlab\JosefinSlab-ThinItalic.ttf" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
@@ -224,10 +236,24 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\JQVMap\continents\jquery.vmap.africa.js" />
+    <Content Include="Scripts\JQVMap\continents\jquery.vmap.asia.js" />
+    <Content Include="Scripts\JQVMap\continents\jquery.vmap.australia.js" />
+    <Content Include="Scripts\JQVMap\continents\jquery.vmap.europe.js" />
+    <Content Include="Scripts\JQVMap\continents\jquery.vmap.north-america.js" />
+    <Content Include="Scripts\JQVMap\continents\jquery.vmap.south-america.js" />
+    <Content Include="Scripts\JQVMap\continents\readme.txt" />
+    <Content Include="Scripts\JQVMap\jquery.vmap.min.js" />
+    <Content Include="Scripts\JQVMap\jquery.vmap.sampledata.js" />
+    <Content Include="Scripts\JQVMap\jquery.vmap.world.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+<<<<<<< HEAD
     <Content Include="Scripts\Search\Index.js" />
+=======
+    <Content Include="Scripts\Home\Index.js" />
+>>>>>>> origin/master
     <Content Include="Scripts\_references.js" />
     <Content Include="Vendor\DatePicker\css\bootstrap-datepicker.css" />
     <Content Include="Vendor\DatePicker\css\bootstrap-datepicker.min.css" />
@@ -335,8 +361,15 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Search\_Index.cshtml" />
     <Content Include="Views\Search\Result.cshtml" />
+=======
+    <Content Include="Views\Home\_HomeCaroussel.cshtml" />
+    <Content Include="Views\Destinations\Destinations.cshtml" />
+    <Content Include="Views\Destinations\Details.cshtml" />
+    <Content Include="Views\Shared\_DestinationPanel.cshtml" />
+>>>>>>> origin/master
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
