@@ -12,7 +12,7 @@
 
 <div class="row">
     <div class="map-header">
-        Choissisez votre destination :
+        Choissisez un port :
     </div>
     @using (Html.BeginForm("PaysSearch", "Home", FormMethod.Post, new { id = "idFormPays" }))    {
         <select>
@@ -25,7 +25,7 @@
 
 <div class="row">
     @{
-       var listSuggestedDest = @Model.Take(1);
+       var listSuggestedDest = Model.Take(1);
        foreach (var item in listSuggestedDest) {
            @Html.Action("TopSixCroisieres", "Home", new {idCroisiere = @item.IdCroisiere})
     }

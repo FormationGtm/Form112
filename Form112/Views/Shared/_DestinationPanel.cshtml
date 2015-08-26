@@ -1,9 +1,9 @@
 ﻿@model DataLayer.Model.Croisieres
 
-<div class="destination-panel"> @*id="@Model.IdCroisiere">*@
+<div class="destination-panel" id="@Model.IdCroisiere">
     <img src="#" alt="Alternate Text" class="panel-img" />
     <div class="panel-header">
-        @*@Model.Pays.Nom*@
+        @Model.Ports.Pays.Nom
         pays
     </div>
     <div class="panel-main">
@@ -11,7 +11,7 @@
             Croisières à partir de
         </div>
         <div class="price-body">
-            @*@Model.Prix*@* <span class="currency-fr">€</span>
+            @Model.Prix* <span class="currency-fr">€</span>
         </div>
     </div>
     <div class="panel-end">

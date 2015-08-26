@@ -51,8 +51,8 @@ namespace Form112.Controllers
         [ChildActionOnly]
         public PartialViewResult TopSixCroisieres(int idCroisiere)
         {
-            var croisiere = db.Croisieres.Where(c => c.IdCroisiere == idCroisiere);
-            return PartialView("_Destination", croisiere);
+            var croisiere = db.Croisieres.Find(idCroisiere);
+            return PartialView("_DestinationPanel", croisiere);
         }
 
     }
