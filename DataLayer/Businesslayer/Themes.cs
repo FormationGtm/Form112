@@ -21,7 +21,7 @@ namespace DataLayer.Model
                 lt.Add(new Themes
                 {
                     IdTheme=them.IdTheme,
-                    Nom = them.Nom
+                    Libelle = them.Libelle
 
                 });
             }

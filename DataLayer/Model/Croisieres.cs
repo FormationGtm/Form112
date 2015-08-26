@@ -22,11 +22,12 @@ namespace DataLayer.Model
         public int IdCroisiere { get; set; }
         public int IdTheme { get; set; }
         public int IdDuree { get; set; }
-        public int IdPromo { get; set; }
+        public Nullable<int> IdPromo { get; set; }
         public int IdPort { get; set; }
         public int Prix { get; set; }
         public System.DateTime DateDepart { get; set; }
         public string Photo { get; set; }
+        public string Description { get; set; }
     
         public virtual Durees Durees { get; set; }
         public virtual Ports Ports { get; set; }

@@ -14,9 +14,9 @@ namespace DataLayer.Model
     
     public partial class Photos
     {
-        public int IdPhoto { get; set; }
+        public string PhotoName { get; set; }
         public int IdCroisiere { get; set; }
-        public string NomPhoto { get; set; }
+        public System.Guid IdPhoto { get; set; }
     
         public virtual Croisieres Croisieres { get; set; }
     }

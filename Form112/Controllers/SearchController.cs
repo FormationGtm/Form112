@@ -21,7 +21,7 @@ namespace Form112.Controllers
         {
             var svm = new SearchViewModel();
             
-            svm.Destination = db.Regions.OrderBy(r => r.Nom).ToDictionary(r => r.Nom, r => r.Pays.ToDictionary(p => p.IdPays, p => p.Nom));
+            svm.Destination = db.Regions.OrderBy(r => r.Nom).ToDictionary(r => r.Nom, r => r.Pays.ToDictionary(p => p.CodeIso3, p => p.Nom));
 
             return PartialView("_Index",svm);
         }
@@ -29,7 +29,7 @@ namespace Form112.Controllers
         //retourne liste des ports
         public JsonResult GetJSONPort(string id)
         {
-            var listePorts = db.Ports.Where(p => p.IdPays == id).Select(p => new { IdPort = p.IdPort, Nom = p.Nom }).ToList();
+            var listePorts = db.Ports.Where(p => p.CodeIso3 == id).Select(p => new { IdPort = p.IdPort, Nom = p.Nom }).ToList();
             return Json(listePorts, JsonRequestBehavior.AllowGet);
         }
 

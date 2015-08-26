@@ -21,7 +21,7 @@ namespace Form112.Infrastructure.SearchCroisiers.Option
         {
             if (!string.IsNullOrEmpty(_idDestination))
             {
-                return SearchBase.GetResult().Where(x => x.Ports.Pays.IdPays == _idDestination);
+                return SearchBase.GetResult().Where(x => x.Ports.Pays.CodeIso3 == _idDestination);
             }
             return SearchBase.GetResult();
         }

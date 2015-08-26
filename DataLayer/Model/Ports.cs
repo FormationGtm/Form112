@@ -20,8 +20,10 @@ namespace DataLayer.Model
         }
     
         public int IdPort { get; set; }
-        public string IdPays { get; set; }
+        public string CodeIso3 { get; set; }
         public string Nom { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
     
         public virtual ICollection<Croisieres> Croisieres { get; set; }
         public virtual Pays Pays { get; set; }

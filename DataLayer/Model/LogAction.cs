@@ -12,19 +12,13 @@ namespace DataLayer.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Pays
+    public partial class LogAction
     {
-        public Pays()
-        {
-            this.Ports = new HashSet<Ports>();
-        }
-    
-        public string CodeIso3 { get; set; }
-        public string CodeIso2 { get; set; }
-        public int IdRegion { get; set; }
-        public string Nom { get; set; }
-    
-        public virtual Regions Regions { get; set; }
-        public virtual ICollection<Ports> Ports { get; set; }
+        public int IdNlog { get; set; }
+        public Nullable<System.DateTime> DateNlog { get; set; }
+        public string Area { get; set; }
+        public string Controller { get; set; }
+        public string Action { get; set; }
+        public string Parameters { get; set; }
     }
 }

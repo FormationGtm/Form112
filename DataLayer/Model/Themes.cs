@@ -20,7 +20,7 @@ namespace DataLayer.Model
         }
     
         public int IdTheme { get; set; }
-        public string Nom { get; set; }
+        public string Libelle { get; set; }
     
         public virtual ICollection<Croisieres> Croisieres { get; set; }
     }

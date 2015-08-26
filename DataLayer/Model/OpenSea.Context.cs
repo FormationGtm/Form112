@@ -27,6 +27,7 @@ namespace DataLayer.Model
     
         public virtual DbSet<Croisieres> Croisieres { get; set; }
         public virtual DbSet<Durees> Durees { get; set; }
+        public virtual DbSet<LogAction> LogAction { get; set; }
         public virtual DbSet<Pays> Pays { get; set; }
         public virtual DbSet<Photos> Photos { get; set; }
         public virtual DbSet<Ports> Ports { get; set; }

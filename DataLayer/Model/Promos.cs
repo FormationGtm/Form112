@@ -20,7 +20,7 @@ namespace DataLayer.Model
         }
     
         public int IdPromo { get; set; }
-        public int Reduction { get; set; }
+        public Nullable<int> Reduction { get; set; }
     
         public virtual ICollection<Croisieres> Croisieres { get; set; }
     }
