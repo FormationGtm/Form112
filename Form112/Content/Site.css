@@ -177,6 +177,10 @@ footer{
     width: 172px;
     background-color: white;
 }
+.destination-survol :hover{
+    width : 174px ;
+     box-shadow: 5px -5px #A6BFBF;
+}
 
 .panel-img {
     width:inherit;

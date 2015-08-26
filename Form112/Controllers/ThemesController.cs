@@ -25,8 +25,6 @@ namespace Form112.Controllers
             return View (crois);
         }
 
-
-
         public PartialViewResult CroisieresParTheme(int id)
         {
             var listeCroisieres = new List<Croisieres>();

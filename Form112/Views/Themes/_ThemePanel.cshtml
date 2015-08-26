@@ -2,24 +2,24 @@
 
 
 @foreach(var item in @Model)
-{ 
-<div class="destination-panel">
-    
-    <img src="#" alt="Alternate Text" class="panel-img" />
-    <div class="panel-header">
-       @item.Ports.Pays.Nom
-    </div>
-    <div class="panel-main">
-        <div class="price-legend">
-            Croisières à partir de
-        </div>
-        <div class="price-body">
-            @item.Prix <span class="currency-fr">€</span>
-        </div>
-    </div>
-    @*<div class="panel-end">
-       - @item.Promos.Reduction Promo %
-    </div>*@
+{
+    <div class="destination-panel destination-survol">
 
-</div>
+        <img src="#" alt="Alternate Text" class="panel-img" />
+        <div class="panel-header">
+            @item.Ports.Pays.Nom
+        </div>
+        <div class="panel-main">
+            <div class="price-legend">
+                Croisières à partir de
+            </div>
+            <div class="price-body">
+                @item.Prix <span class="currency-fr">€</span>
+            </div>
+        </div>
+        @*<div class="panel-end">
+               - @item.Promos.Reduction Promo %
+            </div>*@
+
+    </div>
 }
