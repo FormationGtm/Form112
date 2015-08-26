@@ -1,8 +1,39 @@
-﻿@model Form112.Models.SearchViewModel
+﻿@using Form112.Infrastructure.SearchCroisiers;
+@model List<DataLayer.Model.Croisieres>
 @{
     ViewBag.Title = "Result";
 }
+<br />
+<br />
+<h1>Test</h1>
+<table>
 
-<h2>Resultat</h2>
+    <thead>
+        <tr>
+            <th>Destination</th>
+            <th>Port de départ</th>
+            <th>Date de départ</th>
+            <th>Durée</th>
+            <th>Prix</th>
+            <th>Thème</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Ports.Pays.Nom</td>
+                <td>@item.Ports.Nom</td>
+                <td>@item.DateDepart.Day/@item.DateDepart.Month/@item.DateDepart.Year</td>
+                <td>@item.Durees.NbJours</td>
+                <td>@item.Prix</td>
+                <td>@item.Themes.Libelle</td>
+                <td>@item.Description</td>
+            </tr>
+        }
+</tbody>
 
 
+
+</table>

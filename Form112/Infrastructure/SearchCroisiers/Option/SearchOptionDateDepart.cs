@@ -11,15 +11,15 @@ namespace Form112.Infrastructure.SearchCroisiers.Option
     {
         private readonly DateTime _DateDepart;
 
-        public SearchOptionDateDepart(SearchBase sb, DateTime DateDepart)
+        public SearchOptionDateDepart(SearchBase sb, DateTime dateDepart)
             : base(sb)
         {
-            _DateDepart = DateDepart;
+            _DateDepart = dateDepart;
         }
 
         public override IEnumerable<Croisieres> GetResult()
         {
-            if (!string.IsNullOrEmpty(_DateDepart.ToString()))
+            if (_DateDepart!=null)
             {
                 return SearchBase.GetResult().Where(x => x.DateDepart.Month == _DateDepart.Month && x.DateDepart.Year == _DateDepart.Year);
             }

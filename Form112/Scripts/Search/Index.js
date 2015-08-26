@@ -10,8 +10,8 @@
     });
    
     $("#idPays").change(loadPort);
-    getTranchePrix();
-    getDuree();
+    $("#idPrix").change(getTranchePrix);
+    $("#idDuree").change(getDuree);
 });
 
 
