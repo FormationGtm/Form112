@@ -1,0 +1,18 @@
+﻿@model DataLayer.Model.Croisieres
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<div class="row">
+    <b>@Model.Themes.Libelle</b>
+    <div class="carousel">
+        <img src="~/Pictures/imageCaroussel/@Model.Photo" />
+    </div>
+    <div>
+        @Model.Description
+    </div>
+</div>
+
+
+
