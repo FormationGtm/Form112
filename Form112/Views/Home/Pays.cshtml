@@ -1,0 +1,35 @@
+﻿@model Form112.Model.PaysViewModels
+@{
+    ViewBag.Title = "Pays";
+}
+
+@section scripts{
+    <script src="~/Scripts/Home/Index.js"></script>
+}
+
+@* Zone définissant la carte cliquable du monde *@
+
+<div class="row">
+    <div class="map-header">
+        Choissisez votre destination :
+    </div>
+    @using (Html.BeginForm("PaysSearch", "Home", FormMethod.Post, new { id = "idFormPays" }))
+    {
+        <select>
+            @foreach (var item in Model.CroisieresPays)
+            {
+                <option value=@item.Ports.idPort>@item.Ports.Nom</option>
+            }
+        </select>
+    }
+</div>
+
+<div class="row">
+
+   @{
+       var listSuggestedDest = Model.CroisieresPays.Take(6);
+    }
+
+    
+
+</div>

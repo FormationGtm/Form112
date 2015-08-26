@@ -114,6 +114,7 @@ textarea {
     position: relative;
     background-color:white;
     width: 1000px;
+    height:100%;
     overflow:auto;
 }
 
@@ -134,7 +135,17 @@ footer{
     position:relative;
     left:-200px;
 }
- 
+
+
+.body-content {
+    margin-top :75px;
+}
+
+.partial-search-view{
+    margin-top : 75px;
+    color : #1E8BC3;
+}
+
 .carousel-height{
     height:390px;
 }
