@@ -21,6 +21,14 @@
         <AssociationConnector Association="Form112Model.fk_photos_croisieres" ManuallyRouted="false" />
         <AssociationConnector Association="Form112Model.fk_pays_pays" ManuallyRouted="false" />
         <AssociationConnector Association="Form112Model.fk_ports_pays" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Form112Model.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="Form112Model.AspNetRoles" Width="1.5" PointX="7.75" PointY="7.5" />
+        <EntityTypeShape EntityType="Form112Model.AspNetUserClaims" Width="1.5" PointX="12.25" PointY="6" />
+        <EntityTypeShape EntityType="Form112Model.AspNetUserLogins" Width="1.5" PointX="12.25" PointY="8.75" />
+        <EntityTypeShape EntityType="Form112Model.AspNetUsers" Width="1.5" PointX="10" PointY="6.375" />
+        <AssociationConnector Association="Form112Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="Form112Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="Form112Model.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
