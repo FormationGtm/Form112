@@ -15,9 +15,6 @@ namespace Form112.Models
         public int PrixMaxi { get; set; }
         public int DureeMini { get; set; }
         public int DureeMaxi { get; set; }
-               
-        
-       
-        
+   
     }
 }
