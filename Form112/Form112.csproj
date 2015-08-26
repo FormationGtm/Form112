@@ -187,8 +187,10 @@
     </Compile>
     <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionDureeMaxi.cs" />
     <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionDureeMini.cs" />
+    <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionPays.cs" />
     <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionPrixMaxi.cs" />
     <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionPrixMini.cs" />
+    <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionTheme.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />

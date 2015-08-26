@@ -56,7 +56,22 @@
     </Compile>
     <Compile Include="Businesslayer\Themes.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Model\AspNetRoles.cs">
+      <DependentUpon>OpenSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AspNetUserClaims.cs">
+      <DependentUpon>OpenSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AspNetUserLogins.cs">
+      <DependentUpon>OpenSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AspNetUsers.cs">
+      <DependentUpon>OpenSea.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Croisieres.cs">
+      <DependentUpon>OpenSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\C__MigrationHistory.cs">
       <DependentUpon>OpenSea.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Durees.cs">
