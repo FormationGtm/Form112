@@ -219,6 +219,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Pictures\imageCaroussel\caroussel _9.jpg" />
+    <Content Include="Pictures\imageCaroussel\caroussel_1.jpg" />
+    <Content Include="Pictures\imageCaroussel\caroussel_2.jpg" />
+    <Content Include="Pictures\imageCaroussel\caroussel_3.jpg" />
+    <Content Include="Pictures\imageCaroussel\caroussel_4.jpg" />
+    <Content Include="Pictures\imageCaroussel\caroussel_5.jpg" />
+    <Content Include="Pictures\imageCaroussel\caroussel_6.jpg" />
+    <Content Include="Pictures\imageCaroussel\caroussel_7.jpg" />
+    <Content Include="Pictures\imageCaroussel\caroussel_8.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\JosefinSlab\JosefinSlab-Bold.ttf" />
@@ -363,22 +372,20 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Destinations\Index.cshtml" />
-    <Content Include="Views\Destinations\Details.cshtml" />
     <Content Include="Views\Themes\Index.cshtml" />
-    <Content Include="Views\Themes\_CroisieresParTheme.cshtml" />
+    <Content Include="Views\Destinations\_DestinationPanel.cshtml" />
+    <Content Include="Views\Themes\_ThemePanel.cshtml" />
+    <Content Include="Views\Destinations\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Search\_Index.cshtml" />
     <Content Include="Views\Search\Result.cshtml" />
     <Content Include="Views\Home\_HomeCaroussel.cshtml" />
-    <Content Include="Views\Destinations\Destinations.cshtml" />
-    <Content Include="Views\Destinations\Details.cshtml" />
     <Content Include="Views\Shared\_DestinationPanel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\DestinationRegion\" />
-    <Folder Include="Views\ToutesLesDetinations\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

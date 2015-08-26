@@ -10,26 +10,30 @@ namespace Form112.Controllers
 {
     public class DestinationsController : Controller
     {
+        private Form112Entities db = new Form112Entities();
         // GET: Detinations
         public ActionResult Index()
         {
             var destination = Croisieres.ListeCroisieres();
-            return View();// (destination);
+            return View(destination);// (destination);
         }
 
-        public ActionResult Details(string idCroisiere)
+        public ActionResult Details(int idCroisiere)
         {
-            Croisieres cr = new Croisieres(idCroisiere);
-            return View(cr);
+            //Croisieres cr = new Croisieres(idCroisiere);
+            //return View(cr);
+            var croisiere = db.Croisieres.Find(idCroisiere);//Croisieres.ListeCroisieres();
+            return View("Details", croisiere);
 
         }
                        
 
         [ChildActionOnly]
-        public PartialViewResult AllCroisieres()
+        public PartialViewResult AllCroisieres(int id)
         {
-            var listeCroisieres = Croisieres.ListeCroisieres();
-            return PartialView("_DestinationPanel", listeCroisieres);
+            var croisiere = db.Croisieres.Find(id);//Croisieres.ListeCroisieres();
+            return PartialView("_DestinationPanel", croisiere);
         }
+        
     }
 }

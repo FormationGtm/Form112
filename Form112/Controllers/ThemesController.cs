@@ -29,7 +29,9 @@ namespace Form112.Controllers
 
         public PartialViewResult CroisieresParTheme(int id)
         {
-            return PartialView("_CroisieresParTheme", db.Croisieres.Where(c => c.IdTheme == id));
+            var listeCroisieres = new List<Croisieres>();
+            listeCroisieres = db.Croisieres.Where(c => c.IdTheme == id).ToList();
+            return PartialView("_ThemePanel", listeCroisieres);
         }
 
     }
