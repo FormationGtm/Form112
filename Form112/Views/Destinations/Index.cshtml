@@ -1,4 +1,5 @@
-﻿
+﻿@model List<DataLayer.Model.Croisieres>
+
 @{
     ViewBag.Title = "Toutes nos croisières";
 }
@@ -7,17 +8,19 @@
     <script src="~/Scripts/Shared/SharedScript.js"></script>
 }
 
-<h2>Destinations</h2>
-
 <div class="row">
-    @foreach (var croisiere in @Model)
-    {
-        @Html.Action("AllCroisieres", "Destinations", new { id = croisiere.IdCroisiere })
-    }
+    Destinations
 </div>
 
-@using (Html.BeginForm("Details", "Destinations", FormMethod.Post, new { id = "idFormDestination" }))
-{
-    <input type="hidden" id="idCroisiereChoice" name="DestinationChoice" />
-}
+    <div class="row">
+        @foreach (var croisiere in Model)
+        {
+            @Html.Action("AllCroisieres", "Destinations", new { id = croisiere.IdCroisiere })
+        }
+    </div>
+
+    @using (@Html.BeginForm("Details", "Destinations", FormMethod.Post, new { id = "idFormDestination" }))
+    {
+        <input type="hidden" id="idCroisiereChoice" name="DestinationChoice" />
+    }
 

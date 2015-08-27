@@ -19,8 +19,8 @@ namespace Form112.Controllers
         // GET: Detinations
         public ActionResult Index()
         {
-            var destination = Croisieres.ListeCroisieres();
-            return View();// (destination);
+            var destinations = db.Croisieres.ToList();
+            return View(destinations);
         }
 
         [HttpPost]
@@ -31,10 +31,10 @@ namespace Form112.Controllers
         }
                        
         [ChildActionOnly]
-        public PartialViewResult AllCroisieres()
+        public PartialViewResult AllCroisieres(int id)
         {
-            var listeCroisieres = Croisieres.ListeCroisieres();
-            return PartialView("_DestinationPanel", listeCroisieres);
+            var croisiere = db.Croisieres.Find(id);
+            return PartialView("_DestinationPanel", croisiere);
         }
     }
 }
