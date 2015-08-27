@@ -32,6 +32,21 @@ namespace Form112.Controllers
 
             return View();
         }
+
+        public JsonResult ListePortDestinations(int id)
+        {
+            var listePortDestinations = db.Croisieres
+                .Where(crs => crs.IdPort == id)
+                .Select(crs => new { crs.IdCroisiere, crs.Ports.Pays.Nom, crs.Prix, crs.Promos.Reduction }).ToList();
+
+            return Json(listePortDestinations, JsonRequestBehavior.AllowGet);
+        }
+
+        /// <summary>
+        /// Méthode qui retourne la liste des croisières correspondant à un pays
+        /// </summary>
+        /// <param name="homeViewModel"></param>
+        /// <returns></returns>
         private static List<Croisieres> GetPaysResult(HomeViewModels homeViewModel)
         {
             SearchBase search = new Search();
@@ -46,7 +61,7 @@ namespace Form112.Controllers
         }
 
         [ChildActionOnly]
-        public PartialViewResult TopSixCroisieres(int idCroisiere)
+        public PartialViewResult PortCroisieres(int idCroisiere)
         {
             var croisiere = db.Croisieres.Find(idCroisiere);
             return PartialView("_DestinationPanel", croisiere);

@@ -177,6 +177,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\DestinationsController.cs" />
+    <Compile Include="Controllers\PaysController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\ThemesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -267,6 +268,7 @@
     <Content Include="Scripts\JQVMap\jquery.vmap.sampledata.js" />
     <Content Include="Scripts\JQVMap\jquery.vmap.world.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Pays\ScriptPays.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Search\Index.js" />
@@ -393,6 +395,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Uploads\Bateaux\NotUsed\" />
+    <Folder Include="Views\Pays\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

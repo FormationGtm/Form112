@@ -15,7 +15,7 @@
         selectedRegion: null,
         showTooltip: true,
         onRegionClick: function (element, code, region) {
-            $("#idPaysChoice").val(this.id);
+            $("#idPaysChoice").val(code.toUpperCase());
             $("#idFormMap").submit();
         }
     });

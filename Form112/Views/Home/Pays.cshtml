@@ -6,6 +6,7 @@
 @section scripts{
     <script src="~/Scripts/Home/Index.js"></script>
     <script src="~/Scripts/Shared/SharedScript.js"></script>
+    <script src="~/Scripts/Pays/ScriptPays.js"></script>
 }
 
 @* Zone définissant la carte cliquable du monde *@
@@ -16,7 +17,7 @@
     </div>
     @using (Html.BeginForm("PaysSearch", "Home", FormMethod.Post, new { id = "idFormPays" }))
     {
-        <select>
+        <select name="SelectedPort" id="idPortSelector">
             @foreach (var item in @Model)
             {
                 <option value=@item.Ports.IdPort>@item.Ports.Nom</option>
@@ -25,12 +26,30 @@
     }
 </div>
 
-<div class="row">
-    @{
-        var listSuggestedDest = Model.Take(1);
-        foreach (var item in listSuggestedDest)
-        {
-            @Html.Action("TopSixCroisieres", "Home", new { idCroisiere = @item.IdCroisiere })
-        }
-    }
+<div class="row" id="placeHolderCroisere">
+
+</div>
+@using (Html.BeginForm("Details", "Destinations", FormMethod.Post, new { id = "idFormDestination" }))
+{
+    <input type="hidden" id="idCroisiereChoice" name="DestinationChoice" />
+}
+
+<div id="idTemplateCroisiere" class="col-sm-4 panel-wrapper">
+    <div class="destination-panel" id="">
+        <img src="" alt="Alternate Text" class="panel-img" />
+        <div class="panel-header">
+            
+        </div>
+        <div class="panel-main">
+            <div class="price-legend">
+                Croisières à partir de
+            </div>
+            <div class="price-body">
+                * <span class="currency-fr">€</span>
+            </div>
+        </div>
+        <div class="panel-end">
+            
+        </div>
+    </div>
 </div>
