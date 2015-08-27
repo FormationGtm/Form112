@@ -376,21 +376,18 @@
     <Content Include="Views\Search\_Index.cshtml" />
     <Content Include="Views\Search\Result.cshtml" />
     <Content Include="Views\Home\_HomeCaroussel.cshtml" />
-<<<<<<< HEAD
-=======
     <Content Include="Views\Destinations\Destinations.cshtml" />
     <Content Include="Views\Destinations\Details.cshtml" />
     <Content Include="Views\Shared\_DestinationPanel.cshtml" />
->>>>>>> origin/master
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\DestinationRegion\" />
-<<<<<<< HEAD
+
     <Folder Include="Views\Destination\" />
-=======
+
     <Folder Include="Views\ToutesLesDetinations\" />
->>>>>>> origin/master
+
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
