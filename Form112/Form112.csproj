@@ -192,8 +192,10 @@
     <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionPrixMini.cs" />
     <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionTheme.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\HomeViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PaysViewModels.cs" />
     <Compile Include="Models\SearchViewModel.cs" />
     <Compile Include="Models\ThemeViewModels.cs" />
     <Compile Include="Infrastructure\SearchCroisiers\Base\SearchBase.cs" />
@@ -210,6 +212,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\body-background.png" />
     <Content Include="Content\jqvmap.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -221,6 +224,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Pictures\imageCaroussel\caroussel _9.jpg" />
+    <Content Include="Pictures\imageCaroussel\caroussel_1.jpg" />
+    <Content Include="Pictures\imageCaroussel\caroussel_2.jpg" />
+    <Content Include="Pictures\imageCaroussel\caroussel_3.jpg" />
+    <Content Include="Pictures\imageCaroussel\caroussel_4.jpg" />
+    <Content Include="Pictures\imageCaroussel\caroussel_5.jpg" />
+    <Content Include="Pictures\imageCaroussel\caroussel_6.jpg" />
+    <Content Include="Pictures\imageCaroussel\caroussel_7.jpg" />
+    <Content Include="Pictures\imageCaroussel\caroussel_8.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\JosefinSlab\JosefinSlab-Bold.ttf" />
@@ -332,7 +344,6 @@
     <Content Include="Vendor\DatePicker\locales\bootstrap-datepicker.vi.min.js" />
     <Content Include="Vendor\DatePicker\locales\bootstrap-datepicker.zh-CN.min.js" />
     <Content Include="Vendor\DatePicker\locales\bootstrap-datepicker.zh-TW.min.js" />
-    <Content Include="Views\Shared\_DestinationPanel.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -369,7 +380,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Destinations\Index.cshtml" />
     <Content Include="Views\Themes\Index.cshtml" />
-    <Content Include="Views\Destinations\Details.cshtml" />
     <Content Include="Views\Home\Pays.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -377,17 +387,13 @@
     <Content Include="Views\Search\Result.cshtml" />
     <Content Include="Views\Home\_HomeCaroussel.cshtml" />
     <Content Include="Views\Destinations\Destinations.cshtml" />
-    <Content Include="Views\Destinations\Details.cshtml" />
     <Content Include="Views\Shared\_DestinationPanel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Uploads\Bateaux\NotUsed\" />
     <Folder Include="Views\DestinationRegion\" />
-
     <Folder Include="Views\Destination\" />
-
-    <Folder Include="Views\ToutesLesDetinations\" />
-
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
