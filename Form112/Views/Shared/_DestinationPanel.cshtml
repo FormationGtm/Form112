@@ -1,24 +1,21 @@
 ﻿@model DataLayer.Model.Croisieres
 
-<div class="destination-panel" id="@Model.IdCroisiere">
-    <img src="#" alt="Alternate Text" class="panel-img" />
-    <div class="panel-header">
-        @Model.Ports.Pays.Nom
-<<<<<<< HEAD
-        pays
-=======
->>>>>>> parent of dbeca8e... Revert "MàJ formulaire Pays"
-    </div>
-    <div class="panel-main">
-        <div class="price-legend">
-            Croisières à partir de
+<div class="col-sm-4 panel-wrapper">
+    <div class="destination-panel" id="@Model.IdCroisiere">
+        <img src="~/Uploads/Croisieres/@Model.Photos.FirstOrDefault()" alt="Alternate Text" class="panel-img" />
+        <div class="panel-header">
+            @Model.Ports.Pays.Nom
         </div>
-        <div class="price-body">
-            @Model.Prix* <span class="currency-fr">€</span>
+        <div class="panel-main">
+            <div class="price-legend">
+                Croisières à partir de
+            </div>
+            <div class="price-body">
+                @Model.Prix* <span class="currency-fr">€</span>
+            </div>
+        </div>
+        <div class="panel-end">
+            @*- @Model.Promos.Reduction %*@
         </div>
     </div>
-    @*<div class="panel-end">
-       - @Model.Promo.Reduction Promo %
-    </div>*@
-
 </div>

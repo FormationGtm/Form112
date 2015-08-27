@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Form112.Infrastructure.SearchCroisiers;
-using Form112.Infrastructure.SearchCroisiers.Base;
-using Form112.Infrastructure.SearchCroisiers.Option;
 using DataLayer.Model;
+using Form112.Infrastructure.SearchCroisiers.Option;
+using Form112.Infrastructure.SearchCroisiers.Base;
+using Form112.Infrastructure.SearchCroisiers;
 using Form112.Models;
 
 namespace Form112.Controllers
@@ -14,27 +14,24 @@ namespace Form112.Controllers
     public class HomeController : Controller
     {
 
-        Form112Entities db = new Form112Entities();
+        private static Form112Entities db = new Form112Entities();
 
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult About()
-        {
+        public ActionResult About() {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
-        public ActionResult Contact()
-        {
+        public ActionResult Contact() {
             ViewBag.Message = "Your contact page.";
 
             return View();
         }
-
         private static List<Croisieres> GetPaysResult(HomeViewModels homeViewModel)
         {
             SearchBase search = new Search();
@@ -45,7 +42,7 @@ namespace Form112.Controllers
         [HttpPost]
         public ActionResult Pays(HomeViewModels hvm)
         {
-        return View(GetPaysResult(hvm));
+            return View(GetPaysResult(hvm));
         }
 
         [ChildActionOnly]
@@ -62,6 +59,5 @@ namespace Form112.Controllers
             croisiere = db.Croisieres.Where(c => c.IdPromo.HasValue).OrderByDescending(c => c.Promos.Reduction).Take(5).ToList();
             return PartialView("_TopPromoPanel", croisiere);
         }
-
     }
 }

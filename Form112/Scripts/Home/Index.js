@@ -2,7 +2,7 @@
     $('#idVmapWorld').vectorMap({
         map: 'world_en',
         backgroundColor: '#a5bfdd',
-        borderColor: '#818181',
+        borderColor: 'none',
         borderOpacity: 0.25,
         borderWidth: 1,
         color: '#f4f3f0',
@@ -15,7 +15,7 @@
         selectedRegion: null,
         showTooltip: true,
         onRegionClick: function (element, code, region) {
-            $("#idPaysChoice").val(code.toUpperCase());
+            $("#idPaysChoice").val(this.id);
             $("#idFormMap").submit();
         }
     });

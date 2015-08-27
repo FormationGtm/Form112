@@ -3,85 +3,86 @@
 @font-face {
     font-family: 'JosefinSlab';
     src: url('../fonts/JosefinSlab/JosefinSlab-Thin.ttf') format('truetype');
-    font-style:normal;
-    font-weight:100;
+    font-style: normal;
+    font-weight: 100;
 }
 
 @font-face {
     font-family: 'JosefinSlab';
     src: url('../fonts/JosefinSlab/JosefinSlab-ThinItalic.ttf') format('truetype');
-    font-style:italic;
-    font-weight:100;
+    font-style: italic;
+    font-weight: 100;
 }
 
 @font-face {
     font-family: 'JosefinSlab';
     src: url('../fonts/JosefinSlab/JosefinSlab-Light.ttf') format('truetype');
-    font-style:normal;
-    font-weight:300;
+    font-style: normal;
+    font-weight: 300;
 }
 
 @font-face {
     font-family: 'JosefinSlab';
     src: url('../fonts/JosefinSlab/JosefinSlab-LightItalic.ttf') format('truetype');
-    font-style:italic;
-    font-weight:300;
+    font-style: italic;
+    font-weight: 300;
 }
 
 @font-face {
     font-family: 'JosefinSlab';
     src: url('../fonts/JosefinSlab/JosefinSlab-Regular.ttf') format('truetype');
-    font-style:normal;
-    font-weight:400;
+    font-style: normal;
+    font-weight: 400;
 }
 
 @font-face {
     font-family: 'JosefinSlab';
     src: url('../fonts/JosefinSlab/JosefinSlab-Italic.ttf') format('truetype');
-    font-style:italic;
-    font-weight:400;
+    font-style: italic;
+    font-weight: 400;
 }
 
 @font-face {
     font-family: 'JosefinSlab';
     src: url('../fonts/JosefinSlab/JosefinSlab-SemiBold.ttf') format('truetype');
-    font-style:normal;
-    font-weight:600;
+    font-style: normal;
+    font-weight: 600;
 }
 
 @font-face {
     font-family: 'JosefinSlab';
     src: url('../fonts/JosefinSlab/JosefinSlab-SemiBoldItalic.ttf') format('truetype');
-    font-style:italic;
-    font-weight:600;
+    font-style: italic;
+    font-weight: 600;
 }
 
 @font-face {
     font-family: 'JosefinSlab';
     src: url('../fonts/JosefinSlab/JosefinSlab-Bold.ttf') format('truetype');
-    font-style:normal;
-    font-weight:700;
+    font-style: normal;
+    font-weight: 700;
 }
 
 @font-face {
     font-family: 'JosefinSlab';
     src: url('../fonts/JosefinSlab/JosefinSlab-BoldItalic.ttf') format('truetype');
-    font-style:normal;
-    font-weight:700;
+    font-style: normal;
+    font-weight: 700;
 }
 
 /* Page total*/
 
 body, html {
- height: 100%;
- padding: 0;
+    height: 100%;
+    padding: 0;
+    overflow: hidden;
 }
 
 body {
     background-image: url("images\\body-background.png");
-	background-attachment: fixed ;
-	background-position : 50% 50%;
-    font-size : 0.8em;
+    background-attachment: fixed;
+    background-position: 50% 50%;
+    font-size: 0.8em;
 }
 
 
@@ -89,7 +90,7 @@ body {
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
-    color : #1E8BC3;
+    color: #1E8BC3;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -112,118 +113,128 @@ textarea {
     margin: 0px auto;
     padding: 0px 10px;
     position: relative;
-    background-color:white;
+    background-color: white;
     width: 1000px;
-    height:100%;
-    overflow:auto;
+    height: 100%;
+    overflow: auto;
 }
 
-.navbar{
+.navbar {
     margin: 0px auto;
     width: 1000px;
-    text-transform:uppercase;
+    text-transform: uppercase;
     background-color: white;
 }
 
-footer{
+footer {
     margin: 0px auto;
     width: 1000px;
     background-color: white;
 }
 
 .navbar-right {
-    position:relative;
-    left:-200px;
+    position: relative;
+    left: -200px;
 }
-
 
 .body-content {
-    margin-top :75px;
+    margin-top: 75px;
 }
 
-.partial-search-view{
-    margin-top : 75px;
-    color : #1E8BC3;
+.partial-search-view {
+    margin-top: 75px;
+    color: #1E8BC3;
 }
 
-.carousel-height{
-    height:390px;
-}
- 
-.img-caroussel{
-	position:relative;
-	width:inherit;
-	margin:0px auto;
+.carousel-height {
+    height: 390px;
 }
 
-.map-header{
+.img-caroussel {
+    position: relative;
+    width: inherit;
+    margin: 0px auto;
+}
+
+.map-header {
     margin: 25px 0;
-    font-size:1.5em;
+    font-size: 1.5em;
 }
 
 .search-map {
-    margin : 0px 0px 25px 0px;
-    padding:0;
-    width : 100%;
-    height : 350px;
+    margin: 0px 0px 25px 0px;
+    padding: 0;
+    width: 100%;
+    height: 350px;
+}
+
+.wrapper-panel {
+    margin: 0;
+    padding: 0;
 }
 
 .destination-panel {
-    display:inline-block;
-    border:1px solid black;
-    margin : 10px;
+    display: inline-block;
+    border: 1px solid black;
+    margin: 10px auto;
     padding: 5px;
-    text-align:center;
-    width: 172px;
+    text-align: center;
+    width: 100%;
     background-color: white;
 }
 
 .panel-img {
-    width:inherit;
-    height:100px;
+    width: inherit;
+    height: 100px;
 }
 
 .panel-container {
-    margin :0;
-    padding : 0;
-    width : 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
 
-.panel-header{
-    width:90%;
-    margin : 5px 5%;
-    padding : 10px 0px;
-    border-bottom : 1px solid black;
-    border-top : 1px solid black;
-    font-size : 1em;
-    text-transform : uppercase;
+.panel-header {
+    width: 90%;
+    margin: 5px 5%;
+    padding: 10px 0px;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    font-size: 1em;
+    text-transform: uppercase;
 }
 
-.panel-main{
-    width:100%;
-    margin : 0;
-    padding:0;
+.panel-main {
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-.price-legend{
-    width:inherit;
-    margin :0;
+.price-legend {
+    width: inherit;
+    margin: 0;
     padding: 2px 0;
-    font-size:0.6em;
+    font-size: 0.6em;
 }
 
-.price-body{
-    width:inherit;
-    margin :0;
+.price-body {
+    width: inherit;
+    margin: 0;
     padding: 5px 0;
-    font-size:1em;
-    color : red;
+    font-size: 1em;
+    color: red;
 }
 
 .panel-end {
-    width:100%;
-    margin : 0;
-    padding : 0 5px;
+    width: 100%;
+    margin: 0;
+    padding: 0 5px;
 }
 
-
+.shadow {
+    -moz-box-shadow: 10px 10px 5px #ccc;
+    -webkit-box-shadow: 10px 10px 5px #ccc;
+    box-shadow: 10px 10px 5px #ccc; /* For IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#cccccc')"; /* For IE 5.5 - 7 */
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength = 4, Direction = 135, Color = '#cccccc');
+}

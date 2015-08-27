@@ -19,11 +19,9 @@ namespace Form112.Infrastructure.SearchCroisiers.Option
 
         public override IEnumerable<Croisieres> GetResult()
         {
-            if (_prixMini != null)
-            {
-                return SearchBase.GetResult().Where(x => x.Prix >= _prixMini);
-            }
-            return SearchBase.GetResult();
+            return _prixMini!=0
+                ? SearchBase.GetResult().Where(x => x.Prix >= _prixMini)
+                : SearchBase.GetResult();
         }
     }
 }

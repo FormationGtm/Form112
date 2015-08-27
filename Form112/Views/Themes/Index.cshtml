@@ -1,16 +1,24 @@
 ﻿@model List<DataLayer.Model.Themes>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Destination par Themes";
 }
 
+@section scripts{
+    <script src="~/Scripts/Shared/SharedScript.js"></script>
+}
 
-<div class="row">
-    @foreach (var theme in @Model)
-    {
-        <b>@theme.Libelle</b>
-        <div >
-            @Html.Action("CroisieresParTheme", "Themes", new  { id = theme.IdTheme })
-        </div>
-    }
+@foreach (var theme in @Model)
+{
+    <div class="row">
+        <div class="theme-header">@theme.Libelle</div>
+        @foreach (var crs in theme.Croisieres)
+        {
+            @Html.Action("CroisieresParTheme", "Themes", new { id = crs.IdCroisiere})
+        }
+    </div>
+}
 
-</div>
+@using (Html.BeginForm("Details", "Destinations", FormMethod.Post, new { id = "idFormDestination" }))
+{
+    <input type="hidden" id="idCroisiereChoice" name="DestinationChoice" />
+}

@@ -1,16 +1,26 @@
 ﻿@model List<DataLayer.Model.Croisieres>
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Toutes nos croisières";
 }
 
-<h2>Destinations</h2>
-
+@section scripts{
+    <script src="~/Scripts/Shared/SharedScript.js"></script>
+}
 
 <div class="row">
-    @foreach (var croisiere in @Model)
-    {
-        <div class="col-sm-4">
-            @Html.Action("AllCroisieres", "Destinations", new { id = croisiere.IdCroisiere })
-        </div>
-    }
+    Destinations
 </div>
+
+    <div class="row">
+        @foreach (var croisiere in Model)
+        {
+            @Html.Action("AllCroisieres", "Destinations", new { id = croisiere.IdCroisiere })
+        }
+    </div>
+
+    @using (@Html.BeginForm("Details", "Destinations", FormMethod.Post, new { id = "idFormDestination" }))
+    {
+        <input type="hidden" id="idCroisiereChoice" name="DestinationChoice" />
+    }
+
