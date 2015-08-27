@@ -19,7 +19,7 @@ namespace Form112.Infrastructure.SearchCroisiers.Option
 
         public override IEnumerable<Croisieres> GetResult()
         {
-            if (_idTheme!=null)
+            if (_idTheme!=0)
             {
                 return SearchBase.GetResult().Where(x => x.IdTheme == _idTheme);
             }

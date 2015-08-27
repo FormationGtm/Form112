@@ -19,11 +19,14 @@ namespace Form112.Infrastructure.SearchCroisiers.Option
 
         public override IEnumerable<Croisieres> GetResult()
         {
-            if (_DateDepart!=null)
+            if (_DateDepart.Date != DateTime.Now.Date)
             {
                 return SearchBase.GetResult().Where(x => x.DateDepart.Month == _DateDepart.Month && x.DateDepart.Year == _DateDepart.Year);
             }
-            return SearchBase.GetResult();
+            else
+            {
+                return SearchBase.GetResult();
+            }
         }
     }
 }

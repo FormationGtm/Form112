@@ -6,7 +6,9 @@
         language: "fr",
         autoclose: true,
         todayHighlight: true,
-        endData: "-1d"
+        endDate: "+1y +6m",
+        startDate: "+1d"
+        
     });
    
     $("#idPays").change(loadPort);
@@ -17,7 +19,7 @@
 
 function loadPort() {
     var idPays = $("#idPays").val();
-    var str = "";
+    var str = '<option value="" disabled selected>Choisir le port</option>';
     $.getJSON('/Search/GetJSONPort/' + idPays, function (data) {
         $.each(data, function (idx, port) {
             str += '<option value="' + port.IdPort + '">' + port.Nom + "</option>";
@@ -32,16 +34,16 @@ function getTranchePrix() {
     var prixMaxi;
     switch (idPrix) {
         case "1":
-            prixMini = 0;
-            prixMaxi = 1000;
+            prixMini = 1;
+            prixMaxi = 999;
             break;
         case "2":
             prixMini = 1000;
-            prixMaxi = 3000;
+            prixMaxi = 2999;
             break;
         case "3":
             prixMini = 3000;
-            prixMaxi = 5000;
+            prixMaxi = 4999;
             break;
         case "4":
             prixMini = 5000;

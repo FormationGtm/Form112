@@ -19,7 +19,7 @@ namespace Form112.Infrastructure.SearchCroisiers.Option
 
         public override IEnumerable<Croisieres> GetResult()
         {
-            return _dureeMaxi.HasValue
+            return _dureeMaxi!=0
                 ? SearchBase.GetResult().Where(x => x.Durees.NbJours <= _dureeMaxi)
                 : SearchBase.GetResult();
         }

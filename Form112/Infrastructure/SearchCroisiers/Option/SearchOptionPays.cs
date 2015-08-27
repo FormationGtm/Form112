@@ -31,7 +31,10 @@ namespace Form112.Infrastructure.SearchCroisiers.Option
             {
                 return SearchBase.GetResult().Where(c => c.Ports.Pays.CodeIso2 == _codeIso2);
             }
-            return SearchBase.GetResult();
+            else
+            {
+                return SearchBase.GetResult();
+            }
         }
     }
 }
