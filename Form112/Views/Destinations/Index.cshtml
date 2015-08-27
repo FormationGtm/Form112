@@ -1,4 +1,4 @@
-﻿@model List<DataLayer.Model.Croisieres>
+﻿
 @{
     ViewBag.Title = "Toutes nos croisières";
 }
@@ -8,7 +8,6 @@
 }
 
 <h2>Destinations</h2>
-
 
 <div class="row">
     @foreach (var croisiere in @Model)
@@ -21,3 +20,4 @@
 {
     <input type="hidden" id="idCroisiereChoice" name="DestinationChoice" />
 }
+

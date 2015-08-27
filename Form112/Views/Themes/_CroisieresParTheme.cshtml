@@ -1,0 +1,41 @@
+﻿@model DataLayer.Model.Croisieres
+@{
+    ViewBag.Title = "_CroisieresParTheme";
+}
+
+<h2>_CroisieresParTheme</h2>
+<div class="col-lg-push-2 panel panel-info">
+    <div class="panel-heading">
+        <strong>@Model.Themes.Nom</strong>
+    </div>
+    <div class="panel-body">
+        @{
+            if (@Model.Photos.Count() != 0)
+            {
+                var ph = @Model.Photos.First().NomPhoto;
+                <img src="~/Uploads/Pictures/@ph" class="tailleImage" />
+            }
+        }
+        <ul class="list-group">
+
+            <li class="list-group-item">
+                <strong>Pays:</strong>
+                @Model.Ports.Pays.Nom
+            </li>
+            <li class="list-group-item">
+                <strong>Port:</strong>
+                @Model.Ports.Nom
+            </li>
+            <li class="list-group-item">
+                <strong>Prix:</strong>
+                @Model.Prix
+            </li>
+            <li class="list-group-item">
+                <strong>Region:</strong>
+                @Model.Ports.Pays.Regions.Nom
+            </li>            
+        </ul>
+
+    </div>
+</div>
+

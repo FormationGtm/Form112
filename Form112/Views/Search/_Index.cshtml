@@ -1,11 +1,11 @@
 ﻿@model Form112.Models.SearchViewModel
 
-
 @using (Html.BeginForm("Result", "Search", FormMethod.Post))
 {
     //Menu déroulant des pays triés par région
     <label>Destination</label><br />
     <select name="IdPays" id="idPays">
+        <option value="" disabled selected>Choisir la destination</option>
         @foreach (var region in Model.Destination.Keys)
         {
             <optgroup label="@region">
@@ -17,21 +17,24 @@
         }
     </select>
 
-        <br />
-    //Affiche la date de départ dans un calendrier
-        <label>Mois de départ</label><br />
-            <input type="text" id="idDateDepart" name="DateDepart" />
     <br />
-    //Menu déroulant des ports en fonction de la destination
+        //Affiche la date de départ dans un calendrier
+        <label>Mois de départ</label><br />
+        <input type="text" id="idDateDepart" name="DateDepart" />
+        <br />
+        //Menu déroulant des ports en fonction de la destination
         <label>Port de départ</label><br />
-            <select id="idPort" name="IdPortDepart"></select>
+        <select id="idPort" name="IdPortDepart">
+            <option value="" disabled selected>Choisir le port de départ</option>
+        </select>
 
         <br />
-    //Menu déroulant tranche de prix
+        //Menu déroulant tranche de prix
         <label>Budget</label><br />
-            <select id="idPrix">
+        <select id="idPrix">
+            <option value="" disabled selected>Choisir le budget</option>
             <option value="1">Moins de 1000€</option>
-            <option value="2">Entre 1000 et 3000€</option>    
+            <option value="2">Entre 1000 et 3000€</option>
             <option value="3">Entre 3000 et 5000€</option>
             <option value="4">Plus de 5000€</option>
         </select>
@@ -39,16 +42,28 @@
         <input type="hidden" name="PrixMaxi" id="PrixMaxi" />
 
         <br />
-    //Menu déroulant durée
-            <label>Durée</label><br />
-            <select id="idDuree">
-                <option value="1">Moins de 4 jours</option>
-                <option value="2">Entre 4 et 7 jours</option>
-                <option value="3">Entre 7 et 15 jours</option>
-                <option value="4">Plus de 15 jours</option>
-            </select>
+        //Menu déroulant durée
+        <label>Durée</label><br />
+        <select id="idDuree">
+            <option value="" disabled selected>Choisir la durée</option>
+            <option value="1">Moins de 4 jours</option>
+            <option value="2">Entre 4 et 7 jours</option>
+            <option value="3">Entre 7 et 15 jours</option>
+            <option value="4">Plus de 15 jours</option>
+        </select>
         <input type="hidden" name="DureeMini" id="DureeMini" />
         <input type="hidden" name="DureeMaxi" id="DureeMaxi" />
-            <br />
-            <input type="submit" value="Rechercher" />
+        <br />
+
+        //Menu déroulant thème
+        <label>Thème</label><br />
+        <select id="idTheme" name="IdTheme">
+            <option value="" disabled selected>Choisir le thème</option>
+            @foreach (var item in Model.Themes)
+            {
+                <option value="@item.Key">@item.Value</option>
+            }
+        </select>
+        <br />
+        <input type="submit" value="Rechercher" />
 }

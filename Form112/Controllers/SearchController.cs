@@ -22,7 +22,7 @@ namespace Form112.Controllers
             var svm = new SearchViewModel();
             
             svm.Destination = db.Regions.OrderBy(r => r.Nom).ToDictionary(r => r.Nom, r => r.Pays.ToDictionary(p => p.CodeIso3, p => p.Nom));
-
+            svm.Themes = db.Themes.OrderBy(t => t.Libelle).AsEnumerable().Select(t=>new KeyValuePair<int,string>(t.IdTheme, t.Libelle)).ToList();
             return PartialView("_Index",svm);
         }
         
@@ -41,17 +41,19 @@ namespace Form112.Controllers
 
             search = new SearchOptionDureeMini(search, searchViewModel.DureeMini);
             search = new SearchOptionDureeMaxi(search, searchViewModel.DureeMaxi);
-            search = new SearchOptionDateDepart(search, searchViewModel.DateDepart);
+            search = new SearchOptionDateDepart(search, searchViewModel._dateDepart);
             search = new SearchOptionPrixMini(search, searchViewModel.PrixMini);
             search = new SearchOptionPrixMaxi(search, searchViewModel.PrixMaxi);
             search = new SearchOptionDestination(search, searchViewModel.IdPays);
             search = new SearchOptionPortDepart(search, searchViewModel.IdPortDepart);
+            search = new SearchOptionTheme(search, searchViewModel.IdTheme);
 
             return search.GetResult().ToList();
         }
         [HttpPost]
         public ActionResult Result(SearchViewModel svm)
         {
+            
             return View(GetSearchResult(svm));
         }
     }

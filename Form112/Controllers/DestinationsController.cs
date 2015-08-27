@@ -13,12 +13,14 @@ namespace Form112.Controllers
 {
     public class DestinationsController : Controller
     {
+
         private static Form112Entities db = new Form112Entities();
+
         // GET: Detinations
         public ActionResult Index()
         {
             var destination = Croisieres.ListeCroisieres();
-            return View(destination);// (destination);
+            return View();// (destination);
         }
 
         [HttpPost]
@@ -29,11 +31,10 @@ namespace Form112.Controllers
         }
                        
         [ChildActionOnly]
-        public PartialViewResult AllCroisieres(int id)
+        public PartialViewResult AllCroisieres()
         {
-            var croisiere = db.Croisieres.Find(id);//Croisieres.ListeCroisieres();
-            return PartialView("_DestinationPanel", croisiere);
+            var listeCroisieres = Croisieres.ListeCroisieres();
+            return PartialView("_DestinationPanel", listeCroisieres);
         }
-        
     }
 }

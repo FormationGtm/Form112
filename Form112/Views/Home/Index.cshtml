@@ -5,6 +5,12 @@
 @section scripts{
     <script src="~/Scripts/JQVMap/jquery.vmap.min.js"></script>
     <script src="~/Scripts/JQVMap/jquery.vmap.world.js"></script>
+    <script src="~/Scripts/JQVMap/continents/jquery.vmap.north-america.js"></script>
+    <script src="~/Scripts/JQVMap/continents/jquery.vmap.africa.js"></script>
+    <script src="~/Scripts/JQVMap/continents/jquery.vmap.asia.js"></script>
+    <script src="~/Scripts/JQVMap/continents/jquery.vmap.australia.js"></script>
+    <script src="~/Scripts/JQVMap/continents/jquery.vmap.europe.js"></script>
+    <script src="~/Scripts/JQVMap/continents/jquery.vmap.south-america.js"></script>
     <script src="~/Scripts/JQVMap/jquery.vmap.sampledata.js"></script>
     <script src="~/Scripts/Home/Index.js"></script>
 }
@@ -22,9 +28,9 @@
         Choissisez votre destination :
     </div>
     <div class="search-map text-center" id="idVmapWorld"></div>
-    @using (Html.BeginForm("Pays", "Home", FormMethod.Post, new { id = "idFormMap" }))
+    @using (Html.BeginForm("ContinentSearch", "Home", FormMethod.Post, new { id = "idFormMap" }))
     {
-        <input type="hidden" id="idPaysChoice" name="PaysChoice" />
+        <input type="hidden" id="idContinentChoice" name="continentChoice" />
     }
 </div>
 

@@ -19,11 +19,14 @@ namespace Form112.Infrastructure.SearchCroisiers.Option
 
         public override IEnumerable<Croisieres> GetResult()
         {
-            if (_idPort != null)
+            if (_idPort != 0)
             {
                 return SearchBase.GetResult().Where(x => x.Ports.IdPort == _idPort);
             }
-            return SearchBase.GetResult();
+            else
+            {
+                return SearchBase.GetResult();
+            }
         }
     }
 }
