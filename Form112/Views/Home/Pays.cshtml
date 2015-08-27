@@ -1,4 +1,4 @@
-﻿@model Form112.Model.PaysViewModels
+﻿@model List<DataLayer.Model.Croisieres>
 @{
     ViewBag.Title = "Destinations par Pays";
 }
@@ -12,7 +12,7 @@
 
 <div class="row">
     <div class="map-header">
-        Choissisez votre destination :
+        Choissisez un port de départ :
     </div>
     @using (Html.BeginForm("PaysSearch", "Home", FormMethod.Post, new { id = "idFormPays" }))
     {
@@ -26,7 +26,6 @@
 </div>
 
 <div class="row">
-<<<<<<< HEAD
     @{
         var listSuggestedDest = Model.Take(1);
         foreach (var item in listSuggestedDest)
@@ -34,14 +33,4 @@
             @Html.Action("TopSixCroisieres", "Home", new { idCroisiere = @item.IdCroisiere })
         }
     }
-
-=======
-
-   @{
-       var listSuggestedDest = Model.CroisieresPays.Take(6);
-    }
-
-    
-
->>>>>>> origin/master
 </div>
