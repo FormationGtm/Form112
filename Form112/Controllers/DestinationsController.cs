@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Form112.Infrastructure.SearchCroisiers;
+using Form112.Infrastructure.SearchCroisiers.Base;
+using Form112.Infrastructure.SearchCroisiers.Option;
 using DataLayer.Model;
-using DataLayer;
+using Form112.Models;
 
 namespace Form112.Controllers
 {
     public class DestinationsController : Controller
     {
-        private Form112Entities db = new Form112Entities();
+        private static Form112Entities db = new Form112Entities();
         // GET: Detinations
         public ActionResult Index()
         {
@@ -18,16 +21,13 @@ namespace Form112.Controllers
             return View(destination);// (destination);
         }
 
-        public ActionResult Details(int idCroisiere)
+        [HttpPost]
+        public ActionResult Details(DestinationViewModel dvm)
         {
-            //Croisieres cr = new Croisieres(idCroisiere);
-            //return View(cr);
-            var croisiere = db.Croisieres.Find(idCroisiere);//Croisieres.ListeCroisieres();
-            return View("Details", croisiere);
-
+            var crs = db.Croisieres.Find(dvm.DestinationChoice);
+            return View(crs);
         }
                        
-
         [ChildActionOnly]
         public PartialViewResult AllCroisieres(int id)
         {

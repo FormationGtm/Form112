@@ -15,28 +15,21 @@ namespace Form112.Controllers
         // GET: Themes
         public ActionResult Index()
         {
-             var listeThemes = Themes.ListeThemes();
+            var listeThemes = db.Themes.ToList(); 
             return View (listeThemes);
         }
 
-        public ActionResult Details(string idCroisiere)
-        {
-            Croisieres crois = new Croisieres(idCroisiere);
-            return View (crois);
-        }
+        //public ActionResult Details(string idCroisiere)
+        //{
+        //    Croisieres crois = new Croisieres(idCroisiere);
+        //    return View (crois);
+        //}
 
         public PartialViewResult CroisieresParTheme(int id)
         {
-            var listeCroisieres = new List<Croisieres>();
-            listeCroisieres = db.Croisieres.Where(c => c.IdTheme == id).ToList();
-            return PartialView("_ThemePanel", listeCroisieres);
+            var croisiere = db.Croisieres.Find(id);
+            return PartialView("_DestinationPanel", croisiere);
         }
 
     }
 }
-
-//var db = new Form112Entities();
-//            var tvm = new ThemeViewModels();
-//            tvm.ThemesCroisieres = db.Themes.OrderBy(t=>t.Nom)
-//                .ToDictionary(t=>t.Nom, r=>r.Croisieres.OrderBy(c=>c.DateDepart))
-//                .ToDictionary(c=>c.)

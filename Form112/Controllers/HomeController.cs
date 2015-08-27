@@ -14,7 +14,7 @@ namespace Form112.Controllers
     public class HomeController : Controller
     {
 
-        Form112Entities db = new Form112Entities();
+        private static Form112Entities db = new Form112Entities();
 
         public ActionResult Index()
         {

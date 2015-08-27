@@ -244,6 +244,7 @@
     <Content Include="fonts\JosefinSlab\JosefinSlab-SemiBoldItalic.ttf" />
     <Content Include="fonts\JosefinSlab\JosefinSlab-Thin.ttf" />
     <Content Include="fonts\JosefinSlab\JosefinSlab-ThinItalic.ttf" />
+    <Compile Include="Models\DestinationViewModel.cs" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\Home\Index.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
@@ -268,6 +269,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Search\Index.js" />
+    <Content Include="Scripts\Shared\SharedScript.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Vendor\DatePicker\css\bootstrap-datepicker.css" />
     <Content Include="Vendor\DatePicker\css\bootstrap-datepicker.min.css" />
@@ -341,6 +343,7 @@
     <Content Include="Vendor\DatePicker\locales\bootstrap-datepicker.vi.min.js" />
     <Content Include="Vendor\DatePicker\locales\bootstrap-datepicker.zh-CN.min.js" />
     <Content Include="Vendor\DatePicker\locales\bootstrap-datepicker.zh-TW.min.js" />
+    <Content Include="Views\Shared\_DestinationPanel.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -377,21 +380,19 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Destinations\Index.cshtml" />
     <Content Include="Views\Themes\Index.cshtml" />
-    <Content Include="Views\Destinations\_DestinationPanel.cshtml" />
-    <Content Include="Views\Themes\_ThemePanel.cshtml" />
     <Content Include="Views\Destinations\Details.cshtml" />
+    <Content Include="Views\Home\Pays.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Search\_Index.cshtml" />
     <Content Include="Views\Search\Result.cshtml" />
     <Content Include="Views\Home\_HomeCaroussel.cshtml" />
-    <Content Include="Views\Destinations\Details.cshtml" />
-    <Content Include="Views\Shared\_DestinationPanel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Uploads\Bateaux\NotUsed\" />
     <Folder Include="Views\DestinationRegion\" />
+    <Folder Include="Views\Destination\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

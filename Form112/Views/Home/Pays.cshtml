@@ -1,11 +1,12 @@
 ﻿@model List<DataLayer.Model.Croisieres>
 
 @{
-    ViewBag.Title = "Pays";
+    ViewBag.Title = "Destinations par Pays";
 }
 
 @section scripts{
     <script src="~/Scripts/Home/Index.js"></script>
+    <script src="~/Scripts/Shared/SharedScript.js"></script>
 }
 
 @* Zone définissant la carte cliquable du monde *@
@@ -14,9 +15,11 @@
     <div class="map-header">
         Choissisez un port de départ :
     </div>
-    @using (Html.BeginForm("PaysSearch", "Home", FormMethod.Post, new { id = "idFormPays" }))    {
+    @using (Html.BeginForm("PaysSearch", "Home", FormMethod.Post, new { id = "idFormPays" }))
+    {
         <select>
-            @foreach (var item in @Model)           {
+            @foreach (var item in @Model)
+            {
                 <option value=@item.Ports.IdPort>@item.Ports.Nom</option>
             }
         </select>
@@ -25,9 +28,11 @@
 
 <div class="row">
     @{
-       var listSuggestedDest = Model.Take(1);
-       foreach (var item in listSuggestedDest) {
-           @Html.Action("TopSixCroisieres", "Home", new {idCroisiere = @item.IdCroisiere})
+        var listSuggestedDest = Model.Take(1);
+        foreach (var item in listSuggestedDest)
+        {
+            @Html.Action("TopSixCroisieres", "Home", new { idCroisiere = @item.IdCroisiere })
+        }
     }
-    }
+
 </div>

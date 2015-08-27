@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mon application ASP.NET</title>
+    <title>Open Sea - @ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Vendor/DatePicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" />
@@ -55,9 +55,9 @@
 
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
-        <script src="~/Vendor/DatePicker/js/bootstrap-datepicker.min.js"></script>
-        <script src="~/Vendor/DatePicker/locales/bootstrap-datepicker.fr.min.js"></script>
-        <script src="~/Scripts/Search/Index.js"></script>
+        @Scripts.Render("~/Vendor/DatePicker/js/bootstrap-datepicker.min.js")
+        @Scripts.Render("~/Vendor/DatePicker/locales/bootstrap-datepicker.fr.min.js")
+        @Scripts.Render("~/Scripts/Search/Index.js")
         @RenderSection("scripts", required: false)
     </div>
 </body>
