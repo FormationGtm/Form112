@@ -55,5 +55,13 @@ namespace Form112.Controllers
             return PartialView("_DestinationPanel", croisiere);
         }
 
+        [ChildActionOnly]
+        public PartialViewResult TopPromo()
+        {
+            var croisiere = new List<Croisieres>();
+            croisiere = db.Croisieres.Where(c => c.IdPromo.HasValue).OrderByDescending(c => c.Promos.Reduction).Take(5).ToList();
+            return PartialView("_TopPromoPanel", croisiere);
+        }
+
     }
 }

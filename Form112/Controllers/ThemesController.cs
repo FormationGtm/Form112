@@ -26,7 +26,7 @@ namespace Form112.Controllers
         }
 
 
-
+        [ChildActionOnly]
         public PartialViewResult CroisieresParTheme(int id)
         {
             var listeCroisieres = new List<Croisieres>();
@@ -36,9 +36,3 @@ namespace Form112.Controllers
 
     }
 }
-
-//var db = new Form112Entities();
-//            var tvm = new ThemeViewModels();
-//            tvm.ThemesCroisieres = db.Themes.OrderBy(t=>t.Nom)
-//                .ToDictionary(t=>t.Nom, r=>r.Croisieres.OrderBy(c=>c.DateDepart))
-//                .ToDictionary(c=>c.)
