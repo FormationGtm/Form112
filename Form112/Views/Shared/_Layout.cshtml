@@ -28,27 +28,27 @@
                         <li>@Html.ActionLink("themes", "Index", "Themes")</li>
                         <li>@Html.ActionLink("destinations", "Index", "Destinations")</li>
                     </ul>
-                        @Html.Partial("_LoginPartial")
+                    @Html.Partial("_LoginPartial")
                 </div>
             </div>
         </div>
-        
+
         @* Balise délimitant le positionnement de la vue partielle du moteur de recherche *@
 
         <div class="col-sm-3 partial-search-view">
-            @Html.Action("Index","Search")
+            @RenderSection("SearchForm", required: true)
         </div>
-        
+
         @* Position de la vue principale *@
 
         <div class="container body-content col-sm-7">
-            
+
             @RenderBody()
-        
+
         </div>
-        
+
         @* Balise délimitant le positionnement de la vue partielle des promotions *@
-                
+
         <div class="col-sm-2 partial-promo-view">
 
         </div>

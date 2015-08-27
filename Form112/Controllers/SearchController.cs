@@ -3,6 +3,7 @@ using DataLayer.Model;
 using Form112.Infrastructure.SearchCroisiers;
 using Form112.Infrastructure.SearchCroisiers.Base;
 using Form112.Infrastructure.SearchCroisiers.Option;
+using Form112.Infrastructure.Utilitaires;
 using Form112.Models;
 using System;
 using System.Collections.Generic;
@@ -16,21 +17,40 @@ namespace Form112.Controllers
     {
         Form112Entities db = new Form112Entities();
         // GET: Search
-        
-        public PartialViewResult Index()
+
+        public PartialViewResult Index(string ssvm)
         {
-            var svm = new SearchViewModel();
-            
+            SearchViewModel svm;
+            if (string.IsNullOrEmpty(ssvm))
+            {
+                svm = new SearchViewModel();
+            }
+            else
+            {
+                svm = SearchViewModel.UnserializeSearchViewModel(ssvm);
+            }
+
             svm.Destination = db.Regions.OrderBy(r => r.Nom).ToDictionary(r => r.Nom, r => r.Pays.ToDictionary(p => p.CodeIso3, p => p.Nom));
-            svm.Themes = db.Themes.OrderBy(t => t.Libelle).AsEnumerable().Select(t=>new KeyValuePair<int,string>(t.IdTheme, t.Libelle)).ToList();
-            return PartialView("_Index",svm);
+            svm.Themes = db.Themes.OrderBy(t => t.Libelle).AsEnumerable().Select(t => new KeyValuePair<int, string>(t.IdTheme, t.Libelle)).ToList();
+            svm.Ports = db.Ports.OrderBy(t => t.Nom).AsEnumerable().Select(t => new KeyValuePair<int, string>(t.IdPort, t.Nom)).ToList();
+            svm.ListTranchePrix = ListesChoix.ListTranchePrix();
+            svm.ListTrancheDuree = ListesChoix.ListTrancheDuree();
+
+#if DEBUG
+            svm.IdPays = "FRA";
+            svm.DateDepart = new DateTime(2016, 1, 1).ToString("dd/MM/yyyy");
+#endif
+            return PartialView("_Index", svm);
         }
-        
-        //retourne liste des ports
-        public JsonResult GetJSONPort(string id)
+
+        [HttpPost]
+        public ActionResult Result(SearchViewModel svm)
         {
-            var listePorts = db.Ports.Where(p => p.CodeIso3 == id).Select(p => new { IdPort = p.IdPort, Nom = p.Nom }).ToList();
-            return Json(listePorts, JsonRequestBehavior.AllowGet);
+            svm.SerializeSearchViewModel();
+            svm.Result = GetSearchResult(svm);
+
+            svm._stringDateDepart = new DateTime(2016, 1, 1).ToString("dd/MM/yyyy");
+            return View(svm);
         }
 
         //Recherche avec options 
@@ -38,23 +58,22 @@ namespace Form112.Controllers
         {
             SearchBase search = new Search();
 
-
-            search = new SearchOptionDureeMini(search, searchViewModel.DureeMini);
-            search = new SearchOptionDureeMaxi(search, searchViewModel.DureeMaxi);
+            search = new SearchOptionIdDuree(search, searchViewModel.IdDuree);
             search = new SearchOptionDateDepart(search, searchViewModel._dateDepart);
-            search = new SearchOptionPrixMini(search, searchViewModel.PrixMini);
-            search = new SearchOptionPrixMaxi(search, searchViewModel.PrixMaxi);
+            search = new SearchOptionIdPrix(search, searchViewModel.IdPrix);
             search = new SearchOptionDestination(search, searchViewModel.IdPays);
             search = new SearchOptionPortDepart(search, searchViewModel.IdPortDepart);
             search = new SearchOptionTheme(search, searchViewModel.IdTheme);
 
             return search.GetResult().ToList();
         }
-        [HttpPost]
-        public ActionResult Result(SearchViewModel svm)
+
+        //retourne liste des ports
+        public JsonResult GetJSONPort(string id)
         {
-            
-            return View(GetSearchResult(svm));
+            var listePorts = db.Ports.Where(p => p.CodeIso3 == id).Select(p => new { IdPort = p.IdPort, Nom = p.Nom }).ToList();
+            return Json(listePorts, JsonRequestBehavior.AllowGet);
         }
+
     }
 }

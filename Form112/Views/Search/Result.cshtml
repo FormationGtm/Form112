@@ -1,6 +1,11 @@
-﻿@model List<DataLayer.Model.Croisieres>
+﻿@model Form112.Models.SearchViewModel
+
 @{
     ViewBag.Title = "Result";
+}
+
+@section SearchForm {
+    @Html.Action("Index", "Search", new { ssvm = Model.XmlSearchViewModel });
 }
 <table>
 
@@ -16,7 +21,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Result)
         {
             <tr>
                 <td>@item.Ports.Pays.Nom</td>

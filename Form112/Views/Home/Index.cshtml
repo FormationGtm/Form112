@@ -2,6 +2,10 @@
     ViewBag.Title = "Home Page";
 }
 
+@section SearchForm {
+    @Html.Action("Index", "Search");
+}
+
 @section scripts{
     <script src="~/Scripts/JQVMap/jquery.vmap.min.js"></script>
     <script src="~/Scripts/JQVMap/jquery.vmap.world.js"></script>
