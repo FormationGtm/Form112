@@ -21,7 +21,18 @@ namespace DataLayer.Model
         public string Nom { get; set; }
         public string Prenom { get; set; }
         public Nullable<int> IdCroisiere { get; set; }
+
+        public int IdUtilisateur { get; set; }
+        public System.DateTime DateInscription { get; set; }
+        public Nullable<System.DateTime> LastConnection { get; set; }
+        public string Id { get; set; }
+        public string Nom { get; set; }
+        public string Prenom { get; set; }
+        public Nullable<int> IdCroisiere { get; set; }
+        public Nullable<int> IdAdresse { get; set; }
     
+        public virtual Adresses Adresses { get; set; }
+
         public virtual AspNetUsers AspNetUsers { get; set; }
         public virtual Croisieres Croisieres { get; set; }
     }

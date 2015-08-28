@@ -15,6 +15,17 @@
           <Property Name="Model" Type="varbinary(max)" Nullable="false" />
           <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
         </EntityType>
+        <EntityType Name="Adresses">
+          <Key>
+            <PropertyRef Name="IdAdresse" />
+          </Key>
+          <Property Name="IdAdresse" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ligne1" Type="varchar" MaxLength="36" Nullable="false" />
+          <Property Name="Ligne2" Type="varchar" MaxLength="36" />
+          <Property Name="Ligne3" Type="varchar" MaxLength="36" />
+          <Property Name="CodePostal" Type="varchar" MaxLength="10" />
+          <Property Name="IdPays" Type="char" MaxLength="3" Nullable="false" />
+        </EntityType>
         <EntityType Name="AspNetRoles">
           <Key>
             <PropertyRef Name="Id" />
@@ -78,7 +89,7 @@
           <Property Name="Prix" Type="int" Nullable="false" />
           <Property Name="DateDepart" Type="date" Nullable="false" />
           <Property Name="Photo" Type="nvarchar" MaxLength="50" />
-          <Property Name="Description" Type="text" Nullable="false" />
+          <Property Name="Description" Type="text" />
         </EntityType>
         <EntityType Name="Durees">
           <Key>
@@ -125,6 +136,14 @@
           <Property Name="Latitude" Type="float" Nullable="false" />
           <Property Name="Longitude" Type="float" Nullable="false" />
         </EntityType>
+        <EntityType Name="ProduitTracking">
+          <Key>
+            <PropertyRef Name="IdProduitTracking" />
+          </Key>
+          <Property Name="IdProduitTracking" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdProduit" Type="int" Nullable="false" />
+          <Property Name="DatePT" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Promos">
           <Key>
             <PropertyRef Name="IdPromo" />
@@ -150,6 +169,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
+<<<<<<< HEAD
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DateInscription" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="LastConnection" Type="datetime2" Precision="7" />
@@ -158,6 +178,29 @@
           <Property Name="Prenom" Type="nvarchar" MaxLength="40" Nullable="false" />
           <Property Name="IdCroisiere" Type="int" />
         </EntityType>
+=======
+          <Property Name="IdUtilisateur" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateInscription" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="LastConnection" Type="datetime2" Precision="7" />
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Prenom" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="IdCroisiere" Type="int" />
+          <Property Name="IdAdresse" Type="int" />
+        </EntityType>
+        <Association Name="fk_adresses_pays">
+          <End Role="Pays" Type="Self.Pays" Multiplicity="1" />
+          <End Role="Adresses" Type="Self.Adresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pays">
+              <PropertyRef Name="CodeIso3" />
+            </Principal>
+            <Dependent Role="Adresses">
+              <PropertyRef Name="IdPays" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+>>>>>>> origin/master
         <Association Name="fk_croisieres_durees">
           <End Role="Durees" Type="Self.Durees" Multiplicity="1" />
           <End Role="Croisieres" Type="Self.Croisieres" Multiplicity="*" />
@@ -298,15 +341,37 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+<<<<<<< HEAD
         <Association Name="fk_utilisateurs_aspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
           <End Role="Utilisateurs" Type="Self.Utilisateurs" Multiplicity="*" />
+=======
+        <Association Name="fk_utilisateurs_adresses">
+          <End Role="Adresses" Type="Self.Adresses" Multiplicity="0..1" />
+          <End Role="Utilisateurs" Type="Self.Utilisateurs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adresses">
+              <PropertyRef Name="IdAdresse" />
+            </Principal>
+            <Dependent Role="Utilisateurs">
+              <PropertyRef Name="IdAdresse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_utilisateurs_aspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Utilisateurs" Type="Self.Utilisateurs" Multiplicity="0..1" />
+>>>>>>> origin/master
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Utilisateurs">
+<<<<<<< HEAD
               <PropertyRef Name="IdUtilisateur" />
+=======
+              <PropertyRef Name="Id" />
+>>>>>>> origin/master
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -324,6 +389,7 @@
         </Association>
         <EntityContainer Name="Form112ModelStoreContainer">
           <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Adresses" EntityType="Self.Adresses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
@@ -335,10 +401,18 @@
           <EntitySet Name="Pays" EntityType="Self.Pays" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Photos" EntityType="Self.Photos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ports" EntityType="Self.Ports" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProduitTracking" EntityType="Self.ProduitTracking" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Promos" EntityType="Self.Promos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Regions" EntityType="Self.Regions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Themes" EntityType="Self.Themes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Utilisateurs" EntityType="Self.Utilisateurs" Schema="dbo" store:Type="Tables" />
+<<<<<<< HEAD
+=======
+          <AssociationSet Name="fk_adresses_pays" Association="Self.fk_adresses_pays">
+            <End Role="Pays" EntitySet="Pays" />
+            <End Role="Adresses" EntitySet="Adresses" />
+          </AssociationSet>
+>>>>>>> origin/master
           <AssociationSet Name="fk_croisieres_durees" Association="Self.fk_croisieres_durees">
             <End Role="Durees" EntitySet="Durees" />
             <End Role="Croisieres" EntitySet="Croisieres" />
@@ -383,6 +457,13 @@
             <End Role="Pays" EntitySet="Pays" />
             <End Role="Ports" EntitySet="Ports" />
           </AssociationSet>
+<<<<<<< HEAD
+=======
+          <AssociationSet Name="fk_utilisateurs_adresses" Association="Self.fk_utilisateurs_adresses">
+            <End Role="Adresses" EntitySet="Adresses" />
+            <End Role="Utilisateurs" EntitySet="Utilisateurs" />
+          </AssociationSet>
+>>>>>>> origin/master
           <AssociationSet Name="fk_utilisateurs_aspNetUsers" Association="Self.fk_utilisateurs_aspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Utilisateurs" EntitySet="Utilisateurs" />
@@ -396,6 +477,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Form112Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<<<<<<< HEAD
         <EntityType Name="C__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -456,6 +538,8 @@
           <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
           <NavigationProperty Name="Utilisateurs" Relationship="Form112Model.fk_utilisateurs_aspNetUsers" FromRole="AspNetUsers" ToRole="Utilisateurs" />
         </EntityType>
+=======
+>>>>>>> origin/master
         <EntityType Name="Croisieres">
           <Key>
             <PropertyRef Name="IdCroisiere" />
@@ -468,7 +552,7 @@
           <Property Name="Prix" Type="Int32" Nullable="false" />
           <Property Name="DateDepart" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Durees" Relationship="Self.fk_croisieres_durees" FromRole="Croisieres" ToRole="Durees" />
           <NavigationProperty Name="Ports" Relationship="Self.fk_croisieres_ports" FromRole="Croisieres" ToRole="Ports" />
           <NavigationProperty Name="Promos" Relationship="Self.fk_croisieres_promos" FromRole="Croisieres" ToRole="Promos" />
@@ -505,6 +589,7 @@
           <Property Name="Nom" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Regions" Relationship="Self.fk_pays_pays" FromRole="Pays" ToRole="Regions" />
           <NavigationProperty Name="Ports" Relationship="Self.fk_ports_pays" FromRole="Pays" ToRole="Ports" />
+          <NavigationProperty Name="Adresses" Relationship="Form112Model.fk_adresses_pays" FromRole="Pays" ToRole="Adresses" />
         </EntityType>
         <EntityType Name="Photos">
           <Key>
@@ -551,34 +636,6 @@
           <Property Name="Libelle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Croisieres" Relationship="Self.fk_croisieres_themes" FromRole="Themes" ToRole="Croisieres" />
         </EntityType>
-        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserClaims">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserLogins">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_croisieres_durees">
           <End Role="Durees" Type="Self.Durees" Multiplicity="1" />
           <End Role="Croisieres" Type="Self.Croisieres" Multiplicity="*" />
@@ -663,16 +720,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="AspNetUserRoles">
-          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
-        </Association>
         <EntityContainer Name="Form112Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
-          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
-          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
-          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
-          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
           <EntitySet Name="Croisieres" EntityType="Self.Croisieres" />
           <EntitySet Name="Durees" EntityType="Self.Durees" />
           <EntitySet Name="LogAction" EntityType="Self.LogAction" />
@@ -682,14 +730,6 @@
           <EntitySet Name="Promos" EntityType="Self.Promos" />
           <EntitySet Name="Regions" EntityType="Self.Regions" />
           <EntitySet Name="Themes" EntityType="Self.Themes" />
-          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
-          </AssociationSet>
           <AssociationSet Name="fk_croisieres_durees" Association="Self.fk_croisieres_durees">
             <End Role="Durees" EntitySet="Durees" />
             <End Role="Croisieres" EntitySet="Croisieres" />
@@ -718,7 +758,39 @@
             <End Role="Pays" EntitySet="Pays" />
             <End Role="Ports" EntitySet="Ports" />
           </AssociationSet>
-          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+          <EntitySet Name="C__MigrationHistory" EntityType="Form112Model.C__MigrationHistory" />
+          <EntitySet Name="Adresses" EntityType="Form112Model.Adresses" />
+          <EntitySet Name="AspNetRoles" EntityType="Form112Model.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Form112Model.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Form112Model.AspNetUserLogins" />
+          <EntitySet Name="AspNetUsers" EntityType="Form112Model.AspNetUsers" />
+          <EntitySet Name="ProduitTracking" EntityType="Form112Model.ProduitTracking" />
+          <EntitySet Name="Utilisateurs" EntityType="Form112Model.Utilisateurs" />
+          <AssociationSet Name="fk_adresses_pays" Association="Form112Model.fk_adresses_pays">
+            <End Role="Pays" EntitySet="Pays" />
+            <End Role="Adresses" EntitySet="Adresses" />
+          </AssociationSet>
+          <AssociationSet Name="fk_utilisateurs_adresses" Association="Form112Model.fk_utilisateurs_adresses">
+            <End Role="Adresses" EntitySet="Adresses" />
+            <End Role="Utilisateurs" EntitySet="Utilisateurs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Form112Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Form112Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="fk_utilisateurs_aspNetUsers" Association="Form112Model.fk_utilisateurs_aspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Utilisateurs" EntitySet="Utilisateurs" />
+          </AssociationSet>
+          <AssociationSet Name="fk_utilisateurs_croisieres" Association="Form112Model.fk_utilisateurs_croisieres">
+            <End Role="Croisieres" EntitySet="Croisieres" />
+            <End Role="Utilisateurs" EntitySet="Utilisateurs" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Form112Model.AspNetUserRoles">
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
@@ -732,11 +804,47 @@
             <End Role="Utilisateurs" EntitySet="Utilisateurs" />
           </AssociationSet>
         </EntityContainer>
+<<<<<<< HEAD
         <EntityType Name="Utilisateurs">
+=======
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Adresses">
+          <Key>
+            <PropertyRef Name="IdAdresse" />
+          </Key>
+          <Property Name="IdAdresse" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ligne1" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="Ligne2" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="Ligne3" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="CodePostal" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="IdPays" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Pays" Relationship="Form112Model.fk_adresses_pays" FromRole="Adresses" ToRole="Pays" />
+          <NavigationProperty Name="Utilisateurs" Relationship="Form112Model.fk_utilisateurs_adresses" FromRole="Adresses" ToRole="Utilisateurs" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Form112Model.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+>>>>>>> origin/master
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+<<<<<<< HEAD
           <Property Name="DateInscription" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="LastConnection" Type="DateTime" Precision="7" />
           <Property Name="IdUtilisateur" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
@@ -749,12 +857,134 @@
         <Association Name="fk_utilisateurs_aspNetUsers">
           <End Type="Form112Model.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
           <End Type="Form112Model.Utilisateurs" Role="Utilisateurs" Multiplicity="*" />
+=======
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Form112Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Form112Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Form112Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Form112Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="Utilisateurs" Relationship="Form112Model.fk_utilisateurs_aspNetUsers" FromRole="AspNetUsers" ToRole="Utilisateurs" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Form112Model.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="ProduitTracking">
+          <Key>
+            <PropertyRef Name="IdProduitTracking" />
+          </Key>
+          <Property Name="IdProduitTracking" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProduit" Type="Int32" Nullable="false" />
+          <Property Name="DatePT" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Utilisateurs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="IdUtilisateur" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateInscription" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="LastConnection" Type="DateTime" Precision="7" />
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Nom" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Prenom" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="IdCroisiere" Type="Int32" />
+          <Property Name="IdAdresse" Type="Int32" />
+          <NavigationProperty Name="Adresses" Relationship="Form112Model.fk_utilisateurs_adresses" FromRole="Utilisateurs" ToRole="Adresses" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Form112Model.fk_utilisateurs_aspNetUsers" FromRole="Utilisateurs" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Croisieres" Relationship="Form112Model.fk_utilisateurs_croisieres" FromRole="Utilisateurs" ToRole="Croisieres" />
+        </EntityType>
+        <Association Name="fk_adresses_pays">
+          <End Type="Form112Model.Pays" Role="Pays" Multiplicity="1" />
+          <End Type="Form112Model.Adresses" Role="Adresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pays">
+              <PropertyRef Name="CodeIso3" />
+            </Principal>
+            <Dependent Role="Adresses">
+              <PropertyRef Name="IdPays" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_utilisateurs_adresses">
+          <End Type="Form112Model.Adresses" Role="Adresses" Multiplicity="0..1" />
+          <End Type="Form112Model.Utilisateurs" Role="Utilisateurs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adresses">
+              <PropertyRef Name="IdAdresse" />
+            </Principal>
+            <Dependent Role="Utilisateurs">
+              <PropertyRef Name="IdAdresse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="Form112Model.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Form112Model.AspNetUserClaims" Role="AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="Form112Model.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Form112Model.AspNetUserLogins" Role="AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_utilisateurs_aspNetUsers">
+          <End Type="Form112Model.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
+          <End Type="Form112Model.Utilisateurs" Role="Utilisateurs" Multiplicity="0..1" />
+>>>>>>> origin/master
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Utilisateurs">
+<<<<<<< HEAD
               <PropertyRef Name="IdUtilisateur" />
+=======
+              <PropertyRef Name="Id" />
+>>>>>>> origin/master
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -770,67 +1000,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+<<<<<<< HEAD
+=======
+        <Association Name="AspNetUserRoles">
+          <End Type="Form112Model.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
+          <End Type="Form112Model.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
+        </Association>
+>>>>>>> origin/master
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Form112ModelStoreContainer" CdmEntityContainer="Form112Entities">
-          <EntitySetMapping Name="C__MigrationHistory">
-            <EntityTypeMapping TypeName="Form112Model.C__MigrationHistory">
-              <MappingFragment StoreEntitySet="__MigrationHistory">
-                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
-                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
-                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetRoles">
-            <EntityTypeMapping TypeName="Form112Model.AspNetRoles">
-              <MappingFragment StoreEntitySet="AspNetRoles">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUserClaims">
-            <EntityTypeMapping TypeName="Form112Model.AspNetUserClaims">
-              <MappingFragment StoreEntitySet="AspNetUserClaims">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
-                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUserLogins">
-            <EntityTypeMapping TypeName="Form112Model.AspNetUserLogins">
-              <MappingFragment StoreEntitySet="AspNetUserLogins">
-                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
-                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUsers">
-            <EntityTypeMapping TypeName="Form112Model.AspNetUsers">
-              <MappingFragment StoreEntitySet="AspNetUsers">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
-                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
-                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
-                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
-                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
-                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Croisieres">
             <EntityTypeMapping TypeName="Form112Model.Croisieres">
               <MappingFragment StoreEntitySet="Croisieres">
@@ -920,12 +1102,102 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="Form112Model.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Adresses">
+            <EntityTypeMapping TypeName="Form112Model.Adresses">
+              <MappingFragment StoreEntitySet="Adresses">
+                <ScalarProperty Name="IdPays" ColumnName="IdPays" />
+                <ScalarProperty Name="CodePostal" ColumnName="CodePostal" />
+                <ScalarProperty Name="Ligne3" ColumnName="Ligne3" />
+                <ScalarProperty Name="Ligne2" ColumnName="Ligne2" />
+                <ScalarProperty Name="Ligne1" ColumnName="Ligne1" />
+                <ScalarProperty Name="IdAdresse" ColumnName="IdAdresse" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="Form112Model.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="Form112Model.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="Form112Model.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="Form112Model.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProduitTracking">
+            <EntityTypeMapping TypeName="Form112Model.ProduitTracking">
+              <MappingFragment StoreEntitySet="ProduitTracking">
+                <ScalarProperty Name="DatePT" ColumnName="DatePT" />
+                <ScalarProperty Name="IdProduit" ColumnName="IdProduit" />
+                <ScalarProperty Name="IdProduitTracking" ColumnName="IdProduitTracking" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Utilisateurs">
+            <EntityTypeMapping TypeName="Form112Model.Utilisateurs">
+              <MappingFragment StoreEntitySet="Utilisateurs">
+                <ScalarProperty Name="IdAdresse" ColumnName="IdAdresse" />
+                <ScalarProperty Name="IdCroisiere" ColumnName="IdCroisiere" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LastConnection" ColumnName="LastConnection" />
+                <ScalarProperty Name="DateInscription" ColumnName="DateInscription" />
+                <ScalarProperty Name="IdUtilisateur" ColumnName="IdUtilisateur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <AssociationSetMapping Name="AspNetUserRoles" TypeName="Form112Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
-            <EndProperty Name="AspNetRoles">
-              <ScalarProperty Name="Id" ColumnName="RoleId" />
-            </EndProperty>
             <EndProperty Name="AspNetUsers">
               <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
           <EntitySetMapping Name="Utilisateurs">

@@ -1,0 +1,61 @@
+--Creation de Tables "Utilisateurs" et "Adresses"--
+
+CREATE TABLE ProduitTracking ( 
+	IdProduitTracking int not null IDENTITY,
+	IdProduit         int NOT NULL ,
+	DatePT datetime not null,
+	CONSTRAINT Pk_ProduitTracking PRIMARY KEY ( IdProduitTracking )
+ );
+
+CREATE TABLE Adresses ( 
+	IdAdresse            int NOT NULL   IDENTITY,
+	Ligne1               varchar(36) NOT NULL   ,
+	Ligne2               varchar(36)    ,
+	Ligne3               varchar(36)    ,
+	CodePostal           varchar(10)    ,
+	IdPays               char(3)  not null ,
+	CONSTRAINT Pk_Adresses PRIMARY KEY ( IdAdresse )
+ );
+
+CREATE INDEX idx_Adresses ON Adresses ( IdPays );
+
+ALTER TABLE Adresses ADD CONSTRAINT fk_adresses_pays FOREIGN KEY ( IdPays ) REFERENCES Pays( CodeIso3 ) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+CREATE TABLE [dbo].[Utilisateurs](
+	[IdUtilisateur] [int] IDENTITY(1,1) NOT NULL,
+	[DateInscription] [datetime2](7) NOT NULL,
+	[LastConnection] [datetime2](7) NULL,
+	[Id] nvarchar(128) NOT NULL,
+	Nom                  nvarchar(40) NOT NULL   ,
+	Prenom                  nvarchar(40) NOT NULL   ,
+	IdCroisiere    int NULL,
+	IdAdresse int null, 
+ CONSTRAINT [Pk_Utilisateur] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[Utilisateurs]  WITH CHECK ADD  CONSTRAINT [fk_utilisateurs_aspNetUsers] FOREIGN KEY([Id])
+REFERENCES [dbo].[AspNetUsers] ([Id])
+GO
+
+ALTER TABLE [dbo].[Utilisateurs] CHECK CONSTRAINT [fk_utilisateurs_aspNetUsers]
+GO
+
+ALTER TABLE [dbo].[Utilisateurs]  WITH CHECK ADD  CONSTRAINT [fk_utilisateurs_croisieres] FOREIGN KEY([IdCroisiere])
+REFERENCES [dbo].[Croisieres] ([IdCroisiere])
+GO
+
+ALTER TABLE [dbo].[Utilisateurs] CHECK CONSTRAINT [fk_utilisateurs_croisieres]
+GO
+
+ALTER TABLE [dbo].[Utilisateurs]  WITH CHECK ADD  CONSTRAINT [fk_utilisateurs_adresses] FOREIGN KEY([IdAdresse])
+REFERENCES [dbo].[Adresses] ([IdAdresse])
+GO
+
+ALTER TABLE [dbo].[Utilisateurs] CHECK CONSTRAINT [fk_utilisateurs_adresses]
+GO

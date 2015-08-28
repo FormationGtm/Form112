@@ -37,6 +37,7 @@ namespace DataLayer.Model
     
         public virtual ICollection<AspNetUserClaims> AspNetUserClaims { get; set; }
         public virtual ICollection<AspNetUserLogins> AspNetUserLogins { get; set; }
+        public virtual Utilisateurs Utilisateurs { get; set; }
         public virtual ICollection<AspNetRoles> AspNetRoles { get; set; }
         public virtual ICollection<Utilisateurs> Utilisateurs { get; set; }
     }
