@@ -1,7 +1,17 @@
-﻿
+﻿@model List<DataLayer.Model.Croisieres>
 @{
-    ViewBag.Title = "Promotions";
+    ViewBag.Title = "Index";
 }
 
-<h2>Promotions</h2>
+<h2>Nos promotions</h2>
 
+<div class="row">
+    @foreach (var item in @Model)
+    {
+        <div class="col-sm-4">
+            @Html.Action("AllPromotions", "Promotions", new { id = item.IdCroisiere })
+        </div>
+    }
+    
+
+</div>
