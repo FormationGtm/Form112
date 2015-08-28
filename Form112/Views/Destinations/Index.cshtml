@@ -6,21 +6,22 @@
 
 @section scripts{
     <script src="~/Scripts/Shared/SharedScript.js"></script>
+    <script src="~/Scripts/Destinations/IndexScript.js"></script>
 }
 
 <div class="row">
     Destinations
 </div>
 
-    <div class="row">
-        @foreach (var croisiere in Model)
-        {
-            @Html.Action("AllCroisieres", "Destinations", new { id = croisiere.IdCroisiere })
-        }
-    </div>
-
-    @using (@Html.BeginForm("Details", "Destinations", FormMethod.Post, new { id = "idFormDestination" }))
+<div class="row">
+    @foreach (var croisiere in Model)
     {
-        <input type="hidden" id="idCroisiereChoice" name="DestinationChoice" />
+        @Html.Action("AllCroisieres", "Destinations", new { id = croisiere.IdCroisiere })
     }
+</div>
+
+@using (@Html.BeginForm("Details", "Destinations", FormMethod.Post, new { id = "idFormDestination" }))
+{
+    <input type="hidden" id="idCroisiereChoice" name="DestinationChoice" />
+}
 
