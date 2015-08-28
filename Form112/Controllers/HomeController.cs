@@ -3,10 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DataLayer.Model;
+using Form112.Infrastructure.SearchCroisiers.Option;
+using Form112.Infrastructure.SearchCroisiers.Base;
+using Form112.Infrastructure.SearchCroisiers;
+using Form112.Models;
 
-namespace Form112.Controllers {
-    public class HomeController : Controller {
-        public ActionResult Index() {
+namespace Form112.Controllers
+{
+    public class HomeController : Controller
+    {
+
+        private static Form112Entities db = new Form112Entities();
+
+        public ActionResult Index()
+        {
             return View();
         }
 
@@ -21,7 +32,32 @@ namespace Form112.Controllers {
 
             return View();
         }
+        private static List<Croisieres> GetPaysResult(HomeViewModels homeViewModel)
+        {
+            SearchBase search = new Search();
+            search = new SearchOptionPays(search, homeViewModel.PaysChoice);
+            return search.GetResult().ToList();
+        }
 
-        
+        [HttpPost]
+        public ActionResult Pays(HomeViewModels hvm)
+        {
+            return View(GetPaysResult(hvm));
+        }
+
+        [ChildActionOnly]
+        public PartialViewResult TopSixCroisieres(int idCroisiere)
+        {
+            var croisiere = db.Croisieres.Find(idCroisiere);
+            return PartialView("_DestinationPanel", croisiere);
+        }
+
+        [ChildActionOnly]
+        public PartialViewResult TopPromo()
+        {
+            var croisiere = new List<Croisieres>();
+            croisiere = db.Croisieres.Where(c => c.IdPromo.HasValue).OrderByDescending(c => c.Promos.Reduction).Take(5).ToList();
+            return PartialView("_TopPromoPanel", croisiere);
+        }
     }
 }

@@ -5,8 +5,8 @@ using System.Web;
 
 namespace Form112.Models
 {
-    public class ThemeViewModels
-    {
+	public class DestinationViewModel
+	{
         public int DestinationChoice { get; set; }
-    }
+	}
 }

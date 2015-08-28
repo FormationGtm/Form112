@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "See the beautiful";
 }
 
 @section SearchForm {
@@ -32,9 +32,9 @@
         Choissisez votre destination :
     </div>
     <div class="search-map text-center" id="idVmapWorld"></div>
-    @using (Html.BeginForm("ContinentSearch", "Home", FormMethod.Post, new { id = "idFormMap" }))
+    @using (Html.BeginForm("Pays", "Home", FormMethod.Post, new { id = "idFormMap" }))
     {
-        <input type="hidden" id="idContinentChoice" name="continentChoice" />
+        <input type="hidden" id="idPaysChoice" name="PaysChoice" />
     }
 </div>
 

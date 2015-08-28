@@ -1,0 +1,31 @@
+﻿@model DataLayer.Model.Croisieres
+@{
+    ViewBag.Title = "Détails de la croisière";
+}
+
+<div class="row">
+    <div class="col-sm-6">
+        <div data-ride="carousel" class="carousel carousel-height slide" id="carouselDetails" data-interval="5000">
+            <div role="listbox" class="carousel-inner">
+                @foreach (var item in Model.Photos)
+                {
+                    <div class="item active">
+                        <img alt="" data-src="" src="~/Uploads/Croisieres/@item.PhotoName" data-holder-rendered="true" class="img-caroussel">
+                    </div>
+                }
+            </div>
+        </div>
+
+    </div>
+    <div class="col-sm-3">
+        <div class="detailThemeCroisiere">Croisière @Model.Themes.Libelle</div>
+        <div class="detailPortDepart">Départ de @Model.Ports.Nom</div>
+        <div class="detailDureeSejour">@Model.Durees.NbJours jours</div>
+        <div class="detailDateDepart">départ le @Model.DateDepart.Date</div>
+        <div class="detailPrix">à partir de @Model.Prix €</div>
+    </div>
+    <div class="col-sm-3">
+        @Model.Description
+
+    </div>
+</div>

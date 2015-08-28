@@ -25,6 +25,11 @@ namespace DataLayer.Model
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
+        public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<Croisieres> Croisieres { get; set; }
         public virtual DbSet<Durees> Durees { get; set; }
         public virtual DbSet<LogAction> LogAction { get; set; }
@@ -34,10 +39,5 @@ namespace DataLayer.Model
         public virtual DbSet<Promos> Promos { get; set; }
         public virtual DbSet<Regions> Regions { get; set; }
         public virtual DbSet<Themes> Themes { get; set; }
-        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
-        public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
-        public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
-        public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
-        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
     }
 }

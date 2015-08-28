@@ -173,10 +173,14 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CroisieresController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CompteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\DestinationsController.cs" />
+    <Compile Include="Controllers\PromotionsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\ThemesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -194,6 +198,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\HomeViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\InscriptionViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PaysViewModels.cs" />
     <Compile Include="Models\SearchViewModel.cs" />
@@ -212,6 +217,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\body-background.png" />
     <Content Include="Content\jqvmap.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -244,6 +250,18 @@
     <Content Include="fonts\JosefinSlab\JosefinSlab-SemiBoldItalic.ttf" />
     <Content Include="fonts\JosefinSlab\JosefinSlab-Thin.ttf" />
     <Content Include="fonts\JosefinSlab\JosefinSlab-ThinItalic.ttf" />
+
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Croisieres\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Croisieres\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Croisieres\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Croisieres\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Croisieres\Index.cshtml" />
+
+    <Compile Include="Models\DestinationViewModel.cs" />
+
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\Home\Index.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
@@ -268,6 +286,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Search\Index.js" />
+    <Content Include="Scripts\Shared\SharedScript.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Vendor\DatePicker\css\bootstrap-datepicker.css" />
     <Content Include="Vendor\DatePicker\css\bootstrap-datepicker.min.css" />
@@ -367,12 +386,12 @@
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\SendCode.cshtml" />
     <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Search\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Search\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Search\Manage\Index.cshtml" />
+    <Content Include="Views\Search\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Search\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Search\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Destinations\Index.cshtml" />
@@ -382,19 +401,33 @@
     <Content Include="Views\Destinations\Details.cshtml" />
     <Content Include="Views\Themes\_CroisieresParTheme.cshtml" />
     <Content Include="Views\Promotions\Index.cshtml" />
+    <Content Include="Views\Home\Pays.cshtml" />
+    <Content Include="Views\Destinations\Details.cshtml" />
+    <Content Include="Views\Promotions\Index.cshtml" />
+    <Content Include="Views\Compte\Index.cshtml" />
+    <Content Include="Views\Compte\Inscription.cshtml" />
+    <Content Include="Views\Home\_TopPromoPanel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Search\_Index.cshtml" />
     <Content Include="Views\Search\Result.cshtml" />
     <Content Include="Views\Home\_HomeCaroussel.cshtml" />
+
     <Content Include="Views\Destinations\Details.cshtml" />
+
+    <Content Include="Views\Destinations\Destinations.cshtml" />
+ 
     <Content Include="Views\Shared\_DestinationPanel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Uploads\" />
+
+    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Views\DestinationRegion\" />
-    <Folder Include="Views\ToutesLesDetinations\" />
+
+    <Folder Include="Uploads\Bateaux\NotUsed\" />
+
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

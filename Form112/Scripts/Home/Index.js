@@ -13,15 +13,10 @@
         scaleColors: ['#b6d6ff', '#005ace'],
         selectedColor: '#c9dfaf',
         selectedRegion: null,
-        showTooltip: true
+        showTooltip: true,
+        onRegionClick: function (element, code, region) {
+            $("#idPaysChoice").val(this.id);
+            $("#idFormMap").submit();
+        }
     });
-
-    $('#idVmapWorld').bind('regionClick.jqvmap',
-    function (event, code, region) {
-        $('#idContinentChoice').val(code);
-        console.log($('#idContinentChoice').val());
-       $("#idFormMap").submit();
-    }
-);
-
 });

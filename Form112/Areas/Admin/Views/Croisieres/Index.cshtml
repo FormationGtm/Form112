@@ -1,0 +1,75 @@
+﻿@model IEnumerable<DataLayer.Model.Croisieres>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Prix)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateDepart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Photo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Durees.IdDuree)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ports.CodeIso3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Promos.IdPromo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Themes.Libelle)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prix)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateDepart)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Photo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Durees.IdDuree)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ports.CodeIso3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Promos.IdPromo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Themes.Libelle)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdCroisiere }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdCroisiere }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdCroisiere })
+        </td>
+    </tr>
+}
+
+</table>
