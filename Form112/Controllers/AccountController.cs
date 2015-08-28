@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Form112.Models;
+using DataLayer.Model;
 
 namespace Form112.Controllers
 {
@@ -17,6 +18,7 @@ namespace Form112.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private Form112Entities db = new Form112Entities();
 
         public AccountController()
         {
@@ -151,7 +153,7 @@ namespace Form112.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Prenom, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -162,8 +164,16 @@ namespace Form112.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirmez votre compte", "Confirmez votre compte en cliquant <a href=\"" + callbackUrl + "\">ici</a>");
-
-                    return RedirectToAction("Index", "Home");
+                    var utilisateur = new Utilisateurs
+                    {
+                        Nom = model.Nom,
+                        Prenom = model.Prenom,
+                        DateInscription = DateTime.Now,
+                        IdUtilisateur = user.Id
+                    };
+                    db.Utilisateurs.Add(utilisateur);
+                    db.SaveChanges();
+                    return RedirectToAction("Index", "Reservation");
                 }
                 AddErrors(result);
             }
