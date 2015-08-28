@@ -12,21 +12,21 @@ namespace DataLayer.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Pays
+    public partial class Adresses
     {
-        public Pays()
+        public Adresses()
         {
-            this.Ports = new HashSet<Ports>();
-            this.Adresses = new HashSet<Adresses>();
+            this.Utilisateurs = new HashSet<Utilisateurs>();
         }
     
-        public string CodeIso3 { get; set; }
-        public string CodeIso2 { get; set; }
-        public int IdRegion { get; set; }
-        public string Nom { get; set; }
+        public int IdAdresse { get; set; }
+        public string Ligne1 { get; set; }
+        public string Ligne2 { get; set; }
+        public string Ligne3 { get; set; }
+        public string CodePostal { get; set; }
+        public string IdPays { get; set; }
     
-        public virtual Regions Regions { get; set; }
-        public virtual ICollection<Ports> Ports { get; set; }
-        public virtual ICollection<Adresses> Adresses { get; set; }
+        public virtual Pays Pays { get; set; }
+        public virtual ICollection<Utilisateurs> Utilisateurs { get; set; }
     }
 }

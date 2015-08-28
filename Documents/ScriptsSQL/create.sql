@@ -64,7 +64,7 @@ CREATE TABLE Croisieres (
 	Prix                 int NOT NULL   ,
 	DateDepart			 Date NOT NULL   ,
 	Photo                nvarchar(50)   ,
-	Description          text NOT NULL   ,
+	Description          text ,
 	CONSTRAINT Pk_Croisieres PRIMARY KEY ( IdCroisiere )
  );
 
@@ -80,6 +80,7 @@ CREATE TABLE [dbo].[Photos](
 
 CREATE INDEX idx_Photos ON Photos ( IdCroisiere );
 
+
 ALTER TABLE Croisieres ADD CONSTRAINT fk_croisieres_themes FOREIGN KEY ( IdTheme ) REFERENCES Themes( IdTheme ) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 ALTER TABLE Croisieres ADD CONSTRAINT fk_croisieres_durees FOREIGN KEY ( IdDuree ) REFERENCES Durees( IdDuree ) ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -93,6 +94,7 @@ ALTER TABLE Pays ADD CONSTRAINT fk_pays_pays FOREIGN KEY ( IdRegion ) REFERENCES
 ALTER TABLE Photos ADD CONSTRAINT fk_photos_croisieres FOREIGN KEY ( IdCroisiere ) REFERENCES Croisieres( IdCroisiere ) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 ALTER TABLE Ports ADD CONSTRAINT fk_ports_pays FOREIGN KEY ( CodeIso3 ) REFERENCES Pays( CodeIso3 ) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
 
 --Insersion de donnes
 GO
@@ -119,19 +121,33 @@ SET IDENTITY_INSERT [dbo].[Themes] OFF
 
 
 INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('FRA', 'FR', 1, N'France')
-INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('TUR', 'TU', 1, N'Turquie')
+INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('TUR', 'TR', 1, N'Turquie')
 INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('ITA', 'IT', 1, N'Italie')
-INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('POR', 'PO', 1, N'Portugal')
-INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('GRE', 'GC', 1, N'Grece')
-INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('MAL', 'MA', 1, N'Malte')
-INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('GRN', 'GR', 2, N'Grenade')
-INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('GDL', 'GD', 2, N'Guadaloupe')
-INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('MRT', 'MR', 2, N'Martinique')
+INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('PRT', 'PT', 1, N'Portugal')
+INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('GRC', 'GR', 1, N'Grece')
+INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('MLT', 'MT', 1, N'Malte')
+INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('GRD', 'GD', 2, N'Grenade')
 INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('VEN', 'VE', 3, N'Venezuela')
-INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('BRE', 'BR', 3, N'Bresil')
+INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('BRA', 'BR', 3, N'Bresil')
 INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('ARG', 'AR', 3, N'Argentine')
 INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('AUS', 'AU', 4, N'Australie')
-INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('SEY', 'SE', 5, N'Seychelles')
+INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('SYC', 'SC', 5, N'Seychelles')
+INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('THA', 'TH', 4, N'Thailande')
+INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('IDN', 'ID', 4, N'Indonesie')
+INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('ISR', 'IL', 5, N'Israel')
+INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('NZL', 'NZ', 4, N'Nouvelle Zelande')
+INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('PAN', 'PA', 3, N'Panama')
+INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('MEX', 'MX', 3, N'Mexique')
+INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('ESP', 'ES', 1, N'Espagne')
+INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('BHS', 'BS', 2, N'Bahamas')
+INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('DOM', 'DO', 2, N'Republique Dominicaine')
+INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('CUW', 'VE', 2, N'Curacao')
+INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('ABW', 'VE', 2, N'Aruba')
+INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('DZA', 'DZ', 6, N'Algerie')
+INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('EGY', 'EG', 6, N'Egypte')
+INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('ARE', 'AE', 5, N'Emirats Arabs Unis')
+INSERT [dbo].[Pays] ([CodeIso3], [CodeIso2], [IdRegion], [Nom]) VALUES ('CHL', 'CL', 4, N'Chili')
+
 
 
 SET IDENTITY_INSERT [dbo].[Promos] ON 
@@ -165,35 +181,31 @@ SET IDENTITY_INSERT [dbo].[Durees] OFF
 SET IDENTITY_INSERT [dbo].[Ports] ON 
 INSERT [dbo].[Ports] ([IdPort], [CodeIso3],  [Nom], [Latitude], [Longitude]) VALUES (1, 'FRA', 'Marseille', 43.300508, 5.367373)
 INSERT [dbo].[Ports] ([IdPort], [CodeIso3],  [Nom], [Latitude], [Longitude]) VALUES (2, 'ITA', 'Venice', 45.438246, 12.322004)
-INSERT [dbo].[Ports] ([IdPort], [CodeIso3],  [Nom], [Latitude], [Longitude]) VALUES (3, 'POR', 'Lisbonne', 38.785215, -9.139776)
-INSERT [dbo].[Ports] ([IdPort], [CodeIso3],  [Nom], [Latitude], [Longitude]) VALUES (4, 'GDL', 'Point-a -Pitre', 16.236964, -61.536809)
-INSERT [dbo].[Ports] ([IdPort], [CodeIso3],  [Nom], [Latitude], [Longitude]) VALUES (5, 'MRT', 'Port de France', 14.616854, -61.060681)
+INSERT [dbo].[Ports] ([IdPort], [CodeIso3],  [Nom], [Latitude], [Longitude]) VALUES (3, 'PRT', 'Lisbonne', 38.785215, -9.139776)
+INSERT [dbo].[Ports] ([IdPort], [CodeIso3],  [Nom], [Latitude], [Longitude]) VALUES (4, 'FRA', 'Point-a -Pitre', 16.236964, -61.536809)
+INSERT [dbo].[Ports] ([IdPort], [CodeIso3],  [Nom], [Latitude], [Longitude]) VALUES (5, 'FRA', 'Port de France', 14.616854, -61.060681)
 INSERT [dbo].[Ports] ([IdPort], [CodeIso3],  [Nom], [Latitude], [Longitude]) VALUES (6, 'TUR', 'Istanbul', 41.008690, 28.981967)
 INSERT [dbo].[Ports] ([IdPort], [CodeIso3],  [Nom], [Latitude], [Longitude]) VALUES (7, 'FRA', 'Nice', 43.709271, 7.260027)
 INSERT [dbo].[Ports] ([IdPort], [CodeIso3],  [Nom], [Latitude], [Longitude]) VALUES (8, 'VEN', 'Margarita', 10.999217, -63.912641)
-INSERT [dbo].[Ports] ([IdPort], [CodeIso3],  [Nom], [Latitude], [Longitude]) VALUES (9, 'GRE', 'Athenes', 37.982922, 23.729756)
+INSERT [dbo].[Ports] ([IdPort], [CodeIso3],  [Nom], [Latitude], [Longitude]) VALUES (9, 'GRC', 'Athenes', 37.982922, 23.729756)
 INSERT [dbo].[Ports] ([IdPort], [CodeIso3],  [Nom], [Latitude], [Longitude]) VALUES (10, 'AUS', 'Brisbane', -27.471986, 153.057791)
+INSERT [dbo].[Ports] ([IdPort], [CodeIso3],  [Nom], [Latitude], [Longitude]) VALUES (11, 'CHL', 'Valparaiso', -33.046918, -71.614825)
+INSERT [dbo].[Ports] ([IdPort], [CodeIso3],  [Nom], [Latitude], [Longitude]) VALUES (12, 'AUS', 'Sidney', -33.868220, 151.213570)
+INSERT [dbo].[Ports] ([IdPort], [CodeIso3],  [Nom], [Latitude], [Longitude]) VALUES (13, 'MLT', 'Tas-Sliema', 10.201733, -64.638568)
+INSERT [dbo].[Ports] ([IdPort], [CodeIso3],  [Nom], [Latitude], [Longitude]) VALUES (14, 'ITA', 'Palermo', 38.111506, 13.363679)
+INSERT [dbo].[Ports] ([IdPort], [CodeIso3],  [Nom], [Latitude], [Longitude]) VALUES (15, 'EGY', 'Alexandrie', 31.227352, 29.927129)
+INSERT [dbo].[Ports] ([IdPort], [CodeIso3],  [Nom], [Latitude], [Longitude]) VALUES (16, 'DZA', 'Alger', 36.759299, 3.0666166)
+INSERT [dbo].[Ports] ([IdPort], [CodeIso3],  [Nom], [Latitude], [Longitude]) VALUES (17, 'PAN', 'Colon', 9.338327, -79.900986)
+INSERT [dbo].[Ports] ([IdPort], [CodeIso3],  [Nom], [Latitude], [Longitude]) VALUES (18, 'ABW', 'Oranjestad', 12.508684, -70.007232)
+INSERT [dbo].[Ports] ([IdPort], [CodeIso3],  [Nom], [Latitude], [Longitude]) VALUES (19, 'CUW', 'Willenstad', 12.104698, -68.931988)
+INSERT [dbo].[Ports] ([IdPort], [CodeIso3],  [Nom], [Latitude], [Longitude]) VALUES (20, 'BHS', 'Nassau', 25.065300, -77.305852)
+INSERT [dbo].[Ports] ([IdPort], [CodeIso3],  [Nom], [Latitude], [Longitude]) VALUES (21, 'ESP', 'Ibiza', 38.905425, 1.422181)
+INSERT [dbo].[Ports] ([IdPort], [CodeIso3],  [Nom], [Latitude], [Longitude]) VALUES (22, 'IDN', 'Bali', -8.741300, 115.230879)
+INSERT [dbo].[Ports] ([IdPort], [CodeIso3],  [Nom], [Latitude], [Longitude]) VALUES (23, 'THA', 'Bangkok', 13.511385, 100.437417)
+INSERT [dbo].[Ports] ([IdPort], [CodeIso3],  [Nom], [Latitude], [Longitude]) VALUES (24, 'NZL', 'Auckland', -36.847914, 174.783759)
+INSERT [dbo].[Ports] ([IdPort], [CodeIso3],  [Nom], [Latitude], [Longitude]) VALUES (25, 'DOM', 'Punta Cana', 18.611181, -68.338920)
+INSERT [dbo].[Ports] ([IdPort], [CodeIso3],  [Nom], [Latitude], [Longitude]) VALUES (26, 'MEX', 'Cancun', 21.167395, -86.808928)
+INSERT [dbo].[Ports] ([IdPort], [CodeIso3],  [Nom], [Latitude], [Longitude]) VALUES (27, 'ISR', 'Tel-Aviv', 32.085626, 34.770638)
 SET IDENTITY_INSERT [dbo].[Ports] OFF 
 
 
-SET IDENTITY_INSERT [dbo].[Croisieres] ON 
-
-INSERT [dbo].[Croisieres] ([IdCroisiere], [IdTheme], [IdDuree], [IdPromo], [IdPort], [Prix], [DateDepart], [Description])
-VALUES (1, 3, 6, null, 6, 2790, '10-01-2015', '10 jours / 9 nuits au depart de Istanbul')
-
-INSERT [dbo].[Croisieres] ([IdCroisiere], [IdTheme], [IdDuree], [IdPromo], [IdPort], [Prix], [DateDepart], [Description])
-VALUES (2, 4, 3, null, 10, 850, '11-01-2015', '7 jours / 6 nuits au depart de Brisbane vers Ile des Pines')
-
-INSERT [dbo].[Croisieres] ([IdCroisiere], [IdTheme], [IdDuree], [IdPromo], [IdPort], [Prix], [DateDepart], [Description])
-VALUES (3, 4, 4, 1, 8, 1950, '12-01-2015', '8 jours / 7 nuits au depart de Margarita')
-
-INSERT [dbo].[Croisieres] ([IdCroisiere], [IdTheme], [IdDuree], [IdPromo], [IdPort], [Prix], [DateDepart], [Description])
-VALUES (4, 5, 1, null, 1, 600, '12-23-2015', ' 5 jours / 4 nuits au depart de Marseille')
-
-INSERT [dbo].[Croisieres] ([IdCroisiere], [IdTheme], [IdDuree], [IdPromo], [IdPort], [Prix], [DateDepart], [Description])
-VALUES (5, 6, 1, null, 3, 650, '12-30-2015', '5 jours / 4 nuits au depart de Lisbonne')
-
-INSERT [dbo].[Croisieres] ([IdCroisiere], [IdTheme], [IdDuree], [IdPromo], [IdPort], [Prix], [DateDepart], [Description])
-VALUES (6, 3, 16, null, 2, 3700, '03-01-2016', '20 jours / 19 nuits au depart de Venice')
-
-SET IDENTITY_INSERT [dbo].[Croisieres] OFF 

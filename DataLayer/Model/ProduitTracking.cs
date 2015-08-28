@@ -12,21 +12,10 @@ namespace DataLayer.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Pays
+    public partial class ProduitTracking
     {
-        public Pays()
-        {
-            this.Ports = new HashSet<Ports>();
-            this.Adresses = new HashSet<Adresses>();
-        }
-    
-        public string CodeIso3 { get; set; }
-        public string CodeIso2 { get; set; }
-        public int IdRegion { get; set; }
-        public string Nom { get; set; }
-    
-        public virtual Regions Regions { get; set; }
-        public virtual ICollection<Ports> Ports { get; set; }
-        public virtual ICollection<Adresses> Adresses { get; set; }
+        public int IdProduitTracking { get; set; }
+        public int IdProduit { get; set; }
+        public System.DateTime DatePT { get; set; }
     }
 }

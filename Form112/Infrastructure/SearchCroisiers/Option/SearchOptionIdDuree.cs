@@ -34,6 +34,7 @@ namespace Form112.Infrastructure.SearchCroisiers.Option
                     break;
                 case 4:
                     dureeMini = 15;
+                    dureeMaxi = 500;
                     break;
             }
         }

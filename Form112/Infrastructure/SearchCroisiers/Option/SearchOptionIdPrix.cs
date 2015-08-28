@@ -35,6 +35,7 @@ namespace Form112.Infrastructure.SearchCroisiers.Option
                     break;
                 case 4:
                     prixMini = 5000;
+                    prixMaxi = 20000; 
                     break;
             }
         }

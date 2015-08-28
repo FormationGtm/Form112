@@ -56,6 +56,9 @@
     </Compile>
     <Compile Include="Businesslayer\Themes.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Model\Adresses.cs">
+      <DependentUpon>OpenSea.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\AspNetRoles.cs">
       <DependentUpon>OpenSea.tt</DependentUpon>
     </Compile>
@@ -104,6 +107,9 @@
     <Compile Include="Model\Ports.cs">
       <DependentUpon>OpenSea.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ProduitTracking.cs">
+      <DependentUpon>OpenSea.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Promos.cs">
       <DependentUpon>OpenSea.tt</DependentUpon>
     </Compile>
@@ -111,6 +117,9 @@
       <DependentUpon>OpenSea.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Themes.cs">
+      <DependentUpon>OpenSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Utilisateurs.cs">
       <DependentUpon>OpenSea.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
