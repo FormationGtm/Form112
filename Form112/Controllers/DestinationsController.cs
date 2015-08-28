@@ -13,7 +13,6 @@ namespace Form112.Controllers
 {
     public class DestinationsController : Controller
     {
-
         private static Form112Entities db = new Form112Entities();
 
         // GET: Detinations

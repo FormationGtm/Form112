@@ -1,0 +1,23 @@
+﻿@model DataLayer.Model.Croisieres
+
+<div class="destination-panel">
+
+    <img src="~/Pictures/imageCaroussel/@Model.Photo" alt="Alternate Text" class="panel-img" />
+    <div class="panel-header">
+        @Model.Ports.Pays.Nom
+    </div>
+    <div class="panel-main">
+        <div class="price-legend">
+            Croisières à partir de
+        </div>
+        <div class="price-body">
+            @Model.Prix <span class="currency-fr">€</span>
+        </div>
+    </div>
+    <div class="panel-end">
+        <a href="" >Voir plus...</a>
+    </div>
+    @*<div class="panel-end">
+           - @Model.Promos.Reduction Promo %
+        </div>*@
+</div>

@@ -26,7 +26,7 @@ namespace Form112.Controllers
         //}
 
 
-
+        [ChildActionOnly]
         public PartialViewResult CroisieresParTheme(int id)
         {
             var croisiere = db.Croisieres.Find(id);
@@ -34,4 +34,8 @@ namespace Form112.Controllers
         }
 
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/master
