@@ -34,8 +34,7 @@ namespace Form112.Controllers
         }
 
     }
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> origin/master
+
+

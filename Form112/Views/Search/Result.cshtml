@@ -1,35 +1,26 @@
 ﻿@model List<DataLayer.Model.Croisieres>
+
 @{
-    ViewBag.Title = "Result";
+    ViewBag.Title = "Résultat de la recherche";
 }
-<table>
 
-    <thead>
-        <tr>
-            <th>Destination</th>
-            <th>Port de départ</th>
-            <th>Date de départ</th>
-            <th>Durée</th>
-            <th>Prix</th>
-            <th>Thème</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Ports.Pays.Nom</td>
-                <td>@item.Ports.Nom</td>
-                <td>@item.DateDepart.Day/@item.DateDepart.Month/@item.DateDepart.Year</td>
-                <td>@item.Durees.NbJours</td>
-                <td>@item.Prix</td>
-                <td>@item.Themes.Libelle</td>
-                <td>@item.Description</td>
-            </tr>
-        }
-</tbody>
+@section scripts{
+    <script src="~/Scripts/Shared/SharedScript.js"></script>
+}
 
+<div class="row">
+    Résultat
+</div>
 
+<div class="row">
+    @foreach (var croisiere in Model)
+    {
+        @Html.Action("AllCroisieres", "Destinations", new { id = croisiere.IdCroisiere })
+    }
+</div>
 
-</table>
+@using (@Html.BeginForm("Details", "Destinations", FormMethod.Post, new { id = "idFormDestination" }))
+{
+    <input type="hidden" id="idCroisiereChoice" name="DestinationChoice" />
+}
+
