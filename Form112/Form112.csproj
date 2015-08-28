@@ -186,15 +186,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Filters\CountViewFilterAttribute.cs" />
     <Compile Include="Infrastructure\Filters\NlogFilterAttribute.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionDureeMaxi.cs" />
-    <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionDureeMini.cs" />
+    <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionIdDuree.cs" />
     <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionPays.cs" />
-    <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionPrixMaxi.cs" />
-    <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionPrixMini.cs" />
+    <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionIdPrix.cs" />
     <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionTheme.cs" />
+    <Compile Include="Infrastructure\Utilitaires\ListesChoix.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\HomeViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -396,6 +396,11 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Destinations\Index.cshtml" />
     <Content Include="Views\Themes\Index.cshtml" />
+    <Content Include="Views\Destinations\_DestinationPanel.cshtml" />
+    <Content Include="Views\Themes\_ThemePanel.cshtml" />
+    <Content Include="Views\Destinations\Details.cshtml" />
+    <Content Include="Views\Themes\_CroisieresParTheme.cshtml" />
+    <Content Include="Views\Promotions\Index.cshtml" />
     <Content Include="Views\Home\Pays.cshtml" />
     <Content Include="Views\Destinations\Details.cshtml" />
     <Content Include="Views\Promotions\Index.cshtml" />
@@ -407,11 +412,16 @@
     <Content Include="Views\Search\_Index.cshtml" />
     <Content Include="Views\Search\Result.cshtml" />
     <Content Include="Views\Home\_HomeCaroussel.cshtml" />
+
+    <Content Include="Views\Destinations\Details.cshtml" />
+
     <Content Include="Views\Destinations\Destinations.cshtml" />
+ 
     <Content Include="Views\Shared\_DestinationPanel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Uploads\" />
 
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Views\DestinationRegion\" />
