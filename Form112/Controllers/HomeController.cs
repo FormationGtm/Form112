@@ -37,7 +37,12 @@ namespace Form112.Controllers
         {
             var listePortDestinations = db.Croisieres
                 .Where(crs => crs.IdPort == id)
-                .Select(crs => new {crs.IdCroisiere, crs.Ports.Pays.Nom, crs.Prix, photo = crs.Photos.FirstOrDefault(), crs.Promos.Reduction }).ToList();
+                .Select(crs => new {idCrs = crs.IdCroisiere, 
+                                    PaysName = crs.Ports.Pays.Nom, 
+                                    Prix = crs.Prix, 
+                                    Photo = crs.Photos.FirstOrDefault(), 
+                                    Reduc = crs.Promos.Reduction })
+                .ToList();
 
             return Json(listePortDestinations, JsonRequestBehavior.AllowGet);
         }

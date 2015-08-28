@@ -4,7 +4,8 @@
 }
 
 @section scripts{
-    <script src="~/Scripts/Shared/SharedScript.js"></script>
+<script src="~/Scripts/Shared/SharedScript.js"></script>
+    <script src="~/Scripts/Themes/IndexThemesScript.js"></script>
 }
 
 @foreach (var theme in @Model)
@@ -13,7 +14,7 @@
         <div class="theme-header">@theme.Libelle</div>
         @foreach (var crs in theme.Croisieres)
         {
-            @Html.Action("CroisieresParTheme", "Themes", new { id = crs.IdCroisiere})
+            @Html.Action("CroisieresParTheme", "Themes", new { id = crs.IdCroisiere })
         }
     </div>
 }

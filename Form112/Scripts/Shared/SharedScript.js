@@ -1,4 +1,5 @@
-﻿$(function(){
+﻿function manageShadow() {
+    console.log("manageShadow()");
     $(".destination-panel").mouseenter(function () {
         $(this).addClass('shadow');//.css({ "margin-bottom": "5px" });
     });
@@ -10,7 +11,7 @@
         var idClicked = this.id;
         console.log(idClicked);
         $("#idCroisiereChoice").val(idClicked);
-        console.log( $("#idCroisiereChoice").val());
+        console.log($("#idCroisiereChoice").val());
         $("#idFormDestination").submit();
     });
-});
+}
