@@ -1,6 +1,25 @@
+<<<<<<< HEAD
 ﻿@model List<DataLayer.Model.Croisieres>
+=======
+﻿@model Form112.Models.SearchViewModel
+>>>>>>> origin/master
+
 @{
-    ViewBag.Title = "Result";
+    ViewBag.Title = "Résultat de la recherche";
+}
+
+@section scripts{
+    <script src="~/Scripts/Shared/SharedScript.js"></script>
+}
+<<<<<<< HEAD
+
+<div class="row">
+    Résultat
+</div>
+=======
+
+@section SearchForm {
+    @Html.Action("Index", "Search", new { ssvm = Model.XmlSearchViewModel });
 }
 <table>
 
@@ -16,7 +35,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Result)
         {
             <tr>
                 <td>@item.Ports.Pays.Nom</td>
@@ -29,7 +48,17 @@
             </tr>
         }
 </tbody>
+>>>>>>> origin/master
 
+<div class="row">
+    @foreach (var croisiere in Model)
+    {
+        @Html.Action("AllCroisieres", "Destinations", new { id = croisiere.IdCroisiere })
+    }
+</div>
 
+@using (@Html.BeginForm("Details", "Destinations", FormMethod.Post, new { id = "idFormDestination" }))
+{
+    <input type="hidden" id="idCroisiereChoice" name="DestinationChoice" />
+}
 
-</table>
