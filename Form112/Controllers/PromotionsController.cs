@@ -24,5 +24,14 @@ namespace Form112.Controllers
             var croisieres = db.Croisieres.Find(id);
             return PartialView("_DestinationPanel", croisieres);
         }
+
+
+        [ChildActionOnly]
+        public PartialViewResult TopPromo()
+        {
+            var croisiere = new List<Croisieres>();
+            croisiere = db.Croisieres.Where(c => c.IdPromo.HasValue).OrderByDescending(c => c.Promos.Reduction).Take(5).ToList();
+            return PartialView("_TopPromoPanel", croisiere);
+        }
     }
 }

@@ -7,7 +7,7 @@
     <div class="col-sm-6">
         <div data-ride="carousel" class="carousel carousel-height slide" id="carouselDetails" data-interval="5000">
             <div role="listbox" class="carousel-inner">
-                @foreach (var item in Model.Photos)
+                @foreach (var item in @Model.Photos)
                 {
                     <div class="item active">
                         <img alt="" data-src="" src="~/Uploads/Croisieres/@item.PhotoName" data-holder-rendered="true" class="img-caroussel">
@@ -29,3 +29,6 @@
 
     </div>
 </div>
+<p>
+    @Html.ActionLink("Réserver cette croisière","Index", "Reservation")
+</p>

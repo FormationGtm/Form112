@@ -29,6 +29,9 @@
         <AssociationConnector Association="Form112Model.fk_pays_pays" ManuallyRouted="false" />
         <AssociationConnector Association="Form112Model.fk_ports_pays" ManuallyRouted="false" />
         <AssociationConnector Association="Form112Model.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Form112Model.Utilisateurs" Width="1.5" PointX="12.25" PointY="2.375" />
+        <AssociationConnector Association="Form112Model.fk_utilisateurs_aspNetUsers" />
+        <AssociationConnector Association="Form112Model.fk_utilisateurs_croisieres" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

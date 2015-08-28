@@ -15,16 +15,9 @@ namespace Form112.Controllers
         // GET: Themes
         public ActionResult Index()
         {
-            var listeThemes = db.Themes.ToList(); 
-            return View (listeThemes);
+            var listeThemes = db.Themes.ToList();
+            return View(listeThemes);
         }
-
-        //public ActionResult Details(string idCroisiere)
-        //{
-        //    Croisieres crois = new Croisieres(idCroisiere);
-        //    return View (crois);
-        //}
-
 
         [ChildActionOnly]
         public PartialViewResult CroisieresParTheme(int id)
@@ -34,8 +27,4 @@ namespace Form112.Controllers
         }
 
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/master

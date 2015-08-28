@@ -113,6 +113,9 @@
     <Compile Include="Model\Themes.cs">
       <DependentUpon>OpenSea.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Utilisateurs.cs">
+      <DependentUpon>OpenSea.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

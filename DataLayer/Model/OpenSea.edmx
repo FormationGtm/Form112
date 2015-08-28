@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Form112Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Form112Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -146,6 +146,18 @@
           <Property Name="IdTheme" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Libelle" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="Utilisateurs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateInscription" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="LastConnection" Type="datetime2" Precision="7" />
+          <Property Name="IdUtilisateur" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Prenom" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="IdCroisiere" Type="int" />
+        </EntityType>
         <Association Name="fk_croisieres_durees">
           <End Role="Durees" Type="Self.Durees" Multiplicity="1" />
           <End Role="Croisieres" Type="Self.Croisieres" Multiplicity="*" />
@@ -286,6 +298,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_utilisateurs_aspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Utilisateurs" Type="Self.Utilisateurs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Utilisateurs">
+              <PropertyRef Name="IdUtilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_utilisateurs_croisieres">
+          <End Role="Croisieres" Type="Self.Croisieres" Multiplicity="0..1" />
+          <End Role="Utilisateurs" Type="Self.Utilisateurs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Croisieres">
+              <PropertyRef Name="IdCroisiere" />
+            </Principal>
+            <Dependent Role="Utilisateurs">
+              <PropertyRef Name="IdCroisiere" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Form112ModelStoreContainer">
           <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
@@ -302,6 +338,7 @@
           <EntitySet Name="Promos" EntityType="Self.Promos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Regions" EntityType="Self.Regions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Themes" EntityType="Self.Themes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Utilisateurs" EntityType="Self.Utilisateurs" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="fk_croisieres_durees" Association="Self.fk_croisieres_durees">
             <End Role="Durees" EntitySet="Durees" />
             <End Role="Croisieres" EntitySet="Croisieres" />
@@ -346,9 +383,16 @@
             <End Role="Pays" EntitySet="Pays" />
             <End Role="Ports" EntitySet="Ports" />
           </AssociationSet>
+          <AssociationSet Name="fk_utilisateurs_aspNetUsers" Association="Self.fk_utilisateurs_aspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Utilisateurs" EntitySet="Utilisateurs" />
+          </AssociationSet>
+          <AssociationSet Name="fk_utilisateurs_croisieres" Association="Self.fk_utilisateurs_croisieres">
+            <End Role="Croisieres" EntitySet="Croisieres" />
+            <End Role="Utilisateurs" EntitySet="Utilisateurs" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Form112Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -410,6 +454,7 @@
           <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
           <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+          <NavigationProperty Name="Utilisateurs" Relationship="Form112Model.fk_utilisateurs_aspNetUsers" FromRole="AspNetUsers" ToRole="Utilisateurs" />
         </EntityType>
         <EntityType Name="Croisieres">
           <Key>
@@ -429,6 +474,7 @@
           <NavigationProperty Name="Promos" Relationship="Self.fk_croisieres_promos" FromRole="Croisieres" ToRole="Promos" />
           <NavigationProperty Name="Themes" Relationship="Self.fk_croisieres_themes" FromRole="Croisieres" ToRole="Themes" />
           <NavigationProperty Name="Photos" Relationship="Self.fk_photos_croisieres" FromRole="Croisieres" ToRole="Photos" />
+          <NavigationProperty Name="Utilisateurs" Relationship="Form112Model.fk_utilisateurs_croisieres" FromRole="Croisieres" ToRole="Utilisateurs" />
         </EntityType>
         <EntityType Name="Durees">
           <Key>
@@ -676,7 +722,54 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <EntitySet Name="Utilisateurs" EntityType="Form112Model.Utilisateurs" />
+          <AssociationSet Name="fk_utilisateurs_aspNetUsers" Association="Form112Model.fk_utilisateurs_aspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Utilisateurs" EntitySet="Utilisateurs" />
+          </AssociationSet>
+          <AssociationSet Name="fk_utilisateurs_croisieres" Association="Form112Model.fk_utilisateurs_croisieres">
+            <End Role="Croisieres" EntitySet="Croisieres" />
+            <End Role="Utilisateurs" EntitySet="Utilisateurs" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Utilisateurs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateInscription" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="LastConnection" Type="DateTime" Precision="7" />
+          <Property Name="IdUtilisateur" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Nom" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Prenom" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="IdCroisiere" Type="Int32" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Form112Model.fk_utilisateurs_aspNetUsers" FromRole="Utilisateurs" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Croisieres" Relationship="Form112Model.fk_utilisateurs_croisieres" FromRole="Utilisateurs" ToRole="Croisieres" />
+        </EntityType>
+        <Association Name="fk_utilisateurs_aspNetUsers">
+          <End Type="Form112Model.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
+          <End Type="Form112Model.Utilisateurs" Role="Utilisateurs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Utilisateurs">
+              <PropertyRef Name="IdUtilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_utilisateurs_croisieres">
+          <End Type="Form112Model.Croisieres" Role="Croisieres" Multiplicity="0..1" />
+          <End Type="Form112Model.Utilisateurs" Role="Utilisateurs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Croisieres">
+              <PropertyRef Name="IdCroisiere" />
+            </Principal>
+            <Dependent Role="Utilisateurs">
+              <PropertyRef Name="IdCroisiere" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -835,6 +928,19 @@
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Utilisateurs">
+            <EntityTypeMapping TypeName="Form112Model.Utilisateurs">
+              <MappingFragment StoreEntitySet="Utilisateurs">
+                <ScalarProperty Name="IdCroisiere" ColumnName="IdCroisiere" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="IdUtilisateur" ColumnName="IdUtilisateur" />
+                <ScalarProperty Name="LastConnection" ColumnName="LastConnection" />
+                <ScalarProperty Name="DateInscription" ColumnName="DateInscription" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
