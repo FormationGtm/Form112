@@ -16,8 +16,8 @@ namespace DataLayer.Model
     {
         public Pays()
         {
-            this.Ports = new HashSet<Ports>();
             this.Adresses = new HashSet<Adresses>();
+            this.Ports = new HashSet<Ports>();
         }
     
         public string CodeIso3 { get; set; }
@@ -25,8 +25,8 @@ namespace DataLayer.Model
         public int IdRegion { get; set; }
         public string Nom { get; set; }
     
+        public virtual ICollection<Adresses> Adresses { get; set; }
         public virtual Regions Regions { get; set; }
         public virtual ICollection<Ports> Ports { get; set; }
-        public virtual ICollection<Adresses> Adresses { get; set; }
     }
 }

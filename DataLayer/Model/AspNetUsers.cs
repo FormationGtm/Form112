@@ -19,7 +19,6 @@ namespace DataLayer.Model
             this.AspNetUserClaims = new HashSet<AspNetUserClaims>();
             this.AspNetUserLogins = new HashSet<AspNetUserLogins>();
             this.AspNetRoles = new HashSet<AspNetRoles>();
-            this.Utilisateurs = new HashSet<Utilisateurs>();
         }
     
         public string Id { get; set; }
@@ -39,6 +38,5 @@ namespace DataLayer.Model
         public virtual ICollection<AspNetUserLogins> AspNetUserLogins { get; set; }
         public virtual Utilisateurs Utilisateurs { get; set; }
         public virtual ICollection<AspNetRoles> AspNetRoles { get; set; }
-        public virtual ICollection<Utilisateurs> Utilisateurs { get; set; }
     }
 }

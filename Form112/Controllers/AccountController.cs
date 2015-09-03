@@ -169,7 +169,7 @@ namespace Form112.Controllers
                         Nom = model.Nom,
                         Prenom = model.Prenom,
                         DateInscription = DateTime.Now,
-                        IdUtilisateur = user.Id
+                        Id = user.Id
                     };
                     db.Utilisateurs.Add(utilisateur);
                     db.SaveChanges();
