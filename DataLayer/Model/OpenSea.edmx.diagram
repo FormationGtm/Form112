@@ -36,6 +36,9 @@
         <AssociationConnector Association="Form112Model.fk_pays_pays" ManuallyRouted="false" />
         <AssociationConnector Association="Form112Model.fk_ports_pays" ManuallyRouted="false" />
         <AssociationConnector Association="Form112Model.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Form112Model.Commentaires" Width="1.5" PointX="9.75" PointY="10.375" />
+        <AssociationConnector Association="Form112Model.fk_commentaires_commentaires" />
+        <AssociationConnector Association="Form112Model.fk_commentaires_croisieres" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

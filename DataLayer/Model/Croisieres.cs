@@ -18,6 +18,7 @@ namespace DataLayer.Model
         {
             this.Photos = new HashSet<Photos>();
             this.Utilisateurs = new HashSet<Utilisateurs>();
+            this.Commentaires = new HashSet<Commentaires>();
         }
     
         public int IdCroisiere { get; set; }
@@ -36,5 +37,6 @@ namespace DataLayer.Model
         public virtual Themes Themes { get; set; }
         public virtual ICollection<Photos> Photos { get; set; }
         public virtual ICollection<Utilisateurs> Utilisateurs { get; set; }
+        public virtual ICollection<Commentaires> Commentaires { get; set; }
     }
 }
