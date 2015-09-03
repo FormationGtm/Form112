@@ -71,6 +71,9 @@
     <Compile Include="Model\AspNetUsers.cs">
       <DependentUpon>OpenSea.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Commentaires.cs">
+      <DependentUpon>OpenSea.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Croisieres.cs">
       <DependentUpon>OpenSea.tt</DependentUpon>
     </Compile>
