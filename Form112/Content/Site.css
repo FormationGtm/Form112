@@ -168,9 +168,13 @@ footer {
     height: 350px;
 }
 
+#idTemplateCroisiere {
+    visibility : hidden;
+}
+
 .wrapper-panel {
-    margin: 0;
-    padding: 0;
+    margin: 0 ;
+    padding: 0 10px;
 }
 
 .destination-panel {

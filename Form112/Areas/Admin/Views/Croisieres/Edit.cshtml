@@ -1,15 +1,15 @@
 ﻿@model DataLayer.Model.Croisieres
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Editer une croisière";
 }
 
-<h2>Edit</h2>
+<h2>Editer une croisière</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Croisieres</h4>
         <hr />
@@ -17,7 +17,7 @@
         @Html.HiddenFor(model => model.IdCroisiere)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IdTheme, "IdTheme", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IdTheme, "Thème", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("IdTheme", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IdTheme, "", new { @class = "text-danger" })
@@ -25,7 +25,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IdDuree, "IdDuree", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IdDuree, "Durée (en jours)", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("IdDuree", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IdDuree, "", new { @class = "text-danger" })
@@ -33,7 +33,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IdPromo, "IdPromo", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IdPromo, "Promo (en %)", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("IdPromo", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IdPromo, "", new { @class = "text-danger" })
@@ -41,7 +41,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IdPort, "IdPort", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IdPort, "Port de départ", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("IdPort", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IdPort, "", new { @class = "text-danger" })
@@ -57,7 +57,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DateDepart, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DateDepart, "Date de départ", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.DateDepart, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DateDepart, "", new { @class = "text-danger" })
@@ -67,8 +67,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Photo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Photo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })
+                <input type="file" name="Photo" class="btn btn-default" />
             </div>
         </div>
 
@@ -82,7 +81,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Sauvegarder" class="btn btn-default" />
             </div>
         </div>
     </div>

@@ -7,7 +7,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Créer une nouvelle croisière", "Create")
 </p>
 <table class="table">
     <tr>
@@ -24,13 +24,13 @@
             @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Durees.IdDuree)
+            @Html.DisplayNameFor(model => model.Durees.NbJours)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Ports.CodeIso3)
+            @Html.DisplayNameFor(model => model.Ports.Nom)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Promos.IdPromo)
+            @Html.DisplayNameFor(model => model.Promos.Reduction)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Themes.Libelle)
@@ -38,38 +38,39 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Prix)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateDepart)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Photo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Durees.IdDuree)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ports.CodeIso3)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Promos.IdPromo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Themes.Libelle)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdCroisiere }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdCroisiere }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdCroisiere })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prix)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateDepart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Photo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Durees.NbJours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ports.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Promos.Reduction)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Themes.Libelle)
+            </td>
+            <td>
+                @Html.ActionLink("Editer", "Edit", new { id = item.IdCroisiere }) |
+                @Html.ActionLink("Détails", "Details", new { id = item.IdCroisiere }) |
+                @Html.ActionLink("Supprimer", "Delete", new { id = item.IdCroisiere })
+            </td>
+        </tr>
+    }
 
 </table>

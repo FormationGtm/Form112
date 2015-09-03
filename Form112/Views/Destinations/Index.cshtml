@@ -5,8 +5,13 @@
 }
 
 @section scripts{
-    <script src="~/Scripts/Shared/SharedScript.js"></script>
+    <script src="~/Scripts/Destinations/IndexScript.js"></script>
 }
+
+@section SearchForm{
+    @Html.Action("Index", "Search")
+}
+
 
 <div class="row">
     Destinations

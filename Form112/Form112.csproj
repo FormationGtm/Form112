@@ -175,10 +175,12 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CroisieresController.cs" />
+    <Compile Include="Areas\Admin\Models\CroisieresViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\DestinationsController.cs" />
+    <Compile Include="Controllers\PaysController.cs" />
     <Compile Include="Controllers\PromotionsController.cs" />
     <Compile Include="Controllers\ReservationController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
@@ -186,7 +188,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\Filters\CountViewFilterAttribute.cs" />
+    <Compile Include="Infrastructure\Filters\ProduitTrackerFilterAttribute.cs" />
     <Compile Include="Infrastructure\Filters\NlogFilterAttribute.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -281,10 +283,12 @@
     <Content Include="Scripts\JQVMap\jquery.vmap.sampledata.js" />
     <Content Include="Scripts\JQVMap\jquery.vmap.world.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Pays\ScriptPays.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Search\Index.js" />
     <Content Include="Scripts\Shared\SharedScript.js" />
+    <Content Include="Scripts\Themes\IndexThemesScript.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Vendor\DatePicker\css\bootstrap-datepicker.css" />
     <Content Include="Vendor\DatePicker\css\bootstrap-datepicker.min.css" />
@@ -394,10 +398,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Destinations\Index.cshtml" />
     <Content Include="Views\Themes\Index.cshtml" />
-    <Content Include="Views\Destinations\_DestinationPanel.cshtml" />
-    <Content Include="Views\Themes\_ThemePanel.cshtml" />
-    <Content Include="Views\Themes\_CroisieresParTheme.cshtml" />
-    <Content Include="Views\Promotions\Index.cshtml" />
     <Content Include="Views\Home\Pays.cshtml" />
     <Content Include="Views\Promotions\Index.cshtml" />
     <Content Include="Views\Promotions\_TopPromoPanel.cshtml" />
@@ -408,12 +408,10 @@
     <Content Include="Views\Search\Result.cshtml" />
     <Content Include="Views\Home\_HomeCaroussel.cshtml" />
     <Content Include="Views\Destinations\Details.cshtml" />
-    <Content Include="Views\Destinations\Destinations.cshtml" />
     <Content Include="Views\Shared\_DestinationPanel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Uploads\Bateaux\NotUsed\" />
   </ItemGroup>
   <ItemGroup>

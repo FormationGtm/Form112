@@ -2,9 +2,6 @@
     ViewBag.Title = "See the beautiful";
 }
 
-@section SearchForm {
-    @Html.Action("Index", "Search");
-}
 
 @section scripts{
     <script src="~/Scripts/JQVMap/jquery.vmap.min.js"></script>
@@ -17,6 +14,10 @@
     <script src="~/Scripts/JQVMap/continents/jquery.vmap.south-america.js"></script>
     <script src="~/Scripts/JQVMap/jquery.vmap.sampledata.js"></script>
     <script src="~/Scripts/Home/Index.js"></script>
+}
+
+@section SearchForm{
+    @Html.Action("Index", "Search")
 }
 
 <div class="row">

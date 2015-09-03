@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
-using Form112.Infrastructure.SearchCroisiers;
-using Form112.Infrastructure.SearchCroisiers.Base;
-using Form112.Infrastructure.SearchCroisiers.Option;
 using DataLayer.Model;
 using Form112.Models;
+using Form112.Infrastructure.Filters;
 
 namespace Form112.Controllers
 {
@@ -22,6 +17,7 @@ namespace Form112.Controllers
             return View(destinations);
         }
 
+        [ProduitTrackerFilter]
         [HttpPost]
         public ActionResult Details(DestinationViewModel dvm)
         {

@@ -15,7 +15,11 @@
             </div>
         </div>
         <div class="panel-end">
-            @*- @Model.Promos.Reduction %*@
+            @if (@Model.Promos.Reduction.HasValue)
+            {
+              <text> - @Model.Promos.Reduction % </text> ; 
+            }
+            
         </div>
     </div>
 </div>

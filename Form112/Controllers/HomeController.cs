@@ -32,6 +32,24 @@ namespace Form112.Controllers
 
             return View();
         }
+
+        public JsonResult ListePortDestinations(int id)
+        {
+            var listePortDestinations = db.Croisieres
+                .Where(crs => crs.IdPort == id)
+                .Select(crs => new
+                {
+                    idCrs = crs.IdCroisiere,
+                    PaysName = crs.Ports.Pays.Nom,
+                    Prix = crs.Prix,
+                    Photo = crs.Photos.FirstOrDefault(),
+                    Reduc = crs.Promos.Reduction
+                })
+                .ToList();
+
+            return Json(listePortDestinations, JsonRequestBehavior.AllowGet);
+        }
+
         private static List<Croisieres> GetPaysResult(HomeViewModels homeViewModel)
         {
             SearchBase search = new Search();
