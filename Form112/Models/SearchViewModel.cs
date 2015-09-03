@@ -19,11 +19,10 @@ namespace Form112.Models
 
         public string IdPays { get; set; }
 
-
+        [XmlIgnore, XmlElement(DataType="date")]
         public DateTime _dateDepart;
 
-        public string _stringDateDepart { get; set; }
-
+        [XmlElement("_dateDepart")]
         public string DateDepart
         {
             get { return _dateDepart.ToString(); }
@@ -34,9 +33,6 @@ namespace Form112.Models
                     DateTimeStyles.None, out _dateDepart))
                 {
                     _dateDepart = DateTime.Now;
-                }else
-                {
-                    _stringDateDepart = value;
                 }
             }
         }

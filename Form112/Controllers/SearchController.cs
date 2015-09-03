@@ -49,7 +49,7 @@ namespace Form112.Controllers
             svm.SerializeSearchViewModel();
             svm.Result = GetSearchResult(svm);
 
-            svm._stringDateDepart = new DateTime(2016, 1, 1).ToString("dd/MM/yyyy");
+            //svm._stringDateDepart = new DateTime(2016, 1, 1).ToString("dd/MM/yyyy");
             return View(svm);
         }
 

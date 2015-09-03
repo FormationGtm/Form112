@@ -260,6 +260,7 @@
     <Content Include="Areas\Admin\Views\Croisieres\Index.cshtml" />
     <Compile Include="Models\DestinationViewModel.cs" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\Destinations\IndexScript.js" />
     <Content Include="Scripts\Home\Index.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
@@ -412,12 +413,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-
-    <Folder Include="Uploads\" />
-
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Uploads\Bateaux\NotUsed\" />
-    <Folder Include="Views\DestinationRegion\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

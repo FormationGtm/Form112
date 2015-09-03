@@ -12,8 +12,6 @@
     });
    
     $("#idPays").change(loadPort);
-    $("#idPrix").change(getTranchePrix);
-    $("#idDuree").change(getDuree);
 });
 
 
