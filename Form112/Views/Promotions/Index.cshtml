@@ -1,0 +1,29 @@
+﻿@model List<DataLayer.Model.Croisieres>
+@{
+    ViewBag.Title = "Croisières Soldées";
+}
+
+@section scripts{
+
+    <script src="~/Scripts/Destinations/IndexScript.js"></script>
+}
+
+@section SearchForm{
+    @Html.Action("Index", "Search")
+}
+
+<div class="row">
+    Toutes nos promotions
+</div>
+
+<div class="row">
+    @foreach (var item in @Model)
+    {
+        @Html.Action("AllCroisieres", "Destinations", new { id = item.IdCroisiere })
+    }
+</div>
+
+@using (@Html.BeginForm("Details", "Destinations", FormMethod.Post, new { id = "idFormDestination" }))
+{
+    <input type="hidden" id="idCroisiereChoice" name="DestinationChoice" />
+}

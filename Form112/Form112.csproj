@@ -399,9 +399,9 @@
     <Content Include="Views\Destinations\Index.cshtml" />
     <Content Include="Views\Themes\Index.cshtml" />
     <Content Include="Views\Home\Pays.cshtml" />
-    <Content Include="Views\Promotions\Index.cshtml" />
     <Content Include="Views\Promotions\_TopPromoPanel.cshtml" />
     <Content Include="Views\Reservation\Index.cshtml" />
+    <Content Include="Views\Promotions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Search\_Index.cshtml" />
