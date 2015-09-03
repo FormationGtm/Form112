@@ -18,6 +18,12 @@ namespace Form112.Controllers
             return View(destinations);
         }
 
+        public ActionResult Details(int id)
+        {
+            Croisieres crs = _db.Croisieres.Find(id);
+            return View(crs);
+        }
+
         [ProduitTrackerFilter]
         [HttpPost]
         public ActionResult Details(DestinationViewModel dvm)
@@ -27,7 +33,7 @@ namespace Form112.Controllers
         }
 
         [HttpPost]
-        public void Commenter(DetailViewModel detailvm)
+        public ActionResult Commenter(DetailViewModel detailvm)
         {
             var nouveauCommentaire = new Commentaires
             {
@@ -40,6 +46,8 @@ namespace Form112.Controllers
 
             _db.Commentaires.Add(nouveauCommentaire);
             _db.SaveChanges();
+
+            return RedirectToAction("Details", new { id = detailvm.CroisiereId, controller = "Destinations" });
         }
                       
         [ChildActionOnly]

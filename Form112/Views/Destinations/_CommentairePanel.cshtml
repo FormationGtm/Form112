@@ -1,7 +1,23 @@
-﻿
-@{
-    ViewBag.Title = "_CommentairePanel";
-}
+﻿@model DataLayer.Model.Commentaires
 
-<h2>_CommentairePanel</h2>
+<div class="commentaire_principal row">
+    <div class="contenu-commentaire col-sm-10 col-sm-offset-1">
+        <i class="fa fa-quote-left"></i> @Model.Commentaire <i class="fa fa-quote-right"></i>
+    </div>
+    <div class="infos-commentaire pull-right">
+        <span class="commentaire-nom">@Model.NomCommentaire</span> <span class="date-commentaire">@Model.DateCommentaire.Day-@Model.DateCommentaire.Month-@Model.DateCommentaire.Year</span> <a href="#idFormCommentaire">Répondre</a>
+    </div>
+    @foreach (var item in @Model.Commentaires1)
+    {
+    <div class="reponse-commentaire">
+        <div class="contenu-commentaire col-sm-10 col-sm-offset-1">
+            <i class="fa fa-quote-left"></i> @item.Commentaire <i class="fa fa-quote-right"></i>
+        </div>
+        <div class="infos-commentaire pull-right">
+            <span class="commentaire-nom">@Model.NomCommentaire</span> <span class="date-commentaire">@Model.DateCommentaire.Day-@Model.DateCommentaire.Month-@Model.DateCommentaire.Year</span> <a href="#idFormCommentaire">Répondre</a>
+        </div>
+    </div>
+    }
+</div>
+
 
