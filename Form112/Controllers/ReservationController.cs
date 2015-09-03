@@ -17,14 +17,14 @@ namespace Form112.Controllers
         {
             var crs = db.Croisieres.Find(rvm.DestinationChoice);
 
-            if(ModelState.IsValid)
-            {
-                var utilisateur = db.Utilisateurs.Find();
-                    utilisateur.IdCroisiere = rvm.DestinationChoice;
+            //if(ModelState.IsValid)
+            //{
+            //    var utilisateur = db.Utilisateurs.Find();
+            //        utilisateur.IdCroisiere = rvm.DestinationChoice;
                 
 
                 
-            }
+            //}
             return View(crs);
         }
 
