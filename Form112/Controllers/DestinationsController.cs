@@ -3,17 +3,18 @@ using System.Web.Mvc;
 using DataLayer.Model;
 using Form112.Models;
 using Form112.Infrastructure.Filters;
+using System;
 
 namespace Form112.Controllers
 {
     public class DestinationsController : Controller
     {
-        private static Form112Entities db = new Form112Entities();
+        private static Form112Entities _db = new Form112Entities();
 
         // GET: Detinations
         public ActionResult Index()
         {
-            var destinations = db.Croisieres.ToList();
+            var destinations = _db.Croisieres.ToList();
             return View(destinations);
         }
 
@@ -21,14 +22,30 @@ namespace Form112.Controllers
         [HttpPost]
         public ActionResult Details(DestinationViewModel dvm)
         {
-            var crs = db.Croisieres.Find(dvm.DestinationChoice);
+            var crs = _db.Croisieres.Find(dvm.DestinationChoice);
             return View(crs);
         }
-                       
+
+        [HttpPost]
+        public void Commenter(DetailViewModel detailvm)
+        {
+            var nouveauCommentaire = new Commentaires
+            {
+                NomCommentaire = detailvm.NomCommentaire,
+                IdCroisiere = detailvm.CroisiereId,
+                DateCommentaire = DateTime.Now,
+                IdReponseA = detailvm.CommentaireId,
+                Commentaire = detailvm.Commentaire
+            };
+
+            _db.Commentaires.Add(nouveauCommentaire);
+            _db.SaveChanges();
+        }
+                      
         [ChildActionOnly]
         public PartialViewResult AllCroisieres(int id)
         {
-            var croisiere = db.Croisieres.Find(id);
+            var croisiere = _db.Croisieres.Find(id);
             return PartialView("_DestinationPanel", croisiere);
         }
     }

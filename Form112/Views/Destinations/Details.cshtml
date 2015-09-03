@@ -3,11 +3,14 @@
     ViewBag.Title = "Détails de la croisière";
 }
 
+@section scripts {
+}
+
 <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-5">
         <div data-ride="carousel" class="carousel carousel-height slide" id="carouselDetails" data-interval="5000">
             <div role="listbox" class="carousel-inner">
-                @foreach (var item in @Model.Photos)
+                @foreach (var item in Model.Photos)
                 {
                     <div class="item active">
                         <img alt="" data-src="" src="~/Uploads/Croisieres/@item.PhotoName" data-holder-rendered="true" class="img-caroussel">
@@ -17,15 +20,35 @@
         </div>
 
     </div>
-    <div class="col-sm-3">
-        <div class="detailThemeCroisiere">Croisière @Model.Themes.Libelle</div>
-        <div class="detailPortDepart">Départ de @Model.Ports.Nom</div>
-        <div class="detailDureeSejour">@Model.Durees.NbJours jours</div>
-        <div class="detailDateDepart">départ le @Model.DateDepart.Date</div>
-        <div class="detailPrix">à partir de @Model.Prix €</div>
+    <div class="col-sm-5">
+        <div class="row">
+            <div class="detailThemeCroisiere">Croisière @Model.Themes.Libelle</div>
+            <div class="detailPortDepart">Départ de @Model.Ports.Nom</div>
+            <div class="detailDureeSejour">@Model.Durees.NbJours jours</div>
+            <div class="detailDateDepart">départ le @Model.DateDepart.Day/@Model.DateDepart.Month/@Model.DateDepart.Year</div>
+        </div>
+        <div class="row">
+            @Model.Description
+        </div>
     </div>
-    <div class="col-sm-3">
-        @Model.Description
-
+    <div class="col-sm-2">
+        <div class="row">
+            à partir de <span class="prix-detail">@Model.Prix € </span>
+        </div>
+        <div class="row">
+            <button class="btn btn-default" onclick="location.href='@Url.Action("Index", "Reservation")'">Réservez</button>
+        </div>
     </div>
 </div>
+
+@using (@Html.BeginForm("Commenter", "Destinations", FormMethod.Post, new { id = "idFormDestination" }))
+{
+    <div class="form-group row">
+        <input type="text" class="form-control col-sm-12 zone-commentaire" name="NomCommentaire" placeholder="Nom : Durand Louis" />
+    </div>
+    <input type="hidden" name="CroisiereId" value="@Model.IdCroisiere"/>
+    <input type="hidden" name="CommentaireId"/>
+    <textarea class="form-control row zone-commentaire" rows="3" placeholder="Commentaires" name="Commentaire"></textarea>
+    <button class="pull-right btn btn-default" type="submit">Envoyer</button>
+}
+

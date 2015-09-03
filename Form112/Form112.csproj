@@ -198,6 +198,7 @@
     <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionTheme.cs" />
     <Compile Include="Infrastructure\Utilitaires\ListesChoix.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\DetailViewModel.cs" />
     <Compile Include="Models\HomeViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -262,6 +263,7 @@
     <Content Include="Areas\Admin\Views\Croisieres\Index.cshtml" />
     <Compile Include="Models\DestinationViewModel.cs" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\Destinations\DetailScript.js" />
     <Content Include="Scripts\Destinations\IndexScript.js" />
     <Content Include="Scripts\Home\Index.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
@@ -402,6 +404,7 @@
     <Content Include="Views\Promotions\_TopPromoPanel.cshtml" />
     <Content Include="Views\Reservation\Index.cshtml" />
     <Content Include="Views\Promotions\Index.cshtml" />
+    <Content Include="Views\Destinations\_CommentairePanel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Search\_Index.cshtml" />
@@ -413,6 +416,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Uploads\Bateaux\NotUsed\" />
+    <Folder Include="Views\Details\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
