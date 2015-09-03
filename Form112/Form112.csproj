@@ -395,11 +395,9 @@
     <Content Include="Views\Themes\Index.cshtml" />
     <Content Include="Views\Destinations\_DestinationPanel.cshtml" />
     <Content Include="Views\Themes\_ThemePanel.cshtml" />
-    <Content Include="Views\Destinations\Details.cshtml" />
     <Content Include="Views\Themes\_CroisieresParTheme.cshtml" />
     <Content Include="Views\Promotions\Index.cshtml" />
     <Content Include="Views\Home\Pays.cshtml" />
-    <Content Include="Views\Destinations\Details.cshtml" />
     <Content Include="Views\Promotions\Index.cshtml" />
     <Content Include="Views\Promotions\_TopPromoPanel.cshtml" />
     <Content Include="Views\Reservation\Index.cshtml" />
@@ -408,13 +406,8 @@
     <Content Include="Views\Search\_Index.cshtml" />
     <Content Include="Views\Search\Result.cshtml" />
     <Content Include="Views\Home\_HomeCaroussel.cshtml" />
-
-
     <Content Include="Views\Destinations\Details.cshtml" />
-
     <Content Include="Views\Destinations\Destinations.cshtml" />
- 
-
     <Content Include="Views\Shared\_DestinationPanel.cshtml" />
   </ItemGroup>
   <ItemGroup>
