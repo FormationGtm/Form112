@@ -36,10 +36,10 @@ namespace Form112.Controllers
             svm.ListTranchePrix = ListesChoix.ListTranchePrix();
             svm.ListTrancheDuree = ListesChoix.ListTrancheDuree();
 
-#if DEBUG
-            svm.IdPays = "FRA";
-            svm.DateDepart = new DateTime(2016, 1, 1).ToString("dd/MM/yyyy");
-#endif
+//#if DEBUG
+//            svm.IdPays = "FRA";
+//            svm.DateDepart = new DateTime(2016, 1, 1).ToString("dd/MM/yyyy");
+//#endif
             return PartialView("_Index", svm);
         }
 
