@@ -7,6 +7,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DataLayer.Model;
+using System.IO;
+using Form112.Areas.Admin.Models;
+using System.Globalization;
 
 namespace Form112.Areas.Admin.Controllers
 {
@@ -38,34 +41,54 @@ namespace Form112.Areas.Admin.Controllers
         }
 
         // GET: Admin/Croisieres/Create
-        public ActionResult Create()
+        public ViewResult Create()
         {
-            ViewBag.IdDuree = new SelectList(db.Durees, "IdDuree", "IdDuree");
-            ViewBag.IdPort = new SelectList(db.Ports, "IdPort", "CodeIso3");
-            ViewBag.IdPromo = new SelectList(db.Promos, "IdPromo", "IdPromo");
+            ViewBag.IdDuree = new SelectList(db.Durees, "IdDuree", "NbJours");
+            ViewBag.IdPort = new SelectList(db.Ports, "IdPort", "Nom");
+            ViewBag.IdPromo = new SelectList(db.Promos, "IdPromo", "Reduction");
             ViewBag.IdTheme = new SelectList(db.Themes, "IdTheme", "Libelle");
             return View();
         }
 
         // POST: Admin/Croisieres/Create
-        // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
-        // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdCroisiere,IdTheme,IdDuree,IdPromo,IdPort,Prix,DateDepart,Photo,Description")] Croisieres croisieres)
+        public ActionResult Create(CroisieresViewModel cvm, HttpPostedFileBase postedFile)
         {
             if (ModelState.IsValid)
             {
-                db.Croisieres.Add(croisieres);
+                if (postedFile != null)
+                {
+                    var filename = Path.GetFileName(postedFile.FileName);
+                    if (filename == null)
+                        return RedirectToAction("Create");
+                    var path = Path.Combine(Server.MapPath("~/Uploads/Bateaux/"), filename);
+                    postedFile.SaveAs(path);
+                    cvm.Photo = filename;
+                }
+                Croisieres crs = new Croisieres()
+                {
+                    IdTheme = cvm.IdTheme,
+                    IdDuree = cvm.IdDuree,
+                    IdPromo = cvm.IdPromo,
+                    IdPort = cvm.IdPort,
+                    Prix = cvm.Prix,
+                    DateDepart = DateTime.ParseExact(cvm.DateDepart, "dd/MM/yyyy", CultureInfo.InvariantCulture,
+                    DateTimeStyles.None),
+                    Photo = cvm.Photo,
+                    Description = cvm.Description
+
+                };
+                db.Croisieres.Add(crs);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            ViewBag.IdDuree = new SelectList(db.Durees, "IdDuree", "IdDuree", croisieres.IdDuree);
-            ViewBag.IdPort = new SelectList(db.Ports, "IdPort", "CodeIso3", croisieres.IdPort);
-            ViewBag.IdPromo = new SelectList(db.Promos, "IdPromo", "IdPromo", croisieres.IdPromo);
-            ViewBag.IdTheme = new SelectList(db.Themes, "IdTheme", "Libelle", croisieres.IdTheme);
-            return View(croisieres);
+            ViewBag.IdDuree = new SelectList(db.Durees, "IdDuree", "NbJours");
+            ViewBag.IdPort = new SelectList(db.Ports, "IdPort", "Nom");
+            ViewBag.IdPromo = new SelectList(db.Promos, "IdPromo", "Reduction");
+            ViewBag.IdTheme = new SelectList(db.Themes, "IdTheme", "Libelle");
+            return View();
         }
 
         // GET: Admin/Croisieres/Edit/5
@@ -80,31 +103,65 @@ namespace Form112.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IdDuree = new SelectList(db.Durees, "IdDuree", "IdDuree", croisieres.IdDuree);
-            ViewBag.IdPort = new SelectList(db.Ports, "IdPort", "CodeIso3", croisieres.IdPort);
-            ViewBag.IdPromo = new SelectList(db.Promos, "IdPromo", "IdPromo", croisieres.IdPromo);
-            ViewBag.IdTheme = new SelectList(db.Themes, "IdTheme", "Libelle", croisieres.IdTheme);
-            return View(croisieres);
+            CroisieresViewModel cvm = new CroisieresViewModel
+            {
+                IdTheme = croisieres.IdTheme,
+                IdDuree = croisieres.IdDuree,
+                IdPromo = (int)croisieres.IdPromo,
+                IdPort = croisieres.IdPort,
+                Prix = croisieres.Prix,
+                DateDepart = croisieres.DateDepart.ToString("dd/MM/yyyy",
+                  CultureInfo.InvariantCulture),
+                Photo = croisieres.Photo,
+                Description = croisieres.Description
+            };
+
+            ViewBag.IdDuree = new SelectList(db.Durees, "IdDuree", "NbJours", cvm.IdDuree);
+            ViewBag.IdPort = new SelectList(db.Ports, "IdPort", "Nom", cvm.IdPort);
+            ViewBag.IdPromo = new SelectList(db.Promos, "IdPromo", "Reduction", cvm.IdPromo);
+            ViewBag.IdTheme = new SelectList(db.Themes, "IdTheme", "Libelle", cvm.IdTheme);
+            return View(cvm);
         }
 
         // POST: Admin/Croisieres/Edit/5
-        // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
-        // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdCroisiere,IdTheme,IdDuree,IdPromo,IdPort,Prix,DateDepart,Photo,Description")] Croisieres croisieres)
+        public ActionResult Edit(int id, CroisieresViewModel cvm, HttpPostedFileBase postedFile)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(croisieres).State = EntityState.Modified;
+                if (postedFile != null)
+                {
+                    var filename = Path.GetFileName(postedFile.FileName);
+                    if (filename == null)
+                        return RedirectToAction("Create");
+                    var path = Path.Combine(Server.MapPath("~/Uploads/Bateaux/"), filename);
+                    postedFile.SaveAs(path);
+                    cvm.Photo = filename;
+                }
+                Croisieres crs = db.Croisieres.Find(id);
+
+                crs.IdTheme = cvm.IdTheme;
+                crs.IdDuree = cvm.IdDuree;
+                crs.IdPromo = cvm.IdPromo;
+                crs.IdPort = cvm.IdPort;
+                crs.Prix = cvm.Prix;
+                crs.DateDepart = DateTime.ParseExact(cvm.DateDepart, "dd/MM/yyyy", CultureInfo.InvariantCulture,
+                DateTimeStyles.None);
+                crs.Photo = cvm.Photo;
+                crs.Description = cvm.Description;
+
+                db.Entry(crs).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdDuree = new SelectList(db.Durees, "IdDuree", "IdDuree", croisieres.IdDuree);
-            ViewBag.IdPort = new SelectList(db.Ports, "IdPort", "CodeIso3", croisieres.IdPort);
-            ViewBag.IdPromo = new SelectList(db.Promos, "IdPromo", "IdPromo", croisieres.IdPromo);
+            Croisieres croisieres = db.Croisieres.Find(id);
+            ViewBag.IdDuree = new SelectList(db.Durees, "IdDuree", "NbJours", croisieres.IdDuree);
+            ViewBag.IdPort = new SelectList(db.Ports, "IdPort", "Nom", croisieres.IdPort);
+            ViewBag.IdPromo = new SelectList(db.Promos, "IdPromo", "Reduction", croisieres.IdPromo);
             ViewBag.IdTheme = new SelectList(db.Themes, "IdTheme", "Libelle", croisieres.IdTheme);
-            return View(croisieres);
+            return View();
         }
 
         // GET: Admin/Croisieres/Delete/5

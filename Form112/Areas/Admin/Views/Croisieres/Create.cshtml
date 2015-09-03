@@ -3,10 +3,13 @@
 @{
     ViewBag.Title = "Création d'une croisière";
 }
-
+@section scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
 <h2>Création d'une croisière</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "Croisieres", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -33,7 +36,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.IdPromo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("IdPromo", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("IdPromo", null, "", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IdPromo, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -65,7 +68,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Photo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input type="file" name="Photo" class="btn btn-default" />
+                <input type="file" name="postedFile" class="btn btn-default" />
             </div>
         </div>
 
