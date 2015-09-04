@@ -258,18 +258,15 @@ footer {
 }
 
 .comment-panel{
-	margin : 5px;
-	margin : 5px;
+	margin-top : 5px;
+	margin-bottom : 5px;
+    margin-right:auto;
 	padding:0px;
 	color : #6C7A89;
     font-size : 0.8em;
 	background-color : #fff;
 	border: 1px solid #6C7A89;
 	border-radius : 2px;
-}
-
-.comment-reply-panel{
-	margin-left : 4em;
 }
 
 .comment-header{
