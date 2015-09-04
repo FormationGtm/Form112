@@ -14,7 +14,7 @@
                 @foreach (var item in Model.Photos)
                 {
                     <div class="item active">
-                        <img alt="" data-src="" src="~/Uploads/Croisieres/@item.PhotoName" data-holder-rendered="true" class="img-caroussel">
+                        <img alt="" data-src="" src="~/Uploads/Bateaux/@item.PhotoName" data-holder-rendered="true" class="img-caroussel">
                     </div>
                 }
             </div>
@@ -26,15 +26,13 @@
             <div class="detailThemeCroisiere">Croisière @Model.Themes.Libelle</div>
             <div class="detailPortDepart">Départ de @Model.Ports.Nom</div>
             <div class="detailDureeSejour">@Model.Durees.NbJours jours</div>
-            <div class="detailDateDepart">départ le @Model.DateDepart.Day/@Model.DateDepart.Month/@Model.DateDepart.Year</div>
+            <div class="detailDateDepart">Départ le @Model.DateDepart.Day/@Model.DateDepart.Month/@Model.DateDepart.Year</div>
         </div>
-        <div class="row">
-            @Model.Description
-        </div>
+       
     </div>
     <div class="col-sm-2">
         <div class="row">
-            à partir de <span class="prix-detail">@Model.Prix € </span>
+            À partir de <span class="prix-detail">@Model.Prix € </span>
         </div>
         <div class="row">
             <button class="btn btn-default" onclick="location.href='@Url.Action("Index", "Reservation")'">Réservez</button>

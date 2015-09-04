@@ -24,9 +24,8 @@ namespace Form112Console {
         private static int SetPictures()
         {
 
-            var list = DB.Croisieres
-                .Where(v => !v.Photos.Any())
-                .ToList();
+            var list = DB.Croisieres.Where(v => !v.Photos.Any()).ToList();
+
             Console.WriteLine(list.Count);
 
             var listPic = Directory
@@ -44,23 +43,26 @@ namespace Form112Console {
 
             foreach (var croisieres in list)
             {
-                cpt++;
-                Console.Write(" {0} -", cpt);
-                var photo = new Photos
+                if (stackPic.Count != 0)
                 {
-                    PhotoName = stackPic.Pop(),
-                    IdPhoto = Guid.NewGuid()
-                };
-                croisieres.Photos.Add(photo);
+                    cpt++;
+                    Console.Write(" {0} -", cpt);
+                    var photo = new Photos
+                    {
+                        PhotoName = stackPic.Pop(),
+                        IdPhoto = Guid.NewGuid()
+                    };
+                    croisieres.Photos.Add(photo);
 
-                if (cpt % 250 != 0)
-                {
-                    continue;
+                    if (cpt % 250 != 0)
+                    {
+                        continue;
+                    }
+
+                    cpt = 0;
+                    Console.WriteLine();
+                    DB.SaveChanges();
                 }
-
-                cpt = 0;
-                Console.WriteLine();
-                DB.SaveChanges();
             }
 
             DB.SaveChanges();
