@@ -56,5 +56,10 @@ namespace Form112.Controllers
             var croisiere = _db.Croisieres.Find(id);
             return PartialView("_DestinationPanel", croisiere);
         }
+
+        public PartialViewResult AfficherCommentaire(int id){
+            var commentaire = _db.Commentaires.Find(id);
+            return PartialView("_CommentairePanel", commentaire);
+        }
     }
 }
