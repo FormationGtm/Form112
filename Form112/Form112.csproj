@@ -261,6 +261,7 @@
     <Content Include="Areas\Admin\Views\Croisieres\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Croisieres\Index.cshtml" />
     <Compile Include="Models\DestinationViewModel.cs" />
+    <None Include="Properties\PublishProfiles\OpenSea.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\Destinations\IndexScript.js" />
     <Content Include="Scripts\Home\Index.js" />
@@ -290,6 +291,19 @@
     <Content Include="Scripts\Shared\SharedScript.js" />
     <Content Include="Scripts\Themes\IndexThemesScript.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Uploads\Bateaux\42268.jpg" />
+    <Content Include="Uploads\Bateaux\74248.jpg" />
+    <Content Include="Uploads\Bateaux\Carnival_Elation_croisiere_a_rabais.jpg" />
+    <Content Include="Uploads\Bateaux\croisiere-fluviale.jpg" />
+    <Content Include="Uploads\Bateaux\croisiere.jpg" />
+    <Content Include="Uploads\Bateaux\croisieres-fjord.jpeg" />
+    <Content Include="Uploads\Bateaux\mcupload_5252a13e97eda.png" />
+    <Content Include="Uploads\Bateaux\mediterranee-costa-croisieres-51571.jpg" />
+    <Content Include="Uploads\Bateaux\mini-croisiere.jpg" />
+    <Content Include="Uploads\Bateaux\navire,zenith--cdf-_max,1136,24620.jpg" />
+    <Content Include="Uploads\Bateaux\shutterstock-213315565-1427275135-x59P-slide.jpg" />
+    <Content Include="Uploads\Bateaux\slide-1.jpg" />
+    <Content Include="Uploads\Bateaux\Tropical-Island-1.JPG" />
     <Content Include="Vendor\DatePicker\css\bootstrap-datepicker.css" />
     <Content Include="Vendor\DatePicker\css\bootstrap-datepicker.min.css" />
     <Content Include="Vendor\DatePicker\css\bootstrap-datepicker.standalone.css" />
@@ -402,6 +416,7 @@
     <Content Include="Views\Promotions\Index.cshtml" />
     <Content Include="Views\Promotions\_TopPromoPanel.cshtml" />
     <Content Include="Views\Reservation\Index.cshtml" />
+    <Content Include="Views\Reservation\validerReservation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Search\_Index.cshtml" />

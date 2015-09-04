@@ -1,25 +1,28 @@
 ﻿@model List<DataLayer.Model.Croisieres>
 
-
-<h2>Top</h2>
-
-<div class="panel panel-danger">
-    <div class="panel-heading">
+<div class="body-content">
+    <div class="alert-dismissible">
         <strong>Top promo !!</strong>
-        <div class="panel-body">
+        <div class="affix">
             <ul>
                 @foreach (var item in @Model)
                 {
-                    <li class="badge">
-                        <span>@item.Ports.Nom</span>                       
+                    
+                    <li class="center-block">
+                            <img src="~/Uploads/Bateaux/@item.Photo" class="img-circle" height="40" width="60" />
+                       
+                            <span>@item.Ports.Nom</span>
+                       
                     </li>
-                    <li class="badge">
+                    <li class="center-block">
                         <span>- @item.Promos.Reduction %</span>
-                    </li>  
-                                     
+                    </li>
+                    <text>..........</text>
                 }
-            </ul>          
-        </div>       
+            </ul>
+
+        </div>
+
     </div>
 
 </div>

@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Businesslayer\Adresses.cs" />
     <Compile Include="Businesslayer\Croisieres.cs">
       <SubType>Code</SubType>
     </Compile>

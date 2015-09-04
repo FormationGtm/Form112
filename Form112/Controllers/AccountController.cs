@@ -18,7 +18,7 @@ namespace Form112.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private Form112Entities db = new Form112Entities();
+        private Form112Entities _db = new Form112Entities();
 
         public AccountController()
         {
@@ -171,8 +171,8 @@ namespace Form112.Controllers
                         DateInscription = DateTime.Now,
                         Id = user.Id
                     };
-                    db.Utilisateurs.Add(utilisateur);
-                    db.SaveChanges();
+                    _db.Utilisateurs.Add(utilisateur);
+                    _db.SaveChanges();
                     return RedirectToAction("Index", "Reservation");
                 }
                 AddErrors(result);

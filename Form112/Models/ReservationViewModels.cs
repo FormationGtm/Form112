@@ -34,5 +34,6 @@ namespace Form112.Models
         public string Cryp { get; set; }
 
         public int DestinationChoice { get; set; }
+        public string IdUser { get; set; }
     }
 }
