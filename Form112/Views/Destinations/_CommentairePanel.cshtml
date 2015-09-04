@@ -1,0 +1,12 @@
+﻿@model DataLayer.Model.Commentaires
+
+<div class="commentaire-principal row">
+    <div class="contenu-commentaire col-sm-10">
+        <i class="fa fa-quote-left"></i> @Model.Commentaire <i class="fa fa-quote-right"></i>
+    </div>
+    <div class="infos-commentaire pull-right">
+        <span class="commentaire-nom">@Model.NomCommentaire</span> <span class="date-commentaire">@Model.DateCommentaire.Day-@Model.DateCommentaire.Month-@Model.DateCommentaire.Year</span> <a href="#idFormCommentaire"><i class="fa fa-reply"></i></a>
+    </div>
+</div>
+
+

@@ -1,4 +1,5 @@
 ﻿@model List<DataLayer.Model.Croisieres>
+@using DataLayer.Model
 
 @{
     ViewBag.Title = "Destinations par Pays";
@@ -18,19 +19,30 @@
     <div class="map-header">
         Choissisez un port de départ :
     </div>
+
+    @{var listPorts = new List<Ports>() ;}
+
+    @foreach (var item in @Model)
+    {
+        if (!listPorts.Contains(item.Ports))
+        {
+            listPorts.Add(item.Ports);
+        }
+    }
+
     @using (Html.BeginForm("PaysSearch", "Home", FormMethod.Post, new { id = "idFormPays" }))
     {
         var count = 1;
         <select name="SelectedPort" id="idPortSelector">
-            @foreach (var item in @Model)
+            @foreach (var item in listPorts)
             {
                 if (count == 1)
                 {
-                    <option value=@item.Ports.IdPort selected="selected">@item.Ports.Nom</option>
+                    <option value=@item.IdPort selected="selected">@item.Nom</option>
                 }
                 else
                 {
-                    <option value=@item.Ports.IdPort>@item.Ports.Nom</option>
+                    <option value=@item.IdPort>@item.Nom</option>
                 }
                 count++;
             }

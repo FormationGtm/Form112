@@ -1,12 +1,16 @@
-﻿@model DataLayer.Model.Croisieres
-
+﻿@model Form112.Areas.Admin.Models.CroisieresViewModel
 @{
     ViewBag.Title = "Editer une croisière";
 }
 
 <h2>Editer une croisière</h2>
 
-@using (Html.BeginForm())
+@section scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+
+@using (Html.BeginForm("Edit", "Croisieres", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -14,10 +18,8 @@
         <h4>Croisieres</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.IdCroisiere)
-
         <div class="form-group">
-            @Html.LabelFor(model => model.IdTheme, "Thème", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IdTheme, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("IdTheme", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IdTheme, "", new { @class = "text-danger" })
@@ -25,7 +27,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IdDuree, "Durée (en jours)", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IdDuree, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("IdDuree", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IdDuree, "", new { @class = "text-danger" })
@@ -33,15 +35,15 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IdPromo, "Promo (en %)", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IdPromo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("IdPromo", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("IdPromo", null, "", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IdPromo, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IdPort, "Port de départ", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IdPort, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("IdPort", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IdPort, "", new { @class = "text-danger" })
@@ -57,7 +59,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DateDepart, "Date de départ", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DateDepart, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.DateDepart, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DateDepart, "", new { @class = "text-danger" })
@@ -67,7 +69,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Photo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input type="file" name="Photo" class="btn btn-default" />
+                <input type="file" name="postedFile" class="btn btn-default" />
             </div>
         </div>
 
