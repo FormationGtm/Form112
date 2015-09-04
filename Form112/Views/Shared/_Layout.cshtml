@@ -7,6 +7,7 @@
     <title>Open Sea - @ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/font-awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet" />
     <link href="~/Vendor/DatePicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" />
 
 </head>
@@ -35,15 +36,13 @@
 
         @* Balise délimitant le positionnement de la vue partielle du moteur de recherche *@
 
-        <div class="col-sm-3 partial-search-view">
-
-            
+        <div class="col-sm-3 col-xs-4 partial-search-view">
             @RenderSection("SearchForm", required: false)
         </div>
 
         @* Position de la vue principale *@
 
-        <div class="container body-content col-sm-7">
+        <div class="container body-content col-sm-7 col-xs-8">
 
             @RenderBody()
 
@@ -51,8 +50,8 @@
 
         @* Balise délimitant le positionnement de la vue partielle des promotions *@
 
-                
-        <div class="col-sm-2 partial-promo-view">
+
+        <div class="col-sm-2 col-xs-3 partial-promo-view">
             @Html.Action("TopPromo", "Promotions")
         </div>
 

@@ -12,6 +12,7 @@
     });
    
     $("#idPays").change(loadPort);
+   
 });
 
 
@@ -25,4 +26,15 @@ function loadPort() {
         $("#idPort").html(str);
     });
 }
+
+$("#idChampCache").hide();
+$("#idPlus").click(function () {
+    $("#idChampCache").show();
+    $("#idPlus").hide();
+});
+
+$("#idMoins").click(function () {
+    $("#idChampCache").hide();
+    $("#idPlus").show();
+});
 

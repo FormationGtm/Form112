@@ -1,79 +1,93 @@
 ﻿@model Form112.Models.SearchViewModel
 
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/Search/Index.js"></script>
 @using (Html.BeginForm("Result", "Search", FormMethod.Post))
 {
     //Menu déroulant des pays triés par région
-    <label>Destination</label><br />
-    
-    <select name="IdPays" id="idPays">
-        <option value="" selected>Choisir la destination</option>
-        @foreach (var region in Model.Destination.Keys)
-        {
-            <optgroup label="@region">
-                @foreach (var pays in Model.Destination[region])
+    <div class="form-group">
+        <select name="IdPays" id="idPays">
+            <option value="" selected>Choisir la destination</option>
+            @foreach (var region in Model.Destination.Keys)
+            {
+                <optgroup label="@region">
+                    @foreach (var pays in Model.Destination[region])
+                    {
+                        <option value="@pays.Key" @{if (pays.Key == Model.IdPays) { <text> selected </text>   } }>@pays.Value</option>
+                    }
+                </optgroup>
+            }
+        </select>
+
+    </div>
+
+            //Affiche la date de départ dans un calendrier
+            <div class="form-group">
+
+                <input type="text" id="idDateDepart" name="DateDepart" placeholder="Date de Départ" value="@Model._stringDateDepart" />
+            </div>
+
+            //Menu déroulant des ports en fonction de la destination
+
+            <div class="form-group">
+                <select id="idPort" name="IdPortDepart">
+                    <option value="" selected>Port de départ</option>
+                    @foreach (var port in Model.Ports)
+                    {
+                        <option value="@port.Key" @{if (port.Key == Model.IdPortDepart) { <text> selected </text>     } }>@port.Value</option>
+                    }
+
+                </select>
+            </div>
+
+    <div id="idChampCache">
+
+        @*Menu déroulant tranche de prix*@
+        <div class="form-group">
+            <select id="idPrix" name="IdPrix">
+                <option value="" selected>Budget</option>
+                @foreach (var prix in Model.ListTranchePrix)
                 {
-                    <option value="@pays.Key" @{if(pays.Key == Model.IdPays) {<text> selected </text>} }>@pays.Value</option>
+                    <option value="@prix.Key" @{if (prix.Key == Model.IdPrix) { <text> selected </text>      } }>@prix.Value</option>
                 }
-            </optgroup>
-        }
-    </select>
+
+            </select>
+
+        </div>
+
+
+        @*Menu déroulant durée*@
+        <div class="form-group">
+            <select id="idDuree" name="IdDuree">
+                <option value="" selected>Durée du croisière</option>
+
+                @foreach (var duree in Model.ListTrancheDuree)
+                {
+                    <option value="@duree.Key" @{if (duree.Key == Model.IdDuree) { <text> selected </text>      } }>@duree.Value</option>
+                }
+            </select>
+        </div>
+
+        @*Menu déroulant thème*@
+        <div class="form-group">
+            <select id="idTheme" name="IdTheme">
+                <option value="" selected>Thème du croisière</option>
+                @foreach (var item in Model.Themes)
+                {
+                    <option value="@item.Key" @{if (item.Key == Model.IdTheme) { <text> selected </text>       } }>@item.Value </option>
+                }
+            </select>
+        </div>
+        <a href="#idChampCache" id="idMoins">Moins de Critères</a>
+    </div>
+
+    <a href="#idChampCache" id="idPlus">Plus de Critères</a>
 
     <br />
-        //Affiche la date de départ dans un calendrier
-        <label>Date de départ</label><br />
-        
-        <input type="text" id="idDateDepart" name="DateDepart" value="@Model.DateDepart"/>
-        
-        <br />
-        //Menu déroulant des ports en fonction de la destination
-        <label>Port de départ</label><br />
-        <select id="idPort" name="IdPortDepart">
-            <option value="" selected>Choisir le port de départ</option>
-            @foreach (var port in Model.Ports)
-            {
-                <option value="@port.Key" @{if (port.Key == Model.IdPortDepart) { <text> selected </text> } }>@port.Value</option>
-            }
 
-        </select>
+                                    <button type="submit"> Recherche </button>
+                                    <input type="hidden" name="XmlSearchViewModel" value="@Model.XmlSearchViewModel" />
 
-        <br />
-        //Menu déroulant tranche de prix
-        <label>Budget</label><br />
-        <select id="idPrix" name="IdPrix">
-            <option value="" selected>Choisir le budget</option>
-            @foreach (var prix in Model.ListTranchePrix)
-            {
-                <option value="@prix.Key" @{if (prix.Key == Model.IdPrix) { <text> selected </text>} }>@prix.Value</option>
-            }
-           
-        </select>
- 
-        <br />
-        //Menu déroulant durée
-        <label>Durée</label><br />
-        <select id="idDuree" name="IdDuree">
-            <option value="" selected>Choisir la durée</option>
 
-            @foreach (var duree in Model.ListTrancheDuree)
-            {
-                <option value="@duree.Key" @{if (duree.Key == Model.IdDuree) { <text> selected </text>} }>@duree.Value</option>
-            }
-            
-        </select>
-        
-        <br />
 
-        //Menu déroulant thème
-        <label>Thème</label><br />
-        <select id="idTheme" name="IdTheme">
-            <option value="" selected>Choisir le thème</option>
-            @foreach (var item in Model.Themes)
-            {
-                <option value="@item.Key" @{if (item.Key == Model.IdTheme) { <text> selected </text> } }>@item.Value </option>
-            }
-        </select>
-        <br />
-        <input type="submit" value="Rechercher" />
-        <input type="hidden" name="XmlSearchViewModel" value="@Model.XmlSearchViewModel" />
-           
-           }
+}

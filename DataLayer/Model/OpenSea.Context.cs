@@ -42,5 +42,6 @@ namespace DataLayer.Model
         public virtual DbSet<Regions> Regions { get; set; }
         public virtual DbSet<Themes> Themes { get; set; }
         public virtual DbSet<Utilisateurs> Utilisateurs { get; set; }
+        public virtual DbSet<Commentaires> Commentaires { get; set; }
     }
 }
