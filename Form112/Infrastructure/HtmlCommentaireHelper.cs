@@ -13,7 +13,10 @@ namespace Form112.Infrastructure
         {
             var nbColumn = 12 - count;
             var commentPanel = new TagBuilder("div");
-            commentPanel.AddCssClass(String.Format("comment-panel col-sm-{1} col-sm-offset-{0} ", count, nbColumn));
+            commentPanel.AddCssClass(String.Format("comment-panel col-sm-{0} ", nbColumn));
+            if (count > 0) {
+                commentPanel.AddCssClass(String.Format("col-sm-offset{0} ", count));
+            }
 
 
             var commentHeader = new TagBuilder("div");
