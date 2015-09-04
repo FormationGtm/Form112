@@ -452,7 +452,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Uploads\Bateaux\NotUsed\" />
-    <Folder Include="Views\Details\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
