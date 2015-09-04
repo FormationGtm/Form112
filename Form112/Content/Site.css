@@ -248,28 +248,53 @@ footer {
 
 /* Style des zones de commentaires*/
 
-.commentaire-principal{
-    margin : 10px auto;
-    padding : 10px ;
-    width : 100%;
-    background-color:#A2DED0;
+.comment-container{
+	width : 95%;
+	margin : 10px auto;
+	padding : 10px;
+	background-color:#A2DED0;
     border : 1px solid #89C4F4;
     border-radius : 3px;
 }
 
-.contenu-commentaire{
-    color : #6C7A89;
-    font-style:italic;
-    font-size:1.4em;
+.comment-panel{
+	margin : 5px;
+	margin : 5px;
+	padding:0px;
+	color : #6C7A89;
+    font-size : 0.8em;
+	background-color : #fff;
+	border: 1px solid #6C7A89;
+	border-radius : 2px;
 }
 
-.infos-commentaire{
-    color : black;
-    font-size: 1em;
+.comment-reply-panel{
+	margin-left : 4em;
 }
 
-.commentaire-nom{
-    font-weight:600;
+.comment-header{
+	margin : 0px;
+	padding : 5px 10px;
+	border-bottom : 1px solid #6C7A89;
+	color : #000;
+}
+
+.author-name{
+	font-weight : 600;
+	font-size : 1.2em;
+	margin-right : 2em;
+}
+
+.comment-body{
+	padding : 10px;
+	font-size : 1.8em;
+	font-style : italic;
+}
+
+.zone-commentaire{
+    display: inline-block;
+    width : 95%;
+    margin: 0px auto;
 }
 
 .panel-body ul .list-group-item {
