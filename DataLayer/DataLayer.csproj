@@ -54,6 +54,7 @@
     <Compile Include="Businesslayer\Croisieres.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Businesslayer\StatCroisieres.cs" />
     <Compile Include="Businesslayer\Themes.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Model\Adresses.cs">
