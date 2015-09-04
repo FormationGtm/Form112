@@ -18,7 +18,6 @@ namespace Form112.Infrastructure
                 commentPanel.AddCssClass(String.Format("col-sm-offset{0} ", count));
             }
 
-
             var commentHeader = new TagBuilder("div");
             commentHeader.AddCssClass("comment-header");
 
