@@ -19,6 +19,10 @@ namespace Form112.Areas.Admin.Controllers
         private Form112Entities db = new Form112Entities();
 
         // GET: Admin/Croisieres
+        /// <summary>
+        /// requête linq recherchant toutes les croisières dans la table Croisieres et leur durée, port, promo et thème par jointure avec les différentes tables.
+        /// </summary>
+        /// <returns>la liste de toutes les croisières avec leurs détails</returns>
         public ActionResult Index()
         {
             var croisieres = db.Croisieres.Include(c => c.Durees).Include(c => c.Ports).Include(c => c.Promos).Include(c => c.Themes);
@@ -26,6 +30,11 @@ namespace Form112.Areas.Admin.Controllers
         }
 
         // GET: Admin/Croisieres/Details/5
+        /// <summary>
+        /// recherche la croisière avec son id passé en paramètre
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>une croisière si elle existe </returns>
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -41,6 +50,11 @@ namespace Form112.Areas.Admin.Controllers
         }
 
         // GET: Admin/Croisieres/Create
+        /// <summary>
+        /// affiche un formulaire pour entrer les différentes propriétés d'une nouvelle croisière
+        /// Les contenus des menus déroulants sont passés par le ViewBag
+        /// </summary>
+        /// <returns>vue create</returns>
         public ViewResult Create()
         {
             ViewBag.IdDuree = new SelectList(db.Durees, "IdDuree", "NbJours");
@@ -51,7 +65,14 @@ namespace Form112.Areas.Admin.Controllers
         }
 
         // POST: Admin/Croisieres/Create
-        
+        /// <summary>
+        /// Si les données entrées dans le formulaire ne sont pas valides, la vue create est à nouveau affichée.
+        /// Si elles sont valides, une nouvelle croisière est créée et insérée dans la base de données.
+        /// Le formulaire offre la possibilité d'ajouter une photo à la croisière.
+        /// </summary>
+        /// <param name="cvm"></param>
+        /// <param name="postedFile"></param>
+        /// <returns>la vue index si la création a réussi ou la vue create si elle a échoué</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(CroisieresViewModel cvm, HttpPostedFileBase postedFile)
@@ -92,6 +113,11 @@ namespace Form112.Areas.Admin.Controllers
         }
 
         // GET: Admin/Croisieres/Edit/5
+        /// <summary>
+        /// recherche et affiche une croisière sélectionnée par son id passé en paramètre 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>croisiereViewModel</returns>
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -124,7 +150,15 @@ namespace Form112.Areas.Admin.Controllers
         }
 
         // POST: Admin/Croisieres/Edit/5
-       
+        /// <summary>
+        /// modifie la croisière sélectionnée par son id avec les données du croisieresViewModel envoyées par le formulaire.
+        /// Modification en base de données.
+        /// Possibilité de changer ou ajouter une photo.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="cvm"></param>
+        /// <param name="postedFile"></param>
+        /// <returns>la vue index si la modifiction a réussi ou la vue edit si elle a échoué</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, CroisieresViewModel cvm, HttpPostedFileBase postedFile)
@@ -165,6 +199,11 @@ namespace Form112.Areas.Admin.Controllers
         }
 
         // GET: Admin/Croisieres/Delete/5
+        /// <summary>
+        /// recherche la croisière dont l'id est passé en paramètre par une requête linq.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>lacroisère sélectionnée</returns>
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -180,6 +219,11 @@ namespace Form112.Areas.Admin.Controllers
         }
 
         // POST: Admin/Croisieres/Delete/5
+        /// <summary>
+        /// supprime la croisière identifiée par son id dans la base
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>vue index</returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

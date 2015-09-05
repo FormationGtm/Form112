@@ -9,6 +9,10 @@ using System.Xml.Serialization;
 
 namespace Form112.Models
 {
+    /// <summary>
+    /// ViewModel permettant d'afficher menus déroulants et récupérer les champs du formulaire.
+    /// contient également les méthodes de sérialisation et de désérialisation du viewModel
+    /// </summary>
     public class SearchViewModel
     {
         [XmlIgnore]
