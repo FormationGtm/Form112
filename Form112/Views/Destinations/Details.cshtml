@@ -50,21 +50,21 @@
     }
 </div>
 
-
-@using (@Html.BeginForm("Commenter", "Destinations", FormMethod.Post, new { id = "idFormCommentaire" }))
-{
-    <div class="form-group-lg row">
-        <input type="text" class="form-control zone-commentaire col-sm-10 col-sm-offset-1" name="NomCommentaire" placeholder="Nom : Durand Louis" />
-    </div>
-    <input type="hidden" name="CroisiereId" value="@Model.IdCroisiere" />
-    <input type="hidden" name="CommentaireId" id="idReplyCommentaire" />
-    <div class="form-group-lg row">
-        <textarea class="form-control zone-commentaire col-sm-10 col-sm-offset-1" rows="3" placeholder="Commentaires" name="Commentaire"></textarea>
-    </div>
-    <div class="row form-group-lg col-sm-10 col-sm-offset-1">
-        <button class=" pull-right btn btn-default" id="idBouttonCommentaire">
-            Envoyer
-        </button>
-    </div>
-}
-
+<div class="row comment-form">
+    @using (@Html.BeginForm("Commenter", "Destinations", FormMethod.Post, new { id = "idFormCommentaire" }))
+    {
+        <div class="form-group-lg row">
+            <input type="text" class="form-control zone-commentaire col-sm-10 col-sm-offset-1" name="NomCommentaire" placeholder="Nom : Durand Louis" />
+        </div>
+        <input type="hidden" name="CroisiereId" value="@Model.IdCroisiere" />
+        <input type="hidden" name="CommentaireId" id="idReplyCommentaire" />
+        <div class="form-group-lg row">
+            <textarea class="form-control zone-commentaire col-sm-10 col-sm-offset-1" rows="3" placeholder="Commentaires" name="Commentaire"></textarea>
+        </div>
+        <div class="row form-group-lg col-sm-10 col-sm-offset-1">
+            <button class=" pull-right btn btn-default" id="idBouttonCommentaire">
+                Envoyer
+            </button>
+        </div>
+    }
+</div>

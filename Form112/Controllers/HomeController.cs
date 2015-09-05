@@ -33,6 +33,11 @@ namespace Form112.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Méthode qui construit la liste des ports pour un pays donné.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>une liste JSON</returns>
         public JsonResult ListePortDestinations(int id)
         {
             var listePortDestinations = db.Croisieres
@@ -50,6 +55,11 @@ namespace Form112.Controllers
             return Json(listePortDestinations, JsonRequestBehavior.AllowGet);
         }
 
+        /// <summary>
+        /// Méthode pour filter les destinations à partir de la sélection d'un pays (HomeViewModel) sur la carte du monde.
+        /// </summary>
+        /// <param name="homeViewModel"></param>
+        /// <returns>Liste des croisières d'un pays</returns>
         private static List<Croisieres> GetPaysResult(HomeViewModels homeViewModel)
         {
             SearchBase search = new Search();
@@ -57,19 +67,15 @@ namespace Form112.Controllers
             return search.GetResult().ToList();
         }
 
+        /// <summary>
+        /// Méthode d'appel de la méthode privée GetPaysResult qui récupère le HomeViewModel au click sur la carte et lui transmet. 
+        /// </summary>
+        /// <param name="hvm"></param>
+        /// <returns>Liste des croisières d'un pays donné</returns>
         [HttpPost]
         public ActionResult Pays(HomeViewModels hvm)
         {
             return View(GetPaysResult(hvm));
         }
-
-        [ChildActionOnly]
-        public PartialViewResult TopSixCroisieres(int idCroisiere)
-        {
-            var croisiere = db.Croisieres.Find(idCroisiere);
-            return PartialView("_DestinationPanel", croisiere);
-        }
-
-        
     }
 }

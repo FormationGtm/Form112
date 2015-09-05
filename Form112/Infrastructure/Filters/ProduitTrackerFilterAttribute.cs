@@ -12,6 +12,10 @@ namespace Form112.Infrastructure.Filters
     {
         private static Form112Entities _db = new Form112Entities();
 
+        /// <summary>
+        /// A chaque click sur une vue partielle d'une destination pour afficher son détail. Cette méthode enregistre en base de donnée, l'identifiant de la croisière et la date de l'évènement.
+        /// </summary>
+        /// <param name="filterContext"></param>
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             var ap = filterContext.ActionParameters.First();

@@ -12,6 +12,14 @@
 </div>
 
 @functions{
+    /// <summary>
+    /// Méthode récursive pour gérer l'affichage des commentaires selon s'il s'agit de réponse à un précedent commentaire ou d'un nouveau commentaire.
+    /// Construit une chaîne de caractère à l'aide d'un StringBuilder.
+    /// </summary>
+    /// <param name="commentaire"></param>
+    /// <param name="sb"></param>
+    /// <param name="count"></param>
+    /// <returns>un StringBuilder</returns>
     MvcHtmlString AfficherReponsesCommentaire(DataLayer.Model.Commentaires commentaire, StringBuilder sb, int count)
     {
         sb.Append(Html.CommentaireHelper(commentaire.NomCommentaire, commentaire.DateCommentaire.ToShortDateString(), commentaire.Commentaire, count));

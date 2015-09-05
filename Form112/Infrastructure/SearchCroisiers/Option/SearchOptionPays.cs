@@ -24,7 +24,7 @@ namespace Form112.Infrastructure.SearchCroisiers.Option
         /// Méthode publique permettant de filter la liste des croisières 
         /// selon le critère du pays choisi
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Liste de croisières</returns>
         public override IEnumerable<Croisieres> GetResult()
         {
             if (_codeIso2 != null)

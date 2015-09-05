@@ -9,6 +9,17 @@ namespace Form112.Infrastructure
 {
     public static class HtmlCommentaireHelper
     {
+        /// <summary>
+        /// Helper qui permet de construire le bloc html d'un commentaire et de gérer l'identation du commentaire s'il s'agit d'une réponse.
+        /// On affiche le nom de l'auteur du commentaire, la date réduite de post du commentaire, 
+        /// un lien pour répondre (qui envoi vers l'ancre du formulaire de réponse), et le commentaire en lui même.
+        /// </summary>
+        /// <param name="self"></param>
+        /// <param name="Nom"></param>
+        /// <param name="Date"></param>
+        /// <param name="commentaire"></param>
+        /// <param name="count"></param>
+        /// <returns>un chaine de caractère correspondant au bloc html du commentaire</returns>
         public static string CommentaireHelper(this HtmlHelper self, string Nom, string Date, string commentaire, int count)
         {
             var nbColumn = 12 - count;
