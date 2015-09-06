@@ -249,7 +249,7 @@ footer {
 /* Style des zones de commentaires*/
 
 .comment-container{
-	width : 95%;
+	width : 100%;
 	margin : 10px auto;
 	padding : 10px;
 	background-color:#A2DED0;
@@ -286,6 +286,26 @@ footer {
 	padding : 10px;
 	font-size : 1.8em;
 	font-style : italic;
+}
+
+.comment-reply-offset-1{
+    margin-left : 5%;
+}
+
+.comment-reply-offset-2{
+    margin-left : 10%;
+}
+
+.comment-reply-offset-3{
+    margin-left : 15%;
+}
+
+.comment-reply-offset-4{
+    margin-left : 20%;
+}
+
+.comment-reply-offset-5{
+    margin-left : 25%;
 }
 
 .zone-commentaire{

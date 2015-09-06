@@ -2,11 +2,11 @@
 @using Form112.Infrastructure
 @using System.Text
 
-<div class="comment-container col-sm-10" id="@Model.IdCommentaire">
+<div class="comment-container col-sm-10">
     @{
         StringBuilder sb = new StringBuilder();
         int count = 0;
-      }
+    }
     @AfficherReponsesCommentaire(Model, sb, count)
     @Html.Raw(sb.ToString());
 </div>
@@ -22,10 +22,11 @@
     /// <returns>un StringBuilder</returns>
     MvcHtmlString AfficherReponsesCommentaire(DataLayer.Model.Commentaires commentaire, StringBuilder sb, int count)
     {
-        sb.Append(Html.CommentaireHelper(commentaire.NomCommentaire, commentaire.DateCommentaire.ToShortDateString(), commentaire.Commentaire, count));
+        sb.Append(Html.CommentaireHelper(commentaire.IdCommentaire, commentaire.NomCommentaire, commentaire.DateCommentaire.ToShortDateString(), commentaire.Commentaire, count));
         foreach (var comment in commentaire.Commentaires1)
         {
-            AfficherReponsesCommentaire(comment, sb, count+1);
+            count += 1;
+            AfficherReponsesCommentaire(comment, sb, count);
         }
         return new MvcHtmlString("");
     }

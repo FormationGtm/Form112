@@ -20,14 +20,15 @@ namespace Form112.Infrastructure
         /// <param name="commentaire"></param>
         /// <param name="count"></param>
         /// <returns>un chaine de caractère correspondant au bloc html du commentaire</returns>
-        public static string CommentaireHelper(this HtmlHelper self, string Nom, string Date, string commentaire, int count)
+        public static string CommentaireHelper(this HtmlHelper self, int id, string Nom, string Date, string commentaire, int count)
         {
             var nbColumn = 12 - count;
             var commentPanel = new TagBuilder("div");
-            commentPanel.AddCssClass(String.Format("comment-panel col-sm-{0} ", nbColumn));
+            commentPanel.AddCssClass(String.Format("comment-panel", nbColumn));
             if (count > 0) {
-                commentPanel.AddCssClass(String.Format("col-sm-offset{0} ", count));
+                commentPanel.AddCssClass(String.Format("comment-reply-offset-{0} ", count));
             }
+            commentPanel.Attributes.Add("id", id.ToString());
 
             var commentHeader = new TagBuilder("div");
             commentHeader.AddCssClass("comment-header");
