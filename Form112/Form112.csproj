@@ -175,6 +175,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CroisieresController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RolesController.cs" />
+    <Compile Include="Areas\Admin\Models\RolesViewModel.cs" />
     <Compile Include="Areas\Admin\Controllers\StatistiquesController.cs" />
     <Compile Include="Areas\Admin\Models\CroisieresViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -298,6 +300,10 @@
     <Content Include="Content\font-awesome-4.4.0\scss\_stacked.scss" />
     <Content Include="Content\font-awesome-4.4.0\scss\_variables.scss" />
     <Content Include="Areas\Admin\Views\Statistiques\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Roles\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Roles\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Roles\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Roles\Delete.cshtml" />
     <None Include="Properties\PublishProfiles\OpenSea.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\Destinations\DetailScript.js" />
