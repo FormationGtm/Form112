@@ -1,5 +1,6 @@
 ﻿using DataLayer.Businesslayer;
 using DataLayer.Model;
+using Form112.Infrastructure.Utilitaires;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,15 @@ using System.Web.Mvc;
 
 namespace Form112.Areas.Admin.Controllers
 {
-    public class StatistiquesController : Controller
+    public class StatistiquesController : AdminController
     {
         private Form112Entities _db = new Form112Entities();
+
+         public StatistiquesController():base()
+        {
+            var bc = new BreadCrumbItem("Statistiques", "/Statistiques");
+            lbc.Add(bc);
+        }
 
         // GET: Admin/Statistiques
         /// <summary>
@@ -19,6 +26,7 @@ namespace Form112.Areas.Admin.Controllers
         /// <returns>la liste des croisièers associées à leur nombre de vues</returns>
         public ActionResult Index()
         {
+            ViewBag.ListeBC = lbc;
             var listVueCroisieres = _db.ProduitTracking
                 .GroupBy(m => m.IdProduit)
                 .Select(g => new StatCroisieres{ Croisiere = _db.Croisieres.Where(c => c.IdCroisiere == g.Key).FirstOrDefault(), NbVues = g.Count() })

@@ -10,13 +10,20 @@ using DataLayer.Model;
 using System.IO;
 using Form112.Areas.Admin.Models;
 using System.Globalization;
+using Form112.Infrastructure.Utilitaires;
 
 namespace Form112.Areas.Admin.Controllers
 {
     [Authorize]
-    public class CroisieresController : Controller
+    public class CroisieresController : AdminController
     {
         private Form112Entities db = new Form112Entities();
+
+        public CroisieresController():base()
+        {
+            var bc = new BreadCrumbItem("Croisières", "/Croisieres");
+            lbc.Add(bc);
+        }
 
         // GET: Admin/Croisieres
         /// <summary>
@@ -25,6 +32,7 @@ namespace Form112.Areas.Admin.Controllers
         /// <returns>la liste de toutes les croisières avec leurs détails</returns>
         public ActionResult Index()
         {
+            ViewBag.ListeBC = lbc;
             var croisieres = db.Croisieres.Include(c => c.Durees).Include(c => c.Ports).Include(c => c.Promos).Include(c => c.Themes);
             return View(croisieres.ToList());
         }
@@ -37,6 +45,10 @@ namespace Form112.Areas.Admin.Controllers
         /// <returns>une croisière si elle existe </returns>
         public ActionResult Details(int? id)
         {
+            var bc = new BreadCrumbItem("Détails", "/Croisieres/Details/"+id);
+            lbc.Add(bc);
+            ViewBag.ListeBC = lbc;
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -57,6 +69,10 @@ namespace Form112.Areas.Admin.Controllers
         /// <returns>vue create</returns>
         public ViewResult Create()
         {
+            var bc = new BreadCrumbItem("Création", "/Croisieres/Create");
+            lbc.Add(bc);
+            ViewBag.ListeBC = lbc;
+
             ViewBag.IdDuree = new SelectList(db.Durees, "IdDuree", "NbJours");
             ViewBag.IdPort = new SelectList(db.Ports, "IdPort", "Nom");
             ViewBag.IdPromo = new SelectList(db.Promos, "IdPromo", "Reduction");
@@ -120,6 +136,10 @@ namespace Form112.Areas.Admin.Controllers
         /// <returns>croisiereViewModel</returns>
         public ActionResult Edit(int? id)
         {
+            var bc = new BreadCrumbItem("Modification", "/Croisieres/Edit/"+id);
+            lbc.Add(bc);
+            ViewBag.ListeBC = lbc;
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -206,6 +226,10 @@ namespace Form112.Areas.Admin.Controllers
         /// <returns>lacroisère sélectionnée</returns>
         public ActionResult Delete(int? id)
         {
+            var bc = new BreadCrumbItem("Suppression", "/Croisieres/Delete/"+id);
+            lbc.Add(bc);
+            ViewBag.ListeBC = lbc;
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

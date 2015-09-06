@@ -7,13 +7,21 @@ using System.Web.Mvc;
 using Form112.Areas.Admin.Models;
 using System.Net;
 using System.Data.Entity;
+using Form112.Infrastructure.Utilitaires;
 
 namespace Form112.Areas.Admin.Controllers
 {
     [Authorize]
-    public class RolesController : Controller
+    public class RolesController : AdminController
     {
         private Form112Entities db = new Form112Entities();
+
+        public RolesController():base()
+        {
+            var bc = new BreadCrumbItem("Rôles", "/Roles");
+            lbc.Add(bc);
+        }
+
         // GET: Admin/Roles
         /// <summary>
         /// requête linq pour récupérer les rôles d'utilisateurs
@@ -21,6 +29,7 @@ namespace Form112.Areas.Admin.Controllers
         /// <returns>liste des rôles dans la vue index</returns>
         public ActionResult Index()
         {
+            ViewBag.ListeBC = lbc;
             var roles = db.AspNetRoles.OrderBy(r => r.Id);
             return View(roles.ToList());
         }
@@ -32,6 +41,10 @@ namespace Form112.Areas.Admin.Controllers
         /// <returns>la vue create</returns>
         public ViewResult Create()
         {
+            var bc = new BreadCrumbItem("Création", "/Roles/Create");
+            lbc.Add(bc);
+            ViewBag.ListeBC = lbc;
+
             return View();
         }
 
@@ -67,6 +80,10 @@ namespace Form112.Areas.Admin.Controllers
         /// <returns>le RolesViewModel à la vue Edit</returns>
         public ActionResult Edit(string id)
         {
+            var bc = new BreadCrumbItem("Modification", "/Roles/Edit/"+id);
+            lbc.Add(bc);
+            ViewBag.ListeBC = lbc;
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -117,6 +134,10 @@ namespace Form112.Areas.Admin.Controllers
         /// <returns>le rôle à la vue delete</returns>
         public ActionResult Delete(string id)
         {
+            var bc = new BreadCrumbItem("Suppression", "/Roles/Delete/"+id);
+            lbc.Add(bc);
+            ViewBag.ListeBC = lbc;
+
             if (string.IsNullOrEmpty(id))
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
