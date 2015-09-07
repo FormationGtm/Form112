@@ -1,4 +1,14 @@
 ﻿$(function () {
+    var listPays = [];
+    $.getJSON('/Home/ListPaysCroisieres', function (data) {
+        $.each(data, function (idx, pays) {
+            listPays.push(pays.codeIso2.toLowerCase());
+        });
+    });
+    $.each(listPays, function (key, codeIso2) {
+        $('#idVmapWorld').vectorMap('set', 'colors', { codeIso2: '#000000' });
+    });
+
     $('#idVmapWorld').vectorMap({
         map: 'world_en',
         backgroundColor: '#a5bfdd',
@@ -14,9 +24,21 @@
         selectedColor: '#c9dfaf',
         selectedRegion: null,
         showTooltip: true,
-        onRegionClick: function (element, code, region) {
-            $("#idPaysChoice").val(code.toUpperCase());
-            $("#idFormMap").submit();
+        onRegionOver: function (event, code) {
+            if ($.inArray(code, listPays) == -1) {
+                event.preventDefault();
+            }
+        },
+        onRegionClick: function (element, code) {
+            if ($.inArray(code, listPays) != -1) {
+                $("#idPaysChoice").val(code.toUpperCase());
+                $("#idFormMap").submit();
+            }
+            else {
+                event.preventDefault();
+            }
         }
     });
+
+
 });

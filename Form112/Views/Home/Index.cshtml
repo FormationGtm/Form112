@@ -1,4 +1,6 @@
-﻿@{
+﻿@model List<DataLayer.Model.Croisieres>
+
+@{
     ViewBag.Title = "Sea the beautiful";
 }
 
@@ -27,6 +29,14 @@
 </div>
 
 @* Zone définissant la carte cliquable du monde *@
+
+@{
+    var listCroisierePays = new List<string>();
+    foreach (var crs in @Model)
+    {
+        listCroisierePays.Add(crs.Ports.Pays.CodeIso2);
+    }
+}
 
 <div class="row">
     <div class="map-header">

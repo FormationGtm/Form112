@@ -18,7 +18,8 @@ namespace Form112.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var listCroisieres = db.Croisieres.ToList();
+            return View(listCroisieres);
         }
 
         public ActionResult About() {
@@ -76,6 +77,13 @@ namespace Form112.Controllers
         public ActionResult Pays(HomeViewModels hvm)
         {
             return View(GetPaysResult(hvm));
+        }
+
+        public JsonResult ListPaysCroisieres()
+        {
+            var listPaysCroisieres = db.Croisieres.Select(crs => new { codeIso2 = crs.Ports.Pays.CodeIso2 }).ToList();
+
+            return Json(listPaysCroisieres, JsonRequestBehavior.AllowGet);
         }
     }
 }
