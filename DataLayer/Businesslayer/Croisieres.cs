@@ -27,7 +27,7 @@ namespace DataLayer.Model
                     Photo = crois.Photo,
                     DateDepart = crois.DateDepart,
                     IdCroisiere = crois.IdCroisiere
-                });             
+                });
             }
             return lc;
         }
@@ -40,10 +40,10 @@ namespace DataLayer.Model
         /// <returns>true si oui si non false</returns>
         public static Boolean VerifDisponibilite(int idCroisiere, int nbPlace)
         {
-            var capacite = db.Croisieres.Find(idCroisiere).Capacite;
-            if(capacite >= nbPlace)
+            var capacite = db.Croisieres.Find(idCroisiere);
+            if (capacite.Capacite >= nbPlace)
             {
-                capacite = capacite - nbPlace;
+                capacite.Capacite = capacite.Capacite - nbPlace;
                 db.SaveChanges();
                 return true;
             }
