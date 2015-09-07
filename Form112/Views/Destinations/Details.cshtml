@@ -35,7 +35,8 @@
             À partir de <span class="prix-detail">@Model.Prix € </span>
         </div>
         <div class="row">
-            <button class="btn btn-default" onclick="location.href='@Url.Action("Index", "Reservation")'">Réservez</button>
+            <button class="btn btn-default" onclick="location.href='@Url.Action("Index", "Reservation", new { id = @Model.IdCroisiere })'">Réservez</button>
+            <input type="hidden" name="CroisiereChoisi" value="@Model.IdCroisiere" />
         </div>
     </div>
 </div>

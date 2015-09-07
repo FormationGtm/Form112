@@ -13,36 +13,52 @@ namespace Form112.Controllers
     {
         private Form112Entities db = new Form112Entities();
         // GET: Reservation
-        public ActionResult Index()
-        {            
+        /// <summary>
+        /// La methode qui affiche le formulaire de réservation
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Index(int? id)
+        {
+            ViewBag.idCroi = id;
+
             return View();
         }
 
+        /// <summary>
+        /// Requête Linq pour récuperer une croisière avec un Id et l'afficher sur une vue partielle
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>objet croisière</returns>
         [ChildActionOnly]
         public PartialViewResult DetailCroisiere(int id)
         {
-            var croisiere = db.Croisieres.Find(id);            
+            var croisiere = db.Croisieres.Find(id);
             return PartialView("_DestinationPanel", croisiere);
         }
 
         /// <summary>
-        /// valider une réservation
+        /// Valider et enregistrer une réservation si dispo.
         /// </summary>
         /// <param name="rvm"></param>
-        /// <returns></returns>
-       public ActionResult validerReservation(ReservationViewModels rvm)
+        /// <returns>Récapitulatif sur la réservation</returns>
+        public ActionResult validerReservation(ReservationViewModels rvm)
         {
-            DestinationViewModel dvm = new DestinationViewModel();                                                                
-                var utilisateur = db.Utilisateurs.Where(u => u.Id == rvm.IdUser).FirstOrDefault();
-                var adress = new Adresses();
-                TryUpdateModel(adress);
-                adress.SaveAdress();
-                var add = db.Adresses.FirstOrDefault();               
-                utilisateur.IdAdresse = add.IdAdresse;
-               // utilisateur.IdCroisiere = dvm.DestinationChoice;
-                db.SaveChanges();
 
-                return View();          
+            var utilisateur = db.Utilisateurs.Where(u => u.Id == rvm.IdUser).FirstOrDefault();
+            var adresse = new Adresses();
+            TryUpdateModel(adresse);
+            adresse.SaveAdress();
+            utilisateur.IdAdresse = db.Adresses.FirstOrDefault().IdAdresse;
+            db.SaveChanges();
+            if (Croisieres.VerifDisponibilite(rvm.CroisiereChoisi, rvm.NbPlace))
+            {
+
+                utilisateur.IdCroisiere = rvm.CroisiereChoisi;
+                db.SaveChanges();
+                return View(db.Croisieres.Find(rvm.CroisiereChoisi));
+            }
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

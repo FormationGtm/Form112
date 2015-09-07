@@ -35,7 +35,10 @@ namespace Form112.Controllers
             return PartialView("_DestinationPanel", croisieres);
         }
 
-
+        /// <summary>
+        /// Une reqête Linq pour récuperer les 5 croisières dont la réduction plus élevée et les affichés sur une vue partielle
+        /// </summary>
+        /// <returns>liste d'objets croisière</returns>
         [ChildActionOnly]
         public PartialViewResult TopPromo()
         {
