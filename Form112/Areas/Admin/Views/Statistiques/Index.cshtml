@@ -1,34 +1,17 @@
 ﻿@model  List<DataLayer.Businesslayer.StatCroisieres>
 
+@section script{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+    <script src="~/Scripts/Statistiques/StatsScript.js"></script>
+}
+
 @{
-    ViewBag.Title = "Statistique de visite des croisières"; 
+    ViewBag.Title = "Statistique de visite des croisières";
 }
 
 <div class="vue-title">
     Statistique de fréquentation des Croisières
 </div>
+<div id="graph">
 
-<table id="idDescendantTable" class="table table-hover">
-    <thead>
-        <tr >
-            <th class="text-center">Pays</th>
-            <th class="text-center">Ports</th>
-            <th class="text-center">Durée</th>
-            <th class="text-center">Date</th>
-            <th class="text-right">Nombre de Vues</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr class="text-center">
-                <td>@item.Croisiere.Ports.Pays.Nom</td>
-                <td>@item.Croisiere.Ports.Nom</td>
-                <td>@item.Croisiere.Durees.NbJours jours</td>
-                <td>@item.Croisiere.DateDepart.ToShortDateString()</td>
-                <td class="text-right">@item.NbVues</td>
-            </tr>
-        }
-    </tbody>
-</table>
-
+</div>

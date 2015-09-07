@@ -6,6 +6,11 @@
         });
     });
 
+    var listColors = {};
+    //$.each(listPays, function (index, pays) {
+    //    listColors[pays[index]] = '#d2d7d3';
+    //});
+
     $('#idVmapWorld').vectorMap({
         map: 'world_en',
         backgroundColor: '#a5bfdd',
@@ -13,6 +18,7 @@
         borderOpacity: 0.25,
         borderWidth: 1,
         color: '#f4f3f0',
+        colors: listColors,
         enableZoom: true,
         hoverColor: '#c9dfaf',
         hoverOpacity: null,
