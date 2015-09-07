@@ -19,6 +19,7 @@ namespace DataLayer.Model
             this.Photos = new HashSet<Photos>();
             this.Utilisateurs = new HashSet<Utilisateurs>();
             this.Commentaires = new HashSet<Commentaires>();
+            this.Reservations = new HashSet<Reservations>();
         }
     
         public int IdCroisiere { get; set; }
@@ -30,6 +31,8 @@ namespace DataLayer.Model
         public System.DateTime DateDepart { get; set; }
         public string Photo { get; set; }
         public string Description { get; set; }
+        public Nullable<int> Capacite { get; set; }
+        public Nullable<int> MoyenPaiement { get; set; }
     
         public virtual Durees Durees { get; set; }
         public virtual Ports Ports { get; set; }
@@ -38,5 +41,6 @@ namespace DataLayer.Model
         public virtual ICollection<Photos> Photos { get; set; }
         public virtual ICollection<Utilisateurs> Utilisateurs { get; set; }
         public virtual ICollection<Commentaires> Commentaires { get; set; }
+        public virtual ICollection<Reservations> Reservations { get; set; }
     }
 }
