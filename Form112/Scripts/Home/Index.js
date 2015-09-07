@@ -5,9 +5,6 @@
             listPays.push(pays.codeIso2.toLowerCase());
         });
     });
-    $.each(listPays, function (key, codeIso2) {
-        $('#idVmapWorld').vectorMap('set', 'colors', { codeIso2: '#000000' });
-    });
 
     $('#idVmapWorld').vectorMap({
         map: 'world_en',
