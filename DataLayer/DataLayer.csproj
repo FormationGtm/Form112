@@ -87,6 +87,9 @@
     <Compile Include="Model\LogAction.cs">
       <DependentUpon>OpenSea.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\MoyensPaiement.cs">
+      <DependentUpon>OpenSea.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\OpenSea.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -118,6 +121,9 @@
       <DependentUpon>OpenSea.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Regions.cs">
+      <DependentUpon>OpenSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Reservations.cs">
       <DependentUpon>OpenSea.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Themes.cs">

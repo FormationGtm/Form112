@@ -9,7 +9,10 @@ namespace DataLayer.Model
 {
     partial class Themes
     {
-       
+       /// <summary>
+       /// Récureration de la liste de Thèmes
+       /// </summary>
+       /// <returns>Liste de Thème</returns>
         public static List<Themes> ListeThemes()
         {
             var db = new Form112Entities();
