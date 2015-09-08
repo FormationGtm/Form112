@@ -30,7 +30,7 @@ namespace Form112.Controllers
         /// <param name="id"></param>
         /// <returns>objet croisière</returns>
         [ChildActionOnly]
-        public PartialViewResult DetailCroisiere(int id)
+        public PartialViewResult DetailCroisiere(int? id)
         {
             var croisiere = db.Croisieres.Find(id);
             return PartialView("_DestinationPanel", croisiere);
@@ -43,18 +43,17 @@ namespace Form112.Controllers
         /// <returns>Récapitulatif sur la réservation</returns>
         public ActionResult validerReservation(ReservationViewModels rvm)
         {
-
-            var utilisateur = db.Utilisateurs.Where(u => u.Id == rvm.IdUser).FirstOrDefault();
-            var adresse = new Adresses();
-            TryUpdateModel(adresse);
-            adresse.SaveAdress();
-            utilisateur.IdAdresse = db.Adresses.FirstOrDefault().IdAdresse;
-            db.SaveChanges();
             if (Croisieres.VerifDisponibilite(rvm.CroisiereChoisi, rvm.NbPlace))
             {
-
+                var utilisateur = db.Utilisateurs.Where(u => u.Id == rvm.IdUser).FirstOrDefault();
+                var adresse = new Adresses();
+                TryUpdateModel(adresse);
+                adresse.SaveAdress();
+                utilisateur.Adresses = adresse;
+                utilisateur.SaveUserChange(rvm.IdUser);
                 utilisateur.IdCroisiere = rvm.CroisiereChoisi;
                 db.SaveChanges();
+
                 return View(db.Croisieres.Find(rvm.CroisiereChoisi));
             }
 
