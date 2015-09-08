@@ -51,7 +51,14 @@ namespace Form112.Controllers
                 adresse.SaveAdress();
                 utilisateur.Adresses = adresse;
                 utilisateur.SaveUserChange(rvm.IdUser);
-                utilisateur.IdCroisiere = rvm.CroisiereChoisi;
+                var reservation = new Reservations
+                {
+                    IdCroisiere = rvm.CroisiereChoisi,
+                    IdUtilisateur = rvm.IdUser,
+                    DateReservation = DateTime.Now,
+                    NbPlace = rvm.NbPlace,
+                    MoyenPaiement = rvm.MoyenPaiement
+                };
                 db.SaveChanges();
 
                 return View(db.Croisieres.Find(rvm.CroisiereChoisi));
