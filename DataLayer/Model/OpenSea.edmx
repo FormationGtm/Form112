@@ -422,6 +422,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_utilisateurs_aspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Utilisateurs" Type="Self.Utilisateurs" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Utilisateurs">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_utilisateurs_croisieres">
           <End Role="Croisieres" Type="Self.Croisieres" Multiplicity="0..1" />
           <End Role="Utilisateurs" Type="Self.Utilisateurs" Multiplicity="*" />
@@ -524,6 +536,10 @@
             <End Role="Adresses" EntitySet="Adresses" />
             <End Role="Utilisateurs" EntitySet="Utilisateurs" />
           </AssociationSet>
+          <AssociationSet Name="fk_utilisateurs_aspNetUsers" Association="Self.fk_utilisateurs_aspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Utilisateurs" EntitySet="Utilisateurs" />
+          </AssociationSet>
           <AssociationSet Name="fk_utilisateurs_croisieres" Association="Self.fk_utilisateurs_croisieres">
             <End Role="Croisieres" EntitySet="Croisieres" />
             <End Role="Utilisateurs" EntitySet="Utilisateurs" />
@@ -604,6 +620,7 @@
           <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="Utilisateurs" Relationship="Self.fk_utilisateurs_aspNetUsers" FromRole="AspNetUsers" ToRole="Utilisateurs" />
           <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
         </EntityType>
         <EntityType Name="Commentaires">
@@ -760,8 +777,9 @@
           <Property Name="Prenom" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IdCroisiere" Type="Int32" />
           <Property Name="IdAdresse" Type="Int32" />
-		  <Property Name="InfoAbonne" Type="Boolean" />
+          <Property Name="InfoAbonne" Type="Boolean" />
           <NavigationProperty Name="Adresses" Relationship="Self.fk_utilisateurs_adresses" FromRole="Utilisateurs" ToRole="Adresses" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.fk_utilisateurs_aspNetUsers" FromRole="Utilisateurs" ToRole="AspNetUsers" />
           <NavigationProperty Name="Croisieres" Relationship="Self.fk_utilisateurs_croisieres" FromRole="Utilisateurs" ToRole="Croisieres" />
           <NavigationProperty Name="Reservations" Relationship="Self.fk_reservations_Utilisateurs" FromRole="Utilisateurs" ToRole="Reservations" />
         </EntityType>
@@ -814,6 +832,18 @@
             </Principal>
             <Dependent Role="AspNetUserLogins">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_utilisateurs_aspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Utilisateurs" Type="Self.Utilisateurs" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Utilisateurs">
+              <PropertyRef Name="Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1001,6 +1031,10 @@
           <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="fk_utilisateurs_aspNetUsers" Association="Self.fk_utilisateurs_aspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Utilisateurs" EntitySet="Utilisateurs" />
           </AssociationSet>
           <AssociationSet Name="fk_commentaires_commentaires" Association="Self.fk_commentaires_commentaires">
             <End Role="Commentaires" EntitySet="Commentaires" />
@@ -1263,7 +1297,6 @@
           <EntitySetMapping Name="Utilisateurs">
             <EntityTypeMapping TypeName="Form112Model.Utilisateurs">
               <MappingFragment StoreEntitySet="Utilisateurs">
-                <ScalarProperty Name="InfoAbonne" ColumnName="InfoAbonne" />
                 <ScalarProperty Name="IdUtilisateur" ColumnName="IdUtilisateur" />
                 <ScalarProperty Name="DateInscription" ColumnName="DateInscription" />
                 <ScalarProperty Name="LastConnection" ColumnName="LastConnection" />
@@ -1272,6 +1305,7 @@
                 <ScalarProperty Name="Prenom" ColumnName="Prenom" />
                 <ScalarProperty Name="IdCroisiere" ColumnName="IdCroisiere" />
                 <ScalarProperty Name="IdAdresse" ColumnName="IdAdresse" />
+                <ScalarProperty Name="InfoAbonne" ColumnName="InfoAbonne" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
