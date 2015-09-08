@@ -40,7 +40,7 @@ namespace Form112.Controllers
         /// Valider et enregistrer une réservation si dispo.
         /// </summary>
         /// <param name="rvm"></param>
-        /// <returns>Récapitulatif sur la réservation</returns>
+        /// <returns>Récapitulatif sur la réservation si ok si non rester sur le forlumaire</returns>
         public ActionResult validerReservation(ReservationViewModels rvm)
         {
             if (Croisieres.VerifDisponibilite(rvm.CroisiereChoisi, rvm.NbPlace))
@@ -48,9 +48,9 @@ namespace Form112.Controllers
                 var utilisateur = db.Utilisateurs.Where(u => u.Id == rvm.IdUser).FirstOrDefault();
                 var adresse = new Adresses();
                 TryUpdateModel(adresse);
-                adresse.SaveAdress();
+                adresse.SaveAdress(db);
                 utilisateur.Adresses = adresse;
-                utilisateur.SaveUserChange(rvm.IdUser);
+                utilisateur.SaveUserChange(db, rvm.IdUser);
                 var reservation = new Reservations
                 {
                     IdCroisiere = rvm.CroisiereChoisi,
@@ -59,12 +59,13 @@ namespace Form112.Controllers
                     NbPlace = rvm.NbPlace,
                     MoyenPaiement = rvm.MoyenPaiement
                 };
+                db.Reservations.Add(reservation);
                 db.SaveChanges();
 
                 return View(db.Croisieres.Find(rvm.CroisiereChoisi));
             }
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", new { id = rvm.CroisiereChoisi, controller = "Reservation" });            
         }
     }
 }

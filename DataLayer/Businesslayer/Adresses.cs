@@ -8,11 +8,11 @@ namespace DataLayer.Model
 {
     public partial class Adresses
     {
-        private Form112Entities db = new Form112Entities();
+        
         /// <summary>
         /// Enregistrer une adresse utilisateur si elle n'existe pas dans la base
         /// </summary>
-        public void SaveAdress()
+        public void SaveAdress(Form112Entities db)
         {            
             var add = db.Adresses.Where(a => a.Ligne1 == Ligne1 && a.Ligne2 == Ligne2 && a.Ligne3 == Ligne3 && a.CodePostal == CodePostal);
             if (add.Count() == 0)

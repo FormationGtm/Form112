@@ -2,7 +2,10 @@
 
 <div class="col-sm-4 wrapper-panel">
     <div class="destination-panel" id="@Model.IdCroisiere">
-        <img src="~/Uploads/Bateaux/@Model.Photos.FirstOrDefault().PhotoName" alt="Alternate Text" class="panel-img" />
+        @if (@Model.Photos.Count() !=0)
+        {
+            <img src="~/Uploads/Bateaux/@Model.Photos.FirstOrDefault().PhotoName" alt="Alternate Text" class="panel-img" />
+        }
         <div class="panel-header">
             @Model.Ports.Pays.Nom
         </div>
@@ -17,9 +20,9 @@
         <div class="panel-end">
             @if (@Model.Promos.Reduction.HasValue)
             {
-              <text> - @Model.Promos.Reduction % </text> ; 
+                <text> - @Model.Promos.Reduction % </text> ;
             }
-            
+
         </div>
     </div>
 </div>

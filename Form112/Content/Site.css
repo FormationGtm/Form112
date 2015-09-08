@@ -159,6 +159,13 @@ footer {
     margin: 0px auto;
 }
 
+.img-caroussel-detail{
+    position: relative;
+    width: 100%;
+    height : auto;
+    margin: 0px auto;
+}
+
 .map-header {
     margin: 2em 0;
     font-size: 1.5em;
