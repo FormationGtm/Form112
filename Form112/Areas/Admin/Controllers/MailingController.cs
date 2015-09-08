@@ -10,7 +10,8 @@ using DataLayer.Model;
 
 namespace Form112.Areas.Admin.Controllers
 {
-    public class MailingController : Controller
+
+    public class MailingController : AdminController
     {
 
         private Form112Entities db = new Form112Entities();
@@ -40,8 +41,10 @@ namespace Form112.Areas.Admin.Controllers
                 var mailMsm = new MailMessage("Agence OpenSea <opensea_agence@gtm.fr>", stringRecip);
                 mailMsm.Subject = mvm.Sujet.Replace("@Nom@", recip.Nom).Replace("@Prenom@", recip.Prenom);
 
-                mailMsm.Body = mvm.Message.Replace("@Nom@", recip.Nom).Replace("@Prenom@", recip.Prenom);
-                
+                mailMsm.Body = mvm.Message.Replace("@Nom@", recip.Nom).Replace("@Prenom@", recip.Prenom) + 
+                    "<br/> Trouver nos promos <a href='http://localhost:62679/Promotions'> ici </a>";
+
+
                 mailMsm.IsBodyHtml = true;
 
                 var Client = new SmtpClient();

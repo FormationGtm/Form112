@@ -14,5 +14,8 @@ namespace Form112.Areas.Admin.Models
 
         [Required, Display(Name = "Votre message")]
         public string Message { get; set; }
+
+        [Display(Name="Ajouter un lien")]
+        public string LienProduit { get; set; }
     }
 }

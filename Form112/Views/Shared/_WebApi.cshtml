@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Product App</title>
+</head>
+<body>
+
+    <div class="pub-pourri">
+        <h4>Offre du jour</h4>
+        <ul id="croisieres" />
+        <img/>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+    var uri = 'http://form114.dlucazeau.fr/api/ProduitsApi';
+
+    $(function () {
+      // Send an AJAX request
+      $.getJSON(uri, function (cosa) {
+              $('<li>', { text: formatItem(cosa) }).appendTo($('#croisieres'));
+              $('<img>').attr('src', cosa.Image).attr("class", "img-webapi").appendTo($('#croisieres'));
+          });
+    });
+
+    function formatItem(item) {
+      return item.Titre + ' ' + item.Localisation + ' ' + item.Prix + ' ' + item.Description;
+    }
+
+    </script>
+</body>
+</html>

@@ -38,6 +38,7 @@
 
         <div class="col-sm-3 col-xs-4 partial-search-view">
             @RenderSection("SearchForm", required: false)
+            @Html.Partial("_WebApi")
         </div>
 
         @* Position de la vue principale *@
@@ -52,7 +53,8 @@
 
 
         <div class="col-sm-2 col-xs-3 partial-promo-view">
-            @Html.Action("TopPromo", "Promotions")
+                @Html.Action("TopPromo", "Promotions")
+           
         </div>
 
 
