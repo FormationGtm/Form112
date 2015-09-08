@@ -73,7 +73,11 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Http.Owin">
+
       <HintPath>..\..\..\webServices\WebApi1\WebApi1\WebApi1\bin\System.Web.Http.Owin.dll</HintPath>
+
+      <HintPath>..\..\..\..\Desktop\WebApi1\WebApi1\bin\System.Web.Http.Owin.dll</HintPath>
+
     </Reference>
     <Reference Include="System.Web.Http.WebHost, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -340,7 +344,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Search\Index.js" />
     <Content Include="Scripts\Shared\SharedScript.js" />
-    <Content Include="Scripts\Statistiques\StatsScript.js" />
+    <Content Include="Areas\Admin\Script\StatsScript.js" />
     <Content Include="Scripts\Themes\IndexThemesScript.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Uploads\Bateaux\42268.jpg" />

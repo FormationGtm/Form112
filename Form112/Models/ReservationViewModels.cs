@@ -39,5 +39,6 @@ namespace Form112.Models
         public int CroisiereChoisi { get; set; }
         public int NbPlace { get; set; }
         public string IdUser { get; set; }
+        public string MoyenPaiement { get; set; }
     }
 }

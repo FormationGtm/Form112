@@ -86,6 +86,8 @@ namespace Form112.Models
         [Display(Name = "Confirmer le mot de passe*")]
         [Compare("Password", ErrorMessage = "Le mot de passe et le mot de passe de confirmation ne correspondent pas.")]
         public string ConfirmPassword { get; set; }
+
+        public bool VuActu { get; set; }
     }
 
     public class ResetPasswordViewModel

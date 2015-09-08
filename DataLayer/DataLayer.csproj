@@ -71,6 +71,7 @@
     </Compile>
     <Compile Include="Businesslayer\StatCroisieres.cs" />
     <Compile Include="Businesslayer\Themes.cs" />
+    <Compile Include="Businesslayer\Utilisateurs.cs" />
     <Compile Include="Model\Adresses.cs">
       <DependentUpon>OpenSea.tt</DependentUpon>
     </Compile>

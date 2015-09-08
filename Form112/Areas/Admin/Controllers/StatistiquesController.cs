@@ -49,18 +49,5 @@ namespace Form112.Areas.Admin.Controllers
 
             return Json(NombreVuesParPays, JsonRequestBehavior.AllowGet);
         }
-
-        public JsonResult NombreVuesParMois(DateTime date)
-        {
-            var NombreVuesParMois = _db.ProduitTracking
-                .Join(_db.Croisieres, pt => pt.IdProduit, p => p.IdCroisiere, (pt, p) => new { pt.DatePT, p.Ports.Pays })
-                .GroupBy(x => x.Pays, x => x.DatePT.Month)
-                .Select(g => new { g.Key.Nom, NbVis = g.Count() })
-                .OrderBy(x => x.Nom)
-                .ToList();
-
-            return Json(NombreVuesParMois, JsonRequestBehavior.AllowGet);
-        }
-
     }
 }

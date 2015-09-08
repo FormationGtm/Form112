@@ -1,17 +1,15 @@
-﻿@model  List<DataLayer.Businesslayer.StatCroisieres>
-
-@section script{
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
-    <script src="~/Scripts/Statistiques/StatsScript.js"></script>
-}
-
-@{
+﻿@{
     ViewBag.Title = "Statistique de visite des croisières";
 }
+
+@section scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+    <script src="~/Areas/Admin/Script/StatsScript.js"></script>
+}
+
+
 
 <div class="vue-title">
     Statistique de fréquentation des Croisières
 </div>
-<div id="graph">
-
-</div>
+<div id="graph"></div>

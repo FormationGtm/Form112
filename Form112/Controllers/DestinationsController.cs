@@ -18,7 +18,7 @@ namespace Form112.Controllers
         /// <returns>Liste de croisières à la vue index destination.</returns>
         public ActionResult Index()
         {
-            var destinations = _db.Croisieres.ToList();
+            var destinations = _db.Croisieres.Where(c => c.IdCroisiere>=23).ToList();
             return View(destinations);
         }
 
