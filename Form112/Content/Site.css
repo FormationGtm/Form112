@@ -335,6 +335,14 @@ footer {
     text-align:left;
 }
 
+.btn-bottom {
+    position : relative;
+    top : 7em;
+}
+
+.comment-section {
+    margin-top : 2em;
+}
 .pub-pourri {
     position : relative;
     margin : 0;

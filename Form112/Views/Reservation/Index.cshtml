@@ -17,7 +17,9 @@
     @Html.ValidationSummary("", new { @class = "text-danger" })
 
     <div class="col-md-12">
-        @Html.Action("DetailCroisiere", "Reservation", new { id = @ViewBag.idCroi })
+        @Html.Action("DetailCroisiere", "Reservation", new { id = @ViewBag.idCroi })       
+    </div>
+    <div class="col-md-12">
         <select name="NbPlace">
             <option value="" selected>Nombre de personne(s)</option>
             <option>1</option>
