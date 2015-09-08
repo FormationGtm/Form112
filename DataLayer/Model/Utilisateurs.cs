@@ -29,7 +29,6 @@ namespace DataLayer.Model
         public Nullable<int> IdAdresse { get; set; }
     
         public virtual Adresses Adresses { get; set; }
-        public virtual AspNetUsers AspNetUsers { get; set; }
         public virtual Croisieres Croisieres { get; set; }
         public virtual ICollection<Reservations> Reservations { get; set; }
     }

@@ -55,6 +55,7 @@ namespace Form112.Controllers
         /// </summary>
         /// <param name="detailvm"></param>
         /// <returns></returns>
+        [Authorize]
         [HttpPost]
         public ActionResult Commenter(DetailViewModel detailvm)
         {
