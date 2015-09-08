@@ -182,10 +182,12 @@
     <Compile Include="Areas\Admin\Controllers\CroisieresController.cs" />
     <Compile Include="Areas\Admin\Controllers\MailingController.cs" />
     <Compile Include="Areas\Admin\Controllers\RolesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserRolesController.cs" />
     <Compile Include="Areas\Admin\Models\RolesViewModel.cs" />
     <Compile Include="Areas\Admin\Controllers\StatistiquesController.cs" />
     <Compile Include="Areas\Admin\Models\CroisieresViewModel.cs" />
     <Compile Include="Areas\Admin\Models\MailingViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\UserRolesViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CroisieresApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -209,6 +211,7 @@
     <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionIdPrix.cs" />
     <Compile Include="Infrastructure\SearchCroisiers\Option\SearchOptionTheme.cs" />
     <Compile Include="Infrastructure\Utilitaires\BreadCrumbItem.cs" />
+    <Compile Include="Infrastructure\Utilitaires\CheckBoxItem.cs" />
     <Compile Include="Infrastructure\Utilitaires\ListesChoix.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DetailViewModel.cs" />
@@ -315,6 +318,8 @@
     <Content Include="Areas\Admin\Views\Roles\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Roles\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Roles\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\UserRoles\AttributeRole.cshtml" />
+    <Content Include="Areas\Admin\Views\UserRoles\Index.cshtml" />
     <None Include="Properties\PublishProfiles\OpenSea.pubxml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\Destinations\DetailScript.js" />

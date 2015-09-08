@@ -1,0 +1,43 @@
+﻿@model Form112.Areas.Admin.Models.UserRolesViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<div class="table">
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SelectedRoles)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model.UserRoles.Keys)
+            {
+                <tr>
+                    <td>
+                        @user.UserName
+                    </td>
+                    <td>
+                        <ul>
+                            @foreach (var role in Model.UserRoles[user])
+                            {
+                                <li>@role.Value</li>
+                            }
+                        </ul>
+                    </td>
+                    <td>
+                        @Html.ActionLink("Ajouter Rôle(s)", "AttributeRole", new { id = user.Id }) |
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>
