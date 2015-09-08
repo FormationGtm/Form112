@@ -1,12 +1,35 @@
 ﻿@model DataLayer.Model.Commentaires
+@using Form112.Infrastructure
+@using System.Text
 
-<div class="commentaire-principal row">
-    <div class="contenu-commentaire col-sm-10">
-        <i class="fa fa-quote-left"></i> @Model.Commentaire <i class="fa fa-quote-right"></i>
-    </div>
-    <div class="infos-commentaire pull-right">
-        <span class="commentaire-nom">@Model.NomCommentaire</span> <span class="date-commentaire">@Model.DateCommentaire.Day-@Model.DateCommentaire.Month-@Model.DateCommentaire.Year</span> <a href="#idFormCommentaire"><i class="fa fa-reply"></i></a>
-    </div>
+<div class="comment-container col-sm-10">
+    @{
+        StringBuilder sb = new StringBuilder();
+        int count = 0;
+    }
+    @AfficherReponsesCommentaire(Model, sb, count)
+    @Html.Raw(sb.ToString());
 </div>
 
+@functions{
+    /// <summary>
+    /// Méthode récursive pour gérer l'affichage des commentaires selon s'il s'agit de réponse à un précedent commentaire ou d'un nouveau commentaire.
+    /// Construit une chaîne de caractère à l'aide d'un StringBuilder.
+    /// </summary>
+    /// <param name="commentaire"></param>
+    /// <param name="sb"></param>
+    /// <param name="count"></param>
+    /// <returns>un StringBuilder</returns>
+    MvcHtmlString AfficherReponsesCommentaire(DataLayer.Model.Commentaires commentaire, StringBuilder sb, int count)
+    {
+        sb.Append(Html.CommentaireHelper(commentaire.IdCommentaire, commentaire.NomCommentaire, commentaire.DateCommentaire.ToShortDateString(), commentaire.Commentaire, count));
+        foreach (var comment in commentaire.Commentaires1)
+        {
+            count += 1;
+            AfficherReponsesCommentaire(comment, sb, count);
+            count--;
+        }
+        return new MvcHtmlString("");
+    }
+}
 

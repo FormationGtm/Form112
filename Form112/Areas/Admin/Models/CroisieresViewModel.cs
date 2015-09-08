@@ -7,6 +7,9 @@ using System.Web;
 
 namespace Form112.Areas.Admin.Models
 {
+    /// <summary>
+    /// ViewModel permettant de demander et récupérer les données d'une croisière lors de sa création ou modification
+    /// </summary>
     public class CroisieresViewModel
     {
         [Required(ErrorMessage = "obligatoire"), DisplayName("Thème")]

@@ -39,6 +39,10 @@
         <EntityTypeShape EntityType="Form112Model.Commentaires" Width="1.5" PointX="9.75" PointY="10.375" />
         <AssociationConnector Association="Form112Model.fk_commentaires_commentaires" />
         <AssociationConnector Association="Form112Model.fk_commentaires_croisieres" />
+        <EntityTypeShape EntityType="Form112Model.MoyensPaiement" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="Form112Model.Reservations" Width="1.5" PointX="10.125" PointY="4.375" />
+        <AssociationConnector Association="Form112Model.fk_reservations_Croisieres" />
+        <AssociationConnector Association="Form112Model.fk_reservations_Utilisateurs" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

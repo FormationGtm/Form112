@@ -14,6 +14,11 @@ namespace DataLayer.Model
     
     public partial class Utilisateurs
     {
+        public Utilisateurs()
+        {
+            this.Reservations = new HashSet<Reservations>();
+        }
+    
         public int IdUtilisateur { get; set; }
         public System.DateTime DateInscription { get; set; }
         public Nullable<System.DateTime> LastConnection { get; set; }
@@ -27,5 +32,6 @@ namespace DataLayer.Model
         public virtual Adresses Adresses { get; set; }
         public virtual AspNetUsers AspNetUsers { get; set; }
         public virtual Croisieres Croisieres { get; set; }
+        public virtual ICollection<Reservations> Reservations { get; set; }
     }
 }

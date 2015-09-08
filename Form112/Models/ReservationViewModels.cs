@@ -7,6 +7,9 @@ using System.Web;
 
 namespace Form112.Models
 {
+    /// <summary>
+    /// ViewModel qui récupère les informations sur l'utilisateur à l'inscription et à la réservation d'une croisière
+    /// </summary>
     public class ReservationViewModels
     {
         [Required]
@@ -33,7 +36,8 @@ namespace Form112.Models
         [Required, DisplayName("Cryp.*"), StringLength(3)]
         public string Cryp { get; set; }
 
-        public int DestinationChoice { get; set; }
+        public int CroisiereChoisi { get; set; }
+        public int NbPlace { get; set; }
         public string IdUser { get; set; }
     }
 }

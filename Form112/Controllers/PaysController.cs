@@ -15,7 +15,12 @@ namespace Form112.Controllers
             return View();
         }
 
-
+        /// <summary>
+        /// Méthode pour obtenir la liste des croisères d'un des ports de départ du pays sélectioné.
+        /// Utilisé pour un affichage dynamique par JavaScript ŝur la même par en fonction du port sélectionné
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Liste de croisières en JSON</returns>
         public JsonResult ListePortDestinations(int id)
         {
             var ListePortDestinations = new Form112Entities().Croisieres

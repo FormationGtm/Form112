@@ -10,7 +10,12 @@ namespace Form112.Controllers
     public class PromotionsController : Controller
     {
         private Form112Entities db = new Form112Entities();
+        
         // GET: Promotions
+        /// <summary>
+        /// Requête Linq pour fournir la liste des croisières ayant une promotion en cours.
+        /// </summary>
+        /// <returns>Liste de croisières</returns>
         public ActionResult Index()
         {
             var croisieres = new List<Croisieres>();
@@ -18,6 +23,11 @@ namespace Form112.Controllers
             return View(croisieres);
         }
 
+        /// <summary>
+        /// Requête Linq permettant de fournir une croisière en fonction de son id à la vue partielle _DestinationPanel pour affichage dans la vue Index 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>une vue partielle</returns>
         [ChildActionOnly]
         public PartialViewResult AllPromotions(int id)
         {
@@ -25,7 +35,10 @@ namespace Form112.Controllers
             return PartialView("_DestinationPanel", croisieres);
         }
 
-
+        /// <summary>
+        /// Une reqête Linq pour récuperer les 5 croisières dont la réduction plus élevée et les affichés sur une vue partielle
+        /// </summary>
+        /// <returns>liste d'objets croisière</returns>
         [ChildActionOnly]
         public PartialViewResult TopPromo()
         {

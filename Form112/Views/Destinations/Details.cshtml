@@ -28,14 +28,15 @@
             <div class="detailDureeSejour">@Model.Durees.NbJours jours</div>
             <div class="detailDateDepart">Départ le @Model.DateDepart.Day/@Model.DateDepart.Month/@Model.DateDepart.Year</div>
         </div>
-       
+
     </div>
     <div class="col-sm-2">
         <div class="row">
             À partir de <span class="prix-detail">@Model.Prix € </span>
         </div>
         <div class="row">
-            <button class="btn btn-default" onclick="location.href='@Url.Action("Index", "Reservation")'">Réservez</button>
+            <button class="btn btn-default" onclick="location.href='@Url.Action("Index", "Reservation", new { id = @Model.IdCroisiere })'">Réservez</button>
+            <input type="hidden" name="CroisiereChoisi" value="@Model.IdCroisiere" />
         </div>
     </div>
 </div>
@@ -43,19 +44,28 @@
 <div class="row">
     @foreach (var commentaire in Model.Commentaires)
     {
-        @Html.Action("AfficherCommentaire", "Destinations", new { id = commentaire.IdCommentaire })
+        if (!commentaire.IdReponseA.HasValue)
+        {
+            @Html.Action("AfficherCommentaire", "Destinations", new { id = commentaire.IdCommentaire })
+        }
     }
 </div>
 
-
-@using (@Html.BeginForm("Commenter", "Destinations", FormMethod.Post, new { id = "idFormCommentaire" }))
-{
-    <div class="form-group row">
-        <input type="text" class="form-control col-sm-12 zone-commentaire" name="NomCommentaire" placeholder="Nom : Durand Louis" />
-    </div>
-    <input type="hidden" name="CroisiereId" value="@Model.IdCroisiere" />
-    <input type="hidden" name="CommentaireId" />
-    <textarea class="form-control row zone-commentaire" rows="3" placeholder="Commentaires" name="Commentaire"></textarea>
-    <button class="pull-right btn btn-default" id="idBouttonCommentaire">Envoyer</button>
-}
-
+<div class="row comment-form">
+    @using (@Html.BeginForm("Commenter", "Destinations", FormMethod.Post, new { id = "idFormCommentaire" }))
+    {
+        <div class="form-group-lg row">
+            <input type="text" class="form-control zone-commentaire col-sm-10 col-sm-offset-1" name="NomCommentaire" placeholder="Nom : Durand Louis" />
+        </div>
+        <input type="hidden" name="CroisiereId" value="@Model.IdCroisiere" />
+        <input type="hidden" name="CommentaireId" id="idReplyCommentaire" />
+        <div class="form-group-lg row">
+            <textarea class="form-control zone-commentaire col-sm-10 col-sm-offset-1" rows="3" placeholder="Commentaires" name="Commentaire"></textarea>
+        </div>
+        <div class="row form-group-lg col-sm-10 col-sm-offset-1">
+            <button class=" pull-right btn btn-default" id="idBouttonCommentaire">
+                Envoyer
+            </button>
+        </div>
+    }
+</div>

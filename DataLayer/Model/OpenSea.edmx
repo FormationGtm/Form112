@@ -101,6 +101,8 @@
           <Property Name="DateDepart" Type="date" Nullable="false" />
           <Property Name="Photo" Type="nvarchar" MaxLength="50" />
           <Property Name="Description" Type="text" />
+          <Property Name="Capacite" Type="int" />
+          <Property Name="MoyenPaiement" Type="int" />
         </EntityType>
         <EntityType Name="Durees">
           <Key>
@@ -119,6 +121,13 @@
           <Property Name="Controller" Type="varchar" MaxLength="30" />
           <Property Name="Action" Type="varchar" MaxLength="30" />
           <Property Name="Parameters" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="MoyensPaiement">
+          <Key>
+            <PropertyRef Name="IdMoyenPaiement" />
+          </Key>
+          <Property Name="IdMoyenPaiement" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titre" Type="char" MaxLength="10" />
         </EntityType>
         <EntityType Name="Pays">
           <Key>
@@ -168,6 +177,17 @@
           </Key>
           <Property Name="IdRegion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nom" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reservations">
+          <Key>
+            <PropertyRef Name="IdReservation" />
+          </Key>
+          <Property Name="IdReservation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCroisiere" Type="int" Nullable="false" />
+          <Property Name="IdUtilisateur" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="NbPlace" Type="int" Nullable="false" />
+          <Property Name="MoyenPaiement" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="DateReservation" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="Themes">
           <Key>
@@ -366,6 +386,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_reservations_Croisieres">
+          <End Role="Croisieres" Type="Self.Croisieres" Multiplicity="1" />
+          <End Role="Reservations" Type="Self.Reservations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Croisieres">
+              <PropertyRef Name="IdCroisiere" />
+            </Principal>
+            <Dependent Role="Reservations">
+              <PropertyRef Name="IdCroisiere" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_reservations_Utilisateurs">
+          <End Role="Utilisateurs" Type="Self.Utilisateurs" Multiplicity="1" />
+          <End Role="Reservations" Type="Self.Reservations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateurs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Reservations">
+              <PropertyRef Name="IdUtilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_utilisateurs_adresses">
           <End Role="Adresses" Type="Self.Adresses" Multiplicity="0..1" />
           <End Role="Utilisateurs" Type="Self.Utilisateurs" Multiplicity="*" />
@@ -414,12 +458,14 @@
           <EntitySet Name="Croisieres" EntityType="Self.Croisieres" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Durees" EntityType="Self.Durees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LogAction" EntityType="Self.LogAction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MoyensPaiement" EntityType="Self.MoyensPaiement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pays" EntityType="Self.Pays" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Photos" EntityType="Self.Photos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ports" EntityType="Self.Ports" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProduitTracking" EntityType="Self.ProduitTracking" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Promos" EntityType="Self.Promos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Regions" EntityType="Self.Regions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reservations" EntityType="Self.Reservations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Themes" EntityType="Self.Themes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Utilisateurs" EntityType="Self.Utilisateurs" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="fk_adresses_pays" Association="Self.fk_adresses_pays">
@@ -477,6 +523,14 @@
           <AssociationSet Name="fk_ports_pays" Association="Self.fk_ports_pays">
             <End Role="Pays" EntitySet="Pays" />
             <End Role="Ports" EntitySet="Ports" />
+          </AssociationSet>
+          <AssociationSet Name="fk_reservations_Croisieres" Association="Self.fk_reservations_Croisieres">
+            <End Role="Croisieres" EntitySet="Croisieres" />
+            <End Role="Reservations" EntitySet="Reservations" />
+          </AssociationSet>
+          <AssociationSet Name="fk_reservations_Utilisateurs" Association="Self.fk_reservations_Utilisateurs">
+            <End Role="Utilisateurs" EntitySet="Utilisateurs" />
+            <End Role="Reservations" EntitySet="Reservations" />
           </AssociationSet>
           <AssociationSet Name="fk_utilisateurs_adresses" Association="Self.fk_utilisateurs_adresses">
             <End Role="Adresses" EntitySet="Adresses" />
@@ -588,6 +642,9 @@
           <NavigationProperty Name="Photos" Relationship="Self.fk_photos_croisieres" FromRole="Croisieres" ToRole="Photos" />
           <NavigationProperty Name="Utilisateurs" Relationship="Self.fk_utilisateurs_croisieres" FromRole="Croisieres" ToRole="Utilisateurs" />
           <NavigationProperty Name="Commentaires" Relationship="Form112Model.fk_commentaires_croisieres" FromRole="Croisieres" ToRole="Commentaires" />
+          <Property Name="Capacite" Type="Int32" />
+          <NavigationProperty Name="Reservations" Relationship="Form112Model.fk_reservations_Croisieres" FromRole="Croisieres" ToRole="Reservations" />
+          <Property Name="MoyenPaiement" Type="Int32" />
         </EntityType>
         <EntityType Name="Durees">
           <Key>
@@ -688,7 +745,11 @@
           <NavigationProperty Name="Adresses" Relationship="Self.fk_utilisateurs_adresses" FromRole="Utilisateurs" ToRole="Adresses" />
           <NavigationProperty Name="AspNetUsers" Relationship="Self.fk_utilisateurs_aspNetUsers" FromRole="Utilisateurs" ToRole="AspNetUsers" />
           <NavigationProperty Name="Croisieres" Relationship="Self.fk_utilisateurs_croisieres" FromRole="Utilisateurs" ToRole="Croisieres" />
+
           <Property Name="InfoAbonne" Type="Boolean" />
+
+          <NavigationProperty Name="Reservations" Relationship="Form112Model.fk_reservations_Utilisateurs" FromRole="Utilisateurs" ToRole="Reservations" />
+
         </EntityType>
         <Association Name="fk_adresses_pays">
           <End Role="Pays" Type="Self.Pays" Multiplicity="1" />
@@ -937,6 +998,16 @@
             <End Role="Croisieres" EntitySet="Croisieres" />
             <End Role="Commentaires" EntitySet="Commentaires" />
           </AssociationSet>
+          <EntitySet Name="MoyensPaiement" EntityType="Form112Model.MoyensPaiement" />
+          <EntitySet Name="Reservations" EntityType="Form112Model.Reservations" />
+          <AssociationSet Name="fk_reservations_Croisieres" Association="Form112Model.fk_reservations_Croisieres">
+            <End Role="Croisieres" EntitySet="Croisieres" />
+            <End Role="Reservations" EntitySet="Reservations" />
+          </AssociationSet>
+          <AssociationSet Name="fk_reservations_Utilisateurs" Association="Form112Model.fk_reservations_Utilisateurs">
+            <End Role="Utilisateurs" EntitySet="Utilisateurs" />
+            <End Role="Reservations" EntitySet="Reservations" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Commentaires">
           <Key>
@@ -973,6 +1044,50 @@
             </Principal>
             <Dependent Role="Commentaires">
               <PropertyRef Name="IdCroisiere" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MoyensPaiement">
+          <Key>
+            <PropertyRef Name="IdMoyenPaiement" />
+          </Key>
+          <Property Name="IdMoyenPaiement" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titre" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Reservations">
+          <Key>
+            <PropertyRef Name="IdReservation" />
+          </Key>
+          <Property Name="IdReservation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCroisiere" Type="Int32" Nullable="false" />
+          <Property Name="IdUtilisateur" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="NbPlace" Type="Int32" Nullable="false" />
+          <Property Name="MoyenPaiement" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="DateReservation" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Croisieres" Relationship="Form112Model.fk_reservations_Croisieres" FromRole="Reservations" ToRole="Croisieres" />
+          <NavigationProperty Name="Utilisateurs" Relationship="Form112Model.fk_reservations_Utilisateurs" FromRole="Reservations" ToRole="Utilisateurs" />
+        </EntityType>
+        <Association Name="fk_reservations_Croisieres">
+          <End Type="Form112Model.Croisieres" Role="Croisieres" Multiplicity="1" />
+          <End Type="Form112Model.Reservations" Role="Reservations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Croisieres">
+              <PropertyRef Name="IdCroisiere" />
+            </Principal>
+            <Dependent Role="Reservations">
+              <PropertyRef Name="IdCroisiere" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_reservations_Utilisateurs">
+          <End Type="Form112Model.Utilisateurs" Role="Utilisateurs" Multiplicity="1" />
+          <End Type="Form112Model.Reservations" Role="Reservations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateurs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Reservations">
+              <PropertyRef Name="IdUtilisateur" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1052,6 +1167,8 @@
           <EntitySetMapping Name="Croisieres">
             <EntityTypeMapping TypeName="Form112Model.Croisieres">
               <MappingFragment StoreEntitySet="Croisieres">
+                <ScalarProperty Name="MoyenPaiement" ColumnName="MoyenPaiement" />
+                <ScalarProperty Name="Capacite" ColumnName="Capacite" />
                 <ScalarProperty Name="IdCroisiere" ColumnName="IdCroisiere" />
                 <ScalarProperty Name="IdTheme" ColumnName="IdTheme" />
                 <ScalarProperty Name="IdDuree" ColumnName="IdDuree" />
@@ -1179,6 +1296,26 @@
                 <ScalarProperty Name="IdReponseA" ColumnName="IdReponseA" />
                 <ScalarProperty Name="IdCroisiere" ColumnName="IdCroisiere" />
                 <ScalarProperty Name="IdCommentaire" ColumnName="IdCommentaire" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MoyensPaiement">
+            <EntityTypeMapping TypeName="Form112Model.MoyensPaiement">
+              <MappingFragment StoreEntitySet="MoyensPaiement">
+                <ScalarProperty Name="Titre" ColumnName="Titre" />
+                <ScalarProperty Name="IdMoyenPaiement" ColumnName="IdMoyenPaiement" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservations">
+            <EntityTypeMapping TypeName="Form112Model.Reservations">
+              <MappingFragment StoreEntitySet="Reservations">
+                <ScalarProperty Name="DateReservation" ColumnName="DateReservation" />
+                <ScalarProperty Name="MoyenPaiement" ColumnName="MoyenPaiement" />
+                <ScalarProperty Name="NbPlace" ColumnName="NbPlace" />
+                <ScalarProperty Name="IdUtilisateur" ColumnName="IdUtilisateur" />
+                <ScalarProperty Name="IdCroisiere" ColumnName="IdCroisiere" />
+                <ScalarProperty Name="IdReservation" ColumnName="IdReservation" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

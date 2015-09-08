@@ -1,7 +1,14 @@
-﻿
+﻿@model DataLayer.Model.Croisieres
 @{
     ViewBag.Title = "validerReservation";
 }
 
 <h2>Félicitation !!!</h2>
-
+<div class="col-sm-12">
+    <div class="detailThemeCroisiere">Croisière @Model.Themes.Libelle</div>
+    <div class="detailPortDepart">Départ de @Model.Ports.Nom</div>
+    <div class="detailDureeSejour">@Model.Durees.NbJours jours</div>
+    <div class="detailDateDepart">Départ le @Model.DateDepart.Day/@Model.DateDepart.Month/@Model.DateDepart.Year</div>
+    <div>Vous avez regler la somme de<span class="prix-detail"> @Model.Prix € par @Model.MoyenPaiement</span></div>
+    <div><a href="~/Views/Home/Index.cshtml">Revenir à la page d'accueil</a></div>
+</div>

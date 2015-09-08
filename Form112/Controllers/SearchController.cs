@@ -17,7 +17,14 @@ namespace Form112.Controllers
     {
         Form112Entities db = new Form112Entities();
         // GET: Search
-
+        /// <summary>
+        /// Les menus déroulants des champs du formulaire de recherche sont remplis par des requêtes linq à la base de données.
+        /// Les menus prix et durée sont remplis par des méthodes prédéfinies dans une classe utilitaire ListesChoix.
+        /// Dans le cas de plusieurs recherches successives, les valeurs des champs sont gardées grâce à un SearchViewModel sérialisé passé en paramètre.
+        /// Les champs sont préremplis avec ces valeurs dans le formulaire à la recherche suivante.
+        /// </summary>
+        /// <param name="ssvm"></param>
+        /// <returns>searchViewModel à la vue partielle index de Search</returns>
         public PartialViewResult Index(string ssvm)
         {
             SearchViewModel svm;
@@ -43,6 +50,12 @@ namespace Form112.Controllers
             return PartialView("_Index", svm);
         }
 
+        /// <summary>
+        /// sérialisation du searchViewModel
+        /// appelle la méthode GetSearchResult
+        /// </summary>
+        /// <param name="svm"></param>
+        /// <returns>searchViewModel à la vue Result</returns>
         [HttpPost]
         public ActionResult Result(SearchViewModel svm)
         {
@@ -54,6 +67,11 @@ namespace Form112.Controllers
         }
 
         //Recherche avec options 
+        /// <summary>
+        /// Avec un décorateur, la liste de toutes les croisières de la base sera filtrée avec tous les critères de recherche entrés.
+        /// </summary>
+        /// <param name="searchViewModel"></param>
+        /// <returns>une liste de croisières</returns>
         private static List<Croisieres> GetSearchResult(SearchViewModel searchViewModel)
         {
             SearchBase search = new Search();
@@ -69,6 +87,11 @@ namespace Form112.Controllers
         }
 
         //retourne liste des ports
+        /// <summary>
+        /// requête AJAX: va rechercher par une requête linq tous les ports selon le pays choisi (passé en paramètre par son id)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>la liste des ports au format JSON</returns>
         public JsonResult GetJSONPort(string id)
         {
             var listePorts = db.Ports.Where(p => p.CodeIso3 == id).Select(p => new { IdPort = p.IdPort, Nom = p.Nom }).ToList();

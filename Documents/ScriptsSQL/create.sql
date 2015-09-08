@@ -94,6 +94,31 @@ ALTER TABLE Pays ADD CONSTRAINT fk_pays_pays FOREIGN KEY ( IdRegion ) REFERENCES
 ALTER TABLE Photos ADD CONSTRAINT fk_photos_croisieres FOREIGN KEY ( IdCroisiere ) REFERENCES Croisieres( IdCroisiere ) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 ALTER TABLE Ports ADD CONSTRAINT fk_ports_pays FOREIGN KEY ( CodeIso3 ) REFERENCES Pays( CodeIso3 ) ON DELETE NO ACTION ON UPDATE NO ACTION;
+--Ajouter une colonne "Capacité" et "MoyenPaiement"
+ALTER TABLE Croisieres ADD Capacite int
+ALTER TABLE Croisieres ADD MoyenPaiement int
+
+--Création de la table Reservation 
+CREATE TABLE Reservations ( 
+	IdReservation          int NOT NULL   IDENTITY,
+	IdCroisiere              int NOT NULL   ,
+	IdUtilisateur              nvarchar(128) NOT NULL   ,
+	NbPlace                 int NOT NULL   ,
+	MoyenPaiement           char(10) not null,
+	DateReservation			 Date NOT NULL   ,
+
+	CONSTRAINT Pk_Reservations PRIMARY KEY (IdReservation)
+ );
+
+ ALTER TABLE Reservations ADD CONSTRAINT fk_reservations_Croisieres FOREIGN KEY (IdCroisiere) REFERENCES Croisieres( IdCroisiere ) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ ALTER TABLE Reservations ADD CONSTRAINT fk_reservations_Utilisateurs FOREIGN KEY (IdUtilisateur) REFERENCES Utilisateurs(Id) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ 
+ --Création de la table "ModePaymant"
+ Create table MoyensPaiement(
+ IdMoyenPaiement int not null identity,
+ Titre char(10) ,
+ constraint pk_MoyensPaiement primary key (IdMoyenPaiement)
+ );
 
 
 --Insersion de donnes
@@ -220,7 +245,6 @@ INSERT INTO Croisieres([IdTheme],[IdDuree],[IdPromo],[IdPort],[Prix],[DateDepart
 INSERT INTO Croisieres([IdTheme],[IdDuree],[IdPromo],[IdPort],[Prix],[DateDepart]) VALUES(3,14,1,22,'9448','2016-05-04'),(4,7,2,9,'2797','2015-12-07'),(5,4,5,11,'3658','2015-12-26'),(2,11,4,19,'6407','2016-04-16'),(2,13,4,27,'9638','2015-11-10'),(4,8,2,13,'5742','2016-09-14'),(6,15,3,27,'1422','2016-07-05'),(6,7,2,15,'1328','2016-07-16'),(3,16,4,4,'5925','2016-06-29'),(3,2,5,8,'1170','2016-02-16');
 INSERT INTO Croisieres([IdTheme],[IdDuree],[IdPromo],[IdPort],[Prix],[DateDepart]) VALUES(5,12,4,23,'7496','2016-06-26'),(5,8,3,19,'3844','2016-09-03'),(5,16,2,19,'8164','2016-10-14'),(3,14,3,22,'2454','2016-09-22'),(4,14,1,16,'9050','2016-06-30'),(1,4,3,9,'2847','2016-05-28'),(2,8,4,6,'7597','2015-11-21'),(4,11,2,7,'7705','2015-11-01'),(6,4,4,6,'7155','2016-07-07'),(2,16,1,22,'5148','2016-01-23');
 INSERT INTO Croisieres([IdTheme],[IdDuree],[IdPromo],[IdPort],[Prix],[DateDepart]) VALUES(4,9,1,1,'8447','2016-08-04'),(4,3,4,4,'8768','2016-11-11'),(5,16,5,17,'7226','2016-06-18'),(1,15,3,12,'1869','2016-11-27'),(2,12,4,22,'6632','2015-12-27'),(2,8,2,10,'5351','2016-11-03'),(1,16,2,17,'5522','2016-08-31'),(4,15,1,15,'1642','2016-10-19'),(4,13,4,7,'0814','2016-07-03'),(4,16,2,22,'7800','2016-06-11');
-
 
 
 

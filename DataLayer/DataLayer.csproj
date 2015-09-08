@@ -57,7 +57,6 @@
     </Compile>
     <Compile Include="Businesslayer\StatCroisieres.cs" />
     <Compile Include="Businesslayer\Themes.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Model\Adresses.cs">
       <DependentUpon>OpenSea.tt</DependentUpon>
     </Compile>
@@ -86,6 +85,9 @@
       <DependentUpon>OpenSea.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\LogAction.cs">
+      <DependentUpon>OpenSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\MoyensPaiement.cs">
       <DependentUpon>OpenSea.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\OpenSea.Context.cs">
@@ -119,6 +121,9 @@
       <DependentUpon>OpenSea.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Regions.cs">
+      <DependentUpon>OpenSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Reservations.cs">
       <DependentUpon>OpenSea.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Themes.cs">

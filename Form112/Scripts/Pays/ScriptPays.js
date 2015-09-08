@@ -8,7 +8,7 @@
             $("#id2").attr("src", "").removeAttr("id");
             $("#id3").html(crs.PaysName).removeAttr("id");
             $("#id4").html(crs.Prix + currency).removeAttr("id");
-            $("#id5").html(crs.Reduc).removeAttr("id");
+            $("#id5").html("- " + crs.Reduc + " %").removeAttr("id");
         });
         manageShadow();
     });

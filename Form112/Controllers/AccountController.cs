@@ -164,6 +164,7 @@ namespace Form112.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirmez votre compte", "Confirmez votre compte en cliquant <a href=\"" + callbackUrl + "\">ici</a>");
+                   //Créer un nouveau utilisateur dans la table Utilisateurs dot l'Id est celle de la table AspNetUser
                     var utilisateur = new Utilisateurs
                     {
                         Nom = model.Nom,
