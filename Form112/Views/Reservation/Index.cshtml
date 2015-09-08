@@ -56,10 +56,12 @@
             </div>
         </div>
         <div class="form-group">
-            @Html.Label("PayBal")
-            <div class="col-md-1">
-                @Html.CheckBox("id2")
-            </div>
+            <select name="MoyenPaiement">
+                <option value="" selected>Nombre de personne(s)</option>
+                <option>Visa</option>
+                <option>MasterCard</option>
+                <option>PayPal</option>
+            </select>           
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.NumCart, new { @class = "col-md-4 control-label" })
