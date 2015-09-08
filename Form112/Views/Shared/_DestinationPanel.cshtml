@@ -2,7 +2,9 @@
 
 <div class="col-sm-4 wrapper-panel">
     <div class="destination-panel" id="@Model.IdCroisiere">
+        @if (@Model.Photos.Count() != 0) { 
         <img src="~/Uploads/Bateaux/@Model.Photos.FirstOrDefault().PhotoName" alt="Alternate Text" class="panel-img" />
+        }
         <div class="panel-header">
             @Model.Ports.Pays.Nom
         </div>

@@ -30,9 +30,8 @@
         }
     }
 
-    @using (Html.BeginForm("PaysSearch", "Home", FormMethod.Post, new { id = "idFormPays" }))
-    {
-        var count = 1;
+
+        @{var count = 1;}
         <select name="SelectedPort" id="idPortSelector">
             @foreach (var item in listPorts)
             {
@@ -47,7 +46,6 @@
                 count++;
             }
         </select>
-    }
 </div>
 
 <div class="row" id="placeHolderCroisiere">
