@@ -1,0 +1,36 @@
+﻿@model Form112.Areas.Admin.Models.MailingViewModel
+@{
+    ViewBag.Title = "Contact";
+}
+<h2>@ViewBag.Title.</h2>
+
+<h4>Veuillez suivrez l'exemple pour envoyer vos mails</h4>
+
+@using (Html.BeginForm("Sent", "Mailing"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Sujet, new { @class = "col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Sujet, new { @class = "form-control" , placeholder="Objet de votre message"})
+            @Html.ValidationMessageFor(m => m.Sujet)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Message, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+           @Html.TextAreaFor(m => m.Message, new { @class = "form-control", placeholder="Bonjour @Prenom@ @Nom@, Nous avons le plaisir de vous envoyer nos offres"})
+            @Html.ValidationMessageFor(m => m.Message)
+
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Envoyer" />
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

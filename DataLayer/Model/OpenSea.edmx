@@ -188,6 +188,7 @@
           <Property Name="Prenom" Type="nvarchar" MaxLength="40" Nullable="false" />
           <Property Name="IdCroisiere" Type="int" />
           <Property Name="IdAdresse" Type="int" />
+          <Property Name="InfoAbonne" Type="bit" />
         </EntityType>
         <Association Name="fk_adresses_pays">
           <End Role="Pays" Type="Self.Pays" Multiplicity="1" />
@@ -687,6 +688,7 @@
           <NavigationProperty Name="Adresses" Relationship="Self.fk_utilisateurs_adresses" FromRole="Utilisateurs" ToRole="Adresses" />
           <NavigationProperty Name="AspNetUsers" Relationship="Self.fk_utilisateurs_aspNetUsers" FromRole="Utilisateurs" ToRole="AspNetUsers" />
           <NavigationProperty Name="Croisieres" Relationship="Self.fk_utilisateurs_croisieres" FromRole="Utilisateurs" ToRole="Croisieres" />
+          <Property Name="InfoAbonne" Type="Boolean" />
         </EntityType>
         <Association Name="fk_adresses_pays">
           <End Role="Pays" Type="Self.Pays" Multiplicity="1" />
@@ -1148,6 +1150,7 @@
           <EntitySetMapping Name="Utilisateurs">
             <EntityTypeMapping TypeName="Form112Model.Utilisateurs">
               <MappingFragment StoreEntitySet="Utilisateurs">
+                <ScalarProperty Name="InfoAbonne" ColumnName="InfoAbonne" />
                 <ScalarProperty Name="IdUtilisateur" ColumnName="IdUtilisateur" />
                 <ScalarProperty Name="DateInscription" ColumnName="DateInscription" />
                 <ScalarProperty Name="LastConnection" ColumnName="LastConnection" />

@@ -22,6 +22,7 @@ namespace DataLayer.Model
         public string Prenom { get; set; }
         public Nullable<int> IdCroisiere { get; set; }
         public Nullable<int> IdAdresse { get; set; }
+        public Nullable<bool> InfoAbonne { get; set; }
     
         public virtual Adresses Adresses { get; set; }
         public virtual AspNetUsers AspNetUsers { get; set; }

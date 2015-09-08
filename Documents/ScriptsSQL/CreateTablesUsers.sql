@@ -182,6 +182,7 @@ CREATE TABLE [dbo].[Utilisateurs](
 	Prenom                  nvarchar(40) NOT NULL   ,
 	IdCroisiere    int NULL,
 	IdAdresse int null, 
+	InfoAbonne bit null,
  CONSTRAINT [Pk_Utilisateur] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
