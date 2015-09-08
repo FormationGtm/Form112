@@ -48,7 +48,7 @@ namespace Form112.Controllers
                     idCrs = crs.IdCroisiere,
                     PaysName = crs.Ports.Pays.Nom,
                     Prix = crs.Prix,
-                    Photo = crs.Photos.FirstOrDefault(),
+                    Photo = crs.Photos.FirstOrDefault().PhotoName,
                     Reduc = crs.Promos.Reduction
                 })
                 .ToList();

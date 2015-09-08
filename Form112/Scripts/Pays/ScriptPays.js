@@ -5,7 +5,7 @@
             var currency = "* <span class=\"currency-fr\">€</span>";
             $("#idTemplateCroisiere").clone().appendTo("#placeHolderCroisiere").removeAttr("id");
             $("#id1").attr("id", crs.idCrs);
-            $("#id2").attr("src", "").removeAttr("id");
+            $("#id2").attr("src","../Uploads/Bateaux/" + crs.Photo).removeAttr("id");
             $("#id3").html(crs.PaysName).removeAttr("id");
             $("#id4").html(crs.Prix + currency).removeAttr("id");
             $("#id5").html("- " + crs.Reduc + " %").removeAttr("id");
@@ -22,7 +22,7 @@
                 var currency = "* <span class=\"currency-fr\">€</span>";
                 $("#idTemplateCroisiere").clone().appendTo("#placeHolderCroisiere").removeAttr("id");
                 $("#id1").attr("id", crs.idCrs);
-                $("#id2").attr("src", "").removeAttr("id");
+                $("#id2").attr("src", "../Uploads/Bateaux/" + crs.Photo).removeAttr("id");
                 $("#id3").html(crs.PaysName).removeAttr("id");
                 $("#id4").html(crs.Prix + currency).removeAttr("id");
                 $("#id5").html("- " + crs.Reduc + " %").removeAttr("id");
