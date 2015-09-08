@@ -174,7 +174,13 @@ namespace Form112.Controllers
                     };
                     _db.Utilisateurs.Add(utilisateur);
                     _db.SaveChanges();
-                    return RedirectToAction("Index", "Reservation");
+
+                    if (model.VuActu) 
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+
+                    else return RedirectToAction("Index", "Reservation");
                 }
                 AddErrors(result);
             }
