@@ -13,7 +13,8 @@ namespace Form112.Areas.Admin.Controllers
     {
         private Form112Entities _db = new Form112Entities();
 
-         public StatistiquesController():base()
+        public StatistiquesController()
+            : base()
         {
             var bc = new BreadCrumbItem("Statistiques", "/Statistiques");
             lbc.Add(bc);
@@ -29,13 +30,24 @@ namespace Form112.Areas.Admin.Controllers
             ViewBag.ListeBC = lbc;
             var listVueCroisieres = _db.ProduitTracking
                 .GroupBy(m => m.IdProduit)
-                .Select(g => new StatCroisieres{ Croisiere = _db.Croisieres.Where(c => c.IdCroisiere == g.Key).FirstOrDefault(), NbVues = g.Count() })
+                .Select(g => new StatCroisieres { Croisiere = _db.Croisieres.Where(c => c.IdCroisiere == g.Key).FirstOrDefault(), NbVues = g.Count() })
                 .OrderByDescending(o => o.NbVues)
                 .ToList();
-            
+
             return View(listVueCroisieres);
         }
 
 
+        public JsonResult NombreVuesParPays()
+        {
+            var NombreVuesParPays = _db.ProduitTracking
+                .Join(_db.Croisieres, pt => pt.IdProduit, p => p.IdCroisiere, (pt, p) => new {pt.DatePT, p.Ports.Pays })
+                .GroupBy(x => x.Pays)
+                .Select(g => new { g.Key.Nom, NbVis = g.Count() })
+                .OrderBy(x => x.NbVis)
+                .ToList();
+
+            return Json(NombreVuesParPays, JsonRequestBehavior.AllowGet);
+        }
     }
 }

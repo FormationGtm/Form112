@@ -176,10 +176,12 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\CroisieresController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MailingController.cs" />
     <Compile Include="Areas\Admin\Controllers\RolesController.cs" />
     <Compile Include="Areas\Admin\Models\RolesViewModel.cs" />
     <Compile Include="Areas\Admin\Controllers\StatistiquesController.cs" />
     <Compile Include="Areas\Admin\Models\CroisieresViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\MailingViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -302,6 +304,8 @@
     <Content Include="Content\font-awesome-4.4.0\scss\_stacked.scss" />
     <Content Include="Content\font-awesome-4.4.0\scss\_variables.scss" />
     <Content Include="Areas\Admin\Views\Statistiques\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Mailing\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Mailing\Sent.cshtml" />
     <Content Include="Areas\Admin\Views\Roles\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Roles\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Roles\Edit.cshtml" />
@@ -335,6 +339,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Search\Index.js" />
     <Content Include="Scripts\Shared\SharedScript.js" />
+    <Content Include="Areas\Admin\Script\StatsScript.js" />
     <Content Include="Scripts\Themes\IndexThemesScript.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Uploads\Bateaux\42268.jpg" />

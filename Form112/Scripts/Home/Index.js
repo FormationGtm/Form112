@@ -29,6 +29,7 @@
         onRegionClick: function (element, code) {
             if ($.inArray(code, listPays) != -1) {
                 $("#idPaysChoice").val(code.toUpperCase());
+                console.log($("#idPaysChoice").val());
                 $("#idFormMap").submit();
             }
             else {

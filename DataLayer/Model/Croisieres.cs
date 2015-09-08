@@ -16,10 +16,10 @@ namespace DataLayer.Model
     {
         public Croisieres()
         {
-            this.Photos = new HashSet<Photos>();
-            this.Utilisateurs = new HashSet<Utilisateurs>();
             this.Commentaires = new HashSet<Commentaires>();
+            this.Photos = new HashSet<Photos>();
             this.Reservations = new HashSet<Reservations>();
+            this.Utilisateurs = new HashSet<Utilisateurs>();
         }
     
         public int IdCroisiere { get; set; }
@@ -34,13 +34,13 @@ namespace DataLayer.Model
         public Nullable<int> Capacite { get; set; }
         public Nullable<int> MoyenPaiement { get; set; }
     
+        public virtual ICollection<Commentaires> Commentaires { get; set; }
         public virtual Durees Durees { get; set; }
         public virtual Ports Ports { get; set; }
         public virtual Promos Promos { get; set; }
         public virtual Themes Themes { get; set; }
         public virtual ICollection<Photos> Photos { get; set; }
-        public virtual ICollection<Utilisateurs> Utilisateurs { get; set; }
-        public virtual ICollection<Commentaires> Commentaires { get; set; }
         public virtual ICollection<Reservations> Reservations { get; set; }
+        public virtual ICollection<Utilisateurs> Utilisateurs { get; set; }
     }
 }

@@ -4,45 +4,45 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6bca5e9376494a22838f9e1df700ce9c" Name="Diagram1">
-        <EntityTypeShape EntityType="Form112Model.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Form112Model.Adresses" Width="1.5" PointX="5.25" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Form112Model.AspNetRoles" Width="1.5" PointX="3" PointY="18.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Form112Model.AspNetUserClaims" Width="1.5" PointX="7.5" PointY="17" IsExpanded="true" />
-        <EntityTypeShape EntityType="Form112Model.AspNetUserLogins" Width="1.5" PointX="7.5" PointY="19.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Form112Model.AspNetUsers" Width="1.5" PointX="5.25" PointY="17.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Form112Model.Croisieres" Width="1.5" PointX="7.5" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Form112Model.Durees" Width="1.5" PointX="5.25" PointY="9.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Form112Model.LogAction" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Form112Model.Pays" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Form112Model.Photos" Width="1.5" PointX="9.75" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Form112Model.Ports" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Form112Model.ProduitTracking" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Form112Model.Promos" Width="1.5" PointX="5.25" PointY="12" IsExpanded="true" />
-        <EntityTypeShape EntityType="Form112Model.Regions" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Form112Model.Themes" Width="1.5" PointX="5.25" PointY="14.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Form112Model.Utilisateurs" Width="1.5" PointX="7.5" PointY="2" IsExpanded="true" />
+      <Diagram DiagramId="b9cc18212d2c453a9fea3fc74d38bad9" Name="Diagram1">
+        <EntityTypeShape EntityType="Form112Model.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Form112Model.Adresses" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Form112Model.AspNetRoles" Width="1.5" PointX="3" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Form112Model.AspNetUserClaims" Width="1.5" PointX="7.5" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Form112Model.AspNetUserLogins" Width="1.5" PointX="7.5" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="Form112Model.AspNetUsers" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Form112Model.Commentaires" Width="1.5" PointX="9.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Form112Model.Croisieres" Width="1.5" PointX="7.5" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Form112Model.Durees" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Form112Model.LogAction" Width="1.5" PointX="11.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Form112Model.MoyensPaiement" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Form112Model.Pays" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Form112Model.Photos" Width="1.5" PointX="9.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Form112Model.Ports" Width="1.5" PointX="5.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Form112Model.ProduitTracking" Width="1.5" PointX="11.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Form112Model.Promos" Width="1.5" PointX="5.25" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Form112Model.Regions" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Form112Model.Reservations" Width="1.5" PointX="9.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Form112Model.Themes" Width="1.5" PointX="5.25" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Form112Model.Utilisateurs" Width="1.5" PointX="7.5" PointY="2.875" IsExpanded="true" />
         <AssociationConnector Association="Form112Model.fk_adresses_pays" ManuallyRouted="false" />
         <AssociationConnector Association="Form112Model.fk_utilisateurs_adresses" ManuallyRouted="false" />
         <AssociationConnector Association="Form112Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="Form112Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="Form112Model.fk_utilisateurs_aspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="Form112Model.fk_commentaires_commentaires" ManuallyRouted="false" />
+        <AssociationConnector Association="Form112Model.fk_commentaires_croisieres" ManuallyRouted="false" />
         <AssociationConnector Association="Form112Model.fk_croisieres_durees" ManuallyRouted="false" />
         <AssociationConnector Association="Form112Model.fk_croisieres_ports" ManuallyRouted="false" />
         <AssociationConnector Association="Form112Model.fk_croisieres_promos" ManuallyRouted="false" />
         <AssociationConnector Association="Form112Model.fk_croisieres_themes" ManuallyRouted="false" />
         <AssociationConnector Association="Form112Model.fk_photos_croisieres" ManuallyRouted="false" />
+        <AssociationConnector Association="Form112Model.fk_reservations_Croisieres" ManuallyRouted="false" />
         <AssociationConnector Association="Form112Model.fk_utilisateurs_croisieres" ManuallyRouted="false" />
         <AssociationConnector Association="Form112Model.fk_pays_pays" ManuallyRouted="false" />
         <AssociationConnector Association="Form112Model.fk_ports_pays" ManuallyRouted="false" />
+        <AssociationConnector Association="Form112Model.fk_reservations_Utilisateurs" ManuallyRouted="false" />
         <AssociationConnector Association="Form112Model.AspNetUserRoles" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="Form112Model.Commentaires" Width="1.5" PointX="9.75" PointY="10.375" />
-        <AssociationConnector Association="Form112Model.fk_commentaires_commentaires" />
-        <AssociationConnector Association="Form112Model.fk_commentaires_croisieres" />
-        <EntityTypeShape EntityType="Form112Model.MoyensPaiement" Width="1.5" PointX="0.75" PointY="10.75" />
-        <EntityTypeShape EntityType="Form112Model.Reservations" Width="1.5" PointX="10.125" PointY="4.375" />
-        <AssociationConnector Association="Form112Model.fk_reservations_Croisieres" />
-        <AssociationConnector Association="Form112Model.fk_reservations_Utilisateurs" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
