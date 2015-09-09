@@ -19,8 +19,6 @@ namespace Form112.Areas.Admin.Controllers
         // GET: Admin/Mailing
         public ActionResult Index()
         {
-
-
             return View();
         }
 

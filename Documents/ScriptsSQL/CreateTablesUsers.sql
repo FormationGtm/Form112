@@ -211,3 +211,25 @@ GO
 
 ALTER TABLE [dbo].[Utilisateurs] CHECK CONSTRAINT [fk_utilisateurs_adresses]
 GO
+
+--Création de la table Reservation 
+CREATE TABLE Reservations ( 
+	IdReservation          int NOT NULL   IDENTITY,
+	IdCroisiere              int NOT NULL   ,
+	IdUtilisateur              nvarchar(128) NOT NULL   ,
+	NbPlace                 int NOT NULL   ,
+	MoyenPaiement           char(10) not null,
+	DateReservation			 Date NOT NULL   ,
+
+	CONSTRAINT Pk_Reservations PRIMARY KEY (IdReservation)
+ );
+
+ ALTER TABLE Reservations ADD CONSTRAINT fk_reservations_Croisieres FOREIGN KEY (IdCroisiere) REFERENCES Croisieres( IdCroisiere ) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ ALTER TABLE Reservations ADD CONSTRAINT fk_reservations_Utilisateurs FOREIGN KEY (IdUtilisateur) REFERENCES Utilisateurs(Id) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ 
+ --Création de la table "ModePaymant"
+ Create table MoyensPaiement(
+ IdMoyenPaiement int not null identity,
+ Titre char(10) ,
+ constraint pk_MoyensPaiement primary key (IdMoyenPaiement)
+ );

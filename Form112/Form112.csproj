@@ -550,6 +550,7 @@
     <Content Include="Views\Promotions\Index.cshtml" />
     <Content Include="Views\Destinations\_CommentairePanel.cshtml" />
     <Content Include="Views\Shared\_WebApi.cshtml" />
+    <Content Include="Service References\packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Search\_Index.cshtml" />

@@ -11,7 +11,10 @@
                 {
                     <li class="center-block">
                         <div class="item">
-                            <img src="~/Uploads/Bateaux/@item.Photos.FirstOrDefault().PhotoName" alt="Alternate Text" class="img-caroussel" />
+                            @if (@item.Photos.Count() != 0)
+                            {
+                                <img src="~/Uploads/Bateaux/@item.Photos.FirstOrDefault().PhotoName" alt="Alternate Text" class="img-caroussel" />
+                            }
                         </div>
 
                         <span>@item.Ports.Nom</span>

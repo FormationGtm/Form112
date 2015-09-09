@@ -5,23 +5,17 @@
 
 <h2>Félicitation !!!</h2>
 <div class="col-sm-12">
-    <div class="center-block">
-        <div data-ride="carousel" class="carousel carousel-height slide" id="carouselDetails" data-interval="5000">
-            <div role="listbox" class="carousel-inner">
-                @foreach (var item in Model.Photos)
-                {
+   
+             
                     <div class="item active">
-                        <img alt="" data-src="" src="~/Uploads/Bateaux/@item.PhotoName" data-holder-rendered="true" class="img-caroussel">
+                        <img alt="" data-src="" src="~/Uploads/Bateaux/@Model.Photos.FirstOrDefault().PhotoName" data-holder-rendered="true" class="img-caroussel">
                     </div>
-                }
-            </div>
-        </div>
-
+           
     </div>
     <div class="detailThemeCroisiere">Croisière @Model.Themes.Libelle</div>
     <div class="detailPortDepart">Départ de @Model.Ports.Nom</div>
     <div class="detailDureeSejour">@Model.Durees.NbJours jours</div>
     <div class="detailDateDepart">Départ le @Model.DateDepart.Day/@Model.DateDepart.Month/@Model.DateDepart.Year</div>
-    <div>Vous avez regler la somme de<span class="prix-detail"> @Model.Prix € par @Model.MoyenPaiement</span></div>    
+    <div>Vous avez regler la somme de<span class="prix-detail"> @Model.Prix € par @Model.Reservations.FirstOrDefault().MoyenPaiement</span></div>    
     <div><ul><li>@Html.ActionLink("Revenir à la page d'accueil","Index","Home")</li></ul></div>
 </div>

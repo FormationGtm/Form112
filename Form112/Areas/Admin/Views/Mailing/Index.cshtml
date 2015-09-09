@@ -19,8 +19,7 @@
         @Html.LabelFor(m => m.Message, new { @class = "col-md-2 control-label" })
         
         <div class="col-md-10">
-           @Html.TextAreaFor(m => m.Message, new { @class = "form-control", placeholder="Bonjour @Prenom@ @Nom@, Nous avons le plaisir de vous envoyer nos offres"})
-            
+           @Html.TextAreaFor(m => m.Message, new { @class = "form-control", placeholder="Bonjour @Prenom@ @Nom@, Nous avons le plaisir de vous envoyer nos offres"})           
             @Html.ValidationMessageFor(m => m.Message)
 
         </div>
@@ -28,7 +27,7 @@
     
     <div class="form-group">
         @Html.LabelFor(m => m.LienProduit, new { @class = "col-md-2 control-label" })
-        <div>
+        <div class="col-md-10">
             @Html.TextAreaFor(m => m.LienProduit, new { @class = "form-control", placeholder = "Vous pouvez ajouter un nouveau lien, exemple: http://localhost:62679/Promotions" })
             @Html.ValidationMessageFor(m => m.LienProduit)
         </div>

@@ -14,7 +14,7 @@ namespace DataLayer.Model
         public void SaveUserChange(Form112Entities db,string id)
         {
             var utilisateur = db.Utilisateurs.Where(u => u.Id == id).FirstOrDefault();
-            Adresses = db.Adresses.FirstOrDefault(a => a.Ligne1 == Adresses.Ligne1 && a.Ligne2 == Adresses.Ligne2 && a.Ligne3 == Adresses.Ligne3 && a.CodePostal == Adresses.CodePostal && a.IdPays==Adresses.IdPays);
+            Adresses = db.Adresses.FirstOrDefault(a => a.Ligne1 == Adresses.Ligne1 && a.Ligne2 == Adresses.Ligne2 && a.Ligne3 == Adresses.Ligne3 && a.CodePostal == Adresses.CodePostal);
             utilisateur.IdAdresse = Adresses.IdAdresse;
             db.SaveChanges();
         }
