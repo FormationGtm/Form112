@@ -1,4 +1,5 @@
 ﻿@model DataLayer.Model.Croisieres
+@using DataLayer.Model
 @{
     ViewBag.Title = "Détails de la croisière";
 }
@@ -11,9 +12,12 @@
     <div class="col-sm-6">
         <div data-ride="carousel" class="carousel carousel-height slide" id="carouselDetails" data-interval="5000">
             <div role="listbox" class="carousel-inner">
+                <div class="item active">
+                    <img alt="" data-src="" src="~/Uploads/Bateaux/@Model.Photos.FirstOrDefault()" data-holder-rendered="true" class="img-caroussel-detail">
+                </div>
                 @foreach (var item in Model.Photos)
                 {
-                    <div class="item active">
+                    <div class="item">
                         <img alt="" data-src="" src="~/Uploads/Bateaux/@item.PhotoName" data-holder-rendered="true" class="img-caroussel-detail" >
                     </div>
                 }

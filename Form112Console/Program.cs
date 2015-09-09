@@ -7,18 +7,21 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Form112Console {
-    internal class Program {
+namespace Form112Console
+{
+    internal class Program
+    {
 
         private static string _picDirectory = @"C:\Users\etudiant\Documents\GitHub\Form112\Form112\Uploads\Bateaux";
         //private static string UnusedDir = @"C:\Users\etudiant\Documents\GitHub\Form112\Form112\Uploads\Bateaux\NotUsed";
         private static Form112Entities DB = new Form112Entities();
 
 
-        static void Main(string[] args) {
+        static void Main(string[] args)
+        {
 
             Console.Write(SetPictures());
-            Console.ReadKey(true);
+            //Console.ReadKey(true);
         }
 
         private static int SetPictures()
@@ -33,41 +36,61 @@ namespace Form112Console {
                 .Select(f => new FileInfo(f).Name)
                 .ToList();
 
-            var stackPic = new Stack<string>();
-            foreach (var item in listPic)
-            {
-                if(item.Contains(""))
-                stackPic.Push(item);
-            }
-
-            var cpt = 0;
-
+            //var stackPic = new Stack<string>();
+            int i = 1, j = 1;
             foreach (var croisieres in list)
             {
-                if (stackPic.Count != 0)
+                j = 1;
+                foreach (var item in listPic)
                 {
-                    cpt++;
-                    Console.Write(" {0} -", cpt);
-                    var photo = new Photos
-                    {
-                        PhotoName = stackPic.Pop(),
-                        IdPhoto = Guid.NewGuid()
-                    };
-                    croisieres.Photos.Add(photo);
 
-                    if (cpt % 250 != 0)
+                    if (item == "Croisiere" + i + "_" + j + ".jpg")
                     {
-                        continue;
+                        var photo = new Photos
+                        {
+                            PhotoName = item,
+                            IdPhoto = Guid.NewGuid()
+                        };
+                        croisieres.Photos.Add(photo);
+                        DB.SaveChanges();
+                        Console.WriteLine("_" + item + "'" + croisieres.IdCroisiere);
+                        if (j <= 5) j++;
                     }
 
-                    cpt = 0;
-                    Console.WriteLine();
-                    DB.SaveChanges();
                 }
+                if (i <= 20) i++;
             }
+            Console.WriteLine(i);
 
-            DB.SaveChanges();
+            //var cpt = 0;
+
+            //foreach (var croisieres in list)
+            //{
+            //    if (stackPic.Count != 0)
+            //    {
+            //        cpt++;
+            //        Console.Write(" {0} -", cpt);
+            //        var photo = new Photos
+            //        {
+            //            PhotoName = stackPic.Pop(),
+            //            IdPhoto = Guid.NewGuid()
+            //        };
+            //        croisieres.Photos.Add(photo);
+
+            //        if (cpt % 250 != 0)
+            //        {
+            //            continue;
+            //        }
+
+            //        cpt = 0;
+            //        Console.WriteLine();
+            //        DB.SaveChanges();
+            //    }
+            //}
+
+            //DB.SaveChanges();
             return list.Count;
         }
     }
 }
+

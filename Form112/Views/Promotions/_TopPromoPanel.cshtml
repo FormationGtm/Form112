@@ -10,12 +10,9 @@
                 @foreach (var item in @Model)
                 {
                     <li class="center-block">
-                        @foreach (var ph in item.Photos)
-                        {
-                            <div class="item active">
-                                <img alt="" data-src="" src="~/Uploads/Bateaux/@ph.PhotoName" data-holder-rendered="true" class="img-caroussel">
-                            </div>
-                        }
+                        <div class="item">
+                            <img src="~/Uploads/Bateaux/@item.Photos.FirstOrDefault().PhotoName" alt="Alternate Text" class="img-caroussel" />
+                        </div>
 
                         <span>@item.Ports.Nom</span>
 
