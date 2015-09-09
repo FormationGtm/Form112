@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="SqlServer" id="Project6763676" database="SqlServer" >
+	<schema name="dbo" catalogname="Form112" schemaname="dbo" defo="y" >
+		<table name="Adresses" >
+			<column name="IdAdresse" type="int" length="10" decimal="0" jt="4" mandatory="y" autoincrement="y" />
+			<column name="Ligne1" type="varchar" length="36" decimal="0" jt="12" mandatory="y" />
+			<column name="Ligne2" type="varchar" length="36" decimal="0" jt="12" />
+			<column name="Ligne3" type="varchar" length="36" decimal="0" jt="12" />
+			<column name="CodePostal" type="varchar" length="10" decimal="0" jt="12" />
+			<column name="IdPays" type="char" length="3" decimal="0" jt="1" mandatory="y" />
+			<index name="Pk_Adresses" unique="PRIMARY_KEY" >
+				<column name="IdAdresse" />
+			</index>
+			<index name="idx_Adresses" unique="NORMAL" >
+				<column name="IdPays" />
+			</index>
+			<fk name="fk_adresses_pays" to_schema="dbo" to_table="Pays" >
+				<fk_column name="IdPays" pk="CodeIso3" />
+			</fk>
+		</table>
+		<table name="AspNetRoles" >
+			<column name="Id" type="nvarchar" length="128" decimal="0" jt="12" mandatory="y" />
+			<column name="Name" type="nvarchar" length="256" decimal="0" jt="12" mandatory="y" />
+			<index name="PK_dbo.AspNetRoles" unique="PRIMARY_KEY" >
+				<column name="Id" />
+			</index>
+		</table>
+		<table name="AspNetUserClaims" >
+			<column name="Id" type="int" length="10" decimal="0" jt="4" mandatory="y" autoincrement="y" />
+			<column name="UserId" type="nvarchar" length="128" decimal="0" jt="12" mandatory="y" />
+			<column name="ClaimType" type="nvarchar(max)" decimal="0" jt="12" />
+			<column name="ClaimValue" type="nvarchar(max)" decimal="0" jt="12" />
+			<index name="PK_dbo.AspNetUserClaims" unique="PRIMARY_KEY" >
+				<column name="Id" />
+			</index>
+			<fk name="FK_dbo.AspNetUserClaims_dbo.AspNetUsers_UserId" to_schema="dbo" to_table="AspNetUsers" delete_action="cascade" >
+				<fk_column name="UserId" pk="Id" />
+			</fk>
+		</table>
+		<table name="AspNetUserLogins" >
+			<column name="LoginProvider" type="nvarchar" length="128" decimal="0" jt="12" mandatory="y" />
+			<column name="ProviderKey" type="nvarchar" length="128" decimal="0" jt="12" mandatory="y" />
+			<column name="UserId" type="nvarchar" length="128" decimal="0" jt="12" mandatory="y" />
+			<index name="PK_dbo.AspNetUserLogins" unique="PRIMARY_KEY" >
+				<column name="LoginProvider" />
+				<column name="ProviderKey" />
+				<column name="UserId" />
+			</index>
+			<fk name="FK_dbo.AspNetUserLogins_dbo.AspNetUsers_UserId" to_schema="dbo" to_table="AspNetUsers" delete_action="cascade" >
+				<fk_column name="UserId" pk="Id" />
+			</fk>
+		</table>
+		<table name="AspNetUserRoles" >
+			<column name="UserId" type="nvarchar" length="128" decimal="0" jt="12" mandatory="y" />
+			<column name="RoleId" type="nvarchar" length="128" decimal="0" jt="12" mandatory="y" />
+			<index name="PK_dbo.AspNetUserRoles" unique="PRIMARY_KEY" >
+				<column name="UserId" />
+				<column name="RoleId" />
+			</index>
+			<fk name="FK_dbo.AspNetUserRoles_dbo.AspNetRoles_RoleId" to_schema="dbo" to_table="AspNetRoles" delete_action="cascade" >
+				<fk_column name="RoleId" pk="Id" />
+			</fk>
+			<fk name="FK_dbo.AspNetUserRoles_dbo.AspNetUsers_UserId" to_schema="dbo" to_table="AspNetUsers" delete_action="cascade" >
+				<fk_column name="UserId" pk="Id" />
+			</fk>
+		</table>
+		<table name="AspNetUsers" >
+			<column name="Id" type="nvarchar" length="128" decimal="0" jt="12" mandatory="y" />
+			<column name="Email" type="nvarchar" length="256" decimal="0" jt="12" />
+			<column name="EmailConfirmed" type="bit" length="1" decimal="0" jt="-7" mandatory="y" />
+			<column name="PasswordHash" type="nvarchar(max)" decimal="0" jt="12" />
+			<column name="SecurityStamp" type="nvarchar(max)" decimal="0" jt="12" />
+			<column name="PhoneNumber" type="nvarchar(max)" decimal="0" jt="12" />
+			<column name="PhoneNumberConfirmed" type="bit" length="1" decimal="0" jt="-7" mandatory="y" />
+			<column name="TwoFactorEnabled" type="bit" length="1" decimal="0" jt="-7" mandatory="y" />
+			<column name="LockoutEndDateUtc" type="datetime" length="23" decimal="3" jt="93" />
+			<column name="LockoutEnabled" type="bit" length="1" decimal="0" jt="-7" mandatory="y" />
+			<column name="AccessFailedCount" type="int" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="UserName" type="nvarchar" length="256" decimal="0" jt="12" mandatory="y" />
+			<index name="PK_dbo.AspNetUsers" unique="PRIMARY_KEY" >
+				<column name="Id" />
+			</index>
+		</table>
+		<table name="Commentaires" >
+			<column name="IdCommentaire" type="int" length="10" decimal="0" jt="4" mandatory="y" autoincrement="y" />
+			<column name="IdCroisiere" type="int" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="IdReponseA" type="int" length="10" decimal="0" jt="4" />
+			<column name="Commentaire" type="varchar" length="300" decimal="0" jt="12" mandatory="y" />
+			<column name="NomCommentaire" type="varchar" length="50" decimal="0" jt="12" mandatory="y" />
+			<column name="DateCommentaire" type="datetime" length="23" decimal="3" jt="93" mandatory="y" />
+			<index name="Pk_Commentaires" unique="PRIMARY_KEY" >
+				<column name="IdCommentaire" />
+			</index>
+			<index name="idx_Commentaires" unique="NORMAL" >
+				<column name="IdReponseA" />
+			</index>
+			<fk name="fk_commentaires_commentaires" to_schema="dbo" to_table="Commentaires" >
+				<fk_column name="IdReponseA" pk="IdCommentaire" />
+			</fk>
+			<fk name="fk_commentaires_croisieres" to_schema="dbo" to_table="Croisieres" >
+				<fk_column name="IdCroisiere" pk="IdCroisiere" />
+			</fk>
+		</table>
+		<table name="Croisieres" >
+			<column name="IdCroisiere" type="int" length="10" decimal="0" jt="4" mandatory="y" autoincrement="y" />
+			<column name="IdTheme" type="int" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="IdDuree" type="int" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="IdPromo" type="int" length="10" decimal="0" jt="4" />
+			<column name="IdPort" type="int" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="Prix" type="int" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="DateDepart" type="date" length="10" decimal="0" jt="91" mandatory="y" />
+			<column name="Photo" type="nvarchar" length="50" decimal="0" jt="12" />
+			<column name="Description" type="text" length="2147483647" decimal="0" jt="-1" />
+			<index name="Pk_Croisieres" unique="PRIMARY_KEY" >
+				<column name="IdCroisiere" />
+			</index>
+			<fk name="fk_croisieres_durees" to_schema="dbo" to_table="Durees" >
+				<fk_column name="IdDuree" pk="IdDuree" />
+			</fk>
+			<fk name="fk_croisieres_ports" to_schema="dbo" to_table="Ports" >
+				<fk_column name="IdPort" pk="IdPort" />
+			</fk>
+			<fk name="fk_croisieres_promos" to_schema="dbo" to_table="Promos" >
+				<fk_column name="IdPromo" pk="IdPromo" />
+			</fk>
+			<fk name="fk_croisieres_themes" to_schema="dbo" to_table="Themes" >
+				<fk_column name="IdTheme" pk="IdTheme" />
+			</fk>
+		</table>
+		<table name="Durees" >
+			<column name="IdDuree" type="int" length="10" decimal="0" jt="4" mandatory="y" autoincrement="y" />
+			<column name="NbJours" type="int" length="10" decimal="0" jt="4" mandatory="y" />
+			<index name="Pk_Durees" unique="PRIMARY_KEY" >
+				<column name="IdDuree" />
+			</index>
+		</table>
+		<table name="LogAction" >
+			<column name="IdNlog" type="int" length="10" decimal="0" jt="4" mandatory="y" autoincrement="y" />
+			<column name="DateNlog" type="datetime2" length="27" decimal="0" jt="93" />
+			<column name="Area" type="varchar" length="30" decimal="0" jt="12" />
+			<column name="Controller" type="varchar" length="30" decimal="0" jt="12" />
+			<column name="Action" type="varchar" length="30" decimal="0" jt="12" />
+			<column name="Parameters" type="varchar" length="1000" decimal="0" jt="12" />
+			<index name="PK__LogActio__47E9F1E2CB2C642D" unique="PRIMARY_KEY" >
+				<column name="IdNlog" />
+			</index>
+		</table>
+		<table name="Pays" >
+			<column name="CodeIso3" type="char" length="3" decimal="0" jt="1" mandatory="y" />
+			<column name="CodeIso2" type="char" length="2" decimal="0" jt="1" mandatory="y" />
+			<column name="IdRegion" type="int" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="Nom" type="nvarchar" length="30" decimal="0" jt="12" mandatory="y" />
+			<index name="Pk_Pays" unique="PRIMARY_KEY" >
+				<column name="CodeIso3" />
+			</index>
+			<fk name="fk_pays_pays" to_schema="dbo" to_table="Regions" >
+				<fk_column name="IdRegion" pk="IdRegion" />
+			</fk>
+		</table>
+		<table name="Photos" >
+			<column name="IdPhoto" type="uniqueidentifier" length="36" decimal="0" jt="1" mandatory="y" />
+			<column name="PhotoName" type="varchar" length="100" decimal="0" jt="12" mandatory="y" />
+			<column name="IdCroisiere" type="int" length="10" decimal="0" jt="4" mandatory="y" />
+			<index name="Pk_Photos" unique="PRIMARY_KEY" >
+				<column name="IdPhoto" />
+			</index>
+			<index name="idx_Photos" unique="NORMAL" >
+				<column name="IdCroisiere" />
+			</index>
+			<fk name="fk_photos_croisieres" to_schema="dbo" to_table="Croisieres" >
+				<fk_column name="IdCroisiere" pk="IdCroisiere" />
+			</fk>
+		</table>
+		<table name="Ports" >
+			<column name="IdPort" type="int" length="10" decimal="0" jt="4" mandatory="y" autoincrement="y" />
+			<column name="CodeIso3" type="char" length="3" decimal="0" jt="1" mandatory="y" />
+			<column name="Nom" type="nvarchar" length="40" decimal="0" jt="12" mandatory="y" />
+			<column name="Latitude" type="float" length="53" decimal="0" jt="8" mandatory="y" />
+			<column name="Longitude" type="float" length="53" decimal="0" jt="8" mandatory="y" />
+			<index name="Pk_Ports" unique="PRIMARY_KEY" >
+				<column name="IdPort" />
+			</index>
+			<fk name="fk_ports_pays" to_schema="dbo" to_table="Pays" >
+				<fk_column name="CodeIso3" pk="CodeIso3" />
+			</fk>
+		</table>
+		<table name="ProduitTracking" >
+			<column name="IdProduitTracking" type="int" length="10" decimal="0" jt="4" mandatory="y" autoincrement="y" />
+			<column name="IdProduit" type="int" length="10" decimal="0" jt="4" mandatory="y" />
+			<column name="DatePT" type="datetime" length="23" decimal="3" jt="93" mandatory="y" />
+			<index name="Pk_ProduitTracking" unique="PRIMARY_KEY" >
+				<column name="IdProduitTracking" />
+			</index>
+		</table>
+		<table name="Promos" >
+			<column name="IdPromo" type="int" length="10" decimal="0" jt="4" mandatory="y" autoincrement="y" />
+			<column name="Reduction" type="int" length="10" decimal="0" jt="4" />
+			<index name="Pk_Promos" unique="PRIMARY_KEY" >
+				<column name="IdPromo" />
+			</index>
+		</table>
+		<table name="Regions" >
+			<column name="IdRegion" type="int" length="10" decimal="0" jt="4" mandatory="y" autoincrement="y" />
+			<column name="Nom" type="nvarchar" length="30" decimal="0" jt="12" mandatory="y" />
+			<index name="Pk_Regions" unique="PRIMARY_KEY" >
+				<column name="IdRegion" />
+			</index>
+		</table>
+		<table name="Themes" >
+			<column name="IdTheme" type="int" length="10" decimal="0" jt="4" mandatory="y" autoincrement="y" />
+			<column name="Libelle" type="nvarchar" length="50" decimal="0" jt="12" mandatory="y" />
+			<index name="Pk_Themes" unique="PRIMARY_KEY" >
+				<column name="IdTheme" />
+			</index>
+		</table>
+		<table name="Utilisateurs" >
+			<column name="Id" type="nvarchar" length="128" decimal="0" jt="12" mandatory="y" />
+			<column name="IdUtilisateur" type="int" length="10" decimal="0" jt="4" mandatory="y" autoincrement="y" />
+			<column name="DateInscription" type="datetime2" length="27" decimal="0" jt="93" mandatory="y" />
+			<column name="LastConnection" type="datetime2" length="27" decimal="0" jt="93" />
+			<column name="Nom" type="nvarchar" length="40" decimal="0" jt="12" mandatory="y" />
+			<column name="Prenom" type="nvarchar" length="40" decimal="0" jt="12" mandatory="y" />
+			<column name="IdCroisiere" type="int" length="10" decimal="0" jt="4" />
+			<column name="IdAdresse" type="int" length="10" decimal="0" jt="4" />
+			<index name="Pk_Utilisateur" unique="PRIMARY_KEY" >
+				<column name="Id" />
+			</index>
+			<fk name="fk_utilisateurs_adresses" to_schema="dbo" to_table="Adresses" >
+				<fk_column name="IdAdresse" pk="IdAdresse" />
+			</fk>
+			<fk name="fk_utilisateurs_aspNetUsers" to_schema="dbo" to_table="AspNetUsers" >
+				<fk_column name="Id" pk="Id" />
+			</fk>
+			<fk name="fk_utilisateurs_croisieres" to_schema="dbo" to_table="Croisieres" >
+				<fk_column name="IdCroisiere" pk="IdCroisiere" />
+			</fk>
+		</table>
+		<table name="__MigrationHistory" >
+			<column name="MigrationId" type="nvarchar" length="150" decimal="0" jt="12" mandatory="y" />
+			<column name="ContextKey" type="nvarchar" length="300" decimal="0" jt="12" mandatory="y" />
+			<column name="Model" type="varbinary(max)" decimal="0" jt="-3" mandatory="y" />
+			<column name="ProductVersion" type="nvarchar" length="32" decimal="0" jt="12" mandatory="y" />
+			<index name="PK_dbo.__MigrationHistory" unique="PRIMARY_KEY" >
+				<column name="MigrationId" />
+				<column name="ContextKey" />
+			</index>
+		</table>
+	</schema>
+	<connector name="SqlServer" database="SqlServer" driver_class="net.sourceforge.jtds.jdbc.Driver" driver_jar="jtds-1.2.7.jar" host="localhost" port="57676" instance="Form112" user="sa" passwd="cm9vdA==" schema_mapping="" />
+	<layout id="Layout6781330" name="dbo" joined_routing="y" show_relation_columns="y" >
+		<entity schema="dbo" name="Adresses" color="f5ddbf" x="720" y="420" />
+		<entity schema="dbo" name="AspNetRoles" color="c8f5bf" x="255" y="435" />
+		<entity schema="dbo" name="AspNetUserClaims" color="c8f5bf" x="90" y="270" />
+		<entity schema="dbo" name="AspNetUserLogins" color="c8f5bf" x="255" y="285" />
+		<entity schema="dbo" name="AspNetUserRoles" color="c8f5bf" x="90" y="435" />
+		<entity schema="dbo" name="AspNetUsers" color="c8f5bf" x="45" y="570" />
+		<entity schema="dbo" name="Commentaires" color="bfd4f5" x="1215" y="465" />
+		<entity schema="dbo" name="Croisieres" color="f5ddbf" x="870" y="615" />
+		<entity schema="dbo" name="Durees" color="f5ddbf" x="870" y="285" />
+		<entity schema="dbo" name="LogAction" color="bfd4f5" x="1215" y="270" />
+		<entity schema="dbo" name="Pays" color="bfbff5" x="585" y="45" />
+		<entity schema="dbo" name="Photos" color="f5ddbf" x="720" y="270" />
+		<entity schema="dbo" name="Ports" color="bfbff5" x="720" y="45" />
+		<entity schema="dbo" name="ProduitTracking" color="bfd4f5" x="1395" y="465" />
+		<entity schema="dbo" name="Promos" color="f5ddbf" x="870" y="420" />
+		<entity schema="dbo" name="Regions" color="bfd4f5" x="1395" y="330" />
+		<entity schema="dbo" name="Themes" color="f5ddbf" x="585" y="420" />
+		<entity schema="dbo" name="Utilisateurs" color="c8f5bf" x="390" y="435" />
+		<group name="Adresses" color="faf6f0" >
+			<comment>Used by : &#10;   AspNetRoles&#10;   Commentaires</comment>
+			<entity schema="dbo" name="Adresses" />
+			<entity schema="dbo" name="Themes" />
+			<entity schema="dbo" name="Promos" />
+			<entity schema="dbo" name="Photos" />
+			<entity schema="dbo" name="Durees" />
+			<entity schema="dbo" name="Croisieres" />
+		</group>
+		<group name="AspNetRoles" color="f2faf0" >
+			<entity schema="dbo" name="AspNetRoles" />
+			<entity schema="dbo" name="AspNetUserRoles" />
+			<entity schema="dbo" name="Utilisateurs" />
+			<entity schema="dbo" name="AspNetUserLogins" />
+			<entity schema="dbo" name="AspNetUserClaims" />
+			<entity schema="dbo" name="AspNetUsers" />
+		</group>
+		<group name="Commentaires" color="f0f4fa" >
+			<comment>Used by : &#10;   Ports</comment>
+			<entity schema="dbo" name="Commentaires" />
+			<entity schema="dbo" name="ProduitTracking" />
+			<entity schema="dbo" name="LogAction" />
+			<entity schema="dbo" name="Regions" />
+		</group>
+		<group name="Ports" color="f0f0fa" >
+			<comment>Used by : &#10;   Adresses</comment>
+			<entity schema="dbo" name="Ports" />
+			<entity schema="dbo" name="Pays" />
+		</group>
+	</layout>
+</project>
