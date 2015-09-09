@@ -41,8 +41,8 @@ namespace Form112.Areas.Admin.Controllers
                 var mailMsm = new MailMessage("Agence OpenSea <opensea_agence@gtm.fr>", stringRecip);
                 mailMsm.Subject = mvm.Sujet.Replace("@Nom@", recip.Nom).Replace("@Prenom@", recip.Prenom);
 
-                mailMsm.Body = mvm.Message.Replace("@Nom@", recip.Nom).Replace("@Prenom@", recip.Prenom) + 
-                    "<br/> Trouver nos promos <a href='http://localhost:62679/Promotions'> ici </a>";
+                mailMsm.Body = mvm.Message.Replace("@Nom@", recip.Nom).Replace("@Prenom@", recip.Prenom) +
+                    "<br/> Trouver nos promos <a href='http://form112.dlucazeau.fr/Promotions'> ici </a>";
 
 
                 mailMsm.IsBodyHtml = true;
@@ -59,5 +59,7 @@ namespace Form112.Areas.Admin.Controllers
 
             return View(mvm);
         }
+
+
     }
 }

@@ -73,11 +73,8 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Http.Owin">
-
       <HintPath>..\..\..\webServices\WebApi1\WebApi1\WebApi1\bin\System.Web.Http.Owin.dll</HintPath>
-
       <HintPath>..\..\..\..\Desktop\WebApi1\WebApi1\bin\System.Web.Http.Owin.dll</HintPath>
-
     </Reference>
     <Reference Include="System.Web.Http.WebHost, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -354,9 +351,82 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="Uploads\Bateaux\42268.jpg" />
     <Content Include="Uploads\Bateaux\74248.jpg" />
+    <Content Include="Uploads\Bateaux\Adventure-of-the-Seas.jpg" />
     <Content Include="Uploads\Bateaux\Carnival_Elation_croisiere_a_rabais.jpg" />
+    <Content Include="Uploads\Bateaux\caroussel _9.jpg" />
     <Content Include="Uploads\Bateaux\croisiere-fluviale.jpg" />
+    <Content Include="Uploads\Bateaux\croisiere-printemps.jpg" />
     <Content Include="Uploads\Bateaux\croisiere.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere10_1.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere10_2.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere10_3.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere10_4.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere11_1.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere11_2.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere11_3.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere11_4.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere12_1.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere12_2.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere12_3.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere12_4.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere13_1.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere13_2.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere13_3.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere13_4.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere14_1.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere14_2.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere14_3.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere14_4.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere15_1.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere15_2.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere15_3.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere15_4.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere16_1.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere16_2.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere16_3.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere16_4.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere17_1.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere17_2.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere17_3.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere17_4.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere18_1.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere18_2.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere18_3.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere18_4.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere1_1.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere1_2.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere1_3.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere1_4.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere2_1.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere2_2.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere2_3.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere3_1.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere3_2.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere3_3.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere3_4.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere4_1.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere4_2.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere4_3.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere4_4.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere5_1.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere5_2.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere5_3.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere5_4.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere6_1.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere6_2.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere6_3.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere6_4.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere7_1.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere7_2.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere7_3.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere8_1.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere8_2.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere8_3.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere8_4.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere9_1.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere9_2.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere9_3.jpg" />
+    <Content Include="Uploads\Bateaux\Croisiere9_4.jpg" />
     <Content Include="Uploads\Bateaux\croisieres-fjord.jpeg" />
     <Content Include="Uploads\Bateaux\mcupload_5252a13e97eda.png" />
     <Content Include="Uploads\Bateaux\mediterranee-costa-croisieres-51571.jpg" />

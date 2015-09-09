@@ -36,6 +36,7 @@ namespace Form112Console {
             var stackPic = new Stack<string>();
             foreach (var item in listPic)
             {
+                if(item.Contains(""))
                 stackPic.Push(item);
             }
 
