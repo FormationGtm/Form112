@@ -1,1 +1,1520 @@
-<!-- Documentation HTML -->
+<?xml version='1.0' encoding='ISO-8859-1' standalone='yes'?>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN' 'http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml' >
+<head>
+<title>Database Documentation</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<style type='text/css'>
+body {
+    /*margin: 20px auto;*/
+    font-family: 'trebuchet MS', 'Lucida sans', Arial;
+    font-size: 12px;
+    color: #444;
+}
+
+table {
+    *border-collapse: collapse; /* IE7 and lower */
+    border-spacing: 0;
+    /*width: 100%;*/
+}
+
+.bordered {
+    border: solid #ccc 1px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 1px 1px #ccc;
+    -moz-box-shadow: 0 1px 1px #ccc;
+    box-shadow: 0 1px 1px #ccc;
+}
+
+.bordered tr:hover {
+    background: #fbf8e9;
+    -o-transition: all 0.1s ease-in-out;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+
+.bordered td, .bordered th {
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    padding: 4px;
+    text-align: left;
+}
+
+.bordered th {
+    background-color: #d7d7ea;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#f4f4fb), to(#d7d7ea));
+    background-image: -webkit-linear-gradient(top, #f4f4fb, #d7d7ea);
+    background-image:    -moz-linear-gradient(top, #f4f4fb, #d7d7ea);
+    background-image:     -ms-linear-gradient(top, #f4f4fb, #d7d7ea);
+    background-image:      -o-linear-gradient(top, #f4f4fb, #d7d7ea);
+    background-image:         linear-gradient(top, #f4f4fb, #d7d7ea);
+    -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
+    -moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;
+    box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
+    border-top: none;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+
+.bordered td:first-child, .bordered th:first-child {
+    border-left: none;
+}
+
+.bordered th:first-child {
+    -moz-border-radius: 6px 0 0 0;
+    -webkit-border-radius: 6px 0 0 0;
+    border-radius: 6px 0 0 0;
+}
+
+.bordered th:last-child {
+    -moz-border-radius: 0 6px 0 0;
+    -webkit-border-radius: 0 6px 0 0;
+    border-radius: 0 6px 0 0;
+}
+
+.bordered th:only-child{
+    -moz-border-radius: 6px 6px 0 0;
+    -webkit-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+}
+
+.bordered tr:last-child td:first-child {
+    -moz-border-radius: 0 0 0 6px;
+    -webkit-border-radius: 0 0 0 6px;
+    border-radius: 0 0 0 6px;
+}
+
+.bordered tr:last-child td:last-child {
+    -moz-border-radius: 0 0 6px 0;
+    -webkit-border-radius: 0 0 6px 0;
+    border-radius: 0 0 6px 0;
+}
+
+</style>
+</head>
+
+<body>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'   width='1560' height='995' viewbox='0 0 1560 995' >
+<style type='text/css'>
+  text                { fill:#000000; font-family: 'trebuchet MS', 'Lucida sans', Dialog, Dialog, Arial; font-size:11px; stroke:#000000; stroke-width:0.1; }
+  text:hover          { fill:#a00000; font-size:12px;}
+  text.colType        { fill:#a9bdc6; }
+  text.tableTitle     { fill:#000000; }
+  path                { stroke:#5e554d; stroke-width:1.1; fill:none; }
+  rect.table          { fill:#ffffff; stroke:#222; stroke-width:0.2; filter:url(#shadow); }
+  line.table          { stroke:#222; stroke-width:0.2; }
+  rect.callout        { fill:url(#calloutGradient); stroke:#bebdbd; stroke-width:0.5; }
+  rect.grp            { opacity:0.5; stroke:#b1b1b1; stroke-width:1.7; }
+</style>
+<defs>
+  <pattern patternUnits='userSpaceOnUse' id='layoutBgA' width='10' height='20' x='0' y='0' viewBox='0 0 5 10'>  
+     <line x1='-2' y1='1' x2='7' y2='10' stroke='#f0f0f0' stroke-width='.5'/>  
+     <line x1='-2' y1='6' x2='7' y2='15' stroke='#f0f0f0' stroke-width='.5'/>  
+     <line x1='-2' y1='-4' x2='7' y2='5' stroke='#f0f0f0' stroke-width='.5'/>  
+  </pattern>  
+  <radialGradient id='layoutBgB' gradientUnits='userSpaceOnUse' cx='50%' cy='50%' r='75%' fx='46%' fy='22%'>
+     <stop offset='0%' stop-opacity='.2' stop-color='#f5f5f5' />  
+     <stop offset='100%' stop-color='#f0f0f0' />  
+  </radialGradient>
+  <linearGradient id='tableHeaderGradient3' x1='0%' y1='0%' x2='0%' y2='90%' >
+          <stop offset='0%' stop-color='#f5ddbf'/> 
+          <stop offset='30%' stop-color='white'/> 
+          <stop offset='100%' stop-color='#f5ddbf'/> 
+   </linearGradient>
+  <linearGradient id='tableHeaderGradient2' x1='0%' y1='0%' x2='0%' y2='90%' >
+          <stop offset='0%' stop-color='#f0f0fa'/> 
+          <stop offset='30%' stop-color='white'/> 
+          <stop offset='100%' stop-color='#f0f0fa'/> 
+   </linearGradient>
+  <linearGradient id='tableHeaderGradient1' x1='0%' y1='0%' x2='0%' y2='90%' >
+          <stop offset='0%' stop-color='#c8f5bf'/> 
+          <stop offset='30%' stop-color='white'/> 
+          <stop offset='100%' stop-color='#c8f5bf'/> 
+   </linearGradient>
+  <linearGradient id='tableHeaderGradient0' x1='0%' y1='0%' x2='0%' y2='90%' >
+          <stop offset='0%' stop-color='#bfd4f5'/> 
+          <stop offset='30%' stop-color='white'/> 
+          <stop offset='100%' stop-color='#bfd4f5'/> 
+   </linearGradient>
+  <linearGradient id='groupUnderTitleLine' x1='0%' y1='0%' x2='100%' y2='0%' >
+          <stop offset='0%' stop-color='#999999' stop-opacity='0.7'/> 
+          <stop offset='100%' stop-color='#999999' stop-opacity='0' /> 
+   </linearGradient>
+  <radialGradient id='calloutGradient' cx='20%' cy='20%' r='100%' fx='10%' fy='10%'>
+	   <stop offset='0%' stop-color='#ffffff' />
+    <stop offset='100%' stop-color='#f8f6d1' />
+  </radialGradient>
+  <filter id='shadow' width='120%' height='120%'> 
+      <feOffset result='offOut' in='SourceGraphic' dx='2' dy='2' /> 
+      <feColorMatrix result='matrixOut' in='offOut' type='matrix' 
+      values='0.1 0 0 0 0 0 0.1 0 0 0 0 0 0.1 0 0 0 0 0 0.5 0' /> 
+      <feGaussianBlur result='blurOut' in='matrixOut' stdDeviation='2' /> 
+      <feBlend in='SourceGraphic' in2='blurOut' mode='normal' /> 
+    </filter> 
+  <filter id='formerShadow' height='130%'> 
+    <feGaussianBlur in='SourceAlpha' stdDeviation='1.5'/> <!-- stdDeviation is how much to blur -->
+    <feOffset dx='1.2' dy='1.2' result='offsetblur'/> <!-- how much to offset -->
+    <feMerge>
+    <feMergeNode/> <!-- this contains the offset blurred image -->
+    <feMergeNode in='SourceGraphic'/> <!-- this contains the element that the filter is applied to -->
+    </feMerge>
+  </filter>
+  <filter id='legendShadow' filterUnits='userSpaceOnUse' x='0' y='0' width='400' height='120'> 
+     <feGaussianBlur in='SourceAlpha' stdDeviation='3' result='blur'/> 
+     <feOffset in='blur' dx='2' dy='2' result='offsetBlur'/> 
+     <feSpecularLighting in='blur' surfaceScale='5' specularConstant='.75' specularExponent='20' lighting-color='#bbbbbb' result='specOut'>
+        <fePointLight x='-5000' y='-10000' z='20000'/>  
+     </feSpecularLighting> 
+     <feComposite in='specOut' in2='SourceAlpha' operator='in' result='specOut'/> 
+     <feComposite in='SourceGraphic' in2='specOut' operator='arithmetic' k1='0' k2='1' k3='1' k4='0' result='litPaint'/>  
+     <feMerge> 
+         <feMergeNode in='offsetBlur'/> 
+         <feMergeNode in='litPaint'/> 
+     </feMerge> 
+  </filter> 
+  <radialGradient id='legendGradient' fx='5%' fy='5%' r='75%' spreadMethod='pad'>
+          <stop offset='0%' stop-color='#eaeef6' stop-opacity='1'/> 
+          <stop offset='100%' stop-color='#cad2e3' stop-opacity='1' /> 
+   </radialGradient>
+  <symbol id='calloutArrowDown' overflow='visible' >
+      <path d='M 0,0 L 7,11 L 15,0 z' style='fill:#f8f6d1;stroke:none;' />
+      <path d='M 0,0 L 7,11 L 15,0' style='stroke:#bebdbd; stroke-width:0.5;' />
+  </symbol>
+  <symbol id='calloutArrowUp' overflow='visible' >
+      <path d='M 0,15 L 7,3 L 15,15 z' style='fill:#ffffff; stroke:none;' />
+      <path d='M 0,15 L 7,3 L 15,15' style='stroke:#bebdbd; stroke-width:0.5;' />
+  </symbol>
+  <symbol id='pk' overflow='visible' >
+    <g transform='scale(0.99)'>
+     <path style='fill:#fbea8e;stroke:#763f17;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;'
+        d='M 9.3678877,3.5695485 C 9.1030218,3.2729386 9.0796382,2.7628519 9.3396185,2.4517097 9.5449651,2.1956495 9.9040386,2.0980533 10.199638,2.2169415 10.533525,2.3415459 10.775153,2.706942 10.750675,3.0842709 10.737029,3.3980003 10.541153,3.699122 10.258248,3.8066067 9.966649,3.9250429 9.6169668,3.8418805 9.4008073,3.6062324 9.3894892,3.5943518 9.3785264,3.582104 9.3678886,3.5695487 z M 11.226617,6.9916004 C 11.888137,6.3548946 12.293488,5.4172188 12.311087,4.442353 12.378144,2.7379364 11.248678,1.0541269 9.7322318,0.44767357 8.3887112,-0.1280313 6.7865012,0.26822889 5.8918395,1.4007929 5.080823,2.3839145 4.9336815,3.8452096 5.3635544,5.101615 L 4.3670905,5.315913 C 4.0664984,5.3682645 4.0967703,5.6316724 4.2574957,5.8208829 L 4.9124,6.5655244 4.1543436,7.2512357 3.2136002,7.2163506 3.1674775,8.5586827 2.0406832,8.5086512 1.5965306,8.9299953 1.5471661,10.179833 0.75616674,10.195223 0.2112857,10.758575 0.15354288,11.735988 0.07199052,12.765553 c 0.36440953,0.238225 0.79006967,0.195492 1.44938278,-0.02675 L 6.3033562,8.1282037 6.8217102,8.6765688 C 6.9985465,8.8799427 7.3003699,8.7497574 7.358381,8.5016252 L 7.4938877,7.5084164 c 0.8537488,0.3985387 1.8303125,0.4711541 2.6851793,0.1427713 0.393927,-0.1407258 0.746858,-0.3701772 1.04755,-0.6595873 z'/>
+     <path d='M 6.8014948,6.3102123 0.15369063,13.024481 0.21560535,12.141962 6.0062342,6.2683782 z'
+        style='fill:#ffe5a5;fill-opacity:1;stroke:#854e31;stroke-width:0.06912433;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:3.00300009'/>
+    </g>
+  </symbol>
+  <symbol id='unq' overflow='visible' >
+    <g transform='scale(0.99)'>
+      <rect style='fill:#e07554;stroke:#7e4d31;stroke-width:0.71934468;stroke-linecap:round;stroke-linejoin:round;'
+         width='2.29' height='8.43' x='7.48' y='-0.76' ry='1.14' transform='matrix(0.701,0.713,-0.727,0.685,0,0)' />
+      <path style='fill:white;stroke:#858585;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;'
+         d='m 26.04,8.64 a 4.13,4.13 0 1 1 -8.26,0 4.13,4.13 0 1 1 8.26,0 z'
+         transform='matrix(1.025,0,0,0.987,-14.690,-3.862)' />
+      <text x='5.5' y='7.7' style='font-size:8px;fill:#0460b5;'>1</text>
+    </g>
+  </symbol>
+  <symbol id='idx' overflow='visible' >
+    <g transform='scale(0.99)'>
+      <rect style='fill:#e07554;stroke:#7e4d31;stroke-width:0.71934468;stroke-linecap:round;stroke-linejoin:round;'
+         width='2.29' height='8.43' x='7.48' y='-0.76' ry='1.14' transform='matrix(0.701,0.713,-0.727,0.685,0,0)' />
+      <path style='fill:white;stroke:#858585;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;'
+         d='m 26.04,8.64 a 4.13,4.13 0 1 1 -8.26,0 4.13,4.13 0 1 1 8.26,0 z'
+         transform='matrix(1.025,0,0,0.987,-14.690,-3.862)' />
+    </g>
+  </symbol>
+  <symbol id='fk' overflow='visible' >
+    <g transform='scale(0.92)'>
+      <path style='fill:#b7d0f6;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+      d='M 12.48,0.33 7.07,0.89 9.067,2.974 0.329,11.731 1.073,12.597 9.811,3.841 11.77,5.78 z' />
+    </g>
+  </symbol>
+  <symbol id='ref' overflow='visible' >
+    <g transform='scale(0.92)'>
+      <path style='fill:#b7d0f6;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+          d='M 0.10,12.70 5.31,12.15 3.40,10.06 11.82,1.32 11.11,0.45 2.68,9.19 0.80,7.24 z'/>
+    </g>
+  </symbol>
+  <symbol id='flag' overflow='visible' >
+    <g transform='scale(0.92)'>
+      <path style='fill:#b7d0f6;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+          d='M 0.12,12.67 0.16,7.22 C 2.59,7.22 4.13,8.78 9.22,4.22 5.68,4.98 2.53,4.50 0.09,1.80 z'/>
+    </g>
+  </symbol>
+  <symbol id='nn' overflow='visible' >
+  <path style='stroke:#9b3e50;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;'
+          d='M 0,0 3,3 M 0,3 3,0 z'/>
+  </symbol>
+  <marker id='arrow' viewBox='0 0 7 7' refX='0' refY='3' markerUnits='strokeWidth' markerWidth='7' markerHeight='7' orient='auto'>
+    <path d='M 0,0 L 7, 3 L 0,7 z' style='fill:#584739; stroke-width:0px;' />
+  </marker>
+  <marker id='foot' viewBox='0 0 7 7' refX='7' refY='3' markerUnits='strokeWidth' markerWidth='7' markerHeight='7' orient='auto'>
+    <path d='M 0,3 L 15, 3 z' style='stroke:#584739;' />
+  </marker>
+</defs>
+
+<!-- ============= Desktop ============= -->
+<rect x='1' y='1' width='1558' height='993' rx='7' ry='7' style='fill:url(#layoutBgA); stroke:#333333; stroke-width:0.5;' />
+<rect width='120%' x='-10%' y='-10%' height='120%' fill='url(#layoutBgB)'/>
+<!-- ============= Legend ============= -->
+<g transform='translate(10,10)'>
+  <rect x='10' y='10' width='300' height='64' rx='6' ry='6' style='fill:url(#legendGradient);filter:url(#legendShadow);'/> 
+  <text x='20' y='30'><tspan>Project</tspan> SqlServer @ <a xlink:href='http://www.dbschema.com'>DbSchema</a></text> 
+  <text x='20' y='44'><tspan>Layout</tspan> dbo</text> 
+  <text x='20' y='58' style='fill:#777'><tspan>Hint: Schema comments available as mouse-over tooltips.</tspan></text> 
+</g>
+
+<g transform='translate(0,110)'>
+<!-- ============= Group 'Croisières' ============= -->
+<rect class='grp' style='fill:#faf6f0;stroke:#e0d6c5' x='1109' y='370' width='422' height='485' />
+<text x='1120' y='385'>Croisières</text>
+<rect style='fill:url(#groupUnderTitleLine); stroke-width:2;' x='1120' y='388' width='400' height='2' />
+
+<!-- ============= Group 'AspNetRoles' ============= -->
+<rect class='grp' style='fill:#f2faf0;stroke:#cbe0c5' x='29' y='10' width='392' height='425' />
+<text x='40' y='25'>AspNetRoles</text>
+<rect style='fill:url(#groupUnderTitleLine); stroke-width:2;' x='40' y='28' width='370' height='2' />
+
+<!-- ============= Group 'Techniques' ============= -->
+<rect class='grp' style='fill:#f0f4fa;stroke:#c5d0e0' x='1199' y='40' width='332' height='320' />
+<text x='1210' y='55'>Techniques</text>
+<rect style='fill:url(#groupUnderTitleLine); stroke-width:2;' x='1210' y='58' width='310' height='2' />
+
+<!-- ============= Group 'Ports' ============= -->
+<rect class='grp' style='fill:#f0f0fa;stroke:#c5c5e0' x='569' y='10' width='482' height='620' />
+<text x='580' y='25'>Ports</text>
+<rect style='fill:url(#groupUnderTitleLine); stroke-width:2;' x='580' y='28' width='460' height='2' />
+
+<path transform='translate(7,0)' marker-start='url(#foot)' marker-end='url(#arrow)'    d='M 180 90 L 217,90 Q 225,90 225,82 L 225,82 Q 225,75 232,75 L 240,75' >
+	<title>Foreign Key FK_dbo.AspNetUserClaims_dbo.AspNetUsers_UserId
+	AspNetUserClaims references AspNetUsers ( UserId -> Id )</title>
+</path>
+<text x='187' y='85' transform='rotate(0 187,85)' title='Foreign Key FK_dbo.AspNetUserClaims_dbo.AspNetUsers_UserId
+	AspNetUserClaims references AspNetUsers ( UserId -> Id )' style='fill:#a1a0a0;'>UserId</text><path transform='translate(7,0)' marker-start='url(#foot)' marker-end='url(#arrow)'    d='M 150 240 L 172,240 Q 180,240 180,247 L 180,337 Q 180,345 172,345 L 165,345' >
+	<title>Foreign Key FK_dbo.AspNetUserRoles_dbo.AspNetRoles_RoleId
+	AspNetUserRoles references AspNetRoles ( RoleId -> Id )</title>
+</path>
+<text x='157' y='235' transform='rotate(0 157,235)' title='Foreign Key FK_dbo.AspNetUserRoles_dbo.AspNetRoles_RoleId
+	AspNetUserRoles references AspNetRoles ( RoleId -> Id )' style='fill:#a1a0a0;'>RoleId</text><path transform='translate(7,0)' marker-start='url(#foot)'     d='M 150 225 L 217,225 Q 225,225 225,217 L 225,210' >
+	<title>Foreign Key FK_dbo.AspNetUserRoles_dbo.AspNetUsers_UserId
+	AspNetUserRoles references AspNetUsers ( UserId -> Id )</title>
+</path>
+<text x='157' y='220' transform='rotate(0 157,220)' title='Foreign Key FK_dbo.AspNetUserRoles_dbo.AspNetUsers_UserId
+	AspNetUserRoles references AspNetUsers ( UserId -> Id )' style='fill:#a1a0a0;'>UserId</text><path transform='translate(7,0)' marker-start='url(#foot)'     d='M 255 390 L 232,390 Q 225,390 225,382 L 225,75' >
+	<title>Foreign Key FK_dbo.AspNetUserLogins_dbo.AspNetUsers_UserId
+	AspNetUserLogins references AspNetUsers ( UserId -> Id )</title>
+</path>
+<text x='226' y='385' transform='rotate(0 226,385)' title='Foreign Key FK_dbo.AspNetUserLogins_dbo.AspNetUsers_UserId
+	AspNetUserLogins references AspNetUsers ( UserId -> Id )' style='fill:#a1a0a0;'>UserId</text><path transform='translate(7,0)' marker-start='url(#foot)' marker-end='url(#arrow)'  style='stroke-dasharray:4,2;'  d='M 630 180 L 562,180 Q 555,180 555,187 L 555,397 Q 555,405 562,405 L 570,405' >
+	<title>Foreign Key fk_utilisateurs_adresses
+	Utilisateurs references Adresses ( IdAdresse )</title>
+</path>
+<text x='582' y='175' transform='rotate(0 582,175)' title='Foreign Key fk_utilisateurs_adresses
+	Utilisateurs references Adresses ( IdAdresse )' style='fill:#a1a0a0;'>IdAdresse</text><path transform='translate(7,0)' marker-start='url(#foot)' marker-end='url(#arrow)'    d='M 630 75 L 405,75' >
+	<title>Foreign Key fk_utilisateurs_aspNetUsers
+	Utilisateurs references AspNetUsers ( Id )</title>
+</path>
+<text x='624' y='70' transform='rotate(0 624,70)' title='Foreign Key fk_utilisateurs_aspNetUsers
+	Utilisateurs references AspNetUsers ( Id )' style='fill:#a1a0a0;'>Id</text><path transform='translate(7,0)' marker-start='url(#foot)'   style='stroke-dasharray:4,2;'  d='M 750 165 L 1042,165 Q 1050,165 1050,172 L 1050,247 Q 1050,255 1057,255 L 1065,255' >
+	<title>Foreign Key fk_utilisateurs_croisieres
+	Utilisateurs references Croisieres ( IdCroisiere )</title>
+</path>
+<text x='757' y='160' transform='rotate(0 757,160)' title='Foreign Key fk_utilisateurs_croisieres
+	Utilisateurs references Croisieres ( IdCroisiere )' style='fill:#a1a0a0;'>IdCroisiere</text><path transform='translate(7,0)' marker-start='url(#foot)' marker-end='url(#arrow)'    d='M 720 300 L 802,300 Q 810,300 810,292 L 810,97 Q 810,90 817,90 L 825,90' >
+	<title>Foreign Key fk_pays_pays
+	Pays references Regions ( IdRegion )</title>
+</path>
+<text x='727' y='295' transform='rotate(0 727,295)' title='Foreign Key fk_pays_pays
+	Pays references Regions ( IdRegion )' style='fill:#a1a0a0;'>IdRegion</text><path transform='translate(7,0)' marker-start='url(#foot)'     d='M 1035 255 L 1087,255 Q 1095,255 1095,262 L 1095,577 Q 1095,585 1102,585 L 1372,585 Q 1380,585 1380,592 L 1380,600' >
+	<title>Foreign Key fk_reservations_Croisieres
+	Reservations references Croisieres ( IdCroisiere )</title>
+</path>
+<text x='1042' y='250' transform='rotate(0 1042,250)' title='Foreign Key fk_reservations_Croisieres
+	Reservations references Croisieres ( IdCroisiere )' style='fill:#a1a0a0;'>IdCroisiere</text><path transform='translate(7,0)' marker-start='url(#foot)' marker-end='url(#arrow)'    d='M 900 240 L 772,240 Q 765,240 765,232 L 765,82 Q 765,75 757,75 L 750,75' >
+	<title>Foreign Key fk_reservations_Utilisateurs
+	Reservations references Utilisateurs ( IdUtilisateur -> Id )</title>
+</path>
+<text x='847' y='235' transform='rotate(0 847,235)' title='Foreign Key fk_reservations_Utilisateurs
+	Reservations references Utilisateurs ( IdUtilisateur -> Id )' style='fill:#a1a0a0;'>IdUtilisateur</text><path transform='translate(7,0)' marker-start='url(#foot)' marker-end='url(#arrow)'  style='stroke-dasharray:4,2;'  d='M 1200 255 L 1192,255 Q 1185,255 1185,247 L 1185,247 Q 1185,240 1192,240 L 1200,240' >
+	<title>Foreign Key fk_commentaires_commentaires
+	Commentaires references Commentaires ( IdReponseA -> IdCommentaire )</title>
+</path>
+<text x='1143' y='250' transform='rotate(0 1143,250)' title='Foreign Key fk_commentaires_commentaires
+	Commentaires references Commentaires ( IdReponseA -> IdCommentaire )' style='fill:#a1a0a0;'>IdReponseA</text><path transform='translate(7,0)' marker-start='url(#foot)'     d='M 1200 270 L 1102,270 Q 1095,270 1095,277 L 1095,285' >
+	<title>Foreign Key fk_commentaires_croisieres
+	Commentaires references Croisieres ( IdCroisiere )</title>
+</path>
+<text x='1151' y='265' transform='rotate(0 1151,265)' title='Foreign Key fk_commentaires_croisieres
+	Commentaires references Croisieres ( IdCroisiere )' style='fill:#a1a0a0;'>IdCroisiere</text><path transform='translate(7,0)' marker-start='url(#foot)' marker-end='url(#arrow)'    d='M 675 480 L 727,480 Q 735,480 735,472 L 735,277 Q 735,270 727,270 L 720,270' >
+	<title>Foreign Key fk_adresses_pays
+	Adresses references Pays ( IdPays -> CodeIso3 )</title>
+</path>
+<text x='682' y='475' transform='rotate(0 682,475)' title='Foreign Key fk_adresses_pays
+	Adresses references Pays ( IdPays -> CodeIso3 )' style='fill:#a1a0a0;'>IdPays</text><path transform='translate(7,0)' marker-start='url(#foot)' marker-end='url(#arrow)'    d='M 1350 525 L 1372,525 Q 1380,525 1380,532 L 1380,652 Q 1380,660 1387,660 L 1395,660' >
+	<title>Foreign Key fk_photos_croisieres
+	Photos references Croisieres ( IdCroisiere )</title>
+</path>
+<text x='1357' y='520' transform='rotate(0 1357,520)' title='Foreign Key fk_photos_croisieres
+	Photos references Croisieres ( IdCroisiere )' style='fill:#a1a0a0;'>IdCroisiere</text><path transform='translate(7,0)' marker-start='url(#foot)' marker-end='url(#arrow)'    d='M 1515 690 L 1522,690 Q 1530,690 1530,682 L 1530,442 Q 1530,435 1522,435 L 1500,435' >
+	<title>Foreign Key fk_croisieres_durees
+	Croisieres references Durees ( IdDuree )</title>
+</path>
+<text x='1522' y='685' transform='rotate(0 1522,685)' title='Foreign Key fk_croisieres_durees
+	Croisieres references Durees ( IdDuree )' style='fill:#a1a0a0;'>IdDuree</text><path transform='translate(7,0)' marker-start='url(#foot)' marker-end='url(#arrow)'    d='M 1395 720 L 892,720 Q 885,720 885,712 L 885,532 Q 885,525 877,525 L 870,525' >
+	<title>Foreign Key fk_croisieres_ports
+	Croisieres references Ports ( IdPort )</title>
+</path>
+<text x='1370' y='715' transform='rotate(0 1370,715)' title='Foreign Key fk_croisieres_ports
+	Croisieres references Ports ( IdPort )' style='fill:#a1a0a0;'>IdPort</text><path transform='translate(7,0)' marker-start='url(#foot)' marker-end='url(#arrow)'  style='stroke-dasharray:4,2;'  d='M 1395 705 L 1372,705 Q 1365,705 1365,697 L 1365,577 Q 1365,570 1372,570 L 1395,570' >
+	<title>Foreign Key fk_croisieres_promos
+	Croisieres references Promos ( IdPromo )</title>
+</path>
+<text x='1359' y='700' transform='rotate(0 1359,700)' title='Foreign Key fk_croisieres_promos
+	Croisieres references Promos ( IdPromo )' style='fill:#a1a0a0;'>IdPromo</text><path transform='translate(7,0)' marker-start='url(#foot)' marker-end='url(#arrow)'    d='M 1395 675 L 1222,675 Q 1215,675 1215,667 L 1215,532 Q 1215,525 1207,525 L 1200,525' >
+	<title>Foreign Key fk_croisieres_themes
+	Croisieres references Themes ( IdTheme )</title>
+</path>
+<text x='1357' y='670' transform='rotate(0 1357,670)' title='Foreign Key fk_croisieres_themes
+	Croisieres references Themes ( IdTheme )' style='fill:#a1a0a0;'>IdTheme</text><path transform='translate(7,0)' marker-start='url(#foot)'     d='M 765 540 L 742,540 Q 735,540 735,532 L 735,465' >
+	<title>Foreign Key fk_ports_pays
+	Ports references Pays ( CodeIso3 )</title>
+</path>
+<text x='722' y='535' transform='rotate(0 722,535)' title='Foreign Key fk_ports_pays
+	Ports references Pays ( CodeIso3 )' style='fill:#a1a0a0;'>CodeIso3</text><!-- ============= Table 'ProduitTracking' ============= -->
+<rect class='table' x='1395' y='203' width='120' height='90' rx='7' ry='7' />
+<path d='M 1395.50 229.50 L 1395.50 210.50 Q 1395.50 203.50 1402.50 203.50 L 1507.50 203.50 Q 1514.50 203.50 1514.50 210.50 L 1514.50 229.50 L1395.50 229.50 ' style='fill:url(#tableHeaderGradient0); stroke:none;' />
+<a xlink:href='#ProduitTracking'><text x='1418' y='217' class='tableTitle'>ProduitTracking</text><title>Table dbo.ProduitTracking</title></a>
+  <use id='nn' x='1397' y='237' xlink:href='#nn'/><a xlink:href='#ProduitTracking.IdProduitTracking'><use id='pk' x='1397' y='236' xlink:href='#pk'/><title>Primary Key  ( IdProduitTracking ) </title></a>
+<a xlink:href='#ProduitTracking.IdProduitTracking'><text x='1413' y='247'>IdProduitTracking</text><title>IdProduitTracking int not null</title></a>
+  <use id='nn' x='1397' y='252' xlink:href='#nn'/><a xlink:href='#ProduitTracking.IdProduit'><text x='1413' y='262'>IdProduit</text><title>IdProduit int not null</title></a>
+  <use id='nn' x='1397' y='267' xlink:href='#nn'/><a xlink:href='#ProduitTracking.DatePT'><text x='1413' y='277'>DatePT</text><title>DatePT datetime not null</title></a>
+
+<!-- ============= Table 'MoyensPaiement' ============= -->
+<rect class='table' x='1215' y='68' width='120' height='75' rx='7' ry='7' />
+<path d='M 1215.50 94.50 L 1215.50 75.50 Q 1215.50 68.50 1222.50 68.50 L 1327.50 68.50 Q 1334.50 68.50 1334.50 75.50 L 1334.50 94.50 L1215.50 94.50 ' style='fill:url(#tableHeaderGradient0); stroke:none;' />
+<a xlink:href='#MoyensPaiement'><text x='1234' y='82' class='tableTitle'>MoyensPaiement</text><title>Table dbo.MoyensPaiement</title></a>
+  <use id='nn' x='1217' y='102' xlink:href='#nn'/><a xlink:href='#MoyensPaiement.IdMoyenPaiement'><use id='pk' x='1217' y='101' xlink:href='#pk'/><title>Primary Key  ( IdMoyenPaiement ) </title></a>
+<a xlink:href='#MoyensPaiement.IdMoyenPaiement'><text x='1233' y='112'>IdMoyenPaiement</text><title>IdMoyenPaiement int not null</title></a>
+  <a xlink:href='#MoyensPaiement.Titre'><text x='1233' y='127'>Titre</text><title>Titre char&#040;10&#041;</title></a>
+
+<!-- ============= Table 'AspNetUsers' ============= -->
+<rect class='table' x='255' y='38' width='150' height='225' rx='7' ry='7' />
+<path d='M 255.50 64.50 L 255.50 45.50 Q 255.50 38.50 262.50 38.50 L 397.50 38.50 Q 404.50 38.50 404.50 45.50 L 404.50 64.50 L255.50 64.50 ' style='fill:url(#tableHeaderGradient1); stroke:none;' />
+<a xlink:href='#AspNetUsers'><text x='297' y='52' class='tableTitle'>AspNetUsers</text><title>Table dbo.AspNetUsers</title></a>
+  <use id='nn' x='257' y='72' xlink:href='#nn'/><a xlink:href='#AspNetUsers.Id'><use id='pk' x='257' y='71' xlink:href='#pk'/><title>Primary Key  ( Id ) </title></a>
+<a xlink:href='#AspNetUsers.Id'><text x='273' y='82'>Id</text><title>Id nvarchar&#040;128&#041; not null</title></a>
+<a xlink:href='#AspNetUsers.Id'><use id='ref' x='393' y='71' xlink:href='#ref'/><title>Referred by AspNetUserClaims ( UserId -> Id ) 
+Referred by AspNetUserLogins ( UserId -> Id ) 
+Referred by AspNetUserRoles ( UserId -> Id ) 
+Referred by Utilisateurs ( Id ) </title></a>
+  <a xlink:href='#AspNetUsers.Email'><text x='273' y='97'>Email</text><title>Email nvarchar&#040;256&#041;</title></a>
+  <use id='nn' x='257' y='102' xlink:href='#nn'/><a xlink:href='#AspNetUsers.EmailConfirmed'><text x='273' y='112'>EmailConfirmed</text><title>EmailConfirmed bit not null</title></a>
+  <a xlink:href='#AspNetUsers.PasswordHash'><text x='273' y='127'>PasswordHash</text><title>PasswordHash nvarchar&#040;max&#041;</title></a>
+  <a xlink:href='#AspNetUsers.SecurityStamp'><text x='273' y='142'>SecurityStamp</text><title>SecurityStamp nvarchar&#040;max&#041;</title></a>
+  <a xlink:href='#AspNetUsers.PhoneNumber'><text x='273' y='157'>PhoneNumber</text><title>PhoneNumber nvarchar&#040;max&#041;</title></a>
+  <use id='nn' x='257' y='162' xlink:href='#nn'/><a xlink:href='#AspNetUsers.PhoneNumberConfirmed'><text x='273' y='172'>PhoneNumberConfirmed</text><title>PhoneNumberConfirmed bit not null</title></a>
+  <use id='nn' x='257' y='177' xlink:href='#nn'/><a xlink:href='#AspNetUsers.TwoFactorEnabled'><text x='273' y='187'>TwoFactorEnabled</text><title>TwoFactorEnabled bit not null</title></a>
+  <a xlink:href='#AspNetUsers.LockoutEndDateUtc'><text x='273' y='202'>LockoutEndDateUtc</text><title>LockoutEndDateUtc datetime</title></a>
+  <use id='nn' x='257' y='207' xlink:href='#nn'/><a xlink:href='#AspNetUsers.LockoutEnabled'><text x='273' y='217'>LockoutEnabled</text><title>LockoutEnabled bit not null</title></a>
+  <use id='nn' x='257' y='222' xlink:href='#nn'/><a xlink:href='#AspNetUsers.AccessFailedCount'><text x='273' y='232'>AccessFailedCount</text><title>AccessFailedCount int not null</title></a>
+  <use id='nn' x='257' y='237' xlink:href='#nn'/><a xlink:href='#AspNetUsers.UserName'><text x='273' y='247'>UserName</text><title>UserName nvarchar&#040;256&#041; not null</title></a>
+
+<!-- ============= Table 'AspNetUserClaims' ============= -->
+<rect class='table' x='75' y='38' width='105' height='105' rx='7' ry='7' />
+<path d='M 75.50 64.50 L 75.50 45.50 Q 75.50 38.50 82.50 38.50 L 172.50 38.50 Q 179.50 38.50 179.50 45.50 L 179.50 64.50 L75.50 64.50 ' style='fill:url(#tableHeaderGradient1); stroke:none;' />
+<a xlink:href='#AspNetUserClaims'><text x='82' y='52' class='tableTitle'>AspNetUserClaims</text><title>Table dbo.AspNetUserClaims</title></a>
+  <use id='nn' x='77' y='72' xlink:href='#nn'/><a xlink:href='#AspNetUserClaims.Id'><use id='pk' x='77' y='71' xlink:href='#pk'/><title>Primary Key  ( Id ) </title></a>
+<a xlink:href='#AspNetUserClaims.Id'><text x='93' y='82'>Id</text><title>Id int not null</title></a>
+  <use id='nn' x='77' y='87' xlink:href='#nn'/><a xlink:href='#AspNetUserClaims.UserId'><text x='93' y='97'>UserId</text><title>UserId nvarchar&#040;128&#041; not null</title></a>
+<a xlink:href='#AspNetUserClaims.UserId'><use id='fk' x='168' y='86' xlink:href='#fk'/><title>References AspNetUsers ( UserId -> Id ) </title></a>
+  <a xlink:href='#AspNetUserClaims.ClaimType'><text x='93' y='112'>ClaimType</text><title>ClaimType nvarchar&#040;max&#041;</title></a>
+  <a xlink:href='#AspNetUserClaims.ClaimValue'><text x='93' y='127'>ClaimValue</text><title>ClaimValue nvarchar&#040;max&#041;</title></a>
+
+<!-- ============= Table 'AspNetUserRoles' ============= -->
+<rect class='table' x='45' y='188' width='105' height='75' rx='7' ry='7' />
+<path d='M 45.50 214.50 L 45.50 195.50 Q 45.50 188.50 52.50 188.50 L 142.50 188.50 Q 149.50 188.50 149.50 195.50 L 149.50 214.50 L45.50 214.50 ' style='fill:url(#tableHeaderGradient1); stroke:none;' />
+<a xlink:href='#AspNetUserRoles'><text x='54' y='202' class='tableTitle'>AspNetUserRoles</text><title>Table dbo.AspNetUserRoles</title></a>
+  <use id='nn' x='47' y='222' xlink:href='#nn'/><a xlink:href='#AspNetUserRoles.UserId'><use id='pk' x='47' y='221' xlink:href='#pk'/><title>Primary Key  ( UserId, RoleId ) </title></a>
+<a xlink:href='#AspNetUserRoles.UserId'><text x='63' y='232'>UserId</text><title>UserId nvarchar&#040;128&#041; not null</title></a>
+<a xlink:href='#AspNetUserRoles.UserId'><use id='fk' x='138' y='221' xlink:href='#fk'/><title>References AspNetUsers ( UserId -> Id ) </title></a>
+  <use id='nn' x='47' y='237' xlink:href='#nn'/><a xlink:href='#AspNetUserRoles.RoleId'><use id='pk' x='47' y='236' xlink:href='#pk'/><title>Primary Key  ( UserId, RoleId ) </title></a>
+<a xlink:href='#AspNetUserRoles.RoleId'><text x='63' y='247'>RoleId</text><title>RoleId nvarchar&#040;128&#041; not null</title></a>
+<a xlink:href='#AspNetUserRoles.RoleId'><use id='fk' x='138' y='236' xlink:href='#fk'/><title>References AspNetRoles ( RoleId -> Id ) </title></a>
+
+<!-- ============= Table 'AspNetRoles' ============= -->
+<rect class='table' x='90' y='308' width='75' height='75' rx='7' ry='7' />
+<path d='M 90.50 334.50 L 90.50 315.50 Q 90.50 308.50 97.50 308.50 L 157.50 308.50 Q 164.50 308.50 164.50 315.50 L 164.50 334.50 L90.50 334.50 ' style='fill:url(#tableHeaderGradient1); stroke:none;' />
+<a xlink:href='#AspNetRoles'><text x='96' y='322' class='tableTitle'>AspNetRoles</text><title>Table dbo.AspNetRoles</title></a>
+  <use id='nn' x='92' y='342' xlink:href='#nn'/><a xlink:href='#AspNetRoles.Id'><use id='pk' x='92' y='341' xlink:href='#pk'/><title>Primary Key  ( Id ) </title></a>
+<a xlink:href='#AspNetRoles.Id'><text x='108' y='352'>Id</text><title>Id nvarchar&#040;128&#041; not null</title></a>
+<a xlink:href='#AspNetRoles.Id'><use id='ref' x='153' y='341' xlink:href='#ref'/><title>Referred by AspNetUserRoles ( RoleId -> Id ) </title></a>
+  <use id='nn' x='92' y='357' xlink:href='#nn'/><a xlink:href='#AspNetRoles.Name'><text x='108' y='367'>Name</text><title>Name nvarchar&#040;256&#041; not null</title></a>
+
+<!-- ============= Table 'AspNetUserLogins' ============= -->
+<rect class='table' x='270' y='323' width='105' height='90' rx='7' ry='7' />
+<path d='M 270.50 349.50 L 270.50 330.50 Q 270.50 323.50 277.50 323.50 L 367.50 323.50 Q 374.50 323.50 374.50 330.50 L 374.50 349.50 L270.50 349.50 ' style='fill:url(#tableHeaderGradient1); stroke:none;' />
+<a xlink:href='#AspNetUserLogins'><text x='277' y='337' class='tableTitle'>AspNetUserLogins</text><title>Table dbo.AspNetUserLogins</title></a>
+  <use id='nn' x='272' y='357' xlink:href='#nn'/><a xlink:href='#AspNetUserLogins.LoginProvider'><use id='pk' x='272' y='356' xlink:href='#pk'/><title>Primary Key  ( LoginProvider, ProviderKey, UserId ) </title></a>
+<a xlink:href='#AspNetUserLogins.LoginProvider'><text x='288' y='367'>LoginProvider</text><title>LoginProvider nvarchar&#040;128&#041; not null</title></a>
+  <use id='nn' x='272' y='372' xlink:href='#nn'/><a xlink:href='#AspNetUserLogins.ProviderKey'><use id='pk' x='272' y='371' xlink:href='#pk'/><title>Primary Key  ( LoginProvider, ProviderKey, UserId ) </title></a>
+<a xlink:href='#AspNetUserLogins.ProviderKey'><text x='288' y='382'>ProviderKey</text><title>ProviderKey nvarchar&#040;128&#041; not null</title></a>
+  <use id='nn' x='272' y='387' xlink:href='#nn'/><a xlink:href='#AspNetUserLogins.UserId'><use id='pk' x='272' y='386' xlink:href='#pk'/><title>Primary Key  ( LoginProvider, ProviderKey, UserId ) </title></a>
+<a xlink:href='#AspNetUserLogins.UserId'><text x='288' y='397'>UserId</text><title>UserId nvarchar&#040;128&#041; not null</title></a>
+<a xlink:href='#AspNetUserLogins.UserId'><use id='fk' x='363' y='386' xlink:href='#fk'/><title>References AspNetUsers ( UserId -> Id ) </title></a>
+
+<!-- ============= Table 'Utilisateurs' ============= -->
+<rect class='table' x='645' y='38' width='105' height='180' rx='7' ry='7' />
+<path d='M 645.50 64.50 L 645.50 45.50 Q 645.50 38.50 652.50 38.50 L 742.50 38.50 Q 749.50 38.50 749.50 45.50 L 749.50 64.50 L645.50 64.50 ' style='fill:url(#tableHeaderGradient2); stroke:none;' />
+<a xlink:href='#Utilisateurs'><text x='671' y='52' class='tableTitle'>Utilisateurs</text><title>Table dbo.Utilisateurs</title></a>
+  <use id='nn' x='647' y='72' xlink:href='#nn'/><a xlink:href='#Utilisateurs.Id'><use id='pk' x='647' y='71' xlink:href='#pk'/><title>Primary Key  ( Id ) </title></a>
+<a xlink:href='#Utilisateurs.Id'><text x='663' y='82'>Id</text><title>Id nvarchar&#040;128&#041; not null</title></a>
+<a xlink:href='#Utilisateurs.Id'><use id='fk' x='738' y='71' xlink:href='#fk'/><title>References AspNetUsers ( Id ) 
+Referred by Reservations ( IdUtilisateur -> Id ) </title></a>
+  <use id='nn' x='647' y='87' xlink:href='#nn'/><a xlink:href='#Utilisateurs.IdUtilisateur'><text x='663' y='97'>IdUtilisateur</text><title>IdUtilisateur int not null</title></a>
+  <use id='nn' x='647' y='102' xlink:href='#nn'/><a xlink:href='#Utilisateurs.DateInscription'><text x='663' y='112'>DateInscription</text><title>DateInscription datetime2 not null</title></a>
+  <a xlink:href='#Utilisateurs.LastConnection'><text x='663' y='127'>LastConnection</text><title>LastConnection datetime2</title></a>
+  <use id='nn' x='647' y='132' xlink:href='#nn'/><a xlink:href='#Utilisateurs.Nom'><text x='663' y='142'>Nom</text><title>Nom nvarchar&#040;40&#041; not null</title></a>
+  <use id='nn' x='647' y='147' xlink:href='#nn'/><a xlink:href='#Utilisateurs.Prenom'><text x='663' y='157'>Prenom</text><title>Prenom nvarchar&#040;40&#041; not null</title></a>
+  <a xlink:href='#Utilisateurs.IdCroisiere'><text x='663' y='172'>IdCroisiere</text><title>IdCroisiere int</title></a>
+<a xlink:href='#Utilisateurs.IdCroisiere'><use id='fk' x='738' y='161' xlink:href='#fk'/><title>References Croisieres ( IdCroisiere ) </title></a>
+  <a xlink:href='#Utilisateurs.IdAdresse'><text x='663' y='187'>IdAdresse</text><title>IdAdresse int</title></a>
+<a xlink:href='#Utilisateurs.IdAdresse'><use id='fk' x='738' y='176' xlink:href='#fk'/><title>References Adresses ( IdAdresse ) </title></a>
+  <a xlink:href='#Utilisateurs.InfoAbonne'><text x='663' y='202'>InfoAbonne</text><title>InfoAbonne bit</title></a>
+
+<!-- ============= Table 'Pays' ============= -->
+<rect class='table' x='645' y='233' width='75' height='105' rx='7' ry='7' />
+<path d='M 645.50 259.50 L 645.50 240.50 Q 645.50 233.50 652.50 233.50 L 712.50 233.50 Q 719.50 233.50 719.50 240.50 L 719.50 259.50 L645.50 259.50 ' style='fill:url(#tableHeaderGradient2); stroke:none;' />
+<a xlink:href='#Pays'><text x='670' y='247' class='tableTitle'>Pays</text><title>Table dbo.Pays</title></a>
+  <use id='nn' x='647' y='267' xlink:href='#nn'/><a xlink:href='#Pays.CodeIso3'><use id='pk' x='647' y='266' xlink:href='#pk'/><title>Primary Key  ( CodeIso3 ) </title></a>
+<a xlink:href='#Pays.CodeIso3'><text x='663' y='277'>CodeIso3</text><title>CodeIso3 char&#040;3&#041; not null</title></a>
+<a xlink:href='#Pays.CodeIso3'><use id='ref' x='708' y='266' xlink:href='#ref'/><title>Referred by Adresses ( IdPays -> CodeIso3 ) 
+Referred by Ports ( CodeIso3 ) </title></a>
+  <use id='nn' x='647' y='282' xlink:href='#nn'/><a xlink:href='#Pays.CodeIso2'><text x='663' y='292'>CodeIso2</text><title>CodeIso2 char&#040;2&#041; not null</title></a>
+  <use id='nn' x='647' y='297' xlink:href='#nn'/><a xlink:href='#Pays.IdRegion'><text x='663' y='307'>IdRegion</text><title>IdRegion int not null</title></a>
+<a xlink:href='#Pays.IdRegion'><use id='fk' x='708' y='296' xlink:href='#fk'/><title>References Regions ( IdRegion ) </title></a>
+  <use id='nn' x='647' y='312' xlink:href='#nn'/><a xlink:href='#Pays.Nom'><text x='663' y='322'>Nom</text><title>Nom nvarchar&#040;30&#041; not null</title></a>
+
+<!-- ============= Table 'Regions' ============= -->
+<rect class='table' x='840' y='53' width='75' height='75' rx='7' ry='7' />
+<path d='M 840.50 79.50 L 840.50 60.50 Q 840.50 53.50 847.50 53.50 L 907.50 53.50 Q 914.50 53.50 914.50 60.50 L 914.50 79.50 L840.50 79.50 ' style='fill:url(#tableHeaderGradient2); stroke:none;' />
+<a xlink:href='#Regions'><text x='858' y='67' class='tableTitle'>Regions</text><title>Table dbo.Regions</title></a>
+  <use id='nn' x='842' y='87' xlink:href='#nn'/><a xlink:href='#Regions.IdRegion'><use id='pk' x='842' y='86' xlink:href='#pk'/><title>Primary Key  ( IdRegion ) </title></a>
+<a xlink:href='#Regions.IdRegion'><text x='858' y='97'>IdRegion</text><title>IdRegion int not null</title></a>
+<a xlink:href='#Regions.IdRegion'><use id='ref' x='903' y='86' xlink:href='#ref'/><title>Referred by Pays ( IdRegion ) </title></a>
+  <use id='nn' x='842' y='102' xlink:href='#nn'/><a xlink:href='#Regions.Nom'><text x='858' y='112'>Nom</text><title>Nom nvarchar&#040;30&#041; not null</title></a>
+
+<!-- ============= Table 'Reservations' ============= -->
+<rect class='table' x='915' y='188' width='120' height='135' rx='7' ry='7' />
+<path d='M 915.50 214.50 L 915.50 195.50 Q 915.50 188.50 922.50 188.50 L 1027.50 188.50 Q 1034.50 188.50 1034.50 195.50 L 1034.50 214.50 L915.50 214.50 ' style='fill:url(#tableHeaderGradient2); stroke:none;' />
+<a xlink:href='#Reservations'><text x='943' y='202' class='tableTitle'>Reservations</text><title>Table dbo.Reservations</title></a>
+  <use id='nn' x='917' y='222' xlink:href='#nn'/><a xlink:href='#Reservations.IdReservation'><use id='pk' x='917' y='221' xlink:href='#pk'/><title>Primary Key  ( IdReservation ) </title></a>
+<a xlink:href='#Reservations.IdReservation'><text x='933' y='232'>IdReservation</text><title>IdReservation int not null</title></a>
+  <use id='nn' x='917' y='237' xlink:href='#nn'/><a xlink:href='#Reservations.IdUtilisateur'><text x='933' y='247'>IdUtilisateur</text><title>IdUtilisateur nvarchar&#040;128&#041; not null</title></a>
+<a xlink:href='#Reservations.IdUtilisateur'><use id='fk' x='1023' y='236' xlink:href='#fk'/><title>References Utilisateurs ( IdUtilisateur -> Id ) </title></a>
+  <use id='nn' x='917' y='252' xlink:href='#nn'/><a xlink:href='#Reservations.IdCroisiere'><text x='933' y='262'>IdCroisiere</text><title>IdCroisiere int not null</title></a>
+<a xlink:href='#Reservations.IdCroisiere'><use id='fk' x='1023' y='251' xlink:href='#fk'/><title>References Croisieres ( IdCroisiere ) </title></a>
+  <use id='nn' x='917' y='267' xlink:href='#nn'/><a xlink:href='#Reservations.NbPlace'><text x='933' y='277'>NbPlace</text><title>NbPlace int not null</title></a>
+  <use id='nn' x='917' y='282' xlink:href='#nn'/><a xlink:href='#Reservations.MoyenPaiement'><text x='933' y='292'>MoyenPaiement</text><title>MoyenPaiement char&#040;10&#041; not null</title></a>
+  <use id='nn' x='917' y='297' xlink:href='#nn'/><a xlink:href='#Reservations.DateReservation'><text x='933' y='307'>DateReservation</text><title>DateReservation date not null</title></a>
+
+<!-- ============= Table 'Commentaires' ============= -->
+<rect class='table' x='1215' y='203' width='120' height='135' rx='7' ry='7' />
+<path d='M 1215.50 229.50 L 1215.50 210.50 Q 1215.50 203.50 1222.50 203.50 L 1327.50 203.50 Q 1334.50 203.50 1334.50 210.50 L 1334.50 229.50 L1215.50 229.50 ' style='fill:url(#tableHeaderGradient0); stroke:none;' />
+<a xlink:href='#Commentaires'><text x='1241' y='217' class='tableTitle'>Commentaires</text><title>Table dbo.Commentaires</title></a>
+  <use id='nn' x='1217' y='237' xlink:href='#nn'/><a xlink:href='#Commentaires.IdCommentaire'><use id='pk' x='1217' y='236' xlink:href='#pk'/><title>Primary Key  ( IdCommentaire ) </title></a>
+<a xlink:href='#Commentaires.IdCommentaire'><text x='1233' y='247'>IdCommentaire</text><title>IdCommentaire int not null</title></a>
+<a xlink:href='#Commentaires.IdCommentaire'><use id='ref' x='1323' y='236' xlink:href='#ref'/><title>Referred by Commentaires ( IdReponseA -> IdCommentaire ) </title></a>
+  <a xlink:href='#Commentaires.IdReponseA'><use id='idx' x='1217' y='251' xlink:href='#idx'/><title>Index  ( IdReponseA ) </title></a>
+<a xlink:href='#Commentaires.IdReponseA'><text x='1233' y='262'>IdReponseA</text><title>IdReponseA int</title></a>
+<a xlink:href='#Commentaires.IdReponseA'><use id='fk' x='1323' y='251' xlink:href='#fk'/><title>References Commentaires ( IdReponseA -> IdCommentaire ) </title></a>
+  <use id='nn' x='1217' y='267' xlink:href='#nn'/><a xlink:href='#Commentaires.IdCroisiere'><text x='1233' y='277'>IdCroisiere</text><title>IdCroisiere int not null</title></a>
+<a xlink:href='#Commentaires.IdCroisiere'><use id='fk' x='1323' y='266' xlink:href='#fk'/><title>References Croisieres ( IdCroisiere ) </title></a>
+  <use id='nn' x='1217' y='282' xlink:href='#nn'/><a xlink:href='#Commentaires.Commentaire'><text x='1233' y='292'>Commentaire</text><title>Commentaire varchar&#040;300&#041; not null</title></a>
+  <use id='nn' x='1217' y='297' xlink:href='#nn'/><a xlink:href='#Commentaires.NomCommentaire'><text x='1233' y='307'>NomCommentaire</text><title>NomCommentaire varchar&#040;50&#041; not null</title></a>
+  <use id='nn' x='1217' y='312' xlink:href='#nn'/><a xlink:href='#Commentaires.DateCommentaire'><text x='1233' y='322'>DateCommentaire</text><title>DateCommentaire datetime not null</title></a>
+
+<!-- ============= Table 'Adresses' ============= -->
+<rect class='table' x='585' y='368' width='90' height='135' rx='7' ry='7' />
+<path d='M 585.50 394.50 L 585.50 375.50 Q 585.50 368.50 592.50 368.50 L 667.50 368.50 Q 674.50 368.50 674.50 375.50 L 674.50 394.50 L585.50 394.50 ' style='fill:url(#tableHeaderGradient2); stroke:none;' />
+<a xlink:href='#Adresses'><text x='606' y='382' class='tableTitle'>Adresses</text><title>Table dbo.Adresses</title></a>
+  <use id='nn' x='587' y='402' xlink:href='#nn'/><a xlink:href='#Adresses.IdAdresse'><use id='pk' x='587' y='401' xlink:href='#pk'/><title>Primary Key  ( IdAdresse ) </title></a>
+<a xlink:href='#Adresses.IdAdresse'><text x='603' y='412'>IdAdresse</text><title>IdAdresse int not null</title></a>
+<a xlink:href='#Adresses.IdAdresse'><use id='ref' x='663' y='401' xlink:href='#ref'/><title>Referred by Utilisateurs ( IdAdresse ) </title></a>
+  <use id='nn' x='587' y='417' xlink:href='#nn'/><a xlink:href='#Adresses.Ligne1'><text x='603' y='427'>Ligne1</text><title>Ligne1 varchar&#040;36&#041; not null</title></a>
+  <a xlink:href='#Adresses.Ligne2'><text x='603' y='442'>Ligne2</text><title>Ligne2 varchar&#040;36&#041;</title></a>
+  <a xlink:href='#Adresses.Ligne3'><text x='603' y='457'>Ligne3</text><title>Ligne3 varchar&#040;36&#041;</title></a>
+  <a xlink:href='#Adresses.CodePostal'><text x='603' y='472'>CodePostal</text><title>CodePostal varchar&#040;10&#041;</title></a>
+  <use id='nn' x='587' y='477' xlink:href='#nn'/><a xlink:href='#Adresses.IdPays'><use id='idx' x='587' y='476' xlink:href='#idx'/><title>Index  ( IdPays ) </title></a>
+<a xlink:href='#Adresses.IdPays'><text x='603' y='487'>IdPays</text><title>IdPays char&#040;3&#041; not null</title></a>
+<a xlink:href='#Adresses.IdPays'><use id='fk' x='663' y='476' xlink:href='#fk'/><title>References Pays ( IdPays -> CodeIso3 ) </title></a>
+
+<!-- ============= Table 'Photos' ============= -->
+<rect class='table' x='1260' y='458' width='90' height='90' rx='7' ry='7' />
+<path d='M 1260.50 484.50 L 1260.50 465.50 Q 1260.50 458.50 1267.50 458.50 L 1342.50 458.50 Q 1349.50 458.50 1349.50 465.50 L 1349.50 484.50 L1260.50 484.50 ' style='fill:url(#tableHeaderGradient3); stroke:none;' />
+<a xlink:href='#Photos'><text x='1288' y='472' class='tableTitle'>Photos</text><title>Table dbo.Photos</title></a>
+  <use id='nn' x='1262' y='492' xlink:href='#nn'/><a xlink:href='#Photos.IdPhoto'><use id='pk' x='1262' y='491' xlink:href='#pk'/><title>Primary Key  ( IdPhoto ) </title></a>
+<a xlink:href='#Photos.IdPhoto'><text x='1278' y='502'>IdPhoto</text><title>IdPhoto uniqueidentifier not null</title></a>
+  <use id='nn' x='1262' y='507' xlink:href='#nn'/><a xlink:href='#Photos.PhotoName'><text x='1278' y='517'>PhotoName</text><title>PhotoName varchar&#040;100&#041; not null</title></a>
+  <use id='nn' x='1262' y='522' xlink:href='#nn'/><a xlink:href='#Photos.IdCroisiere'><use id='idx' x='1262' y='521' xlink:href='#idx'/><title>Index  ( IdCroisiere ) </title></a>
+<a xlink:href='#Photos.IdCroisiere'><text x='1278' y='532'>IdCroisiere</text><title>IdCroisiere int not null</title></a>
+<a xlink:href='#Photos.IdCroisiere'><use id='fk' x='1338' y='521' xlink:href='#fk'/><title>References Croisieres ( IdCroisiere ) </title></a>
+
+<!-- ============= Table 'Themes' ============= -->
+<rect class='table' x='1125' y='488' width='75' height='75' rx='7' ry='7' />
+<path d='M 1125.50 514.50 L 1125.50 495.50 Q 1125.50 488.50 1132.50 488.50 L 1192.50 488.50 Q 1199.50 488.50 1199.50 495.50 L 1199.50 514.50 L1125.50 514.50 ' style='fill:url(#tableHeaderGradient3); stroke:none;' />
+<a xlink:href='#Themes'><text x='1143' y='502' class='tableTitle'>Themes</text><title>Table dbo.Themes</title></a>
+  <use id='nn' x='1127' y='522' xlink:href='#nn'/><a xlink:href='#Themes.IdTheme'><use id='pk' x='1127' y='521' xlink:href='#pk'/><title>Primary Key  ( IdTheme ) </title></a>
+<a xlink:href='#Themes.IdTheme'><text x='1143' y='532'>IdTheme</text><title>IdTheme int not null</title></a>
+<a xlink:href='#Themes.IdTheme'><use id='ref' x='1188' y='521' xlink:href='#ref'/><title>Referred by Croisieres ( IdTheme ) </title></a>
+  <use id='nn' x='1127' y='537' xlink:href='#nn'/><a xlink:href='#Themes.Libelle'><text x='1143' y='547'>Libelle</text><title>Libelle nvarchar&#040;50&#041; not null</title></a>
+
+<!-- ============= Table 'Promos' ============= -->
+<rect class='table' x='1410' y='533' width='90' height='75' rx='7' ry='7' />
+<path d='M 1410.50 559.50 L 1410.50 540.50 Q 1410.50 533.50 1417.50 533.50 L 1492.50 533.50 Q 1499.50 533.50 1499.50 540.50 L 1499.50 559.50 L1410.50 559.50 ' style='fill:url(#tableHeaderGradient3); stroke:none;' />
+<a xlink:href='#Promos'><text x='1437' y='547' class='tableTitle'>Promos</text><title>Table dbo.Promos</title></a>
+  <use id='nn' x='1412' y='567' xlink:href='#nn'/><a xlink:href='#Promos.IdPromo'><use id='pk' x='1412' y='566' xlink:href='#pk'/><title>Primary Key  ( IdPromo ) </title></a>
+<a xlink:href='#Promos.IdPromo'><text x='1428' y='577'>IdPromo</text><title>IdPromo int not null</title></a>
+<a xlink:href='#Promos.IdPromo'><use id='ref' x='1488' y='566' xlink:href='#ref'/><title>Referred by Croisieres ( IdPromo ) </title></a>
+  <a xlink:href='#Promos.Reduction'><text x='1428' y='592'>Reduction</text><title>Reduction int</title></a>
+
+<!-- ============= Table 'Croisieres' ============= -->
+<rect class='table' x='1410' y='623' width='105' height='210' rx='7' ry='7' />
+<path d='M 1410.50 649.50 L 1410.50 630.50 Q 1410.50 623.50 1417.50 623.50 L 1507.50 623.50 Q 1514.50 623.50 1514.50 630.50 L 1514.50 649.50 L1410.50 649.50 ' style='fill:url(#tableHeaderGradient3); stroke:none;' />
+<a xlink:href='#Croisieres'><text x='1438' y='637' class='tableTitle'>Croisieres</text><title>Table dbo.Croisieres</title></a>
+  <use id='nn' x='1412' y='657' xlink:href='#nn'/><a xlink:href='#Croisieres.IdCroisiere'><use id='pk' x='1412' y='656' xlink:href='#pk'/><title>Primary Key  ( IdCroisiere ) </title></a>
+<a xlink:href='#Croisieres.IdCroisiere'><text x='1428' y='667'>IdCroisiere</text><title>IdCroisiere int not null</title></a>
+<a xlink:href='#Croisieres.IdCroisiere'><use id='ref' x='1503' y='656' xlink:href='#ref'/><title>Referred by Commentaires ( IdCroisiere ) 
+Referred by Photos ( IdCroisiere ) 
+Referred by Reservations ( IdCroisiere ) 
+Referred by Utilisateurs ( IdCroisiere ) </title></a>
+  <use id='nn' x='1412' y='672' xlink:href='#nn'/><a xlink:href='#Croisieres.IdTheme'><text x='1428' y='682'>IdTheme</text><title>IdTheme int not null</title></a>
+<a xlink:href='#Croisieres.IdTheme'><use id='fk' x='1503' y='671' xlink:href='#fk'/><title>References Themes ( IdTheme ) </title></a>
+  <use id='nn' x='1412' y='687' xlink:href='#nn'/><a xlink:href='#Croisieres.IdDuree'><text x='1428' y='697'>IdDuree</text><title>IdDuree int not null</title></a>
+<a xlink:href='#Croisieres.IdDuree'><use id='fk' x='1503' y='686' xlink:href='#fk'/><title>References Durees ( IdDuree ) </title></a>
+  <a xlink:href='#Croisieres.IdPromo'><text x='1428' y='712'>IdPromo</text><title>IdPromo int</title></a>
+<a xlink:href='#Croisieres.IdPromo'><use id='fk' x='1503' y='701' xlink:href='#fk'/><title>References Promos ( IdPromo ) </title></a>
+  <use id='nn' x='1412' y='717' xlink:href='#nn'/><a xlink:href='#Croisieres.IdPort'><text x='1428' y='727'>IdPort</text><title>IdPort int not null</title></a>
+<a xlink:href='#Croisieres.IdPort'><use id='fk' x='1503' y='716' xlink:href='#fk'/><title>References Ports ( IdPort ) </title></a>
+  <use id='nn' x='1412' y='732' xlink:href='#nn'/><a xlink:href='#Croisieres.Prix'><text x='1428' y='742'>Prix</text><title>Prix int not null</title></a>
+  <use id='nn' x='1412' y='747' xlink:href='#nn'/><a xlink:href='#Croisieres.DateDepart'><text x='1428' y='757'>DateDepart</text><title>DateDepart date not null</title></a>
+  <a xlink:href='#Croisieres.Photo'><text x='1428' y='772'>Photo</text><title>Photo nvarchar&#040;50&#041;</title></a>
+  <a xlink:href='#Croisieres.Description'><text x='1428' y='787'>Description</text><title>Description text</title></a>
+  <a xlink:href='#Croisieres.Capacite'><text x='1428' y='802'>Capacite</text><title>Capacite int</title></a>
+  <a xlink:href='#Croisieres.MoyenPaiement'><text x='1428' y='817'>MoyenPaiement</text><title>MoyenPaiement int</title></a>
+
+<!-- ============= Table 'Durees' ============= -->
+<rect class='table' x='1425' y='398' width='75' height='75' rx='7' ry='7' />
+<path d='M 1425.50 424.50 L 1425.50 405.50 Q 1425.50 398.50 1432.50 398.50 L 1492.50 398.50 Q 1499.50 398.50 1499.50 405.50 L 1499.50 424.50 L1425.50 424.50 ' style='fill:url(#tableHeaderGradient3); stroke:none;' />
+<a xlink:href='#Durees'><text x='1445' y='412' class='tableTitle'>Durees</text><title>Table dbo.Durees</title></a>
+  <use id='nn' x='1427' y='432' xlink:href='#nn'/><a xlink:href='#Durees.IdDuree'><use id='pk' x='1427' y='431' xlink:href='#pk'/><title>Primary Key  ( IdDuree ) </title></a>
+<a xlink:href='#Durees.IdDuree'><text x='1443' y='442'>IdDuree</text><title>IdDuree int not null</title></a>
+<a xlink:href='#Durees.IdDuree'><use id='ref' x='1488' y='431' xlink:href='#ref'/><title>Referred by Croisieres ( IdDuree ) </title></a>
+  <use id='nn' x='1427' y='447' xlink:href='#nn'/><a xlink:href='#Durees.NbJours'><text x='1443' y='457'>NbJours</text><title>NbJours int not null</title></a>
+
+<!-- ============= Table 'Ports' ============= -->
+<rect class='table' x='780' y='488' width='90' height='120' rx='7' ry='7' />
+<path d='M 780.50 514.50 L 780.50 495.50 Q 780.50 488.50 787.50 488.50 L 862.50 488.50 Q 869.50 488.50 869.50 495.50 L 869.50 514.50 L780.50 514.50 ' style='fill:url(#tableHeaderGradient2); stroke:none;' />
+<a xlink:href='#Ports'><text x='812' y='502' class='tableTitle'>Ports</text><title>Table dbo.Ports</title></a>
+  <use id='nn' x='782' y='522' xlink:href='#nn'/><a xlink:href='#Ports.IdPort'><use id='pk' x='782' y='521' xlink:href='#pk'/><title>Primary Key  ( IdPort ) </title></a>
+<a xlink:href='#Ports.IdPort'><text x='798' y='532'>IdPort</text><title>IdPort int not null</title></a>
+<a xlink:href='#Ports.IdPort'><use id='ref' x='858' y='521' xlink:href='#ref'/><title>Referred by Croisieres ( IdPort ) </title></a>
+  <use id='nn' x='782' y='537' xlink:href='#nn'/><a xlink:href='#Ports.CodeIso3'><text x='798' y='547'>CodeIso3</text><title>CodeIso3 char&#040;3&#041; not null</title></a>
+<a xlink:href='#Ports.CodeIso3'><use id='fk' x='858' y='536' xlink:href='#fk'/><title>References Pays ( CodeIso3 ) </title></a>
+  <use id='nn' x='782' y='552' xlink:href='#nn'/><a xlink:href='#Ports.Nom'><text x='798' y='562'>Nom</text><title>Nom nvarchar&#040;40&#041; not null</title></a>
+  <use id='nn' x='782' y='567' xlink:href='#nn'/><a xlink:href='#Ports.Latitude'><text x='798' y='577'>Latitude</text><title>Latitude float not null</title></a>
+  <use id='nn' x='782' y='582' xlink:href='#nn'/><a xlink:href='#Ports.Longitude'><text x='798' y='592'>Longitude</text><title>Longitude float not null</title></a>
+
+</g></svg>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='ProduitTracking'>Table ProduitTracking</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='ProduitTracking.IdProduitTracking'>IdProduitTracking</a></td>
+		<td> int  AUTOINCREMENT  </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='ProduitTracking.IdProduit'>IdProduit</a></td>
+		<td> int   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='ProduitTracking.DatePT'>DatePT</a></td>
+		<td> datetime   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>Pk&#095;ProduitTracking</td>
+		<td> ON IdProduitTracking</td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='MoyensPaiement'>Table MoyensPaiement</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='MoyensPaiement.IdMoyenPaiement'>IdMoyenPaiement</a></td>
+		<td> int  AUTOINCREMENT  </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='MoyensPaiement.Titre'>Titre</a></td>
+		<td> char&#040; 10 &#041;   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>pk&#095;MoyensPaiement</td>
+		<td> ON IdMoyenPaiement</td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='AspNetUsers'>Table AspNetUsers</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='AspNetUsers.Id'>Id</a></td>
+		<td> nvarchar&#040; 128 &#041;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='AspNetUsers.Email'>Email</a></td>
+		<td> nvarchar&#040; 256 &#041;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='AspNetUsers.EmailConfirmed'>EmailConfirmed</a></td>
+		<td> bit   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='AspNetUsers.PasswordHash'>PasswordHash</a></td>
+		<td> nvarchar&#040;max&#041;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='AspNetUsers.SecurityStamp'>SecurityStamp</a></td>
+		<td> nvarchar&#040;max&#041;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='AspNetUsers.PhoneNumber'>PhoneNumber</a></td>
+		<td> nvarchar&#040;max&#041;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='AspNetUsers.PhoneNumberConfirmed'>PhoneNumberConfirmed</a></td>
+		<td> bit   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='AspNetUsers.TwoFactorEnabled'>TwoFactorEnabled</a></td>
+		<td> bit   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='AspNetUsers.LockoutEndDateUtc'>LockoutEndDateUtc</a></td>
+		<td> datetime   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='AspNetUsers.LockoutEnabled'>LockoutEnabled</a></td>
+		<td> bit   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='AspNetUsers.AccessFailedCount'>AccessFailedCount</a></td>
+		<td> int   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='AspNetUsers.UserName'>UserName</a></td>
+		<td> nvarchar&#040; 256 &#041;   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>PK&#095;dbo&#046;AspNetUsers</td>
+		<td> ON Id</td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='AspNetUserClaims'>Table AspNetUserClaims</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='AspNetUserClaims.Id'>Id</a></td>
+		<td> int  AUTOINCREMENT  </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='AspNetUserClaims.UserId'>UserId</a></td>
+		<td> nvarchar&#040; 128 &#041;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='AspNetUserClaims.ClaimType'>ClaimType</a></td>
+		<td> nvarchar&#040;max&#041;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='AspNetUserClaims.ClaimValue'>ClaimValue</a></td>
+		<td> nvarchar&#040;max&#041;   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>PK&#095;dbo&#046;AspNetUserClaims</td>
+		<td> ON Id</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Foreign Keys</b></th></tr>
+	<tr>
+		<td>&nbsp;</td><td>FK_dbo.AspNetUserClaims_dbo.AspNetUsers_UserId</td>
+		<td > ( UserId ) ref <a href='#AspNetUsers'>AspNetUsers</a> (Id) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='AspNetUserRoles'>Table AspNetUserRoles</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='AspNetUserRoles.UserId'>UserId</a></td>
+		<td> nvarchar&#040; 128 &#041;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='AspNetUserRoles.RoleId'>RoleId</a></td>
+		<td> nvarchar&#040; 128 &#041;   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>PK&#095;dbo&#046;AspNetUserRoles</td>
+		<td> ON UserId&#044; RoleId</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Foreign Keys</b></th></tr>
+	<tr>
+		<td>&nbsp;</td><td>FK_dbo.AspNetUserRoles_dbo.AspNetRoles_RoleId</td>
+		<td > ( RoleId ) ref <a href='#AspNetRoles'>AspNetRoles</a> (Id) </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td><td>FK_dbo.AspNetUserRoles_dbo.AspNetUsers_UserId</td>
+		<td > ( UserId ) ref <a href='#AspNetUsers'>AspNetUsers</a> (Id) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='AspNetRoles'>Table AspNetRoles</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='AspNetRoles.Id'>Id</a></td>
+		<td> nvarchar&#040; 128 &#041;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='AspNetRoles.Name'>Name</a></td>
+		<td> nvarchar&#040; 256 &#041;   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>PK&#095;dbo&#046;AspNetRoles</td>
+		<td> ON Id</td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='AspNetUserLogins'>Table AspNetUserLogins</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='AspNetUserLogins.LoginProvider'>LoginProvider</a></td>
+		<td> nvarchar&#040; 128 &#041;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='AspNetUserLogins.ProviderKey'>ProviderKey</a></td>
+		<td> nvarchar&#040; 128 &#041;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='AspNetUserLogins.UserId'>UserId</a></td>
+		<td> nvarchar&#040; 128 &#041;   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>PK&#095;dbo&#046;AspNetUserLogins</td>
+		<td> ON LoginProvider&#044; ProviderKey&#044; UserId</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Foreign Keys</b></th></tr>
+	<tr>
+		<td>&nbsp;</td><td>FK_dbo.AspNetUserLogins_dbo.AspNetUsers_UserId</td>
+		<td > ( UserId ) ref <a href='#AspNetUsers'>AspNetUsers</a> (Id) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='Utilisateurs'>Table Utilisateurs</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='Utilisateurs.Id'>Id</a></td>
+		<td> nvarchar&#040; 128 &#041;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Utilisateurs.IdUtilisateur'>IdUtilisateur</a></td>
+		<td> int  AUTOINCREMENT  </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Utilisateurs.DateInscription'>DateInscription</a></td>
+		<td> datetime2   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='Utilisateurs.LastConnection'>LastConnection</a></td>
+		<td> datetime2   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Utilisateurs.Nom'>Nom</a></td>
+		<td> nvarchar&#040; 40 &#041;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Utilisateurs.Prenom'>Prenom</a></td>
+		<td> nvarchar&#040; 40 &#041;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='Utilisateurs.IdCroisiere'>IdCroisiere</a></td>
+		<td> int   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='Utilisateurs.IdAdresse'>IdAdresse</a></td>
+		<td> int   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='Utilisateurs.InfoAbonne'>InfoAbonne</a></td>
+		<td> bit   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>Pk&#095;Utilisateur</td>
+		<td> ON Id</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Foreign Keys</b></th></tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_utilisateurs_adresses</td>
+		<td > ( IdAdresse ) ref <a href='#Adresses'>Adresses</a> (IdAdresse) </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_utilisateurs_aspNetUsers</td>
+		<td > ( Id ) ref <a href='#AspNetUsers'>AspNetUsers</a> (Id) </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_utilisateurs_croisieres</td>
+		<td > ( IdCroisiere ) ref <a href='#Croisieres'>Croisieres</a> (IdCroisiere) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='Pays'>Table Pays</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='Pays.CodeIso3'>CodeIso3</a></td>
+		<td> char&#040; 3 &#041;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Pays.CodeIso2'>CodeIso2</a></td>
+		<td> char&#040; 2 &#041;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Pays.IdRegion'>IdRegion</a></td>
+		<td> int   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Pays.Nom'>Nom</a></td>
+		<td> nvarchar&#040; 30 &#041;   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>Pk&#095;Pays</td>
+		<td> ON CodeIso3</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Foreign Keys</b></th></tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_pays_pays</td>
+		<td > ( IdRegion ) ref <a href='#Regions'>Regions</a> (IdRegion) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='Regions'>Table Regions</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='Regions.IdRegion'>IdRegion</a></td>
+		<td> int  AUTOINCREMENT  </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Regions.Nom'>Nom</a></td>
+		<td> nvarchar&#040; 30 &#041;   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>Pk&#095;Regions</td>
+		<td> ON IdRegion</td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='Reservations'>Table Reservations</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='Reservations.IdReservation'>IdReservation</a></td>
+		<td> int  AUTOINCREMENT  </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Reservations.IdUtilisateur'>IdUtilisateur</a></td>
+		<td> nvarchar&#040; 128 &#041;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Reservations.IdCroisiere'>IdCroisiere</a></td>
+		<td> int   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Reservations.NbPlace'>NbPlace</a></td>
+		<td> int   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Reservations.MoyenPaiement'>MoyenPaiement</a></td>
+		<td> char&#040; 10 &#041;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Reservations.DateReservation'>DateReservation</a></td>
+		<td> date   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>Pk&#095;Reservations</td>
+		<td> ON IdReservation</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Foreign Keys</b></th></tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_reservations_Croisieres</td>
+		<td > ( IdCroisiere ) ref <a href='#Croisieres'>Croisieres</a> (IdCroisiere) </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_reservations_Utilisateurs</td>
+		<td > ( IdUtilisateur ) ref <a href='#Utilisateurs'>Utilisateurs</a> (Id) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='Commentaires'>Table Commentaires</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='Commentaires.IdCommentaire'>IdCommentaire</a></td>
+		<td> int  AUTOINCREMENT  </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='Commentaires.IdReponseA'>IdReponseA</a></td>
+		<td> int   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Commentaires.IdCroisiere'>IdCroisiere</a></td>
+		<td> int   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Commentaires.Commentaire'>Commentaire</a></td>
+		<td> varchar&#040; 300 &#041;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Commentaires.NomCommentaire'>NomCommentaire</a></td>
+		<td> varchar&#040; 50 &#041;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Commentaires.DateCommentaire'>DateCommentaire</a></td>
+		<td> datetime   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>Pk&#095;Commentaires</td>
+		<td> ON IdCommentaire</td>
+		<td>  </td>
+	</tr>
+	<tr>		<td>&nbsp;</td><td>idx&#095;Commentaires</td>
+		<td> ON IdReponseA</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Foreign Keys</b></th></tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_commentaires_commentaires</td>
+		<td > ( IdReponseA ) ref <a href='#Commentaires'>Commentaires</a> (IdCommentaire) </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_commentaires_croisieres</td>
+		<td > ( IdCroisiere ) ref <a href='#Croisieres'>Croisieres</a> (IdCroisiere) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='Adresses'>Table Adresses</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='Adresses.IdAdresse'>IdAdresse</a></td>
+		<td> int  AUTOINCREMENT  </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Adresses.Ligne1'>Ligne1</a></td>
+		<td> varchar&#040; 36 &#041;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='Adresses.Ligne2'>Ligne2</a></td>
+		<td> varchar&#040; 36 &#041;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='Adresses.Ligne3'>Ligne3</a></td>
+		<td> varchar&#040; 36 &#041;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='Adresses.CodePostal'>CodePostal</a></td>
+		<td> varchar&#040; 10 &#041;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Adresses.IdPays'>IdPays</a></td>
+		<td> char&#040; 3 &#041;   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>Pk&#095;Adresses</td>
+		<td> ON IdAdresse</td>
+		<td>  </td>
+	</tr>
+	<tr>		<td>&nbsp;</td><td>idx&#095;Adresses</td>
+		<td> ON IdPays</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Foreign Keys</b></th></tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_adresses_pays</td>
+		<td > ( IdPays ) ref <a href='#Pays'>Pays</a> (CodeIso3) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='Photos'>Table Photos</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='Photos.IdPhoto'>IdPhoto</a></td>
+		<td> uniqueidentifier   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Photos.PhotoName'>PhotoName</a></td>
+		<td> varchar&#040; 100 &#041;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Photos.IdCroisiere'>IdCroisiere</a></td>
+		<td> int   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>Pk&#095;Photos</td>
+		<td> ON IdPhoto</td>
+		<td>  </td>
+	</tr>
+	<tr>		<td>&nbsp;</td><td>idx&#095;Photos</td>
+		<td> ON IdCroisiere</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Foreign Keys</b></th></tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_photos_croisieres</td>
+		<td > ( IdCroisiere ) ref <a href='#Croisieres'>Croisieres</a> (IdCroisiere) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='Themes'>Table Themes</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='Themes.IdTheme'>IdTheme</a></td>
+		<td> int  AUTOINCREMENT  </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Themes.Libelle'>Libelle</a></td>
+		<td> nvarchar&#040; 50 &#041;   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>Pk&#095;Themes</td>
+		<td> ON IdTheme</td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='Promos'>Table Promos</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='Promos.IdPromo'>IdPromo</a></td>
+		<td> int  AUTOINCREMENT  </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='Promos.Reduction'>Reduction</a></td>
+		<td> int   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>Pk&#095;Promos</td>
+		<td> ON IdPromo</td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='Croisieres'>Table Croisieres</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='Croisieres.IdCroisiere'>IdCroisiere</a></td>
+		<td> int  AUTOINCREMENT  </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Croisieres.IdTheme'>IdTheme</a></td>
+		<td> int   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Croisieres.IdDuree'>IdDuree</a></td>
+		<td> int   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='Croisieres.IdPromo'>IdPromo</a></td>
+		<td> int   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Croisieres.IdPort'>IdPort</a></td>
+		<td> int   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Croisieres.Prix'>Prix</a></td>
+		<td> int   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Croisieres.DateDepart'>DateDepart</a></td>
+		<td> date   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='Croisieres.Photo'>Photo</a></td>
+		<td> nvarchar&#040; 50 &#041;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='Croisieres.Description'>Description</a></td>
+		<td> text   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='Croisieres.Capacite'>Capacite</a></td>
+		<td> int   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><a name='Croisieres.MoyenPaiement'>MoyenPaiement</a></td>
+		<td> int   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>Pk&#095;Croisieres</td>
+		<td> ON IdCroisiere</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Foreign Keys</b></th></tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_croisieres_durees</td>
+		<td > ( IdDuree ) ref <a href='#Durees'>Durees</a> (IdDuree) </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_croisieres_ports</td>
+		<td > ( IdPort ) ref <a href='#Ports'>Ports</a> (IdPort) </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_croisieres_promos</td>
+		<td > ( IdPromo ) ref <a href='#Promos'>Promos</a> (IdPromo) </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_croisieres_themes</td>
+		<td > ( IdTheme ) ref <a href='#Themes'>Themes</a> (IdTheme) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='Durees'>Table Durees</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='Durees.IdDuree'>IdDuree</a></td>
+		<td> int  AUTOINCREMENT  </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Durees.NbJours'>NbJours</a></td>
+		<td> int   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>Pk&#095;Durees</td>
+		<td> ON IdDuree</td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+<br/><br/>
+<table class='bordered'>
+<thead>
+<tr><th colspan='4'><a name='Ports'>Table Ports</a></th></tr>
+</thead>
+<tbody>
+	<tr>
+		<td>*</td>
+		<td><a name='Ports.IdPort'>IdPort</a></td>
+		<td> int  AUTOINCREMENT  </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Ports.CodeIso3'>CodeIso3</a></td>
+		<td> char&#040; 3 &#041;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Ports.Nom'>Nom</a></td>
+		<td> nvarchar&#040; 40 &#041;   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Ports.Latitude'>Latitude</a></td>
+		<td> float   </td>
+		<td>  </td>
+	</tr>
+	<tr>
+		<td>*</td>
+		<td><a name='Ports.Longitude'>Longitude</a></td>
+		<td> float   </td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Indexes</b></th></tr>
+	<tr>		<td>Pk</td><td>Pk&#095;Ports</td>
+		<td> ON IdPort</td>
+		<td>  </td>
+	</tr>
+<tr><th colspan='4'><b>Foreign Keys</b></th></tr>
+	<tr>
+		<td>&nbsp;</td><td>fk_ports_pays</td>
+		<td > ( CodeIso3 ) ref <a href='#Pays'>Pays</a> (CodeIso3) </td>
+		<td>  </td>
+	</tr>
+</tbody>
+</table>
+
+</body></html>
