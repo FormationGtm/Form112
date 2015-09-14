@@ -252,9 +252,7 @@ function barChart() {
                         .style("text-anchor", "start")
                         .style("font-size", fontSizeScaleBarLabel(width))
                         .attr("dx", "1em")
-                        .style("fill", function (d) {
-                            console.log(d); return readableColor(barColor(d));
-                        })
+                        .style("fill", function (d) { return readableColor(barColor(d)); })
                 ;
                 return this;
             },
