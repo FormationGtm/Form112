@@ -19,22 +19,22 @@
 
 //		color = d3.scale.category20(),
 
-//		xAxis = d3.svg.axis()
-//				.scale(x)
-//				.orient("top"),
+////		xAxis = d3.svg.axis()
+////				.scale(x)
+////				.orient("top"),
 
-//		yAxis = d3.svg.axis()
-//				.scale(y)
-//				.orient("left")
-//				.ticks(1)
-//				.tickFormat(""),
+////		yAxis = d3.svg.axis()
+////				.scale(y)
+////				.orient("left")
+////				.ticks(1)
+////				.tickFormat(""),
 
-//		xGrid = d3.svg.axis()
-//            .scale(x)
-//            .orient("top")
-//            .ticks(5)
-//            .tickSize(-h, 0, 0)
-//            .tickFormat(d3.format("d")),
+////		xGrid = d3.svg.axis()
+////            .scale(x)
+////            .orient("top")
+////            .ticks(5)
+////            .tickSize(-h, 0, 0)
+////            .tickFormat(d3.format("d")),
 
 //		title = graph.append("g")
 //            .attr("class", "title"),
@@ -109,7 +109,7 @@ function barChart() {
         }),
         svgGraph = {
             renderChart: function () {
-                var width, height, aspect, w, h, svg, graph, x, y, xAxis, yAxis, yGrid, title, labels,
+                var width, height, aspect, w, h, svg, graph, x, y, xAxis, yAxis, xGrid, title, labels,
                     color, fontSizeScaleTitre, fontSizeScaleTitreAxe, marginTopBottomScale, marginLeftRightScale;
 
                 // Les couleurs des barres du graphique
@@ -155,20 +155,20 @@ function barChart() {
                             .attr("transform", "translate(" + config.margin.left + ", " + config.margin.top + ")");
 
                 // Des données d'échelle
-                // En x données discrètes par bandes ce qui convient très bien aux barres verticales
-                x = d3.scale.ordinal()
-                        .rangeRoundBands([0, w], 0.3)
-                        .domain(localData.map(function (d) { return d.Nom; }));
-
-                // En y données linéaires qui correspondent à la hauteur des barres
-                y = d3.scale.linear()
-                        .range([h, 0])
-                        .domain([0, d3.max(localData, function (d) { return d.NbVis; })]);
+                // En x données linéaires qui correspondent à la hauteur des barres
+                x = d3.scale.linear()
+                    .range([0, w])
+                    .domain([0, d3.max(localData, function (d) { return d.NbVis; })]);
+                // En y données discrètes par bandes ce qui convient très bien aux barres verticales
+                y = d3.scale.ordinal()
+                    .rangeRoundBands([h, 0], 0.3)
+                    .domain(localData.map(function (d) { return d.Nom; }));
 
                 // Les axes
+
                 xAxis = d3.svg.axis()
                     .scale(x)
-                    .orient("bottom");
+                    .orient("top");
 
                 yAxis = d3.svg.axis()
                     .scale(y)
@@ -176,12 +176,11 @@ function barChart() {
                     .ticks(1)
                     .tickFormat("");
 
-                // La grille avec juste les lignes horizontales
-                yGrid = d3.svg.axis()
-                    .scale(y)
-                    .orient("left")
+                xGrid = d3.svg.axis()
+                    .scale(x)
+                    .orient("top")
                     .ticks(5)
-                    .tickSize(-w, 0, 0)
+                    .tickSize(-h, 0, 0)
                     .tickFormat(d3.format("d"));
 
                 title = graph.append("g")
@@ -197,23 +196,25 @@ function barChart() {
                     .attr("class", "labels");
 
                 graph.append("g")
-                    .attr("class", "x axis")
-                    .attr("transform", "translate(0," + h + ")")
-                    .call(xAxis)
-                    .selectAll("text")
-                        .style("text-anchor", "end")
-                        .style("font-size", fontSizeScaleTitreAxe(width))
-                        .attr("dx", "-.8em")
-                        .attr("dy", ".15em")
-                        .attr("transform", "rotate(-65)");
+                    .attr("class", "grid")
+                    .call(xGrid);
+
+                labels.append("text")
+                    .attr("y", h -config.margin.bottom / 2)
+                    .attr("x", -w / 2)
+                    .style("text-anchor", "middle")
+                    .text("Nombre de visites");
+
+
+                //        labels.append("text")
+                //            .attr("y", h - margin.bottom / 2)
+                //            .attr("x", -w / 2)
+                //            .style("text-anchor", "middle")
+                //            .text("Nombre de visites");
 
                 graph.append("g")
                     .attr("class", "y axis")
                     .call(yAxis);
-
-                graph.append("g")
-                    .attr("class", "grid")
-                    .call(yGrid);
 
                 labels.append("text")
                     .attr("transform", "rotate(-90)")
@@ -223,20 +224,21 @@ function barChart() {
                     .style("text-anchor", "middle")
                     .text("Nombre de visites");
 
-                graph.selectAll("rect")
+                graph.attr('id', 'bars')
+                    .selectAll("rect")
                     .data(localData)
-                        .enter().append("rect")
-                            .attr("x", function (d) { return x(d.Nom); })
-                            .attr("width", 0)
-                            .attr("y", h)
-                            .attr("height", 0)
-                            .attr("fill", function (d) { return color(d.Nom); })
-                            .transition()
-                                .attr("width", x.rangeBand())
-                                .attr("y", function (d) { return y(d.NbVis); })
-                                .attr("height", function (d) { return h - y(d.NbVis); })
-                                .duration(3000)
-                                .delay(100);
+                    .enter()
+                        .append("rect")
+                    .attr("x", w)
+                    .attr("width", 0)
+                    .attr("y", function (d) { return y(d.Nom); })
+                    .attr("height", y.rangeBand())
+                    .attr("fill", function (d) { return color(d.Nom); })
+                    .transition()
+                        .attr("x", function (d) { return 0; })
+                        .attr("width", function (d) { return x(d.NbVis); })
+                        .duration(3000)
+                        .delay(100);
                 return this;
             },
             resizeChart: function () {
