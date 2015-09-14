@@ -98,6 +98,16 @@ $(function () {
         graphTitle: "Suivi des visites de produits"
     });
 });
+
+function readableColor(color) {
+    var rgbColor = d3.rgb(color), 
+        r = rgbColor.r,
+        g = rgbColor.g,
+        b = rgbColor.b,
+        yiq = (r * 299 + g * 587 + b * 114) / 1000;
+        return yiq >= 128 ? "#444444" :"#f7f7f7";
+}
+
 function barChart() {
     "use strict";
     /*global d3,$,console*/
@@ -110,10 +120,12 @@ function barChart() {
         svgGraph = {
             renderChart: function () {
                 var width, height, aspect, w, h, svg, graph, x, y, xAxis, yAxis, xGrid, title, labels,
-                    color, fontSizeScaleTitre, fontSizeScaleTitreAxe, marginTopBottomScale, marginLeftRightScale;
+                    barColor, textBarColor, fontSizeScaleTitre, fontSizeScaleTitreAxe, fontSizeScaleBarLabel, marginTopBottomScale, marginLeftRightScale;
 
                 // Les couleurs des barres du graphique
-                color = d3.scale
+                barColor = d3.scale
+                        .category20();
+                textBarColor = d3.scale
                         .category20();
 
                 fontSizeScaleTitre = d3.scale.linear()
@@ -123,6 +135,10 @@ function barChart() {
                 fontSizeScaleTitreAxe = d3.scale.linear()
                                         .domain([300, 1600])
                                         .range(["5px", "25px"]);
+
+                fontSizeScaleBarLabel = d3.scale.linear()
+                                        .domain([300, 1600])
+                                        .range(["5px", "15px"]);
 
                 marginTopBottomScale = d3.scale.linear()
                                         .domain([300, 1600])
@@ -172,15 +188,13 @@ function barChart() {
 
                 yAxis = d3.svg.axis()
                     .scale(y)
-                    .orient("left")
-                    .ticks(1)
-                    .tickFormat("");
+                    .orient("left");
 
                 xGrid = d3.svg.axis()
                     .scale(x)
                     .orient("top")
                     .ticks(5)
-                    .tickSize(-h, 0, 0)
+                    .tickSize(h, 0, 0)
                     .tickFormat(d3.format("d"));
 
                 title = graph.append("g")
@@ -196,32 +210,23 @@ function barChart() {
                     .attr("class", "labels");
 
                 graph.append("g")
+                    .attr("class", "x axis")
+                    .attr("transform", "translate(0," + h + ")")
+                    .call(xAxis)
+                    .selectAll("text")
+                        .style("text-anchor", "middle")
+                        .style("font-size", fontSizeScaleTitreAxe(width))
+                        .attr("dy", "1.5em");
+
+                graph.append("g")
                     .attr("class", "grid")
                     .call(xGrid);
 
                 labels.append("text")
-                    .attr("y", h -config.margin.bottom / 2)
-                    .attr("x", -w / 2)
+                    .attr("y", h + config.margin.bottom / 2)
+                    .attr("x", width / 2)
                     .style("text-anchor", "middle")
-                    .text("Nombre de visites");
-
-
-                //        labels.append("text")
-                //            .attr("y", h - margin.bottom / 2)
-                //            .attr("x", -w / 2)
-                //            .style("text-anchor", "middle")
-                //            .text("Nombre de visites");
-
-                graph.append("g")
-                    .attr("class", "y axis")
-                    .call(yAxis);
-
-                labels.append("text")
-                    .attr("transform", "rotate(-90)")
-                    .attr("y", -2 * config.margin.left / 3)
-                    .attr("x", -h / 2)
-                    //.attr("dy", ".100em")
-                    .style("text-anchor", "middle")
+                    .style("font-size", fontSizeScaleTitreAxe(width))
                     .text("Nombre de visites");
 
                 graph.attr('id', 'bars')
@@ -233,12 +238,24 @@ function barChart() {
                     .attr("width", 0)
                     .attr("y", function (d) { return y(d.Nom); })
                     .attr("height", y.rangeBand())
-                    .attr("fill", function (d) { return color(d.Nom); })
+                    .attr("fill", function (d) { console.log(d); return barColor(d.Nom); })
                     .transition()
                         .attr("x", function (d) { return 0; })
                         .attr("width", function (d) { return x(d.NbVis); })
                         .duration(3000)
                         .delay(100);
+
+                graph.append("g")
+                    .attr("class", "y axis")
+                    .call(yAxis)
+                    .selectAll("text")
+                        .style("text-anchor", "start")
+                        .style("font-size", fontSizeScaleBarLabel(width))
+                        .attr("dx", "1em")
+                        .style("fill", function (d) {
+                            console.log(d); return readableColor(barColor(d));
+                        })
+                ;
                 return this;
             },
             resizeChart: function () {
